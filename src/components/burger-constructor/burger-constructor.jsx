@@ -5,8 +5,7 @@ import BurgerTab from "./burger-tub/burger-tab";
 import IngredientCarts from "./ingredient-carts/ingredient-carts";
 import PropTypes from "prop-types";
 import {typeCart} from "../../utils/types";
-import ModalOverlay from "../modal/modal-overlay/modal-overlay";
-import Modal from "../modal/modal";
+
 
 
 function BurgerConstructor(props) {
