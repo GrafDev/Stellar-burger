@@ -7,13 +7,14 @@ import {
 	textLarge,
 	textMedium
 } from "../../utils/themes";
+import {useSelector} from "react-redux";
 
 function IngredientDetails() {
 
 
-	const value = useContext(Context);
+	// const value = useContext(Context);
 
-	const data = value.currentIngredient;
+	const data = useSelector(store=>store.currentIngredient.ingredient);
 
 	const Ingredient = (text, part) => {
 		return (

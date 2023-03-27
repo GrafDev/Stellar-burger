@@ -1,19 +1,21 @@
 import {digitsMedium} from "../../../utils/themes";
 import {Button, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import React, {useContext} from "react";
-import PropTypes from "prop-types";
 import styles from "./total-cost.module.css"
 import contexts from "../../../utils/contexts";
+import {SET_MODAL_ORDER, SET_ORDER_ID} from "../../../services/action/oreder-action";
+import {useDispatch} from "react-redux";
 
 function TotalCost() {
 
-	const {openModal,total} = useContext(contexts);
+	const {total} = useContext(contexts);
+	const dispatch = useDispatch()
 
-	const handleClick = ()=>{
-		openModal('Order');
+	const handleClick = () => {
+		dispatch({type: SET_ORDER_ID})
+		dispatch({type: SET_MODAL_ORDER})
 	}
-
-	return(
+	return (
 		<div className={styles.button}>
 			<div className={styles.total}>
 				<div className={` ${digitsMedium}`}>

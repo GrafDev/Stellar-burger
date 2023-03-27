@@ -21,4 +21,5 @@ main{
 .constructorSection{
   width: 600px;
   height: calc(100vh - 148px);
+  color: ;
 }

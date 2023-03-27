@@ -4,19 +4,24 @@ import React, {useContext} from "react";
 import PropTypes from "prop-types";
 import {typeCart} from "../../../../utils/types";
 import styles from "./cart.module.css"
-import contexts from "../../../../utils/contexts";
+import {useDispatch} from "react-redux";
+import {
+	SET_CURRENT_INGREDIENT,
+	SET_MODAL_CURRENT_INGREDIENT
+} from "../../../../services/action/current-ingredient-action";
 
 function Cart(props) {
 	const cart = props.cart;
-	const value = useContext(contexts);
+	const dispatch = useDispatch();
+	const handleClick = () => {
+		dispatch({type: SET_MODAL_CURRENT_INGREDIENT})
+		dispatch({type: SET_CURRENT_INGREDIENT, payload: cart})
 
-	const handleClick = ()=>{
-		value.openModal('Ingredients',cart);
 	}
 
 	return (
 		<div className={styles.cart} onClick={handleClick}>
-			{(props.bill>0)?<div className={`${styles.count} ${digitsDefault}`}>{props.bill}</div>:null}
+			{(props.bill > 0) ? <div className={`${styles.count} ${digitsDefault}`}>{props.bill}</div> : null}
 			<img src={cart.image} alt={cart.name}/>
 			<div className={styles.cost}>
 				<div className={`${digitsDefault}`}>
@@ -25,7 +30,7 @@ function Cart(props) {
 				<div className={styles.icons}>
 					<CurrencyIcon type="primary"/>
 				</div>
-			</div>//
+			</div>
 			<div className={styles.name}>
 				{cart.name}
 			</div>

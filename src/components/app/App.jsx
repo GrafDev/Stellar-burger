@@ -9,6 +9,7 @@ import contexts from "../../utils/contexts";
 import Modal from "../modal/modal";
 import OrderDetails from "../order-details/order-details";
 import IngredientDetails from "../ingredient-details/ingredient-details";
+import {useDispatch, useSelector} from "react-redux";
 
 
 function App() {
@@ -17,30 +18,36 @@ function App() {
 		hasError: false,
 		data: []
 	})
+	// const dispatch=useDispatch();
+	const isOrder=useSelector(store=>store.order.isModalOrder)
 
-	const [currentIngredient, setCurrentIngredient] = useState(null);
-	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [isOrder, setIsOrder] = useState(false);
-	const [isIngredients, setIsIngredients] = useState(false);
+	const isIngredient=useSelector(store=>store.currentIngredient.isModalIngredient)
+
+	const isModal=isOrder || isIngredient;
+
+	// const [isModalOpen, setIsModalOpen] = useState(false);
+	//const [isOrder, setIsOrder] = useState(false);
+	// const [isIngredient, setIsIngredient] = useState(false);
 	const [total,setTotal]=useState(74441);
 
 
+	// const openModal = (checkModal, data) => {
+	// 	if (checkModal === 'Order') {
+	// 		dispatch({type:SET_MODAL_ORDER})
+	// 		 // setIsOrder(true);
+	// 	} else if (checkModal === 'Ingredients') {
+	// 		setIsIngredient(true);
+	// 		setCurrentIngredient(data);
+	// 	}
+		// setIsModalOpen(true);
+	// }
 
-	const openModal = (checkModal, data) => {
-		if (checkModal === 'Order') {
-			setIsOrder(true);
-		} else if (checkModal === 'Ingredients') {
-			setIsIngredients(true);
-			setCurrentIngredient(data);
-		}
-		setIsModalOpen(true);
-	}
-
-	const closeModal = () => {
-		setIsOrder(false)
-		setIsIngredients(false)
-		setIsModalOpen(false)
-	}
+	// const closeModal = () => {
+	// 	// dispatch({type:DESET_MODAL_ORDER})
+	// 	// setIsOrder(false)
+	// 	setIsIngredient(false)
+	// 	// setIsModalOpen(false)
+	// }
 
 	useEffect(() => {
 		readData(state, setState)
@@ -53,12 +60,11 @@ function App() {
 
 
 	const value = {
-		openModal,
-		closeModal,
-		currentIngredient,
+		// openModal,
+		// closeModal,
+		// currentIngredient,
 		total
 	}
-
 
 
 
@@ -83,10 +89,10 @@ function App() {
 						</div>
 					</main>
 				}
-				{isModalOpen &&
+				{isModal &&
 					(<Modal>
 						{isOrder && <OrderDetails/>}
-						{isIngredients && <IngredientDetails/>}
+						{isIngredient && <IngredientDetails/>}
 					</Modal>)
 				}
 			</div>
