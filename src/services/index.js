@@ -6,7 +6,7 @@ import {ingredientsReducer} from "./reducers/ingredients-reducer";
 
 
 export const rootReducer = combineReducers({
-	// ingredients: ingredientsReducer,
+	ingredients: ingredientsReducer,
 	// constructor: constructorIngredientsReducer,
 	currentIngredient: currentIngredientReducer,
 	order: orderReducer,

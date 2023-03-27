@@ -1,11 +1,10 @@
 export const INCREASE_INGREDIENT = 'INCREASE_INGREDIENT';
 export const DECREASE_INGREDIENT = 'DECREASE_INGREDIENT';
 
-export const GET_INGREDIENTS_REQUEST = 'GET_ITEMS_REQUEST';
-// export const GET_ITEMS_SUCCESS = 'GET_ITEMS_SUCCESS';
-// export const GET_ITEMS_FAILED = 'GET_ITEMS_FAILED';
-//
-//
+export const GET_INGREDIENTS = 'GET_INGREDIENTS';
+export const GET_INGREDIENTS_LOADING = 'GET_INGREDIENTS_LOADING';
+export const GET_INGREDIENTS_ERROR = 'GET_INGREDIENTS_ERROR';
+
 // export function getItems() {
 // 	return function(dispatch) {
 // 		dispatch({
@@ -26,3 +25,5 @@ export const GET_INGREDIENTS_REQUEST = 'GET_ITEMS_REQUEST';
 // 	};
 //
 // }
+
+

@@ -3,7 +3,7 @@ import {ConstructorElement, DragIcon} from "@ya.praktikum/react-developer-burger
 import styles from "./ingredient-parts.module.css"
 import PropTypes from "prop-types";
 
-function IngredientParts(props){
+function ConstructorParts(props){
 	const elem=props.piece;
 	const type=props.type
 	const getText=(type,name)=>{
@@ -27,7 +27,7 @@ function IngredientParts(props){
 	)
 }
 
-IngredientParts.propTypes={
+ConstructorParts.propTypes={
 	type:PropTypes.oneOf(['top', 'bottom', '']).isRequired,
 }
-export default IngredientParts;
+export default ConstructorParts;

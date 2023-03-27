@@ -1,6 +1,6 @@
 
 export const initialIngredientsStore = {
-	ingredients: [],
+	data: [],
 	ingredientsRequest: false,
 	ingredientsFailed: false,
 	hasError: false,

@@ -1,3 +1,7 @@
+
+import {GET_INGREDIENTS, GET_INGREDIENTS_ERROR, GET_INGREDIENTS_LOADING} from "../services/action/ingredients-action";
+import {useDispatch} from "react-redux";
+
 const DATA = 'https://norma.nomoreparties.space/api/ingredients';
 
 function addCount(data){
@@ -8,21 +12,25 @@ function addCount(data){
 	})
 }
 
+
 const checkResponse = (res)=> {
 	return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
 };
 
+// eslint-disable-next-line react-hooks/rules-of-hooks
+const dispatch=useDispatch();
 
-function readData(state, setState) {
+function readData() {
+
 	const getData = async () => {
-		setState({...state, hasError: false, isLoading: true});
+		dispatch({type:GET_INGREDIENTS_LOADING})
 		fetch(DATA)
 			.then(checkResponse)
 			.then(data => {
-				setState({...state, data: addCount(data), isLoading: false})
+				dispatch({type:GET_INGREDIENTS, payload:addCount(data)})
 			})
 			.catch(e => {
-				setState({...state, hasError: true, isLoading: false});
+				dispatch({type:GET_INGREDIENTS_ERROR})
 			});
 	};
 	getData().then(r => console.log('Loaded'));
