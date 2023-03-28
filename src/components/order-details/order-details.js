@@ -1,17 +1,17 @@
-import React, {useContext} from "react";
+import React from "react";
 import {digitsLarge, inactiveDefault, textDefault, textMedium} from "../../utils/themes";
 import style from "./order-details.module.css"
 import vector from '../../images/vector.svg'
 import {CheckMarkIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import {useDispatch, useSelector} from "react-redux";
-import {DESET_MODAL_ORDER} from "../../services/action/oreder-action";
+import {desetModalOrder} from "../../services/action/oreder-action";
 
 function OrderDetails() {
 
 	const dispatch=useDispatch();
 	const orderId=useSelector(store=>store.order.id)
 	const handlerOverlay = ()=>{
-		dispatch({type:DESET_MODAL_ORDER})
+		dispatch(desetModalOrder())
 	}
 
 	return (

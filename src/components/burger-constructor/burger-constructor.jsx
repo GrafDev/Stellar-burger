@@ -25,7 +25,6 @@ function BurgerConstructor(props) {
 			</div>
 		</div>
 	)
-
 }
 
 BurgerConstructor.propTypes = {

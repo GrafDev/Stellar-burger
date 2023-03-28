@@ -5,18 +5,14 @@ import PropTypes from "prop-types";
 import {typeCart} from "../../../../utils/types";
 import styles from "./cart.module.css"
 import {useDispatch} from "react-redux";
-import {
-	SET_CURRENT_INGREDIENT,
-	SET_MODAL_CURRENT_INGREDIENT
-} from "../../../../services/action/current-ingredient-action";
+import { setCurrentIngredient, setModalCurrentIngredient} from "../../../../services/action/current-ingredient-action";
 
 function Cart(props) {
 	const cart = props.cart;
 	const dispatch = useDispatch();
 	const handleClick = () => {
-		dispatch({type: SET_MODAL_CURRENT_INGREDIENT})
-		dispatch({type: SET_CURRENT_INGREDIENT, payload: cart})
-
+		dispatch(setModalCurrentIngredient())
+		dispatch(setCurrentIngredient(cart))
 	}
 
 	return (

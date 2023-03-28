@@ -1,14 +1,13 @@
 import './modal.module.css'
-import {useContext, useEffect, useMemo} from "react";
-import contexts from "../../utils/contexts";
+import { useEffect, useMemo} from "react";
 import {createPortal} from "react-dom";
 import ModalOverlay from "./modal-overlay/modal-overlay";
 import style from "./modal.module.css";
 import {CloseIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
 import {useDispatch} from "react-redux";
-import {DESET_MODAL_ORDER} from "../../services/action/oreder-action";
-import {DESET_MODAL_CURRENT_INGREDIENT} from "../../services/action/current-ingredient-action";
+import {desetModalOrder} from "../../services/action/oreder-action";
+import {desetModalCurrentIngredient} from "../../services/action/current-ingredient-action";
 
 
 function Modal(props) {
@@ -26,8 +25,8 @@ function Modal(props) {
 	});
 
 	const closeModal= ()=>{
-		dispatch({type:DESET_MODAL_ORDER})
-		dispatch({type:DESET_MODAL_CURRENT_INGREDIENT})
+		dispatch(desetModalOrder())
+		dispatch(desetModalCurrentIngredient())
 	}
 
 	useEffect(() => {
@@ -53,7 +52,7 @@ function Modal(props) {
 
 }
 
-// Modal.propTypes = {
-// 	children: PropTypes.element.isRequired
-// };
+Modal.propTypes = {
+	children: PropTypes.element.isRequired
+};
 export default Modal;

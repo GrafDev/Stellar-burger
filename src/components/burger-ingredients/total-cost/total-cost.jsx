@@ -3,7 +3,7 @@ import {Button, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-comp
 import React, {useContext} from "react";
 import styles from "./total-cost.module.css"
 import contexts from "../../../utils/contexts";
-import {SET_MODAL_ORDER, SET_ORDER_ID} from "../../../services/action/oreder-action";
+import {setModalOrder, setOrderId} from "../../../services/action/oreder-action";
 import {useDispatch} from "react-redux";
 
 function TotalCost() {
@@ -12,8 +12,8 @@ function TotalCost() {
 	const dispatch = useDispatch()
 
 	const handleClick = () => {
-		dispatch({type: SET_ORDER_ID})
-		dispatch({type: SET_MODAL_ORDER})
+		dispatch(setOrderId())
+		dispatch(setModalOrder())
 	}
 	return (
 		<div className={styles.button}>

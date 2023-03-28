@@ -1,50 +1,43 @@
-import {
-	DECREASE_INGREDIENT, GET_INGREDIENTS, GET_INGREDIENTS_ERROR,
-	GET_INGREDIENTS_LOADING,
-	INCREASE_INGREDIENT
-} from "../action/ingredients-action";
+
 import {initialIngredientsStore} from "../initial-stores";
-// import {read} from "fs";
-// import readData from "../../utils/read-data";
+import {GET_INGREDIENTS, GET_INGREDIENTS_FAILED, GET_INGREDIENTS_SUCCESS} from "../action/ingredients-action";
+
+
 
 export const ingredientsReducer = (state = initialIngredientsStore, action) => {
 	switch (action.type) {
-		case GET_INGREDIENTS:{
-			return{
-				...state,
-				data: action.payload,
-				isLoading: false,
-				hasError: false,
-			}
-		}
-		case GET_INGREDIENTS_LOADING:{
+		case GET_INGREDIENTS: {
 			return {
 				...state,
-				hasError: false,
+				// Запрос начал выполняться
 				isLoading: true,
-			}
+				// Сбрасываем статус наличия ошибок от предыдущего запроса
+				// на случай, если он был и завершился с ошибкой
+				hasError: false,
+			};
 		}
-		case GET_INGREDIENTS_ERROR:{
-			return{
-				...state,
-				hasError: true,
-				isLoading: false,
-			}
-		}
-		case INCREASE_INGREDIENT: {
-			return{
-				...state,
-
-			}
-		}
-		case DECREASE_INGREDIENT: {
+		case GET_INGREDIENTS_SUCCESS: {
 			return {
 				...state,
-			}
-
+				// Запрос выполнился успешно, помещаем полученные данные в хранилище
+				ingredients: action.ingredients,
+				// Запрос закончил своё выполнение
+				isLoading: false,
+				hasError: false,
+			};
+		}
+		case GET_INGREDIENTS_FAILED: {
+			return {
+				...state,
+				// Запрос выполнился с ошибкой,
+				// выставляем соответсвующие значения в хранилище
+				isLoading: false,
+				// Запрос закончил своё выполнение
+				hasError: true,
+			};
 		}
 		default: {
-			return state;
+			return state
 		}
 	}
-};
+}
