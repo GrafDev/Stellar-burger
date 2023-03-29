@@ -1,0 +1,1 @@
+export const getConstructorIngredients=store=>store.constructorIngredients.ingredients

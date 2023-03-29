@@ -9,9 +9,10 @@ import contexts from "../../utils/contexts";
 import Modal from "../modal/modal";
 import OrderDetails from "../order-details/order-details";
 import IngredientDetails from "../ingredient-details/ingredient-details";
-import {useDispatch, useSelector} from "react-redux";
-import {getIsModalOrder, getOrderId} from "../../services/selectors/order-selector";
-import {getIsModalIngredient} from "../../services/selectors/current-ingredient-selector";
+import { useSelector} from "react-redux";
+import {getIsModalOrder} from "../../services/selectors/order-selector";
+import { getIsModalIngredient} from "../../services/selectors/current-ingredient-selector";
+
 
 
 function App() {
@@ -27,7 +28,8 @@ function App() {
 
 	const isModal=isOrder || isIngredient;
 
-	const [total,setTotal]=useState(74441);
+	const [total,setTotal]=useState(13441);
+	// const dispatch=useDispatch();
 
 
 	useEffect(() => {
@@ -36,7 +38,10 @@ function App() {
 
 
 	const {data, isLoading, hasError} = state;
-	const order = data;
+
+	//dispatch(loadConstructorIngredients([]))
+	const order=data;
+	//  const order = useSelector(getConstructorIngredients)
 	//setTotal(useMemo(() => order.reduce((sum, elem) => sum + elem.price, 0), [order]));
 
 

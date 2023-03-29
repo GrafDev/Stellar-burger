@@ -1,7 +1,7 @@
 import {initialConstructorIngredientStore} from "../initial-stores";
 import {
 	DECREASE_CONSTRUCTOR_INGREDIENTS, DELETE_CONSTRUCTOR_INGREDIENTS,
-	INCREASE_CONSTRUCTOR_INGREDIENTS
+	INCREASE_CONSTRUCTOR_INGREDIENTS, LOAD_CONSTRUCTOR_INGREDIENTS
 } from "../action/constructor-ingredients-action";
 
 export const constructorIngredientsReducer = (state = initialConstructorIngredientStore, action) => {
@@ -18,6 +18,12 @@ export const constructorIngredientsReducer = (state = initialConstructorIngredie
 		}
 		case DELETE_CONSTRUCTOR_INGREDIENTS: {
 return state;
+		}
+		case LOAD_CONSTRUCTOR_INGREDIENTS: {
+			return {
+				...state,
+				constructorIngredients:action.ingredients,
+			}
 		}
 		default: {
 			return state;
