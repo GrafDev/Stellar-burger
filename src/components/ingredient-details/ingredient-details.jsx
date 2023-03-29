@@ -8,13 +8,14 @@ import {
 	textMedium
 } from "../../utils/themes";
 import {useSelector} from "react-redux";
+import {getCurrentIngredient} from "../../services/selectors/current-ingredient-selector";
 
 function IngredientDetails() {
 
 
 	// const value = useContext(Context);
 
-	const data = useSelector(store=>store.currentIngredient.ingredient);
+	const data = useSelector(getCurrentIngredient);
 
 	const Ingredient = (text, part) => {
 		return (

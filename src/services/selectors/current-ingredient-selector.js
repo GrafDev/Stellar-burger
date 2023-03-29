@@ -1,0 +1,2 @@
+export const getIsModalIngredient=store=>store.currentIngredient.isModalIngredient
+export const getCurrentIngredient=store=>store.currentIngredient.ingredient

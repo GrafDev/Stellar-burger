@@ -10,6 +10,8 @@ import Modal from "../modal/modal";
 import OrderDetails from "../order-details/order-details";
 import IngredientDetails from "../ingredient-details/ingredient-details";
 import {useDispatch, useSelector} from "react-redux";
+import {getIsModalOrder, getOrderId} from "../../services/selectors/order-selector";
+import {getIsModalIngredient} from "../../services/selectors/current-ingredient-selector";
 
 
 function App() {
@@ -19,9 +21,9 @@ function App() {
 		data: []
 	})
 	// const dispatch=useDispatch();
-	const isOrder=useSelector(store=>store.order.isModalOrder)
+	const isOrder=useSelector(getIsModalOrder)
 
-	const isIngredient=useSelector(store=>store.currentIngredient.isModalIngredient)
+	const isIngredient=useSelector( getIsModalIngredient)
 
 	const isModal=isOrder || isIngredient;
 
