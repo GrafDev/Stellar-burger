@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import {useDispatch} from "react-redux";
 import {desetModalOrder} from "../../services/action/oreder-action";
 import {desetModalCurrentIngredient} from "../../services/action/current-ingredient-action";
+import {typeCart} from "../../utils/types";
 
 
 function Modal(props) {

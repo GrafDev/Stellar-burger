@@ -10,7 +10,7 @@ export const initialIngredientsStore = {
 // 	constructorIngredientsFailed: false,
 // }
 export const initialCurrentIngredientStore= {
-	ingredient: '',
+	ingredient: null,
 	isModalIngredient:false,
 }
 export const initialOrderStore={

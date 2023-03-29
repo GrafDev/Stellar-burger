@@ -10,7 +10,7 @@ export const currentIngredientReducer = (state = initialCurrentIngredientStore, 
 		case SET_CURRENT_INGREDIENT: {
 			return {
 				...state,
-				ingredient: action.cart
+				ingredient: action.ingredient
 			}
 		}
 		case SET_MODAL_CURRENT_INGREDIENT: {

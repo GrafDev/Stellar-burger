@@ -43,7 +43,7 @@ function App() {
 		total
 	}
 
-
+	console.log(isModal,isIngredient,isOrder)
 
 
 	return (

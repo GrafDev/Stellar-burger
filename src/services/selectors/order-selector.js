@@ -1,0 +1,1 @@
+export const getOrderId=store=>store.order.id

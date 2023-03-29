@@ -5,11 +5,12 @@ import vector from '../../images/vector.svg'
 import {CheckMarkIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import {useDispatch, useSelector} from "react-redux";
 import {desetModalOrder} from "../../services/action/oreder-action";
+import {getOrderId} from "../../services/selectors/order-selector";
 
 function OrderDetails() {
 
 	const dispatch=useDispatch();
-	const orderId=useSelector(store=>store.order.id)
+	const orderId=useSelector(getOrderId)
 	const handlerOverlay = ()=>{
 		dispatch(desetModalOrder())
 	}
