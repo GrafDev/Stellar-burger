@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
-import {constructorIngredientsReducer} from "./reducers/constructor-ingredients-reducer";
+import {applyMiddleware, combineReducers,  createStore} from 'redux';
 import {currentIngredientReducer} from "./reducers/current-ingredient-reducer";
 import {orderReducer} from "./reducers/order-reducer";
-import {ingredientsReducer} from "./reducers/ingredients-reducer";
+import {customMiddleware} from "./middleware/customMiddleware";
+import {composeWithDevTools} from "redux-devtools-extension";
 
 
 export const rootReducer = combineReducers({
@@ -12,3 +12,12 @@ export const rootReducer = combineReducers({
 	order: orderReducer,
 
 });
+
+
+export const configureStore=(initialState)=>{
+const store = createStore(
+	rootReducer,
+	initialState,
+	composeWithDevTools(applyMiddleware(customMiddleware())));
+return store;
+}
