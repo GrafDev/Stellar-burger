@@ -4,17 +4,17 @@ export const initialIngredientsStore = {
 	hasError: false,
 	isLoading: true,
 }
-export const initialConstructorIngredientStore= {
-	constructorIngredients: [],
-	constructorIngredientsRequest: false,
-	constructorIngredientsFailed: false,
-}
+// export const initialConstructorIngredientStore= {
+// 	constructorIngredients: [],
+// 	constructorIngredientsRequest: false,
+// 	constructorIngredientsFailed: false,
+// }
 export const initialCurrentIngredientStore= {
 	ingredient: null,
 	isModalIngredient:false,
 }
 export const initialOrderStore={
-	ingredients:[],
+	orderIngredients:[],
 	id:0,
 	isModalOrder:false,
 };

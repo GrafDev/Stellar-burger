@@ -1,8 +1,19 @@
 
 import {initialIngredientsStore} from "../initial-stores";
-import {GET_INGREDIENTS, GET_INGREDIENTS_FAILED, GET_INGREDIENTS_SUCCESS} from "../action/ingredients-action";
+import {
+	GET_INGREDIENTS,
+	GET_INGREDIENTS_FAILED, LOAD_INGREDIENTS_ERROR,
+	LOAD_INGREDIENTS_REQUEST,
+	LOAD_INGREDIENTS_SUCCESS
+} from "../action/ingredients-action";
 
-
+function addCount(data){
+	console.log('Count added')
+	return data.data.map(elem =>{
+		elem.count=0
+		return elem
+	})
+}
 
 export const ingredientsReducer = (state = initialIngredientsStore, action) => {
 	switch (action.type) {
@@ -16,14 +27,29 @@ export const ingredientsReducer = (state = initialIngredientsStore, action) => {
 				hasError: false,
 			};
 		}
-		case GET_INGREDIENTS_SUCCESS: {
+		case LOAD_INGREDIENTS_REQUEST: {
+			console.log(action.payload,'-request ')
 			return {
 				...state,
-				// Запрос выполнился успешно, помещаем полученные данные в хранилище
-				ingredients: action.ingredients,
-				// Запрос закончил своё выполнение
+  				isLoading: true,
+				hasError: false,
+			};
+		}
+		case LOAD_INGREDIENTS_SUCCESS: {
+			console.log(action.payload,'-load')
+			return {
+				...state,
 				isLoading: false,
 				hasError: false,
+				ingredients: addCount(action.payload),
+			};
+		}
+		case LOAD_INGREDIENTS_ERROR: {
+			console.log(action.payload,'-request ')
+			return {
+				...state,
+				isLoading: false,
+				hasError: true,
 			};
 		}
 		case GET_INGREDIENTS_FAILED: {
