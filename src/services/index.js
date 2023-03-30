@@ -5,10 +5,11 @@ import {customMiddleware} from "./middleware/customMiddleware";
 import {composeWithDevTools} from "redux-devtools-extension";
 import thunkMiddleware from "redux-thunk"
 import {ingredientsReducer} from "./reducers/ingredients-reducer";
+import {constructorReducer} from "./reducers/constructor-reducer";
 
 export const rootReducer = combineReducers({
 	ingredients: ingredientsReducer,
-	// constructor: constructorIngredientsReducer,
+	constructor: constructorReducer,
 	currentIngredient: currentIngredientReducer,
 	order: orderReducer,
 

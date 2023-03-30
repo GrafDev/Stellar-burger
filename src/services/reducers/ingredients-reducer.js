@@ -33,13 +33,13 @@ export const ingredientsReducer = (state = initialIngredientsStore, action) => {
 			};
 		}
 		case LOAD_INGREDIENTS_SUCCESS: {
-			let data=action.payload.data
-			console.log(data)
+			let _data=action.payload.data
+			console.log(_data)
 			return {
 				...state,
 				isLoading: false,
 				hasError: false,
-				ingredients: addCount(data),
+				ingredients: addCount(_data),
 			};
 		}
 		case LOAD_INGREDIENTS_ERROR: {

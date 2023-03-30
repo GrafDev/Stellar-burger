@@ -3,9 +3,9 @@ export const DECREASE_CONSTRUCTOR_INGREDIENTS = 'DECREASE_CONSTRUCTOR_INGREDIENT
 export const DELETE_CONSTRUCTOR_INGREDIENTS = 'DELETE_CONSTRUCTOR_INGREDIENTS';
 export const LOAD_CONSTRUCTOR_INGREDIENTS = 'LOAD_CONSTRUCTOR_INGREDIENTS';
 
-export const setIncreaseConstructorIngredients = (ingredient) => ({
+export const setIncreaseConstructorIngredients = (_data) => ({
 	type: INCREASE_CONSTRUCTOR_INGREDIENTS,
-	ingredient:ingredient,
+	payload:_data,
 })
 export const setDecreaseConstructorIngredients = () => ({
 	type: DECREASE_CONSTRUCTOR_INGREDIENTS,
@@ -13,7 +13,7 @@ export const setDecreaseConstructorIngredients = () => ({
 export const deleteConstructorIngredients = () => ({
 	type: DELETE_CONSTRUCTOR_INGREDIENTS,
 })
-export const loadConstructorIngredients = (data) => ({
+export const loadConstructorIngredients = (_data) => ({
 	type: LOAD_CONSTRUCTOR_INGREDIENTS,
-	ingredients:data
+	payload:_data
 })

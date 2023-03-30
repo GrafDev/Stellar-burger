@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import AppHeader from "../app-header/app-header";
 import style from "./App.module.css";
+import BurgerIgredients from '../burger-ingredient/burger-igredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
-import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import readData from "../../utils/read-data";
 import contexts from "../../utils/contexts";
 import Modal from "../modal/modal";
@@ -12,6 +12,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {getIsModalOrder} from "../../services/selectors/order-selector";
 import {getIsModalIngredient} from "../../services/selectors/current-ingredient-selector";
 import {loadIngredients} from "../../services/action/ingredients-action";
+import {loadConstructorIngredients} from "../../services/action/constructor-ingredients-action";
+import {getIngredients} from "../../services/selectors/ingredients-selector";
 
 
 function App() {
@@ -27,7 +29,7 @@ function App() {
 		dispatch(loadIngredients())
 	}, [dispatch])
 
-	const data= useSelector(store => store.ingredients.ingredients)
+	const data= useSelector(getIngredients)
 	const order = data;
 
 	const value = {
@@ -50,10 +52,10 @@ function App() {
 					data.length &&
 					<main>
 						<div className={`${style.ingredientSection} mr-10`}>
-							<BurgerConstructor data={data}/>
+							<BurgerIgredients/>
 						</div>
 						<div className={style.constructorSection}>
-							<BurgerIngredients order={order}/>
+							<BurgerConstructor order={order}/>
 						</div>
 					</main>
 				}

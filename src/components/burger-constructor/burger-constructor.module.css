@@ -1,19 +1,42 @@
 .section{
+    display: flex;
+    position: relative;
+    justify-content: right;
     background: #131316;
-    height: 100%;
+    height: calc(100% - 100px);
+    padding-top: 100px;
+    /*-moz-user-select: none;*/
+    /*user-select: none;*/
 }
 
-.title{
-    margin-bottom: 20px;
-}
+.bun{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    margin-right: 8px;
 
-.tab {
-    margin-bottom: 40px ;
 }
 
 .ingredients{
-    overflow: scroll;
-    overflow-x:hidden;
+    display: flex;
+    flex-direction: column;
     height: calc(100% - 156px);
     padding-left: 16px;
+    gap: 10px;
 }
+
+.pieces{
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    overflow-x:hidden;
+    padding-left: 16px;
+    gap: 10px;
+}
+
+.icon > svg{
+    width: 33px;
+    height: 33px;
+}
+

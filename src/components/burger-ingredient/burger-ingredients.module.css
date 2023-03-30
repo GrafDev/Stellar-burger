@@ -1,0 +1,19 @@
+.section{
+    background: #131316;
+    height: 100%;
+}
+
+.title{
+    margin-bottom: 20px;
+}
+
+.tab {
+    margin-bottom: 40px ;
+}
+
+.ingredients{
+    overflow: scroll;
+    overflow-x:hidden;
+    height: calc(100% - 156px);
+    padding-left: 16px;
+}

@@ -1,34 +1,37 @@
-import React, {useState} from "react";
+import React from "react";
 import styles from "./burger-constructor.module.css"
-import {textLarge} from "../../utils/themes";
-import BurgerTab from "./burger-tub/burger-tab";
-import IngredientCarts from "./ingredient-carts/ingredient-carts";
+import ConstructorParts from "./constructor-part/constructor-parts.jsx";
+import TotalCost from "./total-cost/total-cost";
 import PropTypes from "prop-types";
 import {typeCart} from "../../utils/types";
 
 
 
-function BurgerConstructor(props) {
-	const {data}=props;
-	const {currentType,setCurrentType}=useState('bun');
+function BurgerConstructor(props){
+    const pieces=props.order.filter(elem=>elem.type!=='bun')
+    const bun=props.order.find(elem=>elem.type==='bun')
+    return(
+    <div className={styles.section}>
+        <div className={styles.ingredients}>
+            <div className={styles.bun}>
+                <ConstructorParts type={'top'} piece={bun} key={bun.id}></ConstructorParts>
+            </div>
+            <div className={styles.pieces}>
+                {pieces.map(elem=>
+                    <ConstructorParts type={''} piece={elem} key={elem._id}></ConstructorParts>
+                )}
+            </div>
+            <div className={styles.bun}>
+            <ConstructorParts type={'bottom'} piece={bun} key={bun.id}></ConstructorParts>
+            </div>
+        </div>
+    <TotalCost/>
 
-
-	let burgers = data;
-	return (
-		<div className={styles.section}>
-			<div className={`${styles.title} ${textLarge}`}>Соберите бургер</div>
-			<div className={styles.tab}><BurgerTab current={currentType}/></div>
-			<div className={styles.ingredients}>
-				<IngredientCarts data={data} type={'bun'} bill={burgers} >Булки</IngredientCarts>
-				<IngredientCarts data={data} type={'main'} bill={burgers} >Соусы</IngredientCarts>
-				<IngredientCarts data={data} type={'sauce'} bill={burgers} >Начинка</IngredientCarts>
-			</div>
-		</div>
-	)
+    </div>
+)
 }
 
-BurgerConstructor.propTypes = {
-	data: PropTypes.arrayOf(PropTypes.shape(typeCart)).isRequired,
+BurgerConstructor.propTypes={
+    pieces:PropTypes.arrayOf(PropTypes.shape(typeCart).isRequired)
 }
-
 export default BurgerConstructor;

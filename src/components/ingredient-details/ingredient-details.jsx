@@ -1,6 +1,5 @@
-import React, {useContext} from "react";
+import React from "react";
 import style from './ingredient-details.module.css'
-import Context from "../../utils/contexts";
 import {
 	digitsInactiveDefault,
 	inactiveDefault,
@@ -12,8 +11,6 @@ import {getCurrentIngredient} from "../../services/selectors/current-ingredient-
 
 function IngredientDetails() {
 
-
-	// const value = useContext(Context);
 
 	const data = useSelector(getCurrentIngredient);
 
