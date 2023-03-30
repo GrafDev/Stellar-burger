@@ -33,10 +33,9 @@ function App() {
 		// readData(state, setState)
 	}, [dispatch])
 	const tempData = useSelector(store => store.ingredients.ingredients)
-
-	console.log(tempData)
-	const {data} = tempData;
+	const data= tempData;
 	const order = data;
+	console.log(tempData,'-app.js')
 
 
 
@@ -45,7 +44,6 @@ function App() {
 		total
 	}
 
-	console.log(isModal, isIngredient, isOrder)
 
 
 	return (

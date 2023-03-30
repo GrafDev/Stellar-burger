@@ -4,9 +4,9 @@ const DATA_URL = 'https://norma.nomoreparties.space/api/ingredients';
 
 const getResponse=(res)=>{
 	if (res.ok){
-		console.log(res.json(),'-res.ok')
-
-		return res.json();
+		let resJson=res.json();
+		console.log(resJson,'-res.ok')
+		return resJson;
 	}
 	return Promise.reject(`Error ${res.status}`);
 }

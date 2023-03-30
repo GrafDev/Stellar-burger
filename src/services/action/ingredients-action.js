@@ -12,7 +12,6 @@ export const loadIngredients=(payload)=> (dispatch)=>{
 		payload:true,
 	});
 	return getData().then((res)=>{
-		console.log(payload,'-action payload')
 		dispatch({
 			type: LOAD_INGREDIENTS_SUCCESS,
 			payload:res,

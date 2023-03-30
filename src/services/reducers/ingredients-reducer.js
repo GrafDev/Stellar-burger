@@ -7,9 +7,10 @@ import {
 	LOAD_INGREDIENTS_SUCCESS
 } from "../action/ingredients-action";
 
-function addCount(data){
-	console.log('Count added')
-	return data.data.map(elem =>{
+function addCount(_data){
+	console.log(_data,'Count added')
+
+	return _data.map(elem =>{
 		elem.count=0
 		return elem
 	})
@@ -28,7 +29,6 @@ export const ingredientsReducer = (state = initialIngredientsStore, action) => {
 			};
 		}
 		case LOAD_INGREDIENTS_REQUEST: {
-			console.log(action.payload,'-request ')
 			return {
 				...state,
   				isLoading: true,
@@ -36,16 +36,16 @@ export const ingredientsReducer = (state = initialIngredientsStore, action) => {
 			};
 		}
 		case LOAD_INGREDIENTS_SUCCESS: {
-			console.log(action.payload,'-load')
+			let data=action.payload.data
+			console.log(data)
 			return {
 				...state,
 				isLoading: false,
 				hasError: false,
-				ingredients: addCount(action.payload),
+				ingredients: addCount(data),
 			};
 		}
 		case LOAD_INGREDIENTS_ERROR: {
-			console.log(action.payload,'-request ')
 			return {
 				...state,
 				isLoading: false,
