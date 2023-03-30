@@ -15,11 +15,6 @@ import {loadIngredients} from "../../services/action/ingredients-action";
 
 
 function App() {
-	// const [state, setState] = useState({
-	// 	isLoading: true,
-	// 	hasError: false,
-	// 	data: []
-	// })
 
 	const dispatch = useDispatch();
 	const isOrder = useSelector(getIsModalOrder)
@@ -30,14 +25,10 @@ function App() {
 
 	useEffect(() => {
 		dispatch(loadIngredients())
-		// readData(state, setState)
 	}, [dispatch])
-	const tempData = useSelector(store => store.ingredients.ingredients)
-	const data= tempData;
+
+	const data= useSelector(store => store.ingredients.ingredients)
 	const order = data;
-	console.log(tempData,'-app.js')
-
-
 
 	const value = {
 

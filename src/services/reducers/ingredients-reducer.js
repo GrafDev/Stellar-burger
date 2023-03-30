@@ -21,10 +21,7 @@ export const ingredientsReducer = (state = initialIngredientsStore, action) => {
 		case GET_INGREDIENTS: {
 			return {
 				...state,
-				// Запрос начал выполняться
 				isLoading: true,
-				// Сбрасываем статус наличия ошибок от предыдущего запроса
-				// на случай, если он был и завершился с ошибкой
 				hasError: false,
 			};
 		}
@@ -55,10 +52,7 @@ export const ingredientsReducer = (state = initialIngredientsStore, action) => {
 		case GET_INGREDIENTS_FAILED: {
 			return {
 				...state,
-				// Запрос выполнился с ошибкой,
-				// выставляем соответсвующие значения в хранилище
 				isLoading: false,
-				// Запрос закончил своё выполнение
 				hasError: true,
 			};
 		}

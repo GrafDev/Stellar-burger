@@ -15,36 +15,13 @@ export const loadIngredients=(payload)=> (dispatch)=>{
 		dispatch({
 			type: LOAD_INGREDIENTS_SUCCESS,
 			payload:res,
-		}).catch(err=>{
+		}).catch(err=>
 			dispatch({
 				type: LOAD_INGREDIENTS_ERROR,
 				payload:err.message,
 			})
-		})
+		)
 	})
 }
-// export const GET_ITEMS_SUCCESS = 'GET_ITEMS_SUCCESS';
-// export const GET_ITEMS_FAILED = 'GET_ITEMS_FAILED';
-//
-//
-// export function getItems() {
-// 	return function(dispatch) {
-// 		dispatch({
-// 			type: GET_ITEMS_REQUEST
-// 		});
-// 		getItemsRequest().then(res => {
-// 			if (res && res.success) {
-// 				dispatch({
-// 					type: GET_ITEMS_SUCCESS,
-// 					items: res.data
-// 				});
-// 			} else {
-// 				dispatch({
-// 					type: GET_ITEMS_FAILED
-// 				});
-// 			}
-// 		});
-// 	};
-//
-// }
+
 
