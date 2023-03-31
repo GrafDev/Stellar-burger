@@ -2,13 +2,13 @@ import {digitsMedium} from "../../../utils/themes";
 import {Button, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import React, {useContext} from "react";
 import styles from "./total-cost.module.css"
-import contexts from "../../../utils/contexts";
 import {setModalOrder, setOrderId} from "../../../services/action/oreder-action";
 import {useDispatch} from "react-redux";
 
 function TotalCost() {
 
-	const {total} = useContext(contexts);
+
+	const total = 566
 	const dispatch = useDispatch()
 
 	const handleClick = () => {

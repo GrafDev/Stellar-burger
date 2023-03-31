@@ -4,12 +4,16 @@ import ConstructorParts from "./constructor-part/constructor-parts.jsx";
 import TotalCost from "./total-cost/total-cost";
 import PropTypes from "prop-types";
 import {typeCart} from "../../utils/types";
+import {useSelector} from "react-redux";
+import {getConstructorIngredients} from "../../services/selectors/constructor-ingredients-selector";
+import {getIngredients} from "../../services/selectors/ingredients-selector";
 
 
 
-function BurgerConstructor(props){
-    const pieces=props.order.filter(elem=>elem.type!=='bun')
-    const bun=props.order.find(elem=>elem.type==='bun')
+function BurgerConstructor(){
+    const order=useSelector(getIngredients)
+    const pieces=order.filter(elem=>elem.type!=='bun')
+    const bun=order.find(elem=>elem.type==='bun')
     return(
     <div className={styles.section}>
         <div className={styles.ingredients}>
@@ -31,7 +35,4 @@ function BurgerConstructor(props){
 )
 }
 
-BurgerConstructor.propTypes={
-    pieces:PropTypes.arrayOf(PropTypes.shape(typeCart).isRequired)
-}
 export default BurgerConstructor;

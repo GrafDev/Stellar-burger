@@ -13,7 +13,6 @@ import {typeCart} from "../../utils/types";
 
 function Modal(props) {
 	const element = useMemo(() => document.createElement('div'), []);
-	// const value = useContext(contexts);
 	const dispatch=useDispatch();
 
 	const modalRootElement = document.getElementById('react-modals');

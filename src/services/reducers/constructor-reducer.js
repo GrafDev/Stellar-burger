@@ -8,21 +8,22 @@ export const constructorReducer = (state = initialConstructorStore, action) => {
 	switch (action.type) {
 		case INCREASE_CONSTRUCTOR_INGREDIENTS: {
 			return {
-		...state,
-		}
+				...state,
+			}
 		}
 		case DECREASE_CONSTRUCTOR_INGREDIENTS: {
-			return{
+			return {
 				...state,
 			}
 		}
 		case DELETE_CONSTRUCTOR_INGREDIENTS: {
-return state;
+			return state;
 		}
 		case LOAD_CONSTRUCTOR_INGREDIENTS: {
+			console.log(action.payload,'loadCons')
 			return {
 				...state,
-				constructorIngredients:action.payload,
+				constructorIngredients: action.payload,
 			}
 		}
 		default: {

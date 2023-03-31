@@ -23,7 +23,7 @@ export const currentIngredientReducer = (state = initialCurrentIngredientStore, 
 			return {
 				...state,
 				isModalIngredient: false,
-				currentIngredient:''
+				currentIngredient:null,
 			}
 		}
 		default: {

@@ -8,7 +8,7 @@ import {
 } from "../action/ingredients-action";
 
 function addCount(_data){
-	console.log(_data,'Count added')
+	// console.log(_data,'Count added')
 
 	return _data.map(elem =>{
 		elem.count=0
@@ -34,7 +34,7 @@ export const ingredientsReducer = (state = initialIngredientsStore, action) => {
 		}
 		case LOAD_INGREDIENTS_SUCCESS: {
 			let _data=action.payload.data
-			console.log(_data)
+			// console.log(_data)
 			return {
 				...state,
 				isLoading: false,
