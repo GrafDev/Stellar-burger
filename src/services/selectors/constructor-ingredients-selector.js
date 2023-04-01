@@ -1,1 +1,1 @@
-export const getConstructorIngredients=store=>store.constructor.constructorIngredients
+export const getConstructorIngredients=store=>store.constructorStore.constructorIngredients

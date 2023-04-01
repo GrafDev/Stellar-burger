@@ -8,14 +8,14 @@ import {constructorReducer} from "./reducers/constructor-reducer";
 
 export const rootReducer = combineReducers({
 	ingredients: ingredientsReducer,
-	constructor: constructorReducer,
+	constructorStore: constructorReducer,
 	current: currentIngredientReducer,
 	order: orderReducer,
 
 });
 
 
-export const configureStore=(initialState)=>{
+export const mainStore=(initialState)=>{
 const store = createStore(
 	rootReducer,
 	initialState,

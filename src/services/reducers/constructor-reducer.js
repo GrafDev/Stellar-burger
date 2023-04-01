@@ -26,6 +26,7 @@ export const constructorReducer = (state = initialConstructorStore, action) => {
 				constructorIngredients: action.payload,
 			}
 		}
+
 		default: {
 			return state;
 		}
