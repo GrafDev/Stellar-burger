@@ -14,9 +14,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: right;
-    margin-right: 8px;
-
+    margin-right: 24px;
+    margin-left: 64px;
 }
+
 
 .ingredients{
     display: flex;
@@ -35,8 +36,33 @@
     gap: 10px;
 }
 
-.icon > svg{
-    width: 33px;
-    height: 33px;
+.piece{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    margin-right: 16px;
 }
+
+.zero{
+    padding-right: 64px;
+}
+
+.piece:hover{
+    --background-element: #3e3e47;
+}
+
+.bun:hover{
+    --background-element: #3e3e47;
+}
+
+.icon{
+    padding-right: 16px;
+}
+
+.icon > svg{
+    width: 32px;
+    height: 32px;
+}
+
 

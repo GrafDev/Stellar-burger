@@ -5,11 +5,11 @@ import App from './components/app/App';
 import reportWebVitals from './reportWebVitals';
 
 import {Provider} from "react-redux";
-import {configureStore} from "./services";
 import {DevSupport} from "@react-buddy/ide-toolbox";
 import {ComponentPreviews, useInitial} from "./dev";
+import {mainStore} from "./services";
 
-const store = configureStore();
+const store = mainStore();
 const root = ReactDOM.createRoot(
 	document.getElementById('root'));
 
