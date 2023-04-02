@@ -3,17 +3,15 @@ import styles from "./burger-ingredients.module.css"
 import {textLarge} from "../../utils/themes";
 import BurgerTab from "./burger-tub/burger-tab";
 import IngredientCarts from "./ingredient-carts/ingredient-carts";
-import PropTypes from "prop-types";
-import {typeCart} from "../../utils/types";
 import {useSelector} from "react-redux";
 import {getIngredients} from "../../services/selectors/ingredients-selector";
+import {useDrag} from "react-dnd";
 
 
 
 function BurgerIgredients() {
 	const data= useSelector(getIngredients)
 	const {currentType,setCurrentType}=useState('bun');
-
 
 	let burgers = data;
 	return (

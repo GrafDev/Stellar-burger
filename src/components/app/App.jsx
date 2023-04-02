@@ -14,6 +14,8 @@ import {
 	getIngredientsHasError,
 	getIngredientsIsLoading
 } from "../../services/selectors/ingredients-selector";
+import {HTML5Backend} from "react-dnd-html5-backend";
+import {DndProvider} from "react-dnd";
 
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
 	}, [dispatch])
 
 
+
+
 	return (
 		<div className={style.App}>
 			<header className={style.App}>
@@ -39,14 +43,18 @@ function App() {
 			{hasError && 'Произошла ошибка'}
 			{!isLoading &&
 				!hasError &&
+
 				<main>
-					<div className={`${style.ingredientSection} mr-10`}>
-						<BurgerIgredients/>
-					</div>
-					<div className={style.constructorSection}>
-						<BurgerConstructor/>
-					</div>
+					<DndProvider backend={HTML5Backend}>
+						<div className={`${style.ingredientSection} mr-10`}>
+							<BurgerIgredients/>
+						</div>
+						<div className={style.constructorSection}>
+							<BurgerConstructor/>
+						</div>
+					</DndProvider>
 				</main>
+
 			}
 			{isModal &&
 				(<Modal>

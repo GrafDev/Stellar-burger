@@ -6,6 +6,7 @@ import {getIngredients} from "../../services/selectors/ingredients-selector";
 import {getRandomInt} from "../../utils/random-funcs";
 import {ConstructorElement, DragIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import {EmptyConstructorElement} from "./empty-constructor-element/empty-constructor-element";
+import {useDrop} from "react-dnd";
 
 
 const fillConstructor = (_order) => {
@@ -27,12 +28,18 @@ function BurgerConstructor() {
 
 	const pieces = order.pieces;
 	const bun = order.bun
+	const [, dropTarget] = useDrop({
+		accept: "animal",
+		drop(itemId) {
+			// onDropHandler(itemId);
+		},
+	})
 
 	return (
 
 
 		<div className={styles.section}>
-			<div className={styles.ingredients}>
+			<div  ref={dropTarget} className={styles.ingredients}>
 				<div className={styles.bun} key={bun._id+'1'}>
 					{order.bun===null ?<ConstructorElement
 						text={bun.name}
