@@ -1,0 +1,32 @@
+.empty-constructor-element {
+    padding: 16px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--common-border-radius-s);
+    background: var(--background-element);
+    max-width: 536px;
+    width:100vh;
+    /*width: 100%;*/
+    min-height: 80px;
+    font-family: 'Jet Brains Mono';
+    color: #F2F2F3;
+    box-sizing: border-box;
+
+}
+
+.empty-constructor-element_pos_top {
+    border-radius: var(--top-constructor-item-border-radius);
+}
+
+.empty-constructor-element_pos_bottom {
+    border-radius: var(--bottom-constructor-item-border-radius);
+}
+
+.empty-constructor-element:hover{
+    --background-element: #3e3e47;
+}
+
+.empty-constructor-element_text{
+    color: #8585AD;
+}

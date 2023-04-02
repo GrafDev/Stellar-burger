@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import {getIngredients} from "../../services/selectors/ingredients-selector";
 import {getRandomInt} from "../../utils/random-funcs";
 import {ConstructorElement, DragIcon} from "@ya.praktikum/react-developer-burger-ui-components";
+import {EmptyConstructorElement} from "./empty-constructor-element/empty-constructor-element";
 
 
 const fillConstructor = (_order) => {
@@ -23,6 +24,7 @@ const fillConstructor = (_order) => {
 
 function BurgerConstructor() {
 	const order = fillConstructor(useSelector(getIngredients))
+
 	const pieces = order.pieces;
 	const bun = order.bun
 
@@ -31,18 +33,19 @@ function BurgerConstructor() {
 
 		<div className={styles.section}>
 			<div className={styles.ingredients}>
-				<div className={styles.bun} key={bun.id}>
-					<ConstructorElement
+				<div className={styles.bun} key={bun._id+'1'}>
+					{order.bun===null ?<ConstructorElement
 						text={bun.name}
 						type={'top'}
 						price={bun.price}
 						isLocked={true}
 						thumbnail={bun.image_mobile}
 					/>
+					:<EmptyConstructorElement type={'top'} text={'Выберите булку'}/> }
 				</div>
 				<div className={styles.pieces}>
-					{pieces.map(elem =>
-						<div className={styles.piece} key={elem.id}>
+					{pieces===null && pieces.map(elem =>
+						<div className={styles.piece} key={elem._id}>
 							<div className={styles.icon}><DragIcon type="primary"/> </div>
 								<ConstructorElement
 									text={elem.name}
@@ -52,15 +55,16 @@ function BurgerConstructor() {
 								/>
 						</div>
 					)}
+					{pieces!==null && <EmptyConstructorElement text={'Выберите начинку'}/>  }
 				</div>
-				<div className={styles.bun} key={bun.id+'2'}>
-					<ConstructorElement
+				<div className={styles.bun} key={bun._id+'2'}>
+					{order.bun===null ?<ConstructorElement
 						text={bun.name}
 						type={'bottom'}
 						price={bun.price}
 						isLocked={true}
 						thumbnail={bun.image_mobile}
-					/>
+					/>: <EmptyConstructorElement type={'bottom'} text={'Выберите булку'}/>}
 				</div>
 			</div>
 
