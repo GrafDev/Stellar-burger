@@ -6,6 +6,7 @@ import IngredientCarts from "./ingredient-carts/ingredient-carts";
 import {useSelector} from "react-redux";
 import {getIngredients} from "../../services/selectors/ingredients-selector";
 import {useRect} from "../../hoc/userect";
+import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 
 
 
@@ -20,9 +21,20 @@ function BurgerIgredients() {
 
 
 	let burgers = data;
-	// const changeTab=(type)=>{
-	// 	setCurrentType(type)
-	// }
+	const changeTab=(e)=>{
+		setCurrentType(e)
+		switch (e){
+			case ('main'):
+				mainRef.current.scrollIntoView({block: "start", behavior: "smooth"});
+				break;
+			case ('sauce'):
+				sauceRef.current.scrollIntoView({block: "start", behavior: "smooth"});
+				break;
+			default:
+				bunRef.current.scrollIntoView({block: "start", behavior: "smooth"});
+
+		}
+	}
 
 
 	const handlerScroll=()=> {
@@ -34,26 +46,26 @@ function BurgerIgredients() {
 		if (dimBun<dimSauce) _currentType='bun'
 		else if (dimSauce<dimMain) _currentType='sauce'
 		else _currentType='main'
-		console.log(dimBun,dimMain,dimSauce)
 		 setCurrentType(_currentType)
-
-		// if(dimBun<0 && )
-		// if (bunRef.current.getBoundingClientRect().top-shareRef.current.getBoundingClientRect().bottom<32){
-		// 	console.log('bun')
-		// };
-		// if (mainRef.current.getBoundingClientRect().top-shareRef.current.getBoundingClientRect().bottom<32){
-		// 	console.log('main')
-		// };
-		// if (sauceRef.current.getBoundingClientRect().top-shareRef.current.getBoundingClientRect().bottom<32){
-		// 	console.log('sauce')
-		// };
 	}
 
 
 	return (
 		<div className={styles.section} >
 			<div className={`${styles.title} ${textLarge}`}>Соберите бургер</div>
-			<div ref={tabRef}  className={styles.tab}><BurgerTab current={currentType} /></div>
+			<div ref={tabRef}  className={styles.tab} style={{ display: 'flex' }}>
+					<Tab value="bun" active={currentType === 'bun'} onClick={changeTab} >
+						Булки
+					</Tab>
+					<Tab value="sauce" active={currentType === 'sauce'} onClick={changeTab}>
+						Соусы
+					</Tab>
+					<Tab value="main" active={currentType === 'main'} onClick={changeTab} >
+						Начинки
+					</Tab>
+			</div>
+
+
 			<div className={styles.ingredients} onScroll={handlerScroll}>
 				<div ref={bunRef} className={`${textMedium} mb-10`}>Булки</div>
 				<IngredientCarts data={data} type={'bun'} bill={burgers} />
