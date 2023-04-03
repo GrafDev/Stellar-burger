@@ -32,8 +32,6 @@ function App() {
 	}, [dispatch])
 
 
-
-
 	return (
 		<div className={style.App}>
 			<header className={style.App}>
@@ -58,8 +56,10 @@ function App() {
 			}
 			{isModal &&
 				(<Modal>
-					{isOrder && <OrderDetails/>}
-					{isIngredient && <IngredientDetails/>}
+					<>
+						{isOrder && <OrderDetails/>}
+						{isIngredient && <IngredientDetails/>}
+					</>
 				</Modal>)
 			}
 		</div>
