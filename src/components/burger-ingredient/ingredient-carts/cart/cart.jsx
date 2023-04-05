@@ -7,6 +7,7 @@ import styles from "./cart.module.css"
 import {useDispatch} from "react-redux";
 import { setCurrentIngredient, setModalCurrentIngredient} from "../../../../services/action/current-ingredient-action";
 import {useDrag} from "react-dnd";
+import classNames from "classnames";
 
 function Cart(props) {
 	const cart = props.cart;
@@ -15,15 +16,21 @@ function Cart(props) {
 		dispatch(setModalCurrentIngredient())
 		dispatch(setCurrentIngredient(cart))
 	}
-	const [,dragRef] = useDrag({
+	const [{isDragging},dragRef] = useDrag({
 		type:'cart',
-		item:cart._id
+		item:cart._id,
+		collect: monitor => ({
+			isDragging: monitor.isDragging(),
+		}),
 	});
 
 	return (
-		<div ref={dragRef} className={styles.cart} onClick={handleClick}>
+		<div ref={dragRef} className= {classNames(
+			styles.cart,
+			isDragging && styles.onDrag,
+			)} onClick={handleClick}>
 			{(props.bill > 0) ? <div className={`${styles.count} ${digitsDefault}`}>{props.bill}</div> : null}
-			<img src={cart.image} alt={cart.name}/>
+			<div className={styles.image} ><img src={cart.image} alt={cart.name}/></div>
 			<div className={styles.cost}>
 				<div className={`${digitsDefault}`}>
 					{cart.price}

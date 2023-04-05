@@ -8,14 +8,27 @@
     width: 272px;
     height: 238px;
     border-radius: 30px;
-    /*-moz-user-select: none;*/
-    /*user-select: none;*/
-}
-.cart:hover{
-    background: rgba(48, 48, 55, 0.79);
+    transform: scale(1.0, 1.0);
+    transition: transform 0.3s;
 }
 
-.count{
+.cart:hover .image{
+    transform: scale(1.1, 1.1);
+    transition: transform 0.3s;
+}
+.image{
+
+    transition: transform 0.3s;
+}
+
+.onDrag{
+    transform: scale(0.9, 0.9);
+    transition: transform 0.3s;
+    box-shadow: 1px 1px 2px black, 0 0 25px #4C4CFF, 0 0 5px #232373;
+}
+
+
+.count {
     position: absolute;
     display: flex;
     align-items: center;
