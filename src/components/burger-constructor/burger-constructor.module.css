@@ -1,10 +1,11 @@
 .section{
     width: 600px;
     display: flex;
+    flex-direction: column;
     justify-content: right;
     background: #131316;
     height: calc(100% - 100px);
-    padding-top: 100px;
+    padding-top: 60px;
     /*-moz-user-select: none;*/
     /*user-select: none;*/
 }
@@ -29,6 +30,7 @@
     flex-direction: column;
     height: calc(100% - 156px);
     padding-left: 16px;
+    margin-bottom:40px;
     gap: 10px;
 }
 

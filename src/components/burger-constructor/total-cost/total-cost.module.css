@@ -1,12 +1,11 @@
 
 .button{
-    position: absolute;
     display: flex;
-    flex-direction: row;
+    justify-content: right;
     align-items: center;
     gap:40px;
     bottom: 52px;
-    right: 16px;
+   margin-right: 16px;
 }
 
 .icon > svg{
