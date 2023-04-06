@@ -12,9 +12,15 @@
     transition: transform 0.3s;
 }
 
+.cart:hover{
+    transform: scale(1.0, 1.0);
+    transition: transform 0.3s;
+
+}
 .cart:hover .image{
     transform: scale(1.1, 1.1);
     transition: transform 0.3s;
+
 }
 .image{
 
@@ -22,11 +28,8 @@
 }
 
 .onDrag{
-    transform: scale(0.9, 0.9);
-    transition: transform 0.3s;
-    box-shadow: 1px 1px 2px black, 0 0 25px #4C4CFF, 0 0 5px #232373;
+    box-shadow: 0px 0px 16px 8px rgba(51, 51, 255, 0.25), 0px 0px 8px 8px rgba(51, 51, 255, 0.25);
 }
-
 
 .count {
     position: absolute;

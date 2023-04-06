@@ -24,7 +24,8 @@
 }
 
 .empty-constructor-element:hover{
-    --background-element: #3e3e47;
+    transform: scale(1.02);
+    transition: transform 0.3s;
 }
 
 .empty-constructor-element_text{

@@ -39,7 +39,10 @@ function Cart(props) {
 					<CurrencyIcon type="primary"/>
 				</div>
 			</div>
-			<div className={styles.name}>
+			<div className= {classNames(
+				styles.name,
+				isDragging && styles.onDragText,
+			)}>
 				{cart.name}
 			</div>
 		</div>

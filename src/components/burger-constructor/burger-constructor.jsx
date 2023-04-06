@@ -42,7 +42,7 @@ function BurgerConstructor() {
 		<div className={styles.section}>
 			<div  ref={dropTarget} className={styles.ingredients}>
 				<div className={styles.bun} key={bun._id+'1'}>
-					{order.bun===null ?<ConstructorElement          ///TODO: поменять на !==
+					{order.bun!==null ?<ConstructorElement          ///TODO: поменять на !==
 						text={bun.name}
 						type={'top'}
 						price={bun.price}
@@ -52,7 +52,7 @@ function BurgerConstructor() {
 					:<EmptyConstructorElement type={'top'} text={'Выберите булку'}/> }
 				</div>
 				<div className={styles.pieces}>
-					{pieces===null && pieces.map(elem =>        ///TODO: поменять на !==
+					{pieces!==null && pieces.map(elem =>        ///TODO: поменять на !==
 						<div className={styles.piece} key={elem._id}>
 							<div className={styles.icon}><DragIcon type="primary"/> </div>
 								<ConstructorElement
@@ -63,10 +63,10 @@ function BurgerConstructor() {
 								/>
 						</div>
 					)}
-					{pieces!==null && <EmptyConstructorElement text={'Выберите начинку'}/>  }
+					{pieces===null && <EmptyConstructorElement text={'Выберите начинку'}/>  }
 				</div>
 				<div className={styles.bun} key={bun._id+'2'}>
-					{order.bun===null ?<ConstructorElement          ///TODO: поменять на !==
+					{order.bun!==null ?<ConstructorElement          ///TODO: поменять на !==
 						text={bun.name}
 						type={'bottom'}
 						price={bun.price}

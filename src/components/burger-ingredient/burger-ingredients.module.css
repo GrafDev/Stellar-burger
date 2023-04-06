@@ -1,19 +1,23 @@
-.section{
+.section {
+    display: flex;
+    width: 600px;
+    flex-direction: column;
+    height: calc(100% - 60px);
     background: #131316;
-    height: 100%;
 }
 
-.title{
+.title {
     margin-bottom: 20px;
 }
 
 .tab {
-    margin-bottom: 40px ;
+    margin-bottom: 40px;
 }
 
-.ingredients{
+.ingredients {
+    display: flex;
+    flex-flow: wrap;
     overflow: scroll;
-    overflow-x:hidden;
-    height: calc(100% - 156px);
-    padding-left: 16px;
+    overflow-x: hidden;
+    height: auto;
 }

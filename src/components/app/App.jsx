@@ -34,7 +34,7 @@ function App() {
 
 	return (
 		<div className={style.App}>
-			<header className={style.App}>
+			<header>
 				<AppHeader/>
 			</header>
 			{isLoading && 'Загрузка...'}
@@ -44,12 +44,8 @@ function App() {
 
 				<main>
 					<DndProvider backend={HTML5Backend}>
-						<div className={`${style.ingredientSection} mr-10`}>
-							<BurgerIgredients/>
-						</div>
-						<div className={style.constructorSection}>
-							<BurgerConstructor/>
-						</div>
+						<BurgerIgredients/>
+						<BurgerConstructor/>
 					</DndProvider>
 				</main>
 

@@ -1,25 +1,41 @@
 .App {
-background: #131316;
-}
-a{
-  all: unset;
-}
-
-
-main{
-  display: flex;
-  min-width: 1240px;
-  height: calc(100vh - 150px);
-  justify-content: center;
-  padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    background: #131316;
 }
 
-.ingredientSection{
-  width: 600px;
-  height: 100%;
+@media (max-width: 1200px) {
+    .App {
+        max-width: 970px;
+    }
 }
-.constructorSection{
-  width: 600px;
-  height: calc(100vh - 148px);
-  color: ;
+
+@media (max-width: 992px) {
+    .App {
+        max-width: 750px;
+    }
+}
+
+@media (max-width: 767px) {
+    .App {
+        max-width: none;
+    }
+}
+
+a {
+    all: unset;
+}
+
+header {
+    height: 150px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - 150px);
+    min-width: 1240px;
+    padding-top: 40px;
+
 }

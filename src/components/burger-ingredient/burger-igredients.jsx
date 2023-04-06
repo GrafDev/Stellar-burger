@@ -14,12 +14,11 @@ function BurgerIgredients() {
 	const mainRef = useRef();
 	const sauceRef = useRef();
 	const tabRef = useRef();
-	const borderRef=useRef();
+	const borderRef = useRef();
 
 	const callback = (entries, observer) => {
 		entries.forEach((entry) => {
-			if (entry.intersectionRatio>0.5) {
-
+			if (entry.intersectionRatio > 0.5) {
 				console.log('Элемент пересёк границу области и всё ещё соприкасается с ней!')
 				console.log(entry.target)
 				observer.unobserve(entry.target)
@@ -27,13 +26,11 @@ function BurgerIgredients() {
 		})
 	}
 	const options = {
-		root:borderRef.current,
+		root: borderRef.current,
 		rootMargin: '0px 0px 0px 0px',
 		threshold: 0,
 	}
 	const observer = new IntersectionObserver(callback, options)
-
-
 
 
 	let burgers = data;
@@ -56,17 +53,15 @@ function BurgerIgredients() {
 	const handlerScroll = () => {
 		let _currentType;
 		let bottomTab = tabRef.current.getBoundingClientRect().bottom
-		let dimBun = Math.abs(bottomTab - bunRef.current.getBoundingClientRect().top)
-		let dimMain = Math.abs(bottomTab - mainRef.current.getBoundingClientRect().top)
-		let dimSauce = Math.abs(bottomTab - sauceRef.current.getBoundingClientRect().top)
+		let dimBun = Math.abs(bunRef.current.getBoundingClientRect().top - bottomTab)
+		let dimMain = Math.abs(mainRef.current.getBoundingClientRect().top - bottomTab)
+		let dimSauce = Math.abs(sauceRef.current.getBoundingClientRect().top - bottomTab)
 
 		if (dimBun < dimSauce) _currentType = 'bun'
 		else if (dimSauce < dimMain) _currentType = 'sauce'
 		else _currentType = 'main'
 		setCurrentType(_currentType)
-
 		observer.observe(bunRef.current)
-
 	}
 
 
@@ -74,19 +69,11 @@ function BurgerIgredients() {
 		<div className={styles.section}>
 			<div className={`${styles.title} ${textLarge}`}>Соберите бургер</div>
 			<div ref={tabRef} className={styles.tab} style={{display: 'flex'}}>
-				<Tab value="bun" active={currentType === 'bun'} onClick={changeTab}>
-					Булки
-				</Tab>
-				<Tab value="sauce" active={currentType === 'sauce'} onClick={changeTab}>
-					Соусы
-				</Tab>
-				<Tab value="main" active={currentType === 'main'} onClick={changeTab}>
-					Начинки
-				</Tab>
+				<Tab value="bun" active={currentType === 'bun'} onClick={changeTab}>Булки</Tab>
+				<Tab value="sauce" active={currentType === 'sauce'} onClick={changeTab}>Соусы</Tab>
+				<Tab value="main" active={currentType === 'main'} onClick={changeTab}>Начинки</Tab>
 			</div>
-
-			<div ref={borderRef} className={styles.undertab}></div>
-			<div className={styles.ingredients} onScroll={handlerScroll}>
+			<div ref={borderRef} className={styles.ingredients} onScroll={handlerScroll}>
 				<div ref={bunRef} className={`${textMedium} mb-10`}>Булки</div>
 				<IngredientCarts data={data} type={'bun'} bill={burgers}/>
 				<div ref={sauceRef} className={`${textMedium} mb-10`}>Соусы</div>

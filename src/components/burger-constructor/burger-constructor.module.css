@@ -1,6 +1,6 @@
 .section{
+    width: 600px;
     display: flex;
-    position: relative;
     justify-content: right;
     background: #131316;
     height: calc(100% - 100px);
@@ -9,6 +9,9 @@
     /*user-select: none;*/
 }
 
+
+
+
 .bun{
     display: flex;
     flex-direction: row;
@@ -16,6 +19,8 @@
     justify-content: right;
     margin-right: 24px;
     margin-left: 64px;
+    transform: scale(1);
+    transition: transform 0.1s;
 }
 
 
@@ -43,6 +48,8 @@
     align-items: center;
     justify-content: right;
     margin-right: 16px;
+    transform: scale(1.00);
+    transition: transform 0.4s;
 }
 
 .zero{
@@ -50,11 +57,13 @@
 }
 
 .piece:hover{
-    --background-element: #3e3e47;
+    transform: scale(1.02);
+    transition: transform 0.3s;
 }
 
 .bun:hover{
-    --background-element: #3e3e47;
+    transform: scale(1.02);
+    transition: transform 0.3s;
 }
 
 .icon{
