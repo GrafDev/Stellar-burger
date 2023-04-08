@@ -16,9 +16,10 @@ function Cart(props) {
 		dispatch(setModalCurrentIngredient())
 		dispatch(setCurrentIngredient(cart))
 	}
+	const id=cart._id;
 	const [{isDragging},dragRef] = useDrag({
 		type:'cart',
-		item: {itemId:cart.id},
+		item: {id},
 		collect: monitor => ({
 			isDragging: monitor.isDragging(),
 		}),
