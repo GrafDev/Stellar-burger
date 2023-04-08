@@ -1,21 +1,21 @@
 
-.button{
+.button {
     display: flex;
     justify-content: right;
     align-items: center;
-    gap:40px;
+    gap: 40px;
     bottom: 52px;
-   margin-right: 16px;
+    margin-right: 16px;
 }
 
-.icon > svg{
+.icon > svg {
     width: 33px;
     height: 33px;
 }
 
-.total{
+.total {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap:4px
+    gap: 4px
 }

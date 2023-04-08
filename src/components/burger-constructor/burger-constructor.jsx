@@ -29,18 +29,25 @@ function BurgerConstructor() {
 	const pieces = order.pieces;
 	const bun = order.bun
 	const [, dropTarget] = useDrop({
-		accept: "animal",
-		drop(itemId) {
-			// onDropHandler(itemId);
+		accept: 'cart',
+		drop( itemId) {
+
+			console.log(itemId)
+
 		},
+		collect: monitor => ({
+			isHover: monitor.isOver(),
+		})
+
 	})
+
 
 
 	return (
 
 
 		<div className={styles.section}>
-			<div  ref={dropTarget} className={styles.ingredients}>
+			<div  ref={dropTarget} className={styles.ingredients} >
 				<div className={styles.bun} key={bun._id+'1'}>
 					{order.bun!==null ?<ConstructorElement          ///TODO: поменять на !==
 						text={bun.name}

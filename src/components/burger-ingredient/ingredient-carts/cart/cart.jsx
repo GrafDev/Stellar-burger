@@ -18,10 +18,11 @@ function Cart(props) {
 	}
 	const [{isDragging},dragRef] = useDrag({
 		type:'cart',
-		item:cart._id,
+		item: {itemId:cart.id},
 		collect: monitor => ({
 			isDragging: monitor.isDragging(),
 		}),
+
 	});
 
 	return (
