@@ -7,11 +7,13 @@ import {
 export const constructorReducer = (state = initialConstructorStore, action) => {
 	switch (action.type) {
 		case INCREASE_CONSTRUCTOR_INGREDIENTS: {
+			state.constructorIngredients.push(action.payload)
 			return {
 				...state,
 			}
 		}
 		case DECREASE_CONSTRUCTOR_INGREDIENTS: {
+			state.constructorIngredients.push(action.payload)
 			return {
 				...state,
 			}

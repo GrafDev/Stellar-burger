@@ -75,11 +75,17 @@ function BurgerIgredients() {
 			</div>
 			<div ref={borderRef} className={styles.ingredients} onScroll={handlerScroll}>
 				<div ref={bunRef} className={`${textMedium} mb-10`}>Булки</div>
-				<IngredientCarts data={data} type={'bun'} bill={burgers}/>
+				<div className={styles.items}>
+					<IngredientCarts data={data} type={'bun'} bill={burgers}/>
+				</div>
 				<div ref={sauceRef} className={`${textMedium} mb-10`}>Соусы</div>
-				<IngredientCarts data={data} type={'sauce'} bill={burgers}/>
+				<div className={styles.items}>
+					<IngredientCarts data={data} type={'sauce'} bill={burgers}/>
+				</div>
 				<div ref={mainRef} className={`${textMedium} mb-10`}>Начинка</div>
-				<IngredientCarts data={data} type={'main'} bill={burgers}/>
+				<div className={styles.items}>
+					<IngredientCarts data={data} type={'main'} bill={burgers}/>
+				</div>
 			</div>
 		</div>
 	)

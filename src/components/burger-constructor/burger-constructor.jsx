@@ -1,12 +1,13 @@
 import React, {useEffect} from "react";
 import styles from "./burger-constructor.module.css"
 import TotalCost from "./total-cost/total-cost";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getIngredients} from "../../services/selectors/ingredients-selector";
 import {getRandomInt} from "../../utils/random-funcs";
 import {ConstructorElement, DragIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import {EmptyConstructorElement} from "./empty-constructor-element/empty-constructor-element";
 import {useDrop} from "react-dnd";
+import {setIncreaseConstructorIngredients} from "../../services/action/constructor-ingredients-action";
 
 
 const fillConstructor = (_order) => {
@@ -24,16 +25,16 @@ const fillConstructor = (_order) => {
 }
 
 function BurgerConstructor() {
-	const order = fillConstructor(useSelector(getIngredients))
-
+	const store=useSelector(getIngredients)
+	const order = fillConstructor(store)
+	const dispatch=useDispatch();
 	const pieces = order.pieces;
 	const bun = order.bun
 	const [, dropTarget] = useDrop({
 		accept: 'cart',
 		drop( itemId) {
-
-			console.log(itemId)
-
+			const elem= store.filter(item=>item._id===itemId.id)
+			return dispatch(setIncreaseConstructorIngredients(elem))
 		},
 		collect: monitor => ({
 			isHover: monitor.isOver(),
