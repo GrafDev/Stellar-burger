@@ -12,6 +12,7 @@ import {
 	setIncreaseConstructorIngredients
 } from "../../services/action/constructor-ingredients-action";
 import {getConstructorIngredients} from "../../services/selectors/constructor-ingredients-selector";
+import classNames from "classnames";
 
 function BurgerConstructor() {
 	const store = useSelector(getIngredients)
@@ -19,7 +20,7 @@ function BurgerConstructor() {
 	const order = useSelector(getConstructorIngredients)
 	const pieces = order.pieces;
 	const bun = order.bun
-	const [, dropTarget] = useDrop({
+	const [{isHover}, dropTarget] = useDrop({
 		accept: 'cart',
 		drop(itemId) {
 			const elem = store.filter(item => item._id === itemId.id)
@@ -31,12 +32,16 @@ function BurgerConstructor() {
 
 	})
 
+	const borderColor=isHover?'rgba(51, 51, 255, 0.25)':'transparent'
 
 	return (
 
 
 		<div className={styles.section}>
-			<div ref={dropTarget} className={styles.ingredients}>
+			<div ref={dropTarget} className= {classNames(
+				styles.ingredients,
+				isHover && styles.isHover,
+			)}style={{borderColor}}>
 				<div className={styles.bun}>
 					{order.bun !== null &&
 						<div key={bun._id + '1'}>

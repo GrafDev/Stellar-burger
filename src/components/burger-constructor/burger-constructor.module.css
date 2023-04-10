@@ -6,11 +6,8 @@
     background: #131316;
     height: calc(100% - 100px);
     padding-top: 60px;
-    /*-moz-user-select: none;*/
-    /*user-select: none;*/
+
 }
-
-
 
 
 .bun{
@@ -19,7 +16,6 @@
     align-items: center;
     justify-content: right;
     margin-right: 24px;
-    margin-left: 34px;
     transform: scale(1);
     transition: transform 0.1s;
 }
@@ -29,10 +25,18 @@
     display: flex;
     flex-direction: column;
     height: calc(100% - 156px);
-    padding-left: 12px;
     margin-bottom:40px;
     gap: 10px;
+    border-radius: 30px;
+    transition: transform 0.3s;
 }
+
+.isHover{
+    box-shadow: 0px 0px 16px 8px rgba(51, 51, 255, 0.25), 0px 0px 8px 8px rgba(51, 51, 255, 0.25);
+    transition: transform 0.3s;
+    border-radius: 30px;
+}
+
 
 .pieces{
     display: flex;

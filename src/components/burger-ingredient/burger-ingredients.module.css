@@ -4,6 +4,7 @@
     flex-direction: column;
     height: calc(100% - 60px);
     background: #131316;
+    margin-right: 16px;
 }
 
 .title {
