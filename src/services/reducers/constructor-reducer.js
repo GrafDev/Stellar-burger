@@ -13,40 +13,55 @@ export const constructorReducer = (state = initialConstructorStore, action) => {
 			if (action.payload.type === 'bun')
 				return {
 					...state,
-					constructorIngredients:{ ...state.constructorIngredients,
+					constructorIngredients: {
+						...state.constructorIngredients,
 						bun: item,
 					}
 				}
 			else
-			return {
-				...state,
-				constructorIngredients:{ ...state.constructorIngredients,
-					pieces:[...state.constructorIngredients.pieces, {...item,
-					_id:uuidv4(),
-					}]
-			}
+				return {
+					...state,
+					constructorIngredients: {
+						...state.constructorIngredients,
+						pieces: [...state.constructorIngredients.pieces, {
+							...item,
+							_id: uuidv4(),
+						}]
+					}
 
-			}
+				}
 		}
 		case DECREASE_CONSTRUCTOR_INGREDIENTS: {
-			state.constructorIngredients.push(action.payload)
-			return {
-				...state,
-			}
-		}
-		case DELETE_CONSTRUCTOR_INGREDIENTS: {
-			return state;
-		}
-		case LOAD_CONSTRUCTOR_INGREDIENTS: {
-			console.log(action.payload, 'loadCons')
-			return {
-				...state,
-				constructorIngredients: action.payload,
+			if (state.constructorIngredients) {
+				const ingredients = [...state.constructorIngredients.pieces].filter(
+					item => item._id !== action.payload)
+				console.log(action.payload)
+				console.log(ingredients)
+				if (ingredients.length !== 0) {
+					return {
+						...state, constructorIngredients: {
+							...state.constructorIngredients,
+							pieces: ingredients
+						}
+					}
+				} else {
+					return {
+						...state,
+						constructorIngredients:
+							{
+								...state.constructorIngredients,
+								pieces: []
+							}
+					}
+				}
 			}
 		}
 
-		default: {
-			return state;
+
+			default:
+				{
+					return state;
+				}
+			}
 		}
-	}
-};
+			;
