@@ -3,23 +3,28 @@ import {
 	DECREASE_CONSTRUCTOR_INGREDIENTS, DELETE_CONSTRUCTOR_INGREDIENTS,
 	INCREASE_CONSTRUCTOR_INGREDIENTS, LOAD_CONSTRUCTOR_INGREDIENTS
 } from "../action/constructor-ingredients-action";
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 
 export const constructorReducer = (state = initialConstructorStore, action) => {
 	switch (action.type) {
 		case INCREASE_CONSTRUCTOR_INGREDIENTS: {
-
-			let item=action.payload;
-			console.log(item)
-			item._id=uuidv4()
-			console.log(item)
-			if (action.payload.type==='bun')
-				state.constructorIngredients.bun=item
+			let item = action.payload;
+			if (action.payload.type === 'bun')
+				return {
+					...state,
+					constructorIngredients:{ ...state.constructorIngredients,
+						bun: item,
+					}
+				}
 			else
-			state.constructorIngredients.pieces.push(item)
 			return {
 				...state,
+				constructorIngredients:{ ...state.constructorIngredients,
+					pieces:[...state.constructorIngredients.pieces, {...item,
+					_id:uuidv4(),
+					}]
+			}
 
 			}
 		}
@@ -33,7 +38,7 @@ export const constructorReducer = (state = initialConstructorStore, action) => {
 			return state;
 		}
 		case LOAD_CONSTRUCTOR_INGREDIENTS: {
-			console.log(action.payload,'loadCons')
+			console.log(action.payload, 'loadCons')
 			return {
 				...state,
 				constructorIngredients: action.payload,
