@@ -5,7 +5,10 @@ export const initialIngredientsStore = {
 	isLoading: true,
 }
 export const initialConstructorStore= {
-	constructorIngredients: [],
+	constructorIngredients: {
+		pieces:[],
+		bun:null,
+	},
 	constructorIngredientsRequest: false,
 	constructorIngredientsFailed: false,
 }
