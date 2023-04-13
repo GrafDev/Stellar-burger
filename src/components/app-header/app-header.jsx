@@ -5,31 +5,35 @@ import { inactiveDefault, activeDefault} from "../../utils/themes";
 
 function AppHeader(){
 return (
-    <div className={styles.header}>
-        <nav className={styles.nav}>
-            <a href={''} className={styles.item}>
-                <div className={styles.icon}>
-                    <BurgerIcon type={'primary'}/>
-                </div>
-                <span className={activeDefault} >Конструктор</span>
-            </a>
-            <a href={''} className={styles.item}>
-                <div className={styles.icon}>
-                    <ListIcon type={'secondary'}/>
-                </div>
-                <span className={inactiveDefault} >Лента заказов</span>
-            </a>
+    <div className={styles.header} >
+        <div className={'container'}>
+            <nav className={styles.nav}>
+                <a href={''} >
+                    <div >
+                        <BurgerIcon type={'primary'}/>
+                    </div>
+                    <span className={activeDefault} >Конструктор</span>
+                </a>
+                <a href={''} >
+                    <div >
+                        <ListIcon type={'secondary'}/>
+                    </div>
+                    <span className={inactiveDefault} >Лента заказов</span>
+                </a>
+                <a href={''} >
+                    <div >
+                        <ProfileIcon  type={'secondary'}/>
+                    </div>
+                    <span className={inactiveDefault} >Личный кабинет</span>
+                </a>
+            </nav>
 
-        </nav>
-        <div className={styles.logo}>
-            <Logo />
-        </div>
-        <a href={''} className={styles.user}>
-            <div className={styles.icon}>
-                <ProfileIcon  type={'secondary'}/>
+            <div className={styles.logo}>
+                <Logo />
             </div>
-            <span className={inactiveDefault} >Личный кабинет</span>
-        </a>
+        </div>
+
+
     </div>
 
 

@@ -1,48 +1,37 @@
 .header {
+    align-items: center;
+    background-color: #1c1c21;
+    display: flex;
+    position: relative;
+}
+
+
+.nav{
     display: grid;
-    grid-template-columns: 1fr 290px 1fr;
-    background: #1C1C21;
-    min-width: 1240px;
-    padding: 16px 0 16px 0;
+    grid-template-columns: repeat(2, auto) 1fr;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav:last-child{
+    justify-self: end;
+    background-color: #4C4CFF;
 }
 
 .logo{
-    align-self: center;
-    justify-self: center;
-}
+    height: 50px;
 
-.nav{
-    display: flex;
-    justify-content:  flex-end;
-}
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-.icon{
-    margin-right: 8px;
-}
-.item{
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    border-radius: 50%;
-    padding: 16px 20px 16px 20px;
-    margin-right: 8px;
-
-}
-.item:hover{
-    cursor: pointer ;
-}
-.item:last-child{
-    margin-right: 112px;
 }
 
-
-.user{
-    display: flex;
-    border-radius: 50%;
-    padding: 16px 20px 16px 20px;
-    margin-left: 289px;
-    justify-self:  start;
-}
-
-.user:hover{
-    cursor: pointer ;
+.logo>svg{
+    height: 100%;
 }

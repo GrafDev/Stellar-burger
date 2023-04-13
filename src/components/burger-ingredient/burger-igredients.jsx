@@ -66,8 +66,7 @@ function BurgerIgredients() {
 
 
 	return (
-		<div className={styles.section}>
-			<div className={`${styles.title} ${textLarge}`}>Соберите бургер</div>
+		<div className={styles.ingredientsWrapper}>
 			<div ref={tabRef} className={styles.tab} style={{display: 'flex'}}>
 				<Tab value="bun" active={currentType === 'bun'} onClick={changeTab}>Булки</Tab>
 				<Tab value="sauce" active={currentType === 'sauce'} onClick={changeTab}>Соусы</Tab>

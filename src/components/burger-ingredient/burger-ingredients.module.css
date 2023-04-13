@@ -1,14 +1,9 @@
-.section {
+.ingredientsWrapper{
+    align-items: center;
     display: flex;
-    width: 600px;
+    flex-grow: 1;
     flex-direction: column;
-    height: calc(100% - 60px);
-    background: #131316;
-    margin-right: 16px;
-}
-
-.title {
-    margin-bottom: 20px;
+    grid-area: items;
 }
 
 .tab {
@@ -18,8 +13,7 @@
 .ingredients {
     display: flex;
     flex-flow: wrap;
-    overflow: scroll;
-    overflow-x: hidden;
+    overflow:scroll;
 }
 
 .items{

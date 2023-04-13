@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import AppHeader from "../app-header/app-header";
-import style from "./App.module.css";
-import BurgerIgredients from '../burger-ingredient/burger-igredients';
+import styles from "./App.module.css";
+import BurgerIngredients from '../burger-ingredient/burger-igredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
 import Modal from "../modal/modal";
 import OrderDetails from "../order-details/order-details";
@@ -16,6 +16,8 @@ import {
 } from "../../services/selectors/ingredients-selector";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import {DndProvider} from "react-dnd";
+import classNames from "classnames";
+import {textLarge} from "../../utils/themes";
 
 
 function App() {
@@ -32,20 +34,17 @@ function App() {
 	}, [dispatch])
 
 
-
 	return (
-		<div className={style.App}>
-			<header>
-				<AppHeader/>
-			</header>
+		<div className={styles.App}>
+			<AppHeader/>
 			{isLoading && 'Загрузка...'}
 			{hasError && 'Произошла ошибка'}
 			{!isLoading &&
 				!hasError &&
-
-				<main>
+				<main className={classNames('container', styles.main)}>
 					<DndProvider backend={HTML5Backend}>
-						<BurgerIgredients/>
+						<div className={`${styles.title} ${textLarge}`}>Соберите бургер</div>
+						<BurgerIngredients/>
 						<BurgerConstructor/>
 					</DndProvider>
 				</main>

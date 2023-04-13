@@ -1,16 +1,37 @@
-.section{
-    width: 600px;
+
+.constructorWrapper{
+    align-items: flex-end;
     display: flex;
     flex-direction: column;
-    justify-content: right;
-    background: #131316;
-    height: calc(100% - 100px);
-    padding-top: 60px;
-
+    grid-area: carts;
+    height: 100%;
+    justify-content: space-between;
+    padding-bottom: 52px;
+    row-gap: 40px;
 }
 
+.list {
+    align-items: flex-end;
+    border-radius: 50px;
+    display: flex;
+    flex: 1 1;
+    flex-direction: column;
+    row-gap: 16px;
+    transition: box-shadow .4s cubic-bezier(.4,.23,0,1);
+    width: 100%;
+    /*flex-grow: 1;*/
+    /*position: relative;*/
+    /*width: 100%;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*height: calc(100% - 156px);*/
+    /*margin-bottom: 40px;*/
+    /*gap: 10px;*/
+    /*border-radius: 30px;*/
+    /*transition: transform 0.3s;*/
+}
 
-.bun{
+.bun {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -21,32 +42,23 @@
 }
 
 
-.ingredients{
-    display: flex;
-    flex-direction: column;
-    height: calc(100% - 156px);
-    margin-bottom:40px;
-    gap: 10px;
-    border-radius: 30px;
-    transition: transform 0.3s;
-}
 
-.isHover{
+.isHover {
     box-shadow: 0px 0px 16px 8px rgba(51, 51, 255, 0.25), 0px 0px 8px 8px rgba(51, 51, 255, 0.25);
     transition: transform 0.3s;
     border-radius: 30px;
 }
 
 
-.pieces{
+.pieces {
     display: flex;
     flex-direction: column;
     overflow: scroll;
-    overflow-x:hidden;
+    overflow-x: hidden;
     gap: 10px;
 }
 
-.piece{
+.piece {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -57,20 +69,18 @@
 }
 
 
-
-.piece:hover{
+.piece:hover {
     transform: scale(1.02);
     transition: transform 0.3s;
 }
 
-.bun:hover{
+.bun:hover {
     transform: scale(1.02);
     transition: transform 0.3s;
 }
 
 
-
-.icon > svg{
+.icon > svg {
     width: 32px;
     height: 32px;
 }

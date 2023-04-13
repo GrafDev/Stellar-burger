@@ -37,9 +37,9 @@ function BurgerConstructor() {
 	return (
 
 
-		<div className={styles.section}>
+		<div className={styles.constructorWrapper}>
 			<div ref={dropTarget} className= {classNames(
-				styles.ingredients,
+				styles.list,
 				isHover && styles.isHover,
 			)}style={{borderColor}}>
 				<div className={styles.bun}>
@@ -59,7 +59,8 @@ function BurgerConstructor() {
 					}
 				</div>
 
-
+				<div>
+				</div>
 				{pieces.length > 0 &&
 					<div className={styles.pieces}>
 						{pieces.map(elem =>        ///TODO: поменять на !==

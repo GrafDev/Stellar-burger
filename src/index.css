@@ -33,3 +33,14 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+    margin: 0 auto;
+    max-width: 1272px;
+    padding: 0 16px;
+    width: 100%;
+}
+#root{
+max-height: 100vh;
+    height: 100vh;
+}
