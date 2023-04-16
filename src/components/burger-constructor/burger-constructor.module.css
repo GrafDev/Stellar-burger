@@ -1,61 +1,82 @@
 
-.constructorWrapper{
+.constructorWrapper {
     align-items: flex-end;
     display: flex;
     flex-direction: column;
     grid-area: carts;
+    min-width: 600px;
     height: 100%;
     justify-content: space-between;
-    padding-bottom: 52px;
-    row-gap: 40px;
+    padding-bottom: 50px;
+    gap:40px
 }
 
 .list {
-    align-items: flex-end;
-    border-radius: 50px;
+    border-radius: 60px;
     display: flex;
-    flex: 1 1;
+    /*flex: 1 1;*/
     flex-direction: column;
-    row-gap: 16px;
-    transition: box-shadow .4s cubic-bezier(.4,.23,0,1);
+    justify-content: space-between;
+    height: 100%;
     width: 100%;
-    /*flex-grow: 1;*/
-    /*position: relative;*/
-    /*width: 100%;*/
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*height: calc(100% - 156px);*/
-    /*margin-bottom: 40px;*/
-    /*gap: 10px;*/
-    /*border-radius: 30px;*/
-    /*transition: transform 0.3s;*/
+    row-gap: 16px;
+    transition: box-shadow .4s cubic-bezier(.4, .23, 0, 1);
 }
+
+
+.constructorList {
+    justify-self: stretch;
+    position: relative;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+}
+
 
 .bun {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: right;
-    margin-right: 24px;
+    /*margin-right: 24px;*/
     transform: scale(1);
+    width:100%;
     transition: transform 0.1s;
 }
 
+.bunBottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: flex-end;
+    justify-content: right;
+    width:100%;
+    /*margin-right: 24px;*/
+    transform: scale(1);
+    transition: transform 0.1s;
+    bottom: 0;
+}
 
 
 .isHover {
     box-shadow: 0px 0px 16px 8px rgba(51, 51, 255, 0.25), 0px 0px 8px 8px rgba(51, 51, 255, 0.25);
     transition: transform 0.3s;
-    border-radius: 30px;
+    border-radius: 60px;
 }
 
 
 .pieces {
     display: flex;
+    justify-self: start;
     flex-direction: column;
-    overflow: scroll;
-    overflow-x: hidden;
-    gap: 10px;
+    height: 100%;
+    scroll-snap-type: y mandatory;
+    padding-right: 8px;
+    position: absolute;
+    inset: 0;
+    overflow: auto;
+    gap: 8px;
+    overflow: overlay;
 }
 
 .piece {
@@ -66,6 +87,9 @@
     margin-right: 16px;
     transform: scale(1.00);
     transition: transform 0.4s;
+
+    scroll-snap-align: start;
+
 }
 
 

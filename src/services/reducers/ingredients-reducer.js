@@ -1,8 +1,9 @@
 
 import {initialIngredientsStore} from "../initial-stores";
 import {
+	DECREASE_COUNT_INGREDIENT,
 	GET_INGREDIENTS,
-	GET_INGREDIENTS_FAILED, LOAD_INGREDIENTS_ERROR,
+	GET_INGREDIENTS_FAILED, INCREASE_COUNT_INGREDIENT, LOAD_INGREDIENTS_ERROR,
 	LOAD_INGREDIENTS_REQUEST,
 	LOAD_INGREDIENTS_SUCCESS
 } from "../action/ingredients-action";
@@ -16,8 +17,39 @@ function addCount(_data){
 	})
 }
 
+function increaseCount(_store,_id){
+
+	return _store.map(elem => {if(elem._id===_id)
+		elem.count++
+		return elem
+	})
+}
+
+function decreaseCount(_store,_id){
+
+	return _store.map(elem => {if(elem._id===_id && elem.count>=1)
+		elem.count--
+		return elem
+	})
+}
+
 export const ingredientsReducer = (state = initialIngredientsStore, action) => {
 	switch (action.type) {
+
+		case INCREASE_COUNT_INGREDIENT: {
+			return {
+				...state,
+				ingredients: increaseCount(...state.ingredients,action.payload)
+			};
+		}
+
+		case DECREASE_COUNT_INGREDIENT: {
+			return {
+				...state,
+				ingredients: decreaseCount(...state.ingredients,action.payload)
+			};
+		}
+
 		case GET_INGREDIENTS: {
 			return {
 				...state,

@@ -5,6 +5,7 @@ import IngredientCarts from "./ingredient-carts/ingredient-carts";
 import {useSelector} from "react-redux";
 import {getIngredients} from "../../services/selectors/ingredients-selector";
 import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
+import classNames from "classnames";
 
 
 function BurgerIgredients() {
@@ -25,13 +26,14 @@ function BurgerIgredients() {
 			}
 		})
 	}
+
 	const options = {
 		root: borderRef.current,
 		rootMargin: '0px 0px 0px 0px',
 		threshold: 0,
 	}
-	const observer = new IntersectionObserver(callback, options)
 
+	const observer = new IntersectionObserver(callback, options)
 
 	let burgers = data;
 	const changeTab = (e) => {
@@ -56,7 +58,6 @@ function BurgerIgredients() {
 		let dimBun = Math.abs(bunRef.current.getBoundingClientRect().top - bottomTab)
 		let dimMain = Math.abs(mainRef.current.getBoundingClientRect().top - bottomTab)
 		let dimSauce = Math.abs(sauceRef.current.getBoundingClientRect().top - bottomTab)
-
 		if (dimBun < dimSauce) _currentType = 'bun'
 		else if (dimSauce < dimMain) _currentType = 'sauce'
 		else _currentType = 'main'
@@ -72,20 +73,32 @@ function BurgerIgredients() {
 				<Tab value="sauce" active={currentType === 'sauce'} onClick={changeTab}>Соусы</Tab>
 				<Tab value="main" active={currentType === 'main'} onClick={changeTab}>Начинки</Tab>
 			</div>
-			<div ref={borderRef} className={styles.ingredients} onScroll={handlerScroll}>
-				<div ref={bunRef} className={`${textMedium} mb-10`}>Булки</div>
-				<div className={styles.items}>
-					<IngredientCarts data={data} type={'bun'} bill={burgers}/>
-				</div>
-				<div ref={sauceRef} className={`${textMedium} mb-10`}>Соусы</div>
-				<div className={styles.items}>
-					<IngredientCarts data={data} type={'sauce'} bill={burgers}/>
-				</div>
-				<div ref={mainRef} className={`${textMedium} mb-10`}>Начинка</div>
-				<div className={styles.items}>
-					<IngredientCarts data={data} type={'main'} bill={burgers}/>
+			<div className={styles.ingredientBox}>
+				<div ref={borderRef} className={styles.ingredients} onScroll={handlerScroll}>
+					<div ref={bunRef} className={classNames(
+						textMedium,'mb-10',
+						styles.titleItems
+					)}>Булки</div>
+					<div className={styles.items}>
+						<IngredientCarts data={data} type={'bun'} bill={burgers}/>
+					</div>
+					<div ref={sauceRef} className={classNames(
+						textMedium,'mb-10',
+						styles.titleItems
+					)}>Соусы</div>
+					<div className={styles.items}>
+						<IngredientCarts data={data} type={'sauce'} bill={burgers}/>
+					</div>
+					<div ref={mainRef} className={classNames(
+						textMedium,'mb-10',
+						styles.titleItems
+					)}>Начинка</div>
+					<div className={styles.items}>
+						<IngredientCarts data={data} type={'main'} bill={burgers}/>
+					</div>
 				</div>
 			</div>
+
 		</div>
 	)
 }

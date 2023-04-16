@@ -4,7 +4,7 @@ import React, {useContext} from "react";
 import PropTypes from "prop-types";
 import {typeCart} from "../../../../utils/types";
 import styles from "./cart.module.css"
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { setCurrentIngredient, setModalCurrentIngredient} from "../../../../services/action/current-ingredient-action";
 import {useDrag} from "react-dnd";
 import classNames from "classnames";
