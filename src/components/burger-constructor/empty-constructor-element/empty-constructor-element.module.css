@@ -1,0 +1,23 @@
+.ingredient{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2f2f37;
+    max-width: 536px;
+    width:100%;
+    min-height: 80px;
+    color: #8484ac;
+    box-sizing: border-box;
+    transform: scale(1.0);
+    transition: transform 0.3s;
+    border-radius: 40px ;
+
+}
+.bunTop{
+    composes: ingredient;
+    border-radius: 60px 60px 30px 30px;
+}
+.bunBottom{
+    composes: ingredient;
+    border-radius: 30px 30px 60px 60px;
+}

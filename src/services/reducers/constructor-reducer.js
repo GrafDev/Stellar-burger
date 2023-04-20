@@ -25,7 +25,7 @@ export const constructorReducer = (state = initialConstructorStore, action) => {
 						...state.constructorIngredients,
 						pieces: [...state.constructorIngredients.pieces, {
 							...item,
-							_id: uuidv4(),
+							constructorId:uuidv4(),
 						}]
 					}
 
@@ -34,9 +34,9 @@ export const constructorReducer = (state = initialConstructorStore, action) => {
 		case DECREASE_CONSTRUCTOR_INGREDIENTS: {
 			if (state.constructorIngredients) {
 				const ingredients = [...state.constructorIngredients.pieces].filter(
-					item => item._id !== action.payload)
-				console.log(action.payload)
-				console.log(ingredients)
+					item => item.constructorId !== action.payload)
+				// console.log(action.payload)
+				// console.log(ingredients)
 				if (ingredients.length !== 0) {
 					return {
 						...state, constructorIngredients: {

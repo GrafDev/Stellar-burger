@@ -5,23 +5,21 @@ import Cart from "./cart/cart";
 import styles from "./ingredient-carts.module.css"
 
 
-
 function IngredientCarts(props) {
+
 	const carts = (props.data.filter(elem => elem.type === props.type))
 	return (
-		<div>
-			<div className={styles.carts}>
-				{carts.map(cart =>
-					<Cart cart={cart} key={cart._id} bill={cart.count}/>
-				)
-				}
-			</div>
+		<div className={styles.carts}>
+			{carts.map(cart =>
+				<Cart cart={cart} key={cart._id}/>
+			)
+			}
 		</div>
 	)
 }
 
-IngredientCarts.propTypes={
-	data:PropTypes.arrayOf(PropTypes.shape(typeCart)).isRequired,
+IngredientCarts.propTypes = {
+	data: PropTypes.arrayOf(PropTypes.shape(typeCart)).isRequired,
 }
 
 export default IngredientCarts;
