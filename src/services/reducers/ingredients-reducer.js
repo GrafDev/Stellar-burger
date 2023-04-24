@@ -10,7 +10,6 @@ import {
 } from "../action/ingredients-action";
 
 function addCount(_data) {
-	// console.log(_data,'Count added')
 
 	return _data.map(elem => {
 		elem.count = 0
@@ -19,12 +18,10 @@ function addCount(_data) {
 }
 
 function increaseCount(_store, _id) {
-	// console.log('increaseCount', _store,_id)
 
 	_store.map(elem => {
 		if (elem._id === _id) elem.count++
 	 })
-	// console.log(_store)
 	return _store
 }
 
@@ -42,7 +39,6 @@ export const ingredientsReducer = (state = initialIngredientsStore, action) => {
 	switch (action.type) {
 
 		case INCREASE_COUNT_INGREDIENT: {
-			// console.log('increase', state.ingredients.map(elem => elem.count))
 
 			return {
 				...state,

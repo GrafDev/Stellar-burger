@@ -8,8 +8,8 @@ import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 import classNames from "classnames";
 
 
-function BurgerIgredients() {
-	const data = useSelector(getIngredients)
+function BurgerIngredients() {
+	const data = useSelector(state => state.tollIngredients.ingredients)
 	const [currentType, setCurrentType] = useState('bun')
 	const bunRef = useRef();
 	const mainRef = useRef();
@@ -36,6 +36,7 @@ function BurgerIgredients() {
 	const observer = new IntersectionObserver(callback, options)
 
 	let burgers = data;
+
 	const changeTab = (e) => {
 		setCurrentType(e)
 		switch (e) {
@@ -75,24 +76,28 @@ function BurgerIgredients() {
 			</div>
 			<div className={styles.ingredientBox}>
 				<div ref={borderRef} className={styles.ingredients} onScroll={handlerScroll}>
+
 					<div ref={bunRef} className={classNames(
-						textMedium,'mb-10',
+						textMedium, 'mb-10',
 						styles.titleItems
-					)}>Булки</div>
+					)}>Булки
+					</div>
 					<div className={styles.items}>
 						<IngredientCarts data={data} type={'bun'} bill={burgers}/>
 					</div>
 					<div ref={sauceRef} className={classNames(
-						textMedium,'mb-10',
+						textMedium, 'mb-10',
 						styles.titleItems
-					)}>Соусы</div>
+					)}>Соусы
+					</div>
 					<div className={styles.items}>
 						<IngredientCarts data={data} type={'sauce'} bill={burgers}/>
 					</div>
 					<div ref={mainRef} className={classNames(
-						textMedium,'mb-10',
+						textMedium, 'mb-10',
 						styles.titleItems
-					)}>Начинка</div>
+					)}>Начинка
+					</div>
 					<div className={styles.items}>
 						<IngredientCarts data={data} type={'main'} bill={burgers}/>
 					</div>
@@ -103,4 +108,4 @@ function BurgerIgredients() {
 	)
 }
 
-export default BurgerIgredients;
+export default BurgerIngredients;

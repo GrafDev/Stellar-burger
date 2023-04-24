@@ -18,19 +18,22 @@ import {HTML5Backend} from "react-dnd-html5-backend";
 import {DndProvider} from "react-dnd";
 import classNames from "classnames";
 import {textLarge} from "../../utils/themes";
+import {getToolIngredients} from "../../features/ingredients/ingredientsSlice";
 
 
 function App() {
 
 	const dispatch = useDispatch();
-	const isOrder = useSelector(getIsModalOrder)
-	const isLoading = useSelector(getIngredientsIsLoading)
-	const hasError = useSelector(getIngredientsHasError)
-	const isIngredient = useSelector(getIsModalIngredient)
-	const isModal = isOrder || isIngredient;
+	// const isOrder = useSelector(getIsModalOrder)
+	const isLoading = useSelector(state=>state.tollIngredients.isLoading)
+	const hasError = useSelector(state=>state.tollIngredients.hasError)
 
+	// const isIngredient = useSelector(getIsModalIngredient)
+	const toolIngredient = useSelector(state=>state.tollIngredients.ingredients)
+	// const isModal = isOrder || isIngredient;
 	useEffect(() => {
-		dispatch(loadIngredients())
+		// dispatch(loadIngredients())
+		{dispatch(getToolIngredients())}
 	}, [dispatch])
 
 
@@ -50,14 +53,15 @@ function App() {
 				</main>
 
 			}
-			{isModal &&
-				(<Modal>
-					<>
-						{isOrder && <OrderDetails/>}
-						{isIngredient && <IngredientDetails/>}
-					</>
-				</Modal>)
-			}
+
+			{/*{isModal &&*/}
+			{/*	(<Modal>*/}
+			{/*		<>*/}
+			{/*			{isOrder && <OrderDetails/>}*/}
+			{/*			{isIngredient && <IngredientDetails/>}*/}
+			{/*		</>*/}
+			{/*	</Modal>)*/}
+			{/*}*/}
 		</div>
 	);
 }

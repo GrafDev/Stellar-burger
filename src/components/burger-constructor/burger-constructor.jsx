@@ -2,32 +2,25 @@ import React, {useEffect} from "react";
 import styles from "./burger-constructor.module.css"
 import TotalCost from "./total-cost/total-cost";
 import {useDispatch, useSelector} from "react-redux";
-import {getIngredients} from "../../services/selectors/ingredients-selector";
-import {getRandomInt} from "../../utils/random-funcs";
+
 import {ConstructorElement, DragIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import {useDrop} from "react-dnd";
-import {
-	setDecreaseConstructorIngredients,
-	setIncreaseConstructorIngredients
-} from "../../services/action/constructor-ingredients-action";
-import {getConstructorIngredients} from "../../services/selectors/constructor-ingredients-selector";
+
 import classNames from "classnames";
-import {setDecreaseCountIngredients, setIncreaseCountIngredients} from "../../services/action/ingredients-action";
 import EmptyConstructorElement from "./empty-constructor-element/empty-constructor-element";
+import {decreaseConstructor, increaseConstructor} from "../../features/constructor/constructorSlice";
 
 function BurgerConstructor() {
-	const store = useSelector(getIngredients)
 	const dispatch = useDispatch();
-	const order = useSelector(getConstructorIngredients)
+	const store= useSelector(state=>state.tollIngredients.ingredients)
+	const order = useSelector(state=>state.tollConstructor.constructorIngredients)
 	const pieces = order.pieces;
 	const bun = order.bun
 	const [{isHover}, dropTarget] = useDrop({
 		accept: 'cart',
 		drop(itemId) {
-			const elem = store.filter(item => item._id === itemId.id)
-
-			return (dispatch(setIncreaseConstructorIngredients(elem[0])),
-				dispatch(setIncreaseCountIngredients(elem[0]._id)))
+			const elem = store.find(item => item._id === itemId.id)
+			return (dispatch(increaseConstructor(elem)))
 		},
 		collect: monitor => ({
 			isHover: monitor.isOver(),
@@ -65,8 +58,7 @@ function BurgerConstructor() {
 								isLocked={false}
 								thumbnail={elem.image_mobile}
 								handleClose={() => {
-									dispatch(setDecreaseConstructorIngredients(elem.constructorId))
-									dispatch(setDecreaseCountIngredients(elem._id))
+									dispatch(decreaseConstructor(elem.constructorId))
 								}}
 							/>
 						</div>

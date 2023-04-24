@@ -19,14 +19,14 @@ function Cart(props) {
 	}
 
 
-	const ingredients=useSelector(getIngredients)
+	// const ingredients=useSelector(getIngredients)
 
 	const id=cart._id;
 
-	const count=useMemo(()=>{
-	return ingredients.filter(elem=>elem._id===cart._id)[0].count
-	},[ingredients])
-
+	// const count=useMemo(()=>{
+	// return ingredients.filter(elem=>elem._id===cart._id)[0].count
+	// },[ingredients])
+	const count=0;
 
 	const [{isDragging},dragRef] = useDrag({
 		type:'cart',

@@ -4,14 +4,13 @@ import React, {useContext} from "react";
 import styles from "./total-cost.module.css"
 import {setModalOrder, setOrderId} from "../../../services/action/oreder-action";
 import {useDispatch, useSelector} from "react-redux";
-import {getConstructorIngredients} from "../../../services/selectors/constructor-ingredients-selector";
-import {orderReducer} from "../../../services/reducers/order-reducer";
+
 
 function TotalCost() {
 
-	const order=useSelector(getConstructorIngredients)
+	const order=useSelector(store=>store.tollConstructor.constructorIngredients)
 	const costBun=order.bun!==null ?order.bun.price*2 : 0;
-	const costPieces=order.pieces.length!==0? order.pieces.reduce((acc,item)=>acc+item.price ,0):0;
+	const costPieces= order.pieces.length!==0? order.pieces.reduce((acc,item)=>acc+item.price ,0):0;
 	const total=costPieces+costBun;
 	const dispatch = useDispatch()
 

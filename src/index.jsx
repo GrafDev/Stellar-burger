@@ -8,6 +8,7 @@ import {Provider} from "react-redux";
 import {DevSupport} from "@react-buddy/ide-toolbox";
 import {ComponentPreviews, useInitial} from "./dev";
 import {mainStore} from "./services";
+import stores from "./store/store";
 
 const store = mainStore();
 const root = ReactDOM.createRoot(
@@ -15,7 +16,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
 	<React.StrictMode>
-		<Provider store={store}>
+		<Provider store={stores}>
 			<DevSupport ComponentPreviews={ComponentPreviews}
 			            useInitialHook={useInitial}
 			>
