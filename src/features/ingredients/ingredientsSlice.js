@@ -28,14 +28,16 @@ const ingredientsSlice = createSlice({
 			state.ingredients = action.payload
 		},
 	},
-	extraReducers: {
-		[getToolIngredients.pending]: () => console.log('getIngredients: pending'),
-		[getToolIngredients.fulfilled]: (state) => {
+	extraReducers: builder => {
+		builder.addCase(getToolIngredients.pending, () => console.log('getIngredients: pending'))
+		.addCase(getToolIngredients.fulfilled, (state) => {
 			state.hasError=false;
 			state.isLoading=false;
-		},
-		[getToolIngredients.rejected]: () => console.log('getIngredients: rejected'),
+		})
+			.addCase(getToolIngredients.rejected, () => console.log('getIngredients: rejected'))
+			.addDefaultCase(()=>{})
 	}
+
 })
 
 
