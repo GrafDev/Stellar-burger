@@ -12,6 +12,7 @@ import {DndProvider} from "react-dnd";
 import classNames from "classnames";
 import {textLarge} from "../../utils/themes";
 import {getToolIngredients} from "../../features/ingredients/ingredientsSlice";
+import Spinner from "../spinner/spinner";
 
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
 	return (
 		<div className={styles.App}>
 			<AppHeader/>
-			{isLoading && 'Загрузка...'}
+			{isLoading && <Spinner/>}
 			{hasError && 'Произошла ошибка'}
 			{!isLoading &&
 				!hasError &&
