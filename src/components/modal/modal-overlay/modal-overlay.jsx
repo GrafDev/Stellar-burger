@@ -2,8 +2,8 @@ import '../modal.module.css'
 import style from './modal-overlay.module.css';
 import PropTypes from "prop-types";
 import {useDispatch} from "react-redux";
-import {desetModalOrder} from "../../../services/action/oreder-action";
-import {desetModalCurrentIngredient} from "../../../services/action/current-ingredient-action";
+import {unsetCurrentIngredient} from "../../../features/currentIngredient/currentIngredientSlice";
+import {unsetToolOrder} from "../../../features/order/orderSlice";
 
 
 function ModalOverlay(props) {
@@ -11,8 +11,8 @@ function ModalOverlay(props) {
 	const dispatch = useDispatch();
 
 	const closeModal = () => {
-		dispatch(desetModalOrder())
-		dispatch(desetModalCurrentIngredient())
+		dispatch(unsetToolOrder())
+		dispatch(unsetCurrentIngredient())
 	}
 	const handlerClick = (event) => {
 		event.target.id === 'targetOverlay' &&

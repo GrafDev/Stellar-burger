@@ -6,9 +6,9 @@ import style from "./modal.module.css";
 import {CloseIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
 import {useDispatch} from "react-redux";
-import {desetModalOrder} from "../../services/action/oreder-action";
-import {desetModalCurrentIngredient} from "../../services/action/current-ingredient-action";
-import {typeCart} from "../../utils/types";
+import {unsetToolOrder} from "../../features/order/orderSlice";
+import {unsetCurrentIngredient} from "../../features/currentIngredient/currentIngredientSlice";
+
 
 
 function Modal(props) {
@@ -25,8 +25,8 @@ function Modal(props) {
 	});
 
 	const closeModal= ()=>{
-		dispatch(desetModalOrder())
-		dispatch(desetModalCurrentIngredient())
+		dispatch(unsetToolOrder())
+		dispatch(unsetCurrentIngredient())
 	}
 
 	useEffect(() => {

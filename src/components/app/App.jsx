@@ -7,13 +7,6 @@ import Modal from "../modal/modal";
 import OrderDetails from "../order-details/order-details";
 import IngredientDetails from "../ingredient-details/ingredient-details";
 import {useDispatch, useSelector} from "react-redux";
-import {getIsModalOrder} from "../../services/selectors/order-selector";
-import {getIsModalIngredient} from "../../services/selectors/current-ingredient-selector";
-import {loadIngredients} from "../../services/action/ingredients-action";
-import {
-	getIngredientsHasError,
-	getIngredientsIsLoading
-} from "../../services/selectors/ingredients-selector";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import {DndProvider} from "react-dnd";
 import classNames from "classnames";
@@ -24,15 +17,14 @@ import {getToolIngredients} from "../../features/ingredients/ingredientsSlice";
 function App() {
 
 	const dispatch = useDispatch();
-	// const isOrder = useSelector(getIsModalOrder)
-	const isLoading = useSelector(state=>state.tollIngredients.isLoading)
-	const hasError = useSelector(state=>state.tollIngredients.hasError)
+	const isOrder = useSelector(state => state.orderStore.isModalOrder)
+	const isLoading = useSelector(state=>state.ingredientsStore.isLoading)
+	const hasError = useSelector(state=>state.ingredientsStore.hasError)
 
-	// const isIngredient = useSelector(getIsModalIngredient)
-	const toolIngredient = useSelector(state=>state.tollIngredients.ingredients)
-	// const isModal = isOrder || isIngredient;
+	const isIngredient = useSelector(state => state.currentStore.isModalIngredient)
+	const isModal = isOrder || isIngredient;
+
 	useEffect(() => {
-		// dispatch(loadIngredients())
 		{dispatch(getToolIngredients())}
 	}, [dispatch])
 
@@ -54,14 +46,14 @@ function App() {
 
 			}
 
-			{/*{isModal &&*/}
-			{/*	(<Modal>*/}
-			{/*		<>*/}
-			{/*			{isOrder && <OrderDetails/>}*/}
-			{/*			{isIngredient && <IngredientDetails/>}*/}
-			{/*		</>*/}
-			{/*	</Modal>)*/}
-			{/*}*/}
+			{isModal &&
+				(<Modal>
+					<>
+						{isOrder && <OrderDetails/>}
+						{isIngredient && <IngredientDetails/>}
+					</>
+				</Modal>)
+			}
 		</div>
 	);
 }

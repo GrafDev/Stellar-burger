@@ -7,13 +7,11 @@ import {
 	textMedium
 } from "../../utils/themes";
 import {useSelector} from "react-redux";
-import {getCurrentIngredient} from "../../services/selectors/current-ingredient-selector";
 
 function IngredientDetails() {
 
 
-	const data = useSelector(getCurrentIngredient);
-
+	const data = useSelector(state => state.currentStore.ingredient);
 	const Ingredient = (text, part) => {
 		return (
 			<div className={style.ingredient}>
@@ -26,7 +24,7 @@ function IngredientDetails() {
 	return (
 		<div>
 			<div className={style.title}>
-					<span className={`${textLarge} ${style.text}`}>Детали ингредиента</span>
+				<span className={`${textLarge} ${style.text}`}>Детали ингредиента</span>
 			</div>
 			<div className={style.modal}>
 				<img className={style.image} style={{paddingBottom: '16px'}} src={data.image} alt={'atribute'}/>

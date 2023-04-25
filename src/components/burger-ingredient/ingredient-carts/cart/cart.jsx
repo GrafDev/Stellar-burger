@@ -1,32 +1,36 @@
 import {digitsDefault} from "../../../../utils/themes";
 import {Counter, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
-import React, {useContext, useMemo, useState} from "react";
+import React, {useMemo, useState} from "react";
 import PropTypes from "prop-types";
 import {typeCart} from "../../../../utils/types";
 import styles from "./cart.module.css"
 import {useDispatch, useSelector} from "react-redux";
-import { setCurrentIngredient, setModalCurrentIngredient} from "../../../../services/action/current-ingredient-action";
 import {useDrag} from "react-dnd";
 import classNames from "classnames";
-import {getIngredients} from "../../../../services/selectors/ingredients-selector";
+import {setToolCurrentIngredient} from "../../../../features/currentIngredient/currentIngredientSlice";
 
-function Cart(props) {
-	const cart = props.cart;
+
+function Cart({cart}) {
 	const dispatch = useDispatch();
 	const handleClick = () => {
-		dispatch(setModalCurrentIngredient())
-		dispatch(setCurrentIngredient(cart))
+		console.log(cart)
+		dispatch(setToolCurrentIngredient(cart))
 	}
 
+	const { pieces,bun } = useSelector(state=>state.constructorStore.ingredients)
 
-	// const ingredients=useSelector(getIngredients)
+	const count = useMemo(() => {
+		if (cart.type === 'bun') {
+			return bun?._id === cart._id ? 2 : 0
+		} else {
+			if (!cart) return 0
+			return pieces.filter(item => item._id === cart._id).length
+		}
+	}, [pieces, bun, cart])
+
 
 	const id=cart._id;
 
-	// const count=useMemo(()=>{
-	// return ingredients.filter(elem=>elem._id===cart._id)[0].count
-	// },[ingredients])
-	const count=0;
 
 	const [{isDragging},dragRef] = useDrag({
 		type:'cart',

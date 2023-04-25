@@ -12,8 +12,8 @@ import {decreaseConstructor, increaseConstructor} from "../../features/construct
 
 function BurgerConstructor() {
 	const dispatch = useDispatch();
-	const store= useSelector(state=>state.tollIngredients.ingredients)
-	const order = useSelector(state=>state.tollConstructor.constructorIngredients)
+	const store= useSelector(state=>state.ingredientsStore.ingredients)
+	const order = useSelector(state=>state.constructorStore.ingredients)
 	const pieces = order.pieces;
 	const bun = order.bun
 	const [{isHover}, dropTarget] = useDrop({

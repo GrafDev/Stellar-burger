@@ -3,7 +3,7 @@ import {v4} from "uuid";
 
 
 const initialState = {
-	constructorIngredients: {
+	ingredients: {
 		pieces: [],
 		bun: null,
 	},
@@ -18,22 +18,22 @@ const constructorSlice = createSlice({
 	reducers: {
 		increaseConstructor: (state, action) => {
 			if (action.payload.type === 'bun') {
-				state.constructorIngredients.bun = action.payload
+				state.ingredients.bun = action.payload
 			} else {
 				let _constructorIngredient = {
 					...action.payload,
 					constructorId: v4()
 				}
 				console.log(_constructorIngredient)
-				console.log(state.constructorIngredients.pieces)
-				state.constructorIngredients.pieces = [
-					...state.constructorIngredients.pieces,
+				console.log(state.ingredients.pieces)
+				state.ingredients.pieces = [
+					...state.ingredients.pieces,
 					_constructorIngredient
 				];
 			}
 		},
 		decreaseConstructor: (state, action) => {
-			state.constructorIngredients.pieces = state.constructorIngredients.pieces.filter(item => item.constructorId !== action.payload)
+			state.ingredients.pieces = state.ingredients.pieces.filter(item => item.constructorId !== action.payload)
 		},
 
 	},

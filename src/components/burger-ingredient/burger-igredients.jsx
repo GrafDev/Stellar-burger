@@ -3,13 +3,12 @@ import styles from "./burger-ingredients.module.css"
 import {textLarge, textMedium} from "../../utils/themes";
 import IngredientCarts from "./ingredient-carts/ingredient-carts";
 import {useSelector} from "react-redux";
-import {getIngredients} from "../../services/selectors/ingredients-selector";
 import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 import classNames from "classnames";
 
 
 function BurgerIngredients() {
-	const data = useSelector(state => state.tollIngredients.ingredients)
+	const data = useSelector(state => state.ingredientsStore.ingredients)
 	const [currentType, setCurrentType] = useState('bun')
 	const bunRef = useRef();
 	const mainRef = useRef();
