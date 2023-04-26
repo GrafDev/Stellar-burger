@@ -24,8 +24,7 @@ const constructorSlice = createSlice({
 					...action.payload,
 					constructorId: v4()
 				}
-				console.log(_constructorIngredient)
-				console.log(state.ingredients.pieces)
+
 				state.ingredients.pieces = [
 					...state.ingredients.pieces,
 					_constructorIngredient
@@ -35,12 +34,17 @@ const constructorSlice = createSlice({
 		decreaseConstructor: (state, action) => {
 			state.ingredients.pieces = state.ingredients.pieces.filter(item => item.constructorId !== action.payload)
 		},
+		moveConstructorCart:(state,action)=>{
+			state.ingredients.pieces=action.payload
+
+
+		}
 
 	},
 
 })
 
 
-export const {increaseConstructor, decreaseConstructor} = constructorSlice.actions
+export const {increaseConstructor, decreaseConstructor,moveConstructorCart} = constructorSlice.actions
 export default constructorSlice.reducer
 

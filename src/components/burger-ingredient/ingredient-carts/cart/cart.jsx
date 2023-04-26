@@ -24,7 +24,7 @@ function Cart({cart}) {
 			return bun?._id === cart._id ? 2 : 0
 		} else {
 			if (!cart) return 0
-			return pieces.filter(item => item._id === cart._id).length
+			return pieces?.filter(item => item._id === cart._id).length
 		}
 	}, [pieces, bun, cart])
 

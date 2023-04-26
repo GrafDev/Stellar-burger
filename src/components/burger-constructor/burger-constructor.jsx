@@ -1,14 +1,15 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useRef} from "react";
 import styles from "./burger-constructor.module.css"
 import TotalCost from "./total-cost/total-cost";
 import {useDispatch, useSelector} from "react-redux";
 
 import {ConstructorElement, DragIcon} from "@ya.praktikum/react-developer-burger-ui-components";
-import {useDrop} from "react-dnd";
+import {useDrag, useDrop} from "react-dnd";
 
 import classNames from "classnames";
 import EmptyConstructorElement from "./empty-constructor-element/empty-constructor-element";
 import {decreaseConstructor, increaseConstructor} from "../../features/constructor/constructorSlice";
+import ConctructorCart from "./constructor-cart/conctructor-cart";
 
 function BurgerConstructor() {
 	const dispatch = useDispatch();
@@ -41,27 +42,17 @@ function BurgerConstructor() {
 					isLocked={true}
 					thumbnail={bun.image_mobile}
 				/> :
-				<EmptyConstructorElement type={type}/>}
+				<EmptyConstructorElement type={type} /> }
 		</div>)
 	}
+
 
 	const componentPieces =
 		<div className={styles.pieces}>
 			{
 				pieces.length > 0 ?
-					pieces.map(elem =>
-						<div className={styles.piece} key={elem.constructorId}>
-							<div className={styles.icon}><DragIcon type="primary"/></div>
-							<ConstructorElement
-								text={elem.name}
-								price={elem.price}
-								isLocked={false}
-								thumbnail={elem.image_mobile}
-								handleClose={() => {
-									dispatch(decreaseConstructor(elem.constructorId))
-								}}
-							/>
-						</div>
+					pieces.map((elem,index) =>
+						<ConctructorCart elem={elem} key={elem.constructorId} index={index}/>
 					) :
 					<div className={styles.piece}>
 						<EmptyConstructorElement type={''}/>
