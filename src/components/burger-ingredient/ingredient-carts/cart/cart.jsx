@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useDrag} from "react-dnd";
 import classNames from "classnames";
 import {setToolCurrentIngredient} from "../../../../features/currentIngredient/currentIngredientSlice";
+import {getConstructorIngredients} from "../../../../features/constructor/constructor-selectors";
 
 
 function Cart({cart}) {
@@ -17,7 +18,7 @@ function Cart({cart}) {
 		dispatch(setToolCurrentIngredient(cart))
 	}
 
-	const { pieces,bun } = useSelector(state=>state.constructorStore.ingredients)
+	const { pieces,bun } = useSelector(getConstructorIngredients)
 
 	const count = useMemo(() => {
 		if (cart.type === 'bun') {

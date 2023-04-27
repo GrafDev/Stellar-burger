@@ -12,7 +12,7 @@ const initialState = {
 
 
 
-export const getToolIngredients = createAsyncThunk(
+export const getIngredients = createAsyncThunk(
 	'ingredients/getToolIngredients',
 	async (_, {rejectedWithValue, dispatch}) => {
 		const res = await axios.get(DATA_URL)
@@ -29,12 +29,12 @@ const ingredientsSlice = createSlice({
 		},
 	},
 	extraReducers: builder => {
-		builder.addCase(getToolIngredients.pending, () => console.log('getIngredients: pending'))
-		.addCase(getToolIngredients.fulfilled, (state) => {
+		builder.addCase(getIngredients.pending, () => console.log('getIngredients: pending'))
+		.addCase(getIngredients.fulfilled, (state) => {
 			state.hasError=false;
 			state.isLoading=false;
 		})
-			.addCase(getToolIngredients.rejected, () => console.log('getIngredients: rejected'))
+			.addCase(getIngredients.rejected, () => console.log('getIngredients: rejected'))
 			.addDefaultCase(()=>{})
 	}
 

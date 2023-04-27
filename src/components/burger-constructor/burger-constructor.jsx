@@ -10,11 +10,13 @@ import classNames from "classnames";
 import EmptyConstructorElement from "./empty-constructor-element/empty-constructor-element";
 import {decreaseConstructor, increaseConstructor} from "../../features/constructor/constructorSlice";
 import ConctructorCart from "./constructor-cart/conctructor-cart";
+import {getConstructorIngredients} from "../../features/constructor/constructor-selectors";
+import {getIngredients} from "../../features/ingredients/ingredients-selectors";
 
 function BurgerConstructor() {
 	const dispatch = useDispatch();
-	const store= useSelector(state=>state.ingredientsStore.ingredients)
-	const order = useSelector(state=>state.constructorStore.ingredients)
+	const store= useSelector(getIngredients)
+	const order = useSelector(getConstructorIngredients)
 	const pieces = order.pieces;
 	const bun = order.bun
 	const [{isHover}, dropTarget] = useDrop({

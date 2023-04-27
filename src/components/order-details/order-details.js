@@ -6,12 +6,13 @@ import {CheckMarkIcon} from "@ya.praktikum/react-developer-burger-ui-components"
 import {useDispatch, useSelector} from "react-redux";
 
 import {unsetToolOrder} from "../../features/order/orderSlice";
+import {getOrderId} from "../../features/order/order-selectors";
 
 function OrderDetails() {
 
 	const dispatch=useDispatch();
 
-	const orderId=useSelector(state => state.orderStore.id)
+	const orderId=useSelector(getOrderId)
 
 	const handlerOverlay = ()=>{
 		dispatch(unsetToolOrder())

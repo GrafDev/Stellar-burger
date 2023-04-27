@@ -6,11 +6,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {useDrag, useDrop} from "react-dnd";
 import classNames from "classnames";
 import sortFunc from "../../../utils/sortFunc";
+import {getConstructorPieces} from "../../../features/constructor/constructor-selectors";
 
 
 const ConstructorCart = ({elem, index}) => {
 	const dispatch = useDispatch();
-	const pieces=useSelector(state=>state.constructorStore.ingredients.pieces)
+	const pieces=useSelector(getConstructorPieces)
 	const constructorRef = useRef(null);
 	const _id = elem.constructorId
 

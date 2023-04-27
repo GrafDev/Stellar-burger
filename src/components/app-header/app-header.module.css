@@ -6,19 +6,15 @@
 }
 
 
-.nav{
+.navigationMenu {
     display: grid;
     grid-template-columns: repeat(2, auto) 1fr;
     align-items: center;
     gap: 8px;
 }
 
-.nav:last-child{
-    justify-self: end;
-    background-color: #4C4CFF;
-}
 
-.logo{
+.logo {
     height: 50px;
 
     position: absolute;
@@ -32,6 +28,6 @@
     align-items: center;
 }
 
-.logo>svg{
+.logo > svg {
     height: 100%;
 }

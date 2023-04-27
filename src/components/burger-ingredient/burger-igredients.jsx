@@ -5,10 +5,11 @@ import IngredientCarts from "./ingredient-carts/ingredient-carts";
 import {useSelector} from "react-redux";
 import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 import classNames from "classnames";
+import {getIngredients} from "../../features/ingredients/ingredients-selectors";
 
 
 function BurgerIngredients() {
-	const data = useSelector(state => state.ingredientsStore.ingredients)
+	const data = useSelector(getIngredients)
 	const [currentType, setCurrentType] = useState('bun')
 	const bunRef = useRef();
 	const mainRef = useRef();

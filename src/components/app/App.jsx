@@ -11,22 +11,25 @@ import {HTML5Backend} from "react-dnd-html5-backend";
 import {DndProvider} from "react-dnd";
 import classNames from "classnames";
 import {textLarge} from "../../utils/themes";
-import {getToolIngredients} from "../../features/ingredients/ingredientsSlice";
+import {getIngredients} from "../../features/ingredients/ingredientsSlice";
 import Spinner from "../spinner/spinner";
+import {getHasError, getIsLoading} from "../../features/ingredients/ingredients-selectors";
+import {getIsModalOrder} from "../../features/order/order-selectors";
+import {getIsModalIngredient} from "../../features/currentIngredient/current-ingredient-selectors";
 
 
 function App() {
 
 	const dispatch = useDispatch();
-	const isOrder = useSelector(state => state.orderStore.isModalOrder)
-	const isLoading = useSelector(state=>state.ingredientsStore.isLoading)
-	const hasError = useSelector(state=>state.ingredientsStore.hasError)
+	const isOrder = useSelector(getIsModalOrder)
+	const isLoading = useSelector(getIsLoading)
+	const hasError = useSelector(getHasError)
 
-	const isIngredient = useSelector(state => state.currentStore.isModalIngredient)
+	const isIngredient = useSelector(getIsModalIngredient)
 	const isModal = isOrder || isIngredient;
 
 	useEffect(() => {
-		{dispatch(getToolIngredients())}
+		{dispatch(getIngredients())}
 	}, [dispatch])
 
 

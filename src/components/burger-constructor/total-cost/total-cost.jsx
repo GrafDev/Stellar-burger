@@ -4,10 +4,11 @@ import React from "react";
 import styles from "./total-cost.module.css"
 import {useDispatch, useSelector} from "react-redux";
 import {setToolOrder} from "../../../features/order/orderSlice";
+import {getConstructorIngredients} from "../../../features/constructor/constructor-selectors";
 
 
 function TotalCost() {
-	const order=useSelector(store=>store.constructorStore.ingredients)
+	const order=useSelector(getConstructorIngredients)
 	const total=()=>{
 		const costBun=order.bun!==null ?order.bun.price*2 : 0;
 		const costPieces= order.pieces.length!==0? order.pieces.reduce((acc,item)=>acc+item.price ,0):0;

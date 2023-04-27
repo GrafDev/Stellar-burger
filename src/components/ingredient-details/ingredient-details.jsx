@@ -7,11 +7,12 @@ import {
 	textMedium
 } from "../../utils/themes";
 import {useSelector} from "react-redux";
+import {getCurrentIngredient} from "../../features/currentIngredient/current-ingredient-selectors";
 
 function IngredientDetails() {
 
 
-	const data = useSelector(state => state.currentStore.ingredient);
+	const data = useSelector(getCurrentIngredient);
 	const Ingredient = (text, part) => {
 		return (
 			<div className={style.ingredient}>
