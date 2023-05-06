@@ -7,8 +7,8 @@ import styles from "./cart.module.css"
 import {useDispatch, useSelector} from "react-redux";
 import {useDrag} from "react-dnd";
 import classNames from "classnames";
-import {setToolCurrentIngredient} from "../../../../features/currentIngredient/currentIngredientSlice";
-import {getConstructorIngredients} from "../../../../features/constructor/constructor-selectors";
+import {setToolCurrentIngredient} from "../../../../redux/features/currentIngredient/currentIngredientSlice";
+import {getConstructorIngredients} from "../../../../redux/features/constructor/constructor-selectors";
 
 
 function Cart({cart}) {

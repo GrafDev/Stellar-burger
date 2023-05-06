@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
-import {Logo, BurgerIcon, ListIcon, ProfileIcon} from "@ya.praktikum/react-developer-burger-ui-components";
+import React, from 'react';
+import {Logo} from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./app-header.module.css";
-import {inactiveDefault, activeDefault} from "../../utils/themes";
 import NavItem from "./nav-item/nav-item";
-import {getMenuItems} from "../../features/menu/menu-selector";
+import {getMenuItems} from "../../redux/features/menu/menu-selector";
 import {useSelector} from "react-redux";
 
 function AppHeader() {

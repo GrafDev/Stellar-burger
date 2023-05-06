@@ -6,8 +6,8 @@ import style from "./modal.module.css";
 import {CloseIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
 import {useDispatch} from "react-redux";
-import {unsetToolOrder} from "../../features/order/orderSlice";
-import {unsetCurrentIngredient} from "../../features/currentIngredient/currentIngredientSlice";
+import {unsetToolOrder} from "../../redux/features/order/orderSlice";
+import {unsetCurrentIngredient} from "../../redux/features/currentIngredient/currentIngredientSlice";
 
 
 

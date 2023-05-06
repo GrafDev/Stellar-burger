@@ -2,8 +2,8 @@ import '../modal.module.css'
 import style from './modal-overlay.module.css';
 import PropTypes from "prop-types";
 import {useDispatch} from "react-redux";
-import {unsetCurrentIngredient} from "../../../features/currentIngredient/currentIngredientSlice";
-import {unsetToolOrder} from "../../../features/order/orderSlice";
+import {unsetCurrentIngredient} from "../../../redux/features/currentIngredient/currentIngredientSlice";
+import {unsetToolOrder} from "../../../redux/features/order/orderSlice";
 
 
 function ModalOverlay(props) {

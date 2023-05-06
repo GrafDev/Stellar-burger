@@ -12,7 +12,7 @@ function EmptyConstructorElement (props) {
             style=styles.bunBottom;
             break;
         default:
-            style=styles.ingredient;
+            style=styles.list;
             text='Выберите начинку'
     }
     return (

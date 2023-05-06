@@ -3,8 +3,8 @@ import {Button, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-comp
 import React from "react";
 import styles from "./total-cost.module.css"
 import {useDispatch, useSelector} from "react-redux";
-import {setToolOrder} from "../../../features/order/orderSlice";
-import {getConstructorIngredients} from "../../../features/constructor/constructor-selectors";
+import {setToolOrder} from "../../../redux/features/order/orderSlice";
+import {getConstructorIngredients} from "../../../redux/features/constructor/constructor-selectors";
 
 
 function TotalCost() {

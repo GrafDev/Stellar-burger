@@ -11,11 +11,11 @@ import {HTML5Backend} from "react-dnd-html5-backend";
 import {DndProvider} from "react-dnd";
 import classNames from "classnames";
 import {textLarge} from "../../utils/themes";
-import {getIngredients} from "../../features/ingredients/ingredientsSlice";
+import {getIngredients} from "../../redux/features/ingredients/ingredientsSlice";
 import Spinner from "../spinner/spinner";
-import {getHasError, getIsLoading} from "../../features/ingredients/ingredients-selectors";
-import {getIsModalOrder} from "../../features/order/order-selectors";
-import {getIsModalIngredient} from "../../features/currentIngredient/current-ingredient-selectors";
+import {getHasError, getIsLoading} from "../../redux/features/ingredients/ingredients-selectors";
+import {getIsModalOrder} from "../../redux/features/order/order-selectors";
+import {getIsModalIngredient} from "../../redux/features/currentIngredient/current-ingredient-selectors";
 
 
 function App() {

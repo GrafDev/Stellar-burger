@@ -7,7 +7,7 @@ import {
 	textMedium
 } from "../../utils/themes";
 import {useSelector} from "react-redux";
-import {getCurrentIngredient} from "../../features/currentIngredient/current-ingredient-selectors";
+import {getCurrentIngredient} from "../../redux/features/currentIngredient/current-ingredient-selectors";
 
 function IngredientDetails() {
 

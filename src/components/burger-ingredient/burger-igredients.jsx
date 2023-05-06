@@ -5,7 +5,7 @@ import IngredientCarts from "./ingredient-carts/ingredient-carts";
 import {useSelector} from "react-redux";
 import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 import classNames from "classnames";
-import {getIngredients} from "../../features/ingredients/ingredients-selectors";
+import {getIngredients} from "../../redux/features/ingredients/ingredients-selectors";
 
 
 function BurgerIngredients() {

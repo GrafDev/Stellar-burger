@@ -1,17 +1,17 @@
-import React, {useEffect, useRef} from "react";
+import React from "react";
 import styles from "./burger-constructor.module.css"
 import TotalCost from "./total-cost/total-cost";
 import {useDispatch, useSelector} from "react-redux";
 
-import {ConstructorElement, DragIcon} from "@ya.praktikum/react-developer-burger-ui-components";
-import {useDrag, useDrop} from "react-dnd";
+import {ConstructorElement} from "@ya.praktikum/react-developer-burger-ui-components";
+import {useDrop} from "react-dnd";
 
 import classNames from "classnames";
 import EmptyConstructorElement from "./empty-constructor-element/empty-constructor-element";
-import {decreaseConstructor, increaseConstructor} from "../../features/constructor/constructorSlice";
+import {increaseConstructor} from "../../redux/features/constructor/constructorSlice";
 import ConctructorCart from "./constructor-cart/conctructor-cart";
-import {getConstructorIngredients} from "../../features/constructor/constructor-selectors";
-import {getIngredients} from "../../features/ingredients/ingredients-selectors";
+import {getConstructorIngredients} from "../../redux/features/constructor/constructor-selectors";
+import {getIngredients} from "../../redux/features/ingredients/ingredients-selectors";
 
 function BurgerConstructor() {
 	const dispatch = useDispatch();
@@ -19,6 +19,7 @@ function BurgerConstructor() {
 	const order = useSelector(getConstructorIngredients)
 	const pieces = order.pieces;
 	const bun = order.bun
+	const isEmptyPieces=!order;
 	const [{isHover}, dropTarget] = useDrop({
 		accept: 'cart',
 		drop(itemId) {
@@ -56,7 +57,7 @@ function BurgerConstructor() {
 					pieces.map((elem,index) =>
 						<ConctructorCart elem={elem} key={elem.constructorId} index={index}/>
 					) :
-					<div className={styles.piece}>
+					<div className={styles.pieces}>
 						<EmptyConstructorElement type={''}/>
 					</div>}
 		</div>
@@ -67,7 +68,10 @@ function BurgerConstructor() {
 			<div ref={dropTarget} className={classNames(
 				styles.target,
 				isHover && styles.targetIsHover,)} style={{borderColor}}>
-				<div className={styles.list}>
+				<div className={classNames(
+					styles.list,
+					isEmptyPieces && styles.emptyList
+				)}>
 					{componentBun('top')}
 					{componentPieces}
 					{componentBun("bottom")}

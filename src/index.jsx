@@ -7,19 +7,20 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 import {DevSupport} from "@react-buddy/ide-toolbox";
 import {ComponentPreviews, useInitial} from "./dev";
-import stores from "./store/store";
+import stores from "./redux/store/store";
+import {BrowserRouter} from "react-router-dom";
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root'));
 
 root.render(
 	<React.StrictMode>
-		<Provider store={stores}>
-			<DevSupport ComponentPreviews={ComponentPreviews}
-			            useInitialHook={useInitial}			>
-				<App/>
-			</DevSupport>
-		</Provider>
+		<BrowserRouter>
+			<Provider store={stores}>
+					<App/>
+			</Provider>
+		</BrowserRouter>
+
 	</React.StrictMode>
 );
 

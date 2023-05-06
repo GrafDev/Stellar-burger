@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {getRandomInt} from "../../utils/random-funcs";
+import {getRandomInt} from "../../../utils/random-funcs";
 
 
 const initialState = {

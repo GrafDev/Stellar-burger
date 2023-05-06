@@ -5,12 +5,22 @@
     background: #2f2f37;
     max-width: 536px;
     width:100%;
+
     min-height: 80px;
     color: #8484ac;
     box-sizing: border-box;
     transform: scale(1.0);
     transition: transform 0.3s;
     border-radius: 40px ;
+
+}
+.list{
+    composes: ingredient;
+    flex-grow: 3;
+    color: #8484ac;
+    /*margin-left: 32px;*/
+    align-self: flex-end;
+
 
 }
 .bunTop{

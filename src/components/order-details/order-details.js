@@ -5,8 +5,8 @@ import vector from '../../images/vector.svg'
 import {CheckMarkIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import {useDispatch, useSelector} from "react-redux";
 
-import {unsetToolOrder} from "../../features/order/orderSlice";
-import {getOrderId} from "../../features/order/order-selectors";
+import {unsetToolOrder} from "../../redux/features/order/orderSlice";
+import {getOrderId} from "../../redux/features/order/order-selectors";
 
 function OrderDetails() {
 

@@ -32,14 +32,13 @@
     width: 100%;
     height: 100%;
     border-radius: 60px;
-    transition: transform 0.3s;
-
+    transform: scale(1);
 }
 
 .targetIsHover {
     composes: target;
     box-shadow: 0 0 16px 8px rgba(51, 51, 255, 0.25), 0 0 8px 8px rgba(51, 51, 255, 0.25);
-    transition: transform 0.3s;
+
 
 }
 
@@ -75,6 +74,15 @@
     transition: transform 0.4s;
     scroll-snap-align: start;
 }
+.emptyList{
+    composes: list;
+    background: #2f2f37;
+    box-sizing: border-box;
+    transform: scale(1.0);
+    transition: transform 0.3s;
+    border-radius: 40px ;
+}
+
 .bun {
     display: flex;
     flex-direction: row;
@@ -84,44 +92,6 @@
     transition: transform 0.3s;
     margin-right: 32px;
 }
-
-
-
-
-
-
-
-
-/*.piece.constructor-element {*/
-/*    display: flex;*/
-/*    align-self: flex-end;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    border-radius: var(--common-border-radius-s);*/
-/*    background: var(--background-element);*/
-/*    width: 100%;*/
-/*    !*width: 100%;*!*/
-/*    min-height: 80px;*/
-/*    color: #F2F2F3;*/
-/*    box-sizing: border-box;*/
-/*    transform: scale(1.0);*/
-/*    transition: transform 0.3s;*/
-/*}*/
-
-/*.bun.constructor-element__row {*/
-/*    display: flex;*/
-/*    align-self: flex-end;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    border-radius: var(--common-border-radius-s);*/
-/*    background: var(--background-element);*/
-/*    width: 100%;*/
-/*    min-height: 80px;*/
-/*    color: #F2F2F3;*/
-/*    box-sizing: border-box;*/
-/*    transform: scale(1.0);*/
-/*    transition: transform 0.3s;*/
-/*}*/
 
 .piece:hover {
     transform: scale(1.02);

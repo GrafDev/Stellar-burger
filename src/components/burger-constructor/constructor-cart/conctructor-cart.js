@@ -1,12 +1,12 @@
 import styles from "./construction-cart.module.css";
 import {ConstructorElement, DragIcon} from "@ya.praktikum/react-developer-burger-ui-components";
-import {decreaseConstructor, moveConstructorCart} from "../../../features/constructor/constructorSlice";
+import {decreaseConstructor, moveConstructorCart} from "../../../redux/features/constructor/constructorSlice";
 import React, {useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useDrag, useDrop} from "react-dnd";
 import classNames from "classnames";
 import sortFunc from "../../../utils/sortFunc";
-import {getConstructorPieces} from "../../../features/constructor/constructor-selectors";
+import {getConstructorPieces} from "../../../redux/features/constructor/constructor-selectors";
 
 
 const ConstructorCart = ({elem, index}) => {

@@ -3,7 +3,7 @@ import React from "react";
 import {activeDefault, inactiveDefault} from "../../../utils/themes";
 import {BurgerIcon, ListIcon, ProfileIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import {useDispatch} from "react-redux";
-import {changeActiveMenu} from "../../../features/menu/menuSlice";
+import {changeActiveMenu} from "../../../redux/features/menu/menuSlice";
 
 
 let counter=0;
