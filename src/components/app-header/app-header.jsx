@@ -1,4 +1,4 @@
-import React, from 'react';
+import React from 'react';
 import {Logo} from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./app-header.module.css";
 import NavItem from "./nav-item/nav-item";
