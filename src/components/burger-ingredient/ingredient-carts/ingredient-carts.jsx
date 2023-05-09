@@ -6,9 +6,8 @@ import styles from "./ingredient-carts.module.css"
 
 
 function IngredientCarts(props) {
-
-	const carts = (props.data.filter(elem => elem.type === props.type))
-	return (
+	const carts=props.data
+		return (
 		<div className={styles.carts}>
 			{carts.map(cart =>
 				<Cart cart={cart} key={cart._id}/>
@@ -19,7 +18,8 @@ function IngredientCarts(props) {
 }
 
 IngredientCarts.propTypes = {
-	data: PropTypes.arrayOf(PropTypes.shape(typeCart)).isRequired,
+	data: PropTypes.arrayOf(PropTypes.shape(typeCart).isRequired).isRequired,
 }
+
 
 export default IngredientCarts;

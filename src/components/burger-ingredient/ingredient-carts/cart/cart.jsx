@@ -9,19 +9,19 @@ import {useDrag} from "react-dnd";
 import classNames from "classnames";
 import {setToolCurrentIngredient} from "../../../../redux/features/currentIngredient/currentIngredientSlice";
 import {getConstructorIngredients} from "../../../../redux/features/constructor/constructor-selectors";
+import {BUN} from "../../../../utils/constants";
 
 
 function Cart({cart}) {
 	const dispatch = useDispatch();
 	const handleClick = () => {
-		console.log(cart)
 		dispatch(setToolCurrentIngredient(cart))
 	}
 
 	const { pieces,bun } = useSelector(getConstructorIngredients)
 
 	const count = useMemo(() => {
-		if (cart.type === 'bun') {
+		if (cart.type === BUN) {
 			return bun?._id === cart._id ? 2 : 0
 		} else {
 			if (!cart) return 0

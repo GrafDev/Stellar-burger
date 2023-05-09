@@ -19,7 +19,6 @@ const dispatch=useDispatch();
 
 	const changeHandler=()=>{
 		dispatch(changeActiveMenu(id))
-		console.log(counter++)
 	}
 
 

@@ -1,14 +1,15 @@
 import styles from './empty-constructor-element.module.css'
+import {BOTTOM, TOP} from "../../../utils/constants";
 function EmptyConstructorElement (props) {
     const type=props.type;
     let style
     let text='Выберите булку';
 
     switch (type){
-        case ('top'):
+        case (TOP):
             style=styles.bunTop;
             break;
-        case ('bottom'):
+        case (BOTTOM):
             style=styles.bunBottom;
             break;
         default:
