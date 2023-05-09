@@ -1,48 +1,33 @@
 .header {
-    display: grid;
-    grid-template-columns: 1fr 290px 1fr;
-    background: #1C1C21;
-    min-width: 1240px;
-    padding: 16px 0 16px 0;
-}
-
-.logo{
-    align-self: center;
-    justify-self: center;
-}
-
-.nav{
-    display: flex;
-    justify-content:  flex-end;
-}
-
-.icon{
-    margin-right: 8px;
-}
-.item{
-    display: flex;
     align-items: center;
-    border-radius: 50%;
-    padding: 16px 20px 16px 20px;
-    margin-right: 8px;
-
-}
-.item:hover{
-    cursor: pointer ;
-}
-.item:last-child{
-    margin-right: 112px;
-}
-
-
-.user{
+    background-color: #1c1c21;
     display: flex;
-    border-radius: 50%;
-    padding: 16px 20px 16px 20px;
-    margin-left: 289px;
-    justify-self:  start;
+    position: relative;
 }
 
-.user:hover{
-    cursor: pointer ;
+
+.navigationMenu {
+    display: grid;
+    grid-template-columns: repeat(2, auto) 1fr;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.logo {
+    height: 50px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo > svg {
+    height: 100%;
 }

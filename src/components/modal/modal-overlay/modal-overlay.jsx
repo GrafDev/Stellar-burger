@@ -1,19 +1,27 @@
 import '../modal.module.css'
-import {useContext} from "react";
 import style from './modal-overlay.module.css';
-import contexts from "../../../utils/contexts";
 import PropTypes from "prop-types";
+import {useDispatch} from "react-redux";
+import {unsetCurrentIngredient} from "../../../redux/features/currentIngredient/currentIngredientSlice";
+import {unsetToolOrder} from "../../../redux/features/order/orderSlice";
 
 
 function ModalOverlay(props) {
-	const value = useContext(contexts);
 
+	const dispatch = useDispatch();
 
-	const handlerClick= (event)=>{
-		event.target.id==='targetOverlay' && value.closeModal();
+	const closeModal = () => {
+		dispatch(unsetToolOrder())
+		dispatch(unsetCurrentIngredient())
 	}
+	const handlerClick = (event) => {
+		event.target.id === 'targetOverlay' &&
+		closeModal()
+	};
+
+
 	return (
-		<div className={style.overlay} id='targetOverlay' onClick={handlerClick} >
+		<div className={style.overlay} id='targetOverlay' onClick={handlerClick}>
 			{props.children}
 		</div>
 	)

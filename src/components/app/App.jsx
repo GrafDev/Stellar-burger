@@ -1,96 +1,64 @@
 import React, {useEffect, useState} from "react";
 import AppHeader from "../app-header/app-header";
-import style from "./App.module.css";
-
+import styles from "./App.module.css";
+import BurgerIngredients from '../burger-ingredient/burger-igredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
-import BurgerIngredients from '../burger-ingredients/burger-ingredients';
-import readData from "../../utils/read-data";
-import contexts from "../../utils/contexts";
 import Modal from "../modal/modal";
 import OrderDetails from "../order-details/order-details";
 import IngredientDetails from "../ingredient-details/ingredient-details";
+import {useDispatch, useSelector} from "react-redux";
+import {HTML5Backend} from "react-dnd-html5-backend";
+import {DndProvider} from "react-dnd";
+import classNames from "classnames";
+import {textLarge} from "../../utils/themes";
+import {getIngredients} from "../../redux/features/ingredients/ingredientsSlice";
+import Spinner from "../spinner/spinner";
+import {getHasError, getIsLoading} from "../../redux/features/ingredients/ingredients-selectors";
+import {getIsModalOrder} from "../../redux/features/order/order-selectors";
+import {getIsModalIngredient} from "../../redux/features/currentIngredient/current-ingredient-selectors";
 
 
 function App() {
-	const [state, setState] = useState({
-		isLoading: true,
-		hasError: false,
-		data: []
-	})
 
-	const [currentIngredient, setCurrentIngredient] = useState(null);
-	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [isOrder, setIsOrder] = useState(false);
-	const [isIngredients, setIsIngredients] = useState(false);
-	const [total,setTotal]=useState(74441);
+	const dispatch = useDispatch();
+	const isOrder = useSelector(getIsModalOrder)
+	const isLoading = useSelector(getIsLoading)
+	const hasError = useSelector(getHasError)
 
-
-
-	const openModal = (checkModal, data) => {
-		if (checkModal === 'Order') {
-			setIsOrder(true);
-		} else if (checkModal === 'Ingredients') {
-			setIsIngredients(true);
-			setCurrentIngredient(data);
-		}
-		setIsModalOpen(true);
-	}
-
-	const closeModal = () => {
-		setIsOrder(false)
-		setIsIngredients(false)
-		setIsModalOpen(false)
-	}
+	const isIngredient = useSelector(getIsModalIngredient)
+	const isModal = isOrder || isIngredient;
 
 	useEffect(() => {
-		readData(state, setState)
-	}, [])
-
-
-	const {data, isLoading, hasError} = state;
-	const order = data;
-	//setTotal(useMemo(() => order.reduce((sum, elem) => sum + elem.price, 0), [order]));
-
-
-	const value = {
-		openModal,
-		closeModal,
-		currentIngredient,
-		total
-	}
-
-
-
+		{dispatch(getIngredients())}
+	}, [dispatch])
 
 
 	return (
-		<contexts.Provider value={value}>
-			<div className={style.App}>
-				<header className={style.App}>
-					<AppHeader/>
-				</header>
-				{isLoading && 'Загрузка...'}
-				{hasError && 'Произошла ошибка'}
-				{!isLoading &&
-					!hasError &&
-					data.length &&
-					<main>
-						<div className={`${style.ingredientSection} mr-10`}>
-							<BurgerConstructor data={data}/>
-						</div>
-						<div className={style.constructorSection}>
-							<BurgerIngredients order={order}/>
-						</div>
-					</main>
-				}
-				{isModalOpen &&
-					(<Modal>
+		<div className={styles.App}>
+			<AppHeader/>
+			{isLoading && <Spinner/>}
+			{hasError && 'Произошла ошибка'}
+			{!isLoading &&
+				!hasError &&
+				<main className={classNames('container', styles.main)}>
+					<DndProvider backend={HTML5Backend}>
+						<div className={`${styles.title} ${textLarge}`}>Соберите бургер</div>
+						<BurgerIngredients/>
+						<BurgerConstructor/>
+					</DndProvider>
+				</main>
+
+			}
+
+			{isModal &&
+				(<Modal>
+					<>
 						{isOrder && <OrderDetails/>}
-						{isIngredients && <IngredientDetails/>}
-					</Modal>)
-				}
-			</div>
-		</contexts.Provider>
+						{isIngredient && <IngredientDetails/>}
+					</>
+				</Modal>)
+			}
+		</div>
 	);
 }
 

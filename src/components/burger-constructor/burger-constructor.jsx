@@ -1,36 +1,85 @@
-import React, {useState} from "react";
+import React from "react";
 import styles from "./burger-constructor.module.css"
-import {textLarge} from "../../utils/themes";
-import BurgerTab from "./burger-tub/burger-tab";
-import IngredientCarts from "./ingredient-carts/ingredient-carts";
-import PropTypes from "prop-types";
-import {typeCart} from "../../utils/types";
-import ModalOverlay from "../modal/modal-overlay/modal-overlay";
-import Modal from "../modal/modal";
+import TotalCost from "./total-cost/total-cost";
+import {useDispatch, useSelector} from "react-redux";
+
+import {ConstructorElement} from "@ya.praktikum/react-developer-burger-ui-components";
+import {useDrop} from "react-dnd";
+
+import classNames from "classnames";
+import EmptyConstructorElement from "./empty-constructor-element/empty-constructor-element";
+import {increaseConstructor} from "../../redux/features/constructor/constructorSlice";
+import ConctructorCart from "./constructor-cart/conctructor-cart";
+import {getConstructorIngredients} from "../../redux/features/constructor/constructor-selectors";
+import {getIngredients} from "../../redux/features/ingredients/ingredients-selectors";
+
+function BurgerConstructor() {
+	const dispatch = useDispatch();
+	const store= useSelector(getIngredients)
+	const order = useSelector(getConstructorIngredients)
+	const pieces = order.pieces;
+	const bun = order.bun
+	const isEmptyPieces=!order;
+	const [{isHover}, dropTarget] = useDrop({
+		accept: 'cart',
+		drop(itemId) {
+			const elem = store.find(item => item._id === itemId.id)
+			return (dispatch(increaseConstructor(elem)))
+		},
+		collect: monitor => ({
+			isHover: monitor.isOver(),
+		})
+
+	})
+
+	const borderColor = isHover ? 'rgba(51, 51, 255, 0.25)' : 'transparent'
+
+	const componentBun = (type) => {
+		return (<div className={styles.bun}>
+			{order.bun !== null ?
+				<ConstructorElement
+					key={bun._id + '1'}
+					text={bun.name}
+					type={type}
+					price={bun.price}
+					isLocked={true}
+					thumbnail={bun.image_mobile}
+				/> :
+				<EmptyConstructorElement type={type} /> }
+		</div>)
+	}
 
 
-function BurgerConstructor(props) {
-	const {data}=props;
-	const {currentType,setCurrentType}=useState('bun');
+	const componentPieces =
+		<div className={styles.pieces}>
+			{
+				pieces.length > 0 ?
+					pieces.map((elem,index) =>
+						<ConctructorCart elem={elem} key={elem.constructorId} index={index}/>
+					) :
+					<div className={styles.pieces}>
+						<EmptyConstructorElement type={''}/>
+					</div>}
+		</div>
 
 
-	let burgers = data;
 	return (
-		<div className={styles.section}>
-			<div className={`${styles.title} ${textLarge}`}>Соберите бургер</div>
-			<div className={styles.tab}><BurgerTab current={currentType}/></div>
-			<div className={styles.ingredients}>
-				<IngredientCarts data={data} type={'bun'} bill={burgers} >Булки</IngredientCarts>
-				<IngredientCarts data={data} type={'main'} bill={burgers} >Соусы</IngredientCarts>
-				<IngredientCarts data={data} type={'sauce'} bill={burgers} >Начинка</IngredientCarts>
+		<div className={styles.constructor}>
+			<div ref={dropTarget} className={classNames(
+				styles.target,
+				isHover && styles.targetIsHover,)} style={{borderColor}}>
+				<div className={classNames(
+					styles.list,
+					isEmptyPieces && styles.emptyList
+				)}>
+					{componentBun('top')}
+					{componentPieces}
+					{componentBun("bottom")}
+				</div>
 			</div>
+			<TotalCost/>
 		</div>
 	)
-
-}
-
-BurgerConstructor.propTypes = {
-	data: PropTypes.arrayOf(PropTypes.shape(typeCart)).isRequired,
 }
 
 export default BurgerConstructor;

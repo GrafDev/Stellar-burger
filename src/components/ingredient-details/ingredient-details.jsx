@@ -1,20 +1,18 @@
-import React, {useContext} from "react";
+import React from "react";
 import style from './ingredient-details.module.css'
-import Context from "../../utils/contexts";
 import {
 	digitsInactiveDefault,
 	inactiveDefault,
 	textLarge,
 	textMedium
 } from "../../utils/themes";
+import {useSelector} from "react-redux";
+import {getCurrentIngredient} from "../../redux/features/currentIngredient/current-ingredient-selectors";
 
 function IngredientDetails() {
 
 
-	const value = useContext(Context);
-
-	const data = value.currentIngredient;
-
+	const data = useSelector(getCurrentIngredient);
 	const Ingredient = (text, part) => {
 		return (
 			<div className={style.ingredient}>
@@ -27,7 +25,7 @@ function IngredientDetails() {
 	return (
 		<div>
 			<div className={style.title}>
-					<span className={`${textLarge} ${style.text}`}>Детали ингредиента</span>
+				<span className={`${textLarge} ${style.text}`}>Детали ингредиента</span>
 			</div>
 			<div className={style.modal}>
 				<img className={style.image} style={{paddingBottom: '16px'}} src={data.image} alt={'atribute'}/>
