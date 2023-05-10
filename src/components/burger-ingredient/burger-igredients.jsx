@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useMemo, useRef, useState} from "react";
 import styles from "./burger-ingredients.module.css"
 import {textLarge, textMedium} from "../../utils/themes";
 import IngredientCarts from "./ingredient-carts/ingredient-carts";
@@ -33,6 +33,7 @@ function BurgerIngredients() {
     const observer = new IntersectionObserver(callback, options)
 
 
+
     const changeTab = (e) => {
         setCurrentType(e)
         switch (e) {
@@ -60,7 +61,9 @@ function BurgerIngredients() {
         observer.observe(bunRef.current)
     }
 
-    const ingredients=(type)=>data.filter(elem => elem.type === type)
+    const bunIngredient=useMemo(()=>data.filter(elem => elem.type === BUN),[data])
+    const sauceIngredient=useMemo(()=>data.filter(elem => elem.type === SAUCE),[data])
+    const mainIngredient=useMemo(()=>data.filter(elem => elem.type === MAIN),[data])
 
 
     return (
@@ -78,7 +81,7 @@ function BurgerIngredients() {
                     )}>Булки
                     </div>
                     <div className={styles.items}>
-                        <IngredientCarts data={ingredients(BUN)}/>
+                        <IngredientCarts data={bunIngredient}/>
                     </div>
                     <div ref={sauceRef} className={classNames(
                         textMedium, 'mb-10',
@@ -86,7 +89,7 @@ function BurgerIngredients() {
                     )}>Соусы
                     </div>
                     <div className={styles.items}>
-                        <IngredientCarts data={ingredients(SAUCE)}/>
+                        <IngredientCarts data={sauceIngredient}/>
                     </div>
                     <div ref={mainRef} className={classNames(
                         textMedium, 'mb-10',
@@ -94,7 +97,7 @@ function BurgerIngredients() {
                     )}>Начинка
                     </div>
                     <div className={styles.items}>
-                        <IngredientCarts data={ingredients(MAIN)}/>
+                        <IngredientCarts data={mainIngredient}/>
                     </div>
                 </div>
             </div>
