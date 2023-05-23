@@ -5,10 +5,6 @@ a{
   all: unset;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 
 main{
   display: flex;
@@ -18,11 +14,11 @@ main{
   padding-top: 40px;
 }
 
-.section01{
+.ingredientSection{
   width: 600px;
   height: 100%;
 }
-.section02{
+.constructorSection{
   width: 600px;
   height: calc(100vh - 148px);
 }

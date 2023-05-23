@@ -7,6 +7,12 @@
     gap: 4px;
     width: 272px;
     height: 208px;
+    border-radius: 30px;
+    /*-moz-user-select: none;*/
+    /*user-select: none;*/
+}
+.cart:hover{
+    background: rgba(48, 48, 55, 0.79);
 }
 
 .count{
@@ -16,18 +22,11 @@
     justify-content: center;
     width: 32px;
     height: 32px;
-    right: 0px;
-    top: 0px;
+    right: 0;
+    top: 0;
     background: #4C4CFF;
     border: 1px dashed #4C4CFF;
     border-radius: 50%;
-
-}
-
-.img {
-    position: center;
-    width: 240px;
-    height: 120px;
 
 }
 
@@ -47,8 +46,8 @@
 
 .name {
     height: 24px;
-    left: 0%;
-    right: 0%;
+    left: 0;
+    right: 0;
     bottom: 24px;
     text-align: center;
 }

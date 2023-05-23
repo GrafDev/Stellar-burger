@@ -2,27 +2,32 @@ import React from "react";
 import {ConstructorElement,DragIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./ingredient-parts.module.css"
 import PropTypes from "prop-types";
-import {typeCart} from "../../../utils/types";
 
 function IngredientParts(props){
-	let elem=props.piece;
-	let type=props.type
+	const elem=props.piece;
+	const type=props.type
+	const getText=(type,name)=>{
+		if (type==='top'){ return `${name} (верх)`}
+		else if(type==='bottom') {return `${name} (низ)`}
+		else return name
+		}
+
+
 	return(
 		<div className={styles.box}>
 			{type===''? <div className={styles.icon}><DragIcon  type="primary" /></div>:<div className={styles.zero}></div>}
 			<ConstructorElement
-				text={elem.name}
-				type={elem.type}
+				text={getText(type,elem.name)}
+				type={type}
 				price={elem.price}
+				isLocked={type!==''}
 				thumbnail={elem.image_mobile}
 			/>
 		</div>
 	)
 }
 
-
 IngredientParts.propTypes={
-	part: PropTypes.shape(typeCart),
-	types:PropTypes.oneOf(['top', 'bottom', '']),
+	type:PropTypes.oneOf(['top', 'bottom', '']).isRequired,
 }
 export default IngredientParts;

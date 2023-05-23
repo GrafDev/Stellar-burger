@@ -5,6 +5,8 @@
     background: #131316;
     height: calc(100% - 100px);
     padding-top: 100px;
+    /*-moz-user-select: none;*/
+    /*user-select: none;*/
 }
 
 .bun{
@@ -32,29 +34,9 @@
     padding-left: 16px;
     gap: 10px;
 }
-.part{
-    height: 100px;
-    color: #61dafb;
-}
-
-.button{
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap:40px;
-    bottom: 52px;
-    right: 16px;
-}
 
 .icon > svg{
     width: 33px;
     height: 33px;
 }
 
-.total{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap:4px
-}

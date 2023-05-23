@@ -8,8 +8,8 @@ import {typeCart} from "../../utils/types";
 
 
 function BurgerIngredients(props){
-    let pieces=props.order.filter(elem=>elem.type!='bun')
-    let bun=props.order.find(elem=>elem.type==='bun')
+    const pieces=props.order.filter(elem=>elem.type!=='bun')
+    const bun=props.order.find(elem=>elem.type==='bun')
     return(
     <div className={styles.section}>
         <div className={styles.ingredients}>
@@ -25,15 +25,13 @@ function BurgerIngredients(props){
             <IngredientParts type={'bottom'} piece={bun} key={bun.id}></IngredientParts>
             </div>
         </div>
-    <TotalCost total={props.total}/>
+    <TotalCost/>
 
     </div>
 )
 }
 
 BurgerIngredients.propTypes={
-    pieces:PropTypes.arrayOf(PropTypes.shape(typeCart)),
-    total:PropTypes.number
-
+    pieces:PropTypes.arrayOf(PropTypes.shape(typeCart).isRequired)
 }
 export default BurgerIngredients;

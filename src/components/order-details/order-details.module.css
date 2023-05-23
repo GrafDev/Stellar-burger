@@ -1,0 +1,64 @@
+.modal {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+}
+
+.digit {
+    margin-top: 120px;
+    height: 120px;
+    margin-bottom: 32px;
+}
+
+.text01 {
+    margin-bottom: 60px;
+}
+
+.checkMark {
+    position: relative;
+    justify-content: center;
+    height: 120px;
+    width: 120px;
+    margin-bottom: 60px;
+    padding: 11px;
+}
+
+
+.checkMarkIcon > svg {
+    position: absolute;
+    left: 28.04%;
+    right: 27.1%;
+    top: 26.47%;
+    bottom: 26.47%;
+    width: 48px;
+    height: 48px;
+    z-index: 2;
+
+}
+.vector{
+    position: absolute;
+    opacity: 50%;
+}
+
+.checkMarkIcon>svg:hover{
+    cursor: pointer ;
+    left: 24.04%;
+    right: 27.1%;
+    top: 21.47%;
+    bottom: 26.47%;
+    width: 60px;
+    height: 60px;
+
+}
+
+
+.text02 {
+    margin-bottom: 8px;
+}
+
+.text03 {
+    margin-bottom: 120px;
+}
+
+

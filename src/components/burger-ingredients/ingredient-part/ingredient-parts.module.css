@@ -17,3 +17,6 @@
 .zero{
     padding-right: 64px;
 }
+.box:hover{
+    --background-element: #3e3e47;
+}

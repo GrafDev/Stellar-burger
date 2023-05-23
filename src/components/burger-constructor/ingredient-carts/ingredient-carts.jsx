@@ -8,7 +8,7 @@ import styles from "./ingredient-carts.module.css"
 
 
 function IngredientCarts(props) {
-	let carts = (props.data.filter(elem => elem.type === props.type))
+	const carts = (props.data.filter(elem => elem.type === props.type))
 	return (
 		<div>
 			<div className={`${textMedium} mb-10`}>{props.children}</div>
@@ -23,8 +23,8 @@ function IngredientCarts(props) {
 }
 
 IngredientCarts.propTypes={
-	data:PropTypes.arrayOf(PropTypes.shape(typeCart)),
-	children:PropTypes.string
+	data:PropTypes.arrayOf(PropTypes.shape(typeCart)).isRequired,
+	children:PropTypes.string.isRequired
 }
 
 export default IngredientCarts;
