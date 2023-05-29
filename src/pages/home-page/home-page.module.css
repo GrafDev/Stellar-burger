@@ -1,0 +1,16 @@
+.main {
+    display: grid;
+    grid-template-areas:
+		'title title'
+		'items carts';
+    grid-template-rows: auto 1fr;
+    gap: 20px 40px;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+
+.title {
+    grid-area: title;
+    user-select: none;
+}

@@ -16,50 +16,44 @@ import Spinner from "../spinner/spinner";
 import {getHasError, getIsLoading} from "../../redux/features/ingredients/ingredients-selectors";
 import {getIsModalOrder} from "../../redux/features/order/order-selectors";
 import {getIsModalIngredient} from "../../redux/features/currentIngredient/current-ingredient-selectors";
+import HomePage from "../../pages/home-page/home-page";
+import {Router} from "react-router-dom";
+import AllRouter from "../../router/router";
 
 
 function App() {
 
-	const dispatch = useDispatch();
-	const isOrder = useSelector(getIsModalOrder)
-	const isLoading = useSelector(getIsLoading)
-	const hasError = useSelector(getHasError)
+    const dispatch = useDispatch();
+    const isOrder = useSelector(getIsModalOrder)
+    const isLoading = useSelector(getIsLoading)
+    const hasError = useSelector(getHasError)
 
-	const isIngredient = useSelector(getIsModalIngredient)
-	const isModal = isOrder || isIngredient;
+    const isIngredient = useSelector(getIsModalIngredient)
+    const isModal = isOrder || isIngredient;
 
-	useEffect(() => {
-		{dispatch(getIngredients())}
-	}, [dispatch])
+    useEffect(() => {
+        {
+            dispatch(getIngredients())
+        }
+    }, [dispatch])
 
 
-	return (
-		<div className={styles.App}>
-			<AppHeader/>
-			{isLoading && <Spinner/>}
-			{hasError && 'Произошла ошибка'}
-			{!isLoading &&
-				!hasError &&
-				<main className={classNames('container', styles.main)}>
-					<DndProvider backend={HTML5Backend}>
-						<div className={`${styles.title} ${textLarge}`}>Соберите бургер</div>
-						<BurgerIngredients/>
-						<BurgerConstructor/>
-					</DndProvider>
-				</main>
+    return (
+        <div className={styles.App}>
+            <AppHeader/>
+            {/*<AllRouter/>*/}
+            <HomePage/>
 
-			}
-
-			{isModal &&
-				(<Modal>
-					<>
-						{isOrder && <OrderDetails/>}
-						{isIngredient && <IngredientDetails/>}
-					</>
-				</Modal>)
-			}
-		</div>
-	);
+            {isModal &&
+                (<Modal>
+                    <>
+                        {isOrder && <OrderDetails/>}
+                        {isIngredient && <IngredientDetails/>}
+                    </>
+                </Modal>)
+            }
+        </div>
+    );
 }
 
 export default App;
