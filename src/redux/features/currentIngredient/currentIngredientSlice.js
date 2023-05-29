@@ -10,7 +10,6 @@ const currentIngredientSlice = createSlice({
 	initialState,
 	reducers: {
 		setToolCurrentIngredient: (state, action) => {
-			console.log(action.payload)
 			state.ingredient = action.payload
 			state.isModalIngredient = true
 		},

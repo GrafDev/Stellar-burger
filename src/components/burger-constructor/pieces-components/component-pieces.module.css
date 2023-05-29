@@ -1,0 +1,10 @@
+.pieces {
+    display: flex;
+    justify-self: flex-start;
+    flex-direction: column;
+    height: 100%;
+    scrollbar-gutter: stable;
+    padding-right: 8px;
+    gap: 8px;
+    overflow: auto;
+}

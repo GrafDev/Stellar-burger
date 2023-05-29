@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {v4} from "uuid";
+import {BUN} from "../../../utils/constants";
 
 
 const initialState = {
@@ -17,7 +18,7 @@ const constructorSlice = createSlice({
 	initialState,
 	reducers: {
 		increaseConstructor: (state, action) => {
-			if (action.payload.type === 'bun') {
+			if (action.payload.type === BUN) {
 				state.ingredients.bun = action.payload
 			} else {
 				let _constructorIngredient = {
