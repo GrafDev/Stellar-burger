@@ -8,7 +8,7 @@ import {getConstructorIngredients} from "../../redux/features/constructor/constr
 import {getIngredients} from "../../redux/features/ingredients/ingredients-selectors";
 import Bun from "./pieces-components/component-bun";
 import Pieces from "./pieces-components/component-pieces";
-import {BOTTOM, TOP} from "../../utils/constants";
+import {BOTTOM, TOP} from "../../utils/constants/ingredient-constants";
 
 function BurgerConstructor() {
 	const dispatch = useDispatch();

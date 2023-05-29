@@ -6,7 +6,7 @@ import {useSelector} from "react-redux";
 import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 import classNames from "classnames";
 import {getIngredients} from "../../redux/features/ingredients/ingredients-selectors";
-import {BUN, MAIN, SAUCE} from "../../utils/constants";
+import {BUN, MAIN, SAUCE} from "../../utils/constants/ingredient-constants";
 
 
 function BurgerIngredients() {

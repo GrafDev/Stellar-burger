@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {v4} from "uuid";
-import {BUN} from "../../../utils/constants";
+import {BUN} from "../../../utils/constants/ingredient-constants";
 
 
 const initialState = {

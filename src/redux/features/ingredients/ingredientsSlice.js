@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from 'axios';
+import {DATA_URL} from "../../../utils/constants/outlink-constants";
 
-const DATA_URL = 'https://norma.nomoreparties.space/api/ingredients';
 
 const initialState = {
 	ingredients: [],

@@ -9,7 +9,7 @@ import {useDrag} from "react-dnd";
 import classNames from "classnames";
 import {setToolCurrentIngredient} from "../../../../redux/features/currentIngredient/currentIngredientSlice";
 import {getConstructorIngredients} from "../../../../redux/features/constructor/constructor-selectors";
-import {BUN} from "../../../../utils/constants";
+import {BUN} from "../../../../utils/constants/ingredient-constants";
 
 
 function Cart({cart}) {

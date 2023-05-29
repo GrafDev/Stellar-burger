@@ -1,5 +1,5 @@
 import styles from './empty-constructor-element.module.css'
-import {BOTTOM, TOP} from "../../../utils/constants";
+import {BOTTOM, TOP} from "../../../utils/constants/ingredient-constants";
 function EmptyConstructorElement (props) {
     const type=props.type;
     let style
