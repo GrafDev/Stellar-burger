@@ -14,6 +14,12 @@
 }
 
 
+.LastNavItem{
+    display: flex;
+    justify-self: flex-end;
+}
+
+
 .logo {
     height: 50px;
 
@@ -30,4 +36,8 @@
 
 .logo > svg {
     height: 100%;
+}
+
+active{
+
 }
