@@ -5,7 +5,7 @@ import {
 	inactiveDefault,
 	textLarge,
 	textMedium
-} from "../../utils/themes";
+} from "../../utils/constants/text-style-constants";
 import {useSelector} from "react-redux";
 import {getCurrentIngredient} from "../../redux/features/currentIngredient/current-ingredient-selectors";
 

@@ -1,4 +1,4 @@
-import {digitsMedium} from "../../../utils/themes";
+import {digitsMedium} from "../../../utils/constants/text-style-constants";
 import {Button, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import React, {useMemo} from "react";
 import styles from "./total-cost.module.css"

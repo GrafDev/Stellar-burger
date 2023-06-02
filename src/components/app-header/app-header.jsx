@@ -12,13 +12,9 @@ function AppHeader() {
         <div className={styles.header}>
             <div className={'container'}>
                 <div className={styles.navigationMenu}>
-
                     <NavItem links={'/'} name={'Конструктор'} id={BURGER}/>
-
                     <NavItem links={LIST_LINK} name={'Лента заказа'} id={LIST}/>
-
                     <NavItem links={PROFILE_LINK} className={styles.LastNavItem} name={'Личный кабинет'} id={PROFILE}/>
-
                 </div>
 
                 <div className={styles.logo}>

@@ -11,3 +11,11 @@
     display: flex;
     justify-self: flex-end;
 }
+
+.inactive > svg {
+    fill: #8585AD;
+}
+
+.active > svg {
+    fill: #F2F2F3;
+}

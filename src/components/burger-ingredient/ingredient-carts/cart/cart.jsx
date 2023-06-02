@@ -1,4 +1,4 @@
-import {digitsDefault} from "../../../../utils/themes";
+import {digitsDefault} from "../../../../utils/constants/text-style-constants";
 import {Counter, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import React, {useMemo, useState} from "react";
 import PropTypes from "prop-types";

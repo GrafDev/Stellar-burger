@@ -1,30 +1,36 @@
 import styles from "./nav-item.module.css";
-import React from "react";
-import {activeDefault, inactiveDefault} from "../../../utils/themes";
-import {BurgerIcon, ListIcon, ProfileIcon} from "@ya.praktikum/react-developer-burger-ui-components";
+import React, {useCallback, useMemo, useState} from "react";
+import {activeDefault, inactiveDefault} from "../../../utils/constants/text-style-constants";
+import {BurgerIcon, CurrencyIcon, ListIcon, ProfileIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import {BURGER, LIST, PROFILE} from "../../../utils/constants/ingredient-constants";
-import {Link} from "react-router-dom";
-
+import {Link, NavLink, useMatch} from "react-router-dom";
 
 
 const NavItem = (props) => {
+    const {id, name, links} = props;
+    const icons = new Map()
+    icons.set(BURGER, <BurgerIcon type=''/>)
+    icons.set(LIST, <ListIcon type=''/>)
+    icons.set(PROFILE, <ProfileIcon type=''/>)
 
-	const {id, name,links} = props;
-	const active=true; //TODO: next to check
-	const icons = new Map()
-	icons.set(BURGER, <BurgerIcon type={active ? 'primary' : 'secondary'}/>)
-	icons.set(LIST, <ListIcon type={active ? 'primary' : 'secondary'}/>)
-	icons.set(PROFILE, <ProfileIcon type={active ? 'primary' : 'secondary'}/>)
+    // let active=useMemo((_active)=>{
+    //     active=_active
+    // },[])
+    const activeSet = ({isActive}) => {
+        let _style = isActive ? activeDefault : inactiveDefault
+        const isActiveIcon = isActive ? styles.active : styles.inactive
+        _style = _style + ' ' + isActiveIcon + ' ' + styles.navItem
+        return _style
+    }
 
 
-	return (
-		<Link className={styles.navItem}  to={links}>
-			<div>
-				{icons.get(id)}
-			</div>
-			<span className={active ? activeDefault : inactiveDefault}>{name}</span>
-		</Link>
-	)
+    return (
+        <NavLink className={activeSet}
+                 to={links}>
+            {icons.get(id)}
+            {name}
+        </NavLink>
+    )
 }
 export default NavItem;
 

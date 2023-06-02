@@ -2,7 +2,7 @@ import Spinner from "../../components/spinner/spinner";
 import classNames from "classnames";
 import {DndProvider} from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
-import {textLarge} from "../../utils/themes";
+import {textLarge} from "../../utils/constants/text-style-constants";
 import BurgerIngredients from "../../components/burger-ingredient/burger-igredients";
 import BurgerConstructor from "../../components/burger-constructor/burger-constructor";
 import React from "react";

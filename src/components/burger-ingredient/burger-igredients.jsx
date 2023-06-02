@@ -1,6 +1,6 @@
 import React, {useEffect, useMemo, useRef, useState} from "react";
 import styles from "./burger-ingredients.module.css"
-import {textLarge, textMedium} from "../../utils/themes";
+import {textLarge, textMedium} from "../../utils/constants/text-style-constants";
 import IngredientCarts from "./ingredient-carts/ingredient-carts";
 import {useSelector} from "react-redux";
 import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";

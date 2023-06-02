@@ -1,5 +1,5 @@
 import React from "react";
-import {digitsLarge, inactiveDefault, textDefault, textMedium} from "../../utils/themes";
+import {digitsLarge, inactiveDefault, textDefault, textMedium} from "../../utils/constants/text-style-constants";
 import style from "./order-details.module.css"
 import vector from '../../images/vector.svg'
 import {CheckMarkIcon} from "@ya.praktikum/react-developer-burger-ui-components";
