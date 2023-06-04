@@ -1,0 +1,34 @@
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    column-gap: 60px;
+}
+
+.aside {
+    padding-top: 80px;
+}
+
+.buttons {
+    margin-bottom: 80px;
+}
+
+
+.link {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    color: var(--inactive-color);
+    height: 64px;
+}
+
+.active {
+    composes: link;
+    color: var(--active-color);
+}
+.link:hover {
+    color: var(--active-color);
+}

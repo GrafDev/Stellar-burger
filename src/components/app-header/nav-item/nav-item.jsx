@@ -16,7 +16,7 @@ const NavItem = (props) => {
     // let active=useMemo((_active)=>{
     //     active=_active
     // },[])
-    const activeSet = ({isActive}) => {
+    const className = ({isActive}) => {
         let _style = isActive ? activeDefault : inactiveDefault
         const isActiveIcon = isActive ? styles.active : styles.inactive
         _style = _style + ' ' + isActiveIcon + ' ' + styles.navItem
@@ -25,7 +25,7 @@ const NavItem = (props) => {
 
 
     return (
-        <NavLink className={activeSet}
+        <NavLink className={className}
                  to={links}>
             {icons.get(id)}
             {name}
