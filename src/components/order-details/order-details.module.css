@@ -12,29 +12,32 @@
 }
 
 .text01 {
-    margin-bottom: 60px;
+
 }
 
 .checkMark {
     position: relative;
     justify-content: center;
-    height: 120px;
-    width: 120px;
-    margin-bottom: 60px;
-    padding: 11px;
-
+    align-content: center;
+    height: 180px;
+    width: 180px;
+    transform: scale(1.0, 1.0);
+    transition: transform 0.3s;
+    opacity: 70%;
 }
+
 
 
 .checkMarkIcon > svg {
     position: absolute;
-    left: 28.04%;
+    left: 35.04%;
     right: 27.1%;
-    top: 26.47%;
+    top: 35.47%;
     bottom: 26.47%;
     width: 48px;
     height: 48px;
     z-index: 2;
+    opacity: 100%;
     transform: scale(1.0, 1.0);
     transition: transform 0.3s;
 }
@@ -44,17 +47,10 @@
     transition: transform 0.3s;
 
 }
+
 .vector{
-    position: absolute;
-    opacity: 50%;
+    width: 180px;
 }
-
-.vector:hover{
-    opacity: 20%;
-}
-
-
-
 
 .text02 {
     margin-bottom: 8px;

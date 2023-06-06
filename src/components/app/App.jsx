@@ -9,6 +9,9 @@ import {getIngredients} from "../../redux/features/ingredients/ingredientsSlice"
 import {getIsModalOrder} from "../../redux/features/order/order-selectors";
 import {getIsModalIngredient} from "../../redux/features/currentIngredient/current-ingredient-selectors";
 import Routers from "../../router/routers";
+import Modal from "../modal/modal";
+import IngredientDetails from "../ingredient-details/ingredient-details";
+import OrderDetails from "../order-details/order-details";
 
 
 
@@ -30,14 +33,14 @@ function App() {
         <div className={styles.App}>
            <AppHeader/>
             <Routers/>
-            {/*{isModal &&*/}
-            {/*    (<Modal>*/}
-            {/*        <>*/}
-            {/*            {isOrder && <OrderDetails/>}*/}
-            {/*            {isIngredient && <IngredientDetails/>}*/}
-            {/*        </>*/}
-            {/*    </Modal>)*/}
-            {/*}*/}
+            {isModal &&
+                (<Modal>
+                    <>
+                        {isOrder && <OrderDetails/>}
+                        {isIngredient && <IngredientDetails/>}
+                    </>
+                </Modal>)
+            }
         </div>
     );
 }

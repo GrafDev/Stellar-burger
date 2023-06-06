@@ -2,6 +2,7 @@
     position: absolute;
     top: 100px;
     left:15px;
+    object-fit: cover;
     height: calc(100vh - 115px) ;
     width: calc(100vw - 30px);
 }

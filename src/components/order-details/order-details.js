@@ -1,7 +1,8 @@
 import React from "react";
 import {digitsLarge, inactiveDefault, textDefault, textMedium} from "../../utils/constants/text-style-constants";
 import style from "./order-details.module.css"
-import vector from '../../images/vector.svg'
+// import vector from '../../images/vector.svg'
+import burger from '../../images/burger-3.png'
 import {CheckMarkIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -26,7 +27,7 @@ function OrderDetails() {
 				<div className={style.checkMarkIcon} onClick={handlerOverlay}>
 					<CheckMarkIcon type={'primary'}/>
 				</div>
-				<img className={style.vector} src={vector} alt={'vector'}/>
+				<img className={style.vector} src={burger} alt={'vector'}/>
 			</div>
 			<div className={`${style.text02} ${textDefault}`}>Ваш заказ начали готовить</div>
 			<div className={`${style.text03} ${inactiveDefault}`}>Дождитесь готовности на орбитальной станции</div>
