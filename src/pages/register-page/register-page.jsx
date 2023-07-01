@@ -2,20 +2,28 @@ import {Button, EmailInput, Input, PasswordInput} from "@ya.praktikum/react-deve
 import useForm from "../../hooks/useForm";
 import {LOGIN_LINK} from "../../utils/constants/router-link-constants";
 import AuthorizationButton from "../../components/authorization-button/authorization-button";
+import {useDispatch} from "react-redux";
+// Styles are in the main index.css file
 
 
 const RegisterPage = () => {
 
-    const {form, handleForm} = useForm({
-        name: '',
-        email: '',
-        password: '',
+    const dispatch = useDispatch()
+
+    const { form, handleForm } = useForm({
+        name: null,
+        email: null,
+        password: null,
     })
 
-    const submitForm =
-        (e) => {
+    const submitForm = useCallback(
+        (e: React.FormEvent) => {
             e.preventDefault()
-        }
+
+            dispatch(handleRegister(form))
+        },
+        [dispatch, form],
+    )
 
 
     return (
@@ -25,7 +33,7 @@ const RegisterPage = () => {
                 <Input
                     type="text"
                     placeholder="Имя"
-                    onChange={handleForm}
+                    onChange={()=>handleForm()}
                     value={form.name}
                     name="name"
                     error={false}

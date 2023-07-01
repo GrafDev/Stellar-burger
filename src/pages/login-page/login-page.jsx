@@ -2,7 +2,7 @@ import {FORGOT_PASSWORD_LINK, REGISTER_LINK} from "../../utils/constants/router-
 import {Button, EmailInput, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components";
 import AuthorizationButton from "../../components/authorization-button/authorization-button";
 import useForms from "../../hooks/useForm";
-
+// Styles are in the main index.css file
 const LoginPage=()=>{
 
 	const { form, handleForm } = useForms({ email: '', password: '' })

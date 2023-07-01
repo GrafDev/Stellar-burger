@@ -1,15 +1,33 @@
 import {Button, EmailInput} from "@ya.praktikum/react-developer-burger-ui-components";
 import AuthorizationButton from "../../components/authorization-button/authorization-button";
-import {LOGIN_LINK} from "../../utils/constants/router-link-constants";
+import {LOGIN_LINK, RESET_PASSWORD_LINK} from "../../utils/constants/router-link-constants";
 import useForm from "../../hooks/useForm";
+import {forgotPassword} from "../../utils/authorization/forgot-password";
+import {useNavigate} from "react-router-dom";
+import {useCallback} from "react";
 
-const ForgotPasswordPage=()=>{
+// Styles are in the main index.css file
 
-    const { form, handleForm } = useForm({ email: '' })
 
-    const submitForm = (e) => {
-            e.preventDefault()
-        }
+const ForgotPasswordPage = () => {
+    const navigate = useNavigate()
+
+    const {form, handleForm} = useForm({
+            email: ''
+        })
+
+    const submitForm = useCallback((e) => {
+        e.preventDefault()
+        forgotPassword(form)
+            .then(() =>
+                navigate(RESET_PASSWORD_LINK, {
+                    state: {resetPassword: true},
+                }),
+            )
+            .catch(() => {
+                throw new Error('Error on submitting password-reset')
+            })
+    }, [navigate, form])
 
 
     return (

@@ -9,6 +9,7 @@ import React from "react";
 import {useSelector} from "react-redux";
 import {getHasError, getIsLoading} from "../../redux/features/ingredients/ingredients-selectors";
 import styles from './home-page.module.css'
+
 const HomePage=()=>{
     const isLoading = useSelector(getIsLoading)
     const hasError = useSelector(getHasError)

@@ -2,19 +2,35 @@ import {Button, Input, PasswordInput} from "@ya.praktikum/react-developer-burger
 import AuthorizationButton from "../../components/authorization-button/authorization-button";
 import useForm from "../../hooks/useForm";
 import {LOGIN_LINK} from "../../utils/constants/router-link-constants";
+import {useNavigate} from "react-router-dom";
+import {useCallback} from "react";
+import {resetPassword} from "../../utils/authorization/reset-password";
 
 const ResetPasswordPage=()=>{
+    const navigate = useNavigate()
+
 
     const { form, handleForm } = useForm({
         password: '',
         token: '',
     })
 
-    const submitForm =
+    const submitForm = useCallback(
         (e) => {
             e.preventDefault()
 
-        }
+            resetPassword(form)
+                .then((r) => {
+                    console.log(r.message)
+                    return navigate(LOGIN_LINK)
+                })
+                .catch(() => {
+                    throw new Error('Error on submitting ResetPasswordPage')
+                })
+        },
+        [form, navigate],
+    )
+
 
     return (
         <main className="container auth">
