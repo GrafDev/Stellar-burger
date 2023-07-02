@@ -1,8 +1,9 @@
 import {Button, EmailInput, Input, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components";
-import useForm from "../../hooks/useForm";
 import {LOGIN_LINK} from "../../utils/constants/router-link-constants";
 import AuthorizationButton from "../../components/authorization-button/authorization-button";
 import {useDispatch} from "react-redux";
+import {useCallback, useState} from "react";
+import {authUser} from "../../redux/features/user/userSlice";
 // Styles are in the main index.css file
 
 
@@ -10,20 +11,26 @@ const RegisterPage = () => {
 
     const dispatch = useDispatch()
 
-    const { form, handleForm } = useForm({
+
+    const [form,setForm]=useState({
         name: null,
         email: null,
+        token:null,
         password: null,
     })
+    const onChange=e=>{
+        setForm({...form,[e.target.name]: e.target.value})
+    }
 
     const submitForm = useCallback(
-        (e: React.FormEvent) => {
-            e.preventDefault()
-
-            dispatch(handleRegister(form))
+        (e) => {
+            e.preventDefault();
+            dispatch(authUser(form))
         },
-        [dispatch, form],
+        [dispatch,form]
     )
+
+
 
 
     return (
@@ -33,7 +40,7 @@ const RegisterPage = () => {
                 <Input
                     type="text"
                     placeholder="Имя"
-                    onChange={()=>handleForm()}
+                    onChange={onChange}
                     value={form.name}
                     name="name"
                     error={false}
@@ -46,11 +53,11 @@ const RegisterPage = () => {
                     name="email"
                     placeholder="E-mail"
                     value={form.email}
-                    onChange={handleForm}
+                    onChange={onChange}
                 />
 
                 <PasswordInput
-                    onChange={handleForm}
+                    onChange={onChange}
                     value={form.password}
                     name={'password'}
                 />

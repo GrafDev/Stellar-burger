@@ -1,3 +1,4 @@
+export const getUser=state => state.userStore
 export const getUserEmail=state => state.userStore.email
 export const getUserId=state => state.userStore.id
 
