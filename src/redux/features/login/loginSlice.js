@@ -5,9 +5,9 @@ const DATA_USERS_URL = 'https://norma.nomoreparties.space/api/ingredients';
 
 const initialState = {
 	user: {
-		name: '',
 		email: '',
 		password: '',
+		name: '',
 	},
 	hasError:false,
 	isLoading:false,

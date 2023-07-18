@@ -3,7 +3,8 @@ import {LOGIN_LINK} from "../../utils/constants/router-link-constants";
 import AuthorizationButton from "../../components/authorization-button/authorization-button";
 import {useDispatch} from "react-redux";
 import {useCallback, useState} from "react";
-import {authUser} from "../../redux/features/user/userSlice";
+import {rescueUser} from "../../redux/features/auth/authSlice";
+import {USER_REGISTRATION_URL} from "../../utils/constants/outlink-constants";
 // Styles are in the main index.css file
 
 
@@ -13,10 +14,10 @@ const RegisterPage = () => {
 
 
     const [form,setForm]=useState({
-        name: null,
-        email: null,
-        token:null,
-        password: null,
+        name: '',
+        email: '',
+        token:'',
+        password: '',
     })
     const onChange=e=>{
         setForm({...form,[e.target.name]: e.target.value})
@@ -25,7 +26,8 @@ const RegisterPage = () => {
     const submitForm = useCallback(
         (e) => {
             e.preventDefault();
-            dispatch(authUser(form))
+            console.log(form)
+            dispatch(rescueUser(form,'reg'))
         },
         [dispatch,form]
     )

@@ -15,7 +15,6 @@ import RegisterPage from "../pages/register-page/register-page";
 import IngredientsPage from "../pages/ingredients/ingredients-page";
 import ResetPasswordPage from "../pages/reset-password-page/reset-password-page";
 import ForgotPasswordPage from "../pages/forgot-password-page/forgot-password-page";
-import AppHeader from "../components/app-header/app-header";
 
 
 const Routers = () => {

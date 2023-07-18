@@ -3,7 +3,7 @@ import ingredientsSlice from "../features/ingredients/ingredientsSlice";
 import constructorSlice from "../features/constructor/constructorSlice";
 import currentIngredientSlice from "../features/currentIngredient/currentIngredientSlice";
 import orderSlice from "../features/order/orderSlice";
-import userSlice from "../features/user/userSlice";
+import authSlice from "../features/auth/authSlice";
 
 const stores=configureStore({
 	reducer:{
@@ -11,7 +11,7 @@ const stores=configureStore({
 		constructorStore: constructorSlice,
 		currentStore:currentIngredientSlice,
 		orderStore:orderSlice,
-		userStore:userSlice,
+		authStore:authSlice,
 	}
 })
 export default stores;

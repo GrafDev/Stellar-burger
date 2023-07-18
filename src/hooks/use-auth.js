@@ -1,5 +1,5 @@
 import {useSelector} from "react-redux";
-import {getUser} from "../redux/features/user/user-selectors";
+import {getUser} from "../redux/features/auth/auth-selectors";
 
 
 function useAuth(){
