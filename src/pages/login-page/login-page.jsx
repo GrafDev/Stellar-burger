@@ -3,7 +3,7 @@ import {Button, EmailInput, PasswordInput} from "@ya.praktikum/react-developer-b
 import AuthorizationButton from "../../components/authorization-button/authorization-button";
 import {useDispatch} from "react-redux";
 import {useCallback, useState} from "react";
-import {rescueUser} from "../../redux/features/auth/authSlice";
+import {registerUser} from "../../redux/features/auth/authSlice";
 // Styles are in the main index.css file
 const LoginPage=()=>{
 
@@ -22,7 +22,7 @@ const LoginPage=()=>{
 	const submitForm = useCallback(
 		(e) => {
 			e.preventDefault();
-			dispatch(rescueUser(form,'login'))
+			dispatch(registerUser(form,'login'))
 		},
 		[dispatch,form]
 	)

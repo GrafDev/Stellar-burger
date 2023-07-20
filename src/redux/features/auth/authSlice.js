@@ -5,7 +5,7 @@ import {setCookie} from "../../../utils/cookie";
 
 
 const initialState = {
-    user:{
+    user: {
         name: '',
         email: '',
         // token: '',
@@ -14,21 +14,35 @@ const initialState = {
     hasError: false,
 }
 
-export const rescueUser = createAsyncThunk(
+export const registerUser = createAsyncThunk(
     'auth/rescueUser',
-    async (form,registration, {rejectedWithValue, dispatch}) => {
+    async (form,{rejectWithValue,dispatch}) => {
 
-        const res = await axios.post(registration='reg'?USER_REGISTRATION_URL:USER_LOGIN_URL, registration='reg'?{
-            "email": form.email,
-            "password": form.password,
-            "name": form.name,
-        }:
-        {
-            "email": form.email,
-            "password": form.password,
-        })
-        console.log('res',registration ,res.data)
+        const res = await axios.post(USER_REGISTRATION_URL,
+            {
+                "email": form.email,
+                "password": form.password,
+                "name": form.name,
+            }
+        )
+        console.log('res.data: ', res.data)
         dispatch(setUser(res.data))
+        return res.data
+    }
+)
+
+export const loginUser = createAsyncThunk(
+    'auth/loginUser',
+    async (form,{rejectWithValue,dispatch}) => {
+
+        const res = await axios.post(USER_LOGIN_URL,
+            {
+                "email": form.email,
+                "password": form.password,
+            })
+        console.log('res.data-login:', res.data)
+        dispatch(setUser(res.data))
+        return res.data
     }
 )
 
@@ -39,12 +53,12 @@ const authSlice = createSlice({
 
     reducers: {
         setUser: (state, action) => {
+            console.log('_user',action.payload.user)
             state.user.name = action.payload.user.name;
-            state.user.email = action.payload.user.email;
-            const accessToken=action.payload.accessToken;
-            console.log(accessToken)
+            state.user.email =action.payload.user.email;
+            const accessToken = action.payload.accessToken;
+            console.log('access Token', accessToken)
             setCookie('accessToken', accessToken.split('Bearer ')[1])
-            // state.user.token = accessToken;
         },
         cleanUser: (state, action) => {
             state.user.name = null;
@@ -53,23 +67,42 @@ const authSlice = createSlice({
         }
     },
     extraReducers: builder => {
-        builder.addCase(rescueUser.pending, (state) => {
-            state.isLoading=true
-            state.hasError=false
-            console.log('authUser: pending')})
-            .addCase(rescueUser.fulfilled, (state) => {
-                state.isLoading=true
-                state.hasError=false
-                console.log('authUser: fulfilled')
+        builder
+            .addCase(registerUser.pending, (state) => {
+                state.isLoading = true
+                state.hasError = false
+                console.log('registerUser: pending')
             })
-            .addCase(rescueUser.rejected, (state) => {
-                state.isLoading=false
-                state.hasError= true
-                console.log('authUser: rejected')
+            .addCase(registerUser.fulfilled, (state) => {
+                state.isLoading = false
+                state.hasError = false
+                console.log('registerUser: fulfilled')
+            })
+            .addCase(registerUser.rejected, (state) => {
+                state.isLoading = false
+                state.hasError = true
+                console.log('registerUser: rejected')
+
+            })
+            .addCase(loginUser.pending, (state) => {
+                state.isLoading = true
+                state.hasError = false
+                console.log('loginUser: pending')
+            })
+            .addCase(loginUser.fulfilled, (state) => {
+                state.isLoading = true
+                state.hasError = false
+                console.log('loginUser: fulfilled')
+            })
+            .addCase(loginUser.rejected, (state) => {
+                state.isLoading = false
+                state.hasError = true
+                console.log('loginUser: rejected')
 
             })
             .addDefaultCase(() => {
             })
+
     }
 
 })
