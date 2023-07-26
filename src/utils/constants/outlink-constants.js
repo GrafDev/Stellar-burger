@@ -11,3 +11,6 @@ export const PASSWORD_RESET_RESET_URL=`${MAIN_URL}/password-reset/reset`
 export const USER_REGISTRATION_URL= `${MAIN_URL}/auth/register` // эндпоинт регистрации
 export const USER_LOGIN_URL= `${MAIN_URL}/auth/login`// эндпоинт авторизации
 
+export const USER_AUTH_URL = `${MAIN_URL}/auth/user` // эндпоинт получения и обновления данных пользователя.
+export const USER_LOGOUT_URL = `${MAIN_URL}/auth/logout` // эндпоинт для выхода из системы.
+

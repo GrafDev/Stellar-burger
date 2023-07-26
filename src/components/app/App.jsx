@@ -12,6 +12,7 @@ import Routers from "../../router/routers";
 import Modal from "../modal/modal";
 import IngredientDetails from "../ingredient-details/ingredient-details";
 import OrderDetails from "../order-details/order-details";
+import {getUser} from "../../redux/features/auth/authSlice";
 
 
 
@@ -24,6 +25,7 @@ function App() {
 
     useEffect(() => {
         {
+            dispatch(getUser())
             dispatch(getIngredients())
         }
     }, [dispatch])

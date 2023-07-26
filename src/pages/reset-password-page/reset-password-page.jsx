@@ -1,6 +1,6 @@
 import {Button, Input, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components";
 import AuthorizationButton from "../../components/authorization-button/authorization-button";
-import useForm from "../../hooks/useForm";
+import useForm from "../../hooks/use-form";
 import {LOGIN_LINK} from "../../utils/constants/router-link-constants";
 import {useNavigate} from "react-router-dom";
 import {useCallback} from "react";

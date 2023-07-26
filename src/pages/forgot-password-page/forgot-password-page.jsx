@@ -1,7 +1,7 @@
 import {Button, EmailInput} from "@ya.praktikum/react-developer-burger-ui-components";
 import AuthorizationButton from "../../components/authorization-button/authorization-button";
 import {LOGIN_LINK, RESET_PASSWORD_LINK} from "../../utils/constants/router-link-constants";
-import useForm from "../../hooks/useForm";
+import useForm from "../../hooks/use-form";
 import {forgotPassword} from "../../utils/authorization/forgot-password";
 import {useNavigate} from "react-router-dom";
 import {useCallback} from "react";

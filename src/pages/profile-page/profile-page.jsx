@@ -1,14 +1,20 @@
-import {NavLink} from "react-router-dom";
+import {NavLink, Outlet} from "react-router-dom";
 import styles from './profile-page.module.css'
 import {PROFILE_LINK, PROFILE_ORDERS_LINK} from "../../utils/constants/router-link-constants";
 import {inactiveDefault} from "../../utils/constants/text-style-constants";
 import classNames from "classnames";
-const ProfilePage=()=>{
+import {useDispatch} from "react-redux";
+import {logoutUser} from "../../redux/features/auth/authSlice";
+import {useCallback} from "react";
 
-const linkClassName=({isActive})=> isActive?styles.active:styles.link
-    const handleLogoutButton =() => {
-        return null
-    }
+const ProfilePage = () => {
+const dispatch=useDispatch()
+    const linkClassName = ({isActive}) => isActive ? styles.active : styles.link
+
+
+    const handleLogoutButton = useCallback(() => {
+        dispatch(logoutUser())
+    }, [dispatch])
 
     return (
         <main className={classNames('container', styles.wrapper)}>
@@ -31,7 +37,7 @@ const linkClassName=({isActive})=> isActive?styles.active:styles.link
                     В этом разделе вы можете изменить свои персональные данные
                 </p>
             </aside>
-
+            <Outlet/>
         </main>
     )
 }
