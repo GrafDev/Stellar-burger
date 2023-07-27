@@ -15,9 +15,9 @@ const ProtectedRoute = ({
   const {user, isLoading } = useSelector(getAuthSelector)
 
   const isAuth=!!user.name;
-  console.log('user:', user)
-  console.log('isAuth:',isAuth)
-  console.log('onlyUnAuth:',onlyUnAuth)
+  //console.log('user:', user)
+  //console.log('isAuth:',isAuth)
+  //console.log('onlyUnAuth:',onlyUnAuth)
 
   if (isLoading) return <Spinner />
 
