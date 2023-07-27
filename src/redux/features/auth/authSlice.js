@@ -89,6 +89,7 @@ export const logoutUser = createAsyncThunk(
         // console.log('res.data-logout:', res.data)
         dispatch(cleanUser(res.data))
         return res.data
+
     }
 )
 
