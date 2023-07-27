@@ -19,7 +19,6 @@ const initialState = {
     isLoading: false,
     hasError: false,
 }
-//-
 export const getUser = createAsyncThunk(
     'auth/getUser',
     async (form, {rejectWithValue, dispatch}) => {
