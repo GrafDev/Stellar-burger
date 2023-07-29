@@ -21,30 +21,30 @@ const initialState = {
 }
 
 
-// export const getUser = createAsyncThunk(
-//     'auth/getUser',
-//     async (form, {rejectWithValue, dispatch}) => {
-//         const _accessToken = getCookie('BurgerAccessToken')
-//         let _refreshToken = localStorage.getItem('BurgerRefreshToken')
-//         if (!!_accessToken) {
-//             console.log('access:', _accessToken)
-//
-//             const res = await axios.get(USER_LOGIN_URL,
-//                 {Authorization: 'Bearer '.concat(getCookie(_accessToken))}
-//             )
-//             return res.data
-//         } else if (!!_refreshToken) {
-//             console.log('refresh: ', _refreshToken)
-//
-//             const res = await axios.get(AUTH_TOKEN_URL,
-//                 {token: _refreshToken}
-//             )
-//             return res.data
-//         } else {
-//             console.log('null')
-//             return null}
-//     }
-// )
+export const getUser = createAsyncThunk(
+    'auth/getUser',
+    async (form, {rejectWithValue, dispatch}) => {
+        const _accessToken = getCookie('BurgerAccessToken')
+        let _refreshToken = localStorage.getItem('BurgerRefreshToken')
+        if (!!_accessToken) {
+            console.log('access:', _accessToken)
+
+            const res = await axios.get(USER_LOGIN_URL,
+                {Authorization: 'Bearer '.concat(getCookie(_accessToken))}
+            )
+            return res.data
+        } else if (!!_refreshToken) {
+            console.log('refresh: ', _refreshToken)
+
+            const res = await axios.get(AUTH_TOKEN_URL,
+                {token: _refreshToken}
+            )
+            return res.data
+        } else {
+            console.log('null')
+            return null}
+    }
+)
 
 export const registerUser = createAsyncThunk(
     'auth/registerUser',
