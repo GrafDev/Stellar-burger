@@ -12,7 +12,7 @@ import Routers from "../../router/routers";
 import Modal from "../modal/modal";
 import IngredientDetails from "../ingredient-details/ingredient-details";
 import OrderDetails from "../order-details/order-details";
-import {getUser} from "../../redux/features/auth/authSlice";
+import {getUser, lookUser, refreshUser, testUser} from "../../redux/features/auth/authSlice";
 
 
 
@@ -24,10 +24,10 @@ function App() {
     const isModal = isOrder || isIngredient;
 
     useEffect(() => {
-        {
-            dispatch(getUser())
+            dispatch(testUser());
+            // dispatch(getUser());
             dispatch(getIngredients())
-        }
+
     }, [dispatch])
 
 

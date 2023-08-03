@@ -11,7 +11,7 @@ import styles from './profile-info.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {getUserSelector} from "../../redux/features/auth/auth-selectors";
 import useForm from "../../hooks/use-form";
-import {setUser} from "../../redux/features/auth/authSlice";
+import {reducer_setUser} from "../../redux/features/auth/authSlice";
 
 const ProfileInfo = () => {
   const dispatch = useDispatch()
@@ -30,7 +30,7 @@ const ProfileInfo = () => {
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault()
 
-    dispatch(setUser(form))
+    dispatch(reducer_setUser(form))
   }
 
   return (

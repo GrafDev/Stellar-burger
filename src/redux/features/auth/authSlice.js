@@ -1,7 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 import {
-    AUTH_TOKEN_URL,
     USER_AUTH_URL,
     USER_LOGIN_URL,
     USER_LOGOUT_URL,
@@ -14,34 +13,59 @@ const initialState = {
     user: {
         name: null,
         email: null,
-        // token: '',
     },
     isLoading: false,
     hasError: false,
 }
-//
+
+export const testUser = createAsyncThunk(
+    'auth/getUser',
+    async (form, {rejectedWithValue, dispatch}) => {
+        const _accessToken ='Bearer ' + getCookie('BurgerAccessToken');
+
+        try {
+            const res = await axios.get(USER_AUTH_URL,
+                {Authorization:_accessToken}
+            )
+            console.log('from cooke', res.data,'\n', 'token: ',_accessToken)
+        } catch (error) {
+            console.log('catch', error)
+
+        }
+        console.log('token: ',_accessToken)
+
+    }
+)
+
+export const lookUser = createAsyncThunk(
+    'auth/lookUser',
+    async (form, {rejectedWithValue, dispatch}) => {
+        const _accessToken = getCookie('BurgerAccessToken');
+            console.log('access Token: ', _accessToken)
+            const _refreshToken = localStorage.getItem('BurgerRefreshToken');
+            console.log('refresh Token', _refreshToken)
+    }
+)
+
 export const getUser = createAsyncThunk(
     'auth/getUser',
-    async (form, {rejectWithValue, dispatch}) => {
-        const _accessToken = getCookie('BurgerAccessToken')
-        let _refreshToken = localStorage.getItem('BurgerRefreshToken')
-        if (!!_accessToken) {
-            console.log('access:', _accessToken)
-
-            const res = await axios.get(USER_LOGIN_URL,
-                {Authorization: 'Bearer '.concat(getCookie(_accessToken))}
+    async (form, {rejectedWithValue, dispatch}) => {
+        const _accessToken = 'Bearer ' + getCookie('BurgerAccessToken');
+        try {
+            const res = await axios.get(USER_AUTH_URL,
+                {Authorization:_accessToken}
             )
-            return res.data
-        } else if (!!_refreshToken) {
-            console.log('refresh: ', _refreshToken)
-
-            const res = await axios.get(AUTH_TOKEN_URL,
-                {token: _refreshToken}
+            console.log('from cooke try', res.data)
+            dispatch(reducer_setUser(res.data))
+        } catch (error) {
+            const _refreshToken = localStorage.getItem('BurgerRefreshToken');
+            const res = await axios.patch(USER_AUTH_URL,
+                {Authorization: 'Bearer '.concat(_refreshToken)}
             )
-            return res.data
-        } else {
-            console.log('null')
-            return null}
+            console.log('catch', res.data)
+
+            dispatch(reducer_setUser(res.data))
+        }
     }
 )
 
@@ -57,7 +81,7 @@ export const registerUser = createAsyncThunk(
             }
         )
         // console.log('res.data: ', res.data)
-        dispatch(setUser(res.data))
+        dispatch(reducer_setUser(res.data))
         return res.data
     }
 )
@@ -71,8 +95,8 @@ export const loginUser = createAsyncThunk(
                 "email": form.email,
                 "password": form.password,
             })
-        // console.log('res.data-login:', res.data)
-        dispatch(setUser(res.data))
+        console.log('login res.data: ', res.data)
+        dispatch(reducer_setUser(res.data))
         return res.data
     }
 )
@@ -86,7 +110,7 @@ export const logoutUser = createAsyncThunk(
                 token: refreshToken
             })
         // console.log('res.data-logout:', res.data)
-        dispatch(cleanUser(res.data))
+        dispatch(reducer_cleanUser(res.data))
         return res.data
     }
 )
@@ -97,16 +121,17 @@ const authSlice = createSlice({
     initialState,
 
     reducers: {
-        setUser: (state, action) => {
-            //console.log('_user', action.payload.user)
+        reducer_setUser: (state, action) => {
             state.user.name = action.payload.user.name;
             state.user.email = action.payload.user.email;
-            const accessToken = action.payload.accessToken;
-            console.log('access Token', accessToken)
-            localStorage.setItem('BurgerRefreshToken', action.payload.refreshToken);
-            setCookie('BurgerAccessToken', accessToken.split('Bearer ')[1])
+            const _accessToken = action.payload.accessToken.split('Bearer ')[1];
+            const _refreshToken = action.payload.refreshToken;
+            console.log('set REFRESH Token to storage: ', _refreshToken)
+            localStorage.setItem('BurgerRefreshToken', _refreshToken);
+            console.log('set ACCESS Token to cookie: ', _accessToken)
+            setCookie('BurgerAccessToken', _accessToken)
         },
-        cleanUser: (state, action) => {
+        reducer_cleanUser: (state, action) => {
             state.user.name = null;
             state.user.email = null;
             localStorage.removeItem('BurgerRefreshToken')
@@ -115,6 +140,21 @@ const authSlice = createSlice({
     },
     extraReducers: builder => {
         builder
+            .addCase(getUser.pending, (state) => {
+                state.isLoading = true
+                state.hasError = false
+                console.log('getUser: pending')
+            })
+            .addCase(getUser.fulfilled, (state) => {
+                state.isLoading = false
+                state.hasError = false
+                console.log('getUser: fulfilled')
+            })
+            .addCase(getUser.rejected, (state) => {
+                state.isLoading = false
+                state.hasError = true
+                console.log('getUser: rejected')
+            })
             .addCase(registerUser.pending, (state) => {
                 state.isLoading = true
                 state.hasError = false
@@ -145,7 +185,6 @@ const authSlice = createSlice({
                 state.isLoading = false
                 state.hasError = true
                 console.log('loginUser: rejected')
-
             })
             .addCase(logoutUser.pending, (state) => {
                 console.log('logoutUser: pending')
@@ -156,6 +195,8 @@ const authSlice = createSlice({
                 console.log('logoutUser: fulfilled')
             })
             .addCase(logoutUser.rejected, (state) => {
+                state.isLoading = false
+                state.hasError = false
                 console.log('logoutUser: rejected')
             })
             .addDefaultCase(() => {
@@ -165,5 +206,5 @@ const authSlice = createSlice({
 
 })
 
-export const {setUser, cleanUser} = authSlice.actions
+export const {reducer_setUser, reducer_cleanUser} = authSlice.actions
 export default authSlice.reducer
