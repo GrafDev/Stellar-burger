@@ -101,6 +101,7 @@ export const loginUser = createAsyncThunk(
     }
 )
 
+
 export const logoutUser = createAsyncThunk(
     'auth/logoutUser',
     async (form, {rejectWithValue, dispatch}) => {
