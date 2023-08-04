@@ -10,7 +10,7 @@ import {
 export const PaletteTree = () => (
     <Palette>
         <Category name="App">
-            <Component name="Loader">
+            <Component name="Spinner">
                 <Variant>
                     <ExampleLoaderComponent/>
                 </Variant>

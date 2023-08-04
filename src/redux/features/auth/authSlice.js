@@ -18,54 +18,19 @@ const initialState = {
     hasError: false,
 }
 
-export const testUser = createAsyncThunk(
-    'auth/getUser',
-    async (form, {rejectedWithValue, dispatch}) => {
-        const _accessToken ='Bearer ' + getCookie('BurgerAccessToken');
-
-        try {
-            const res = await axios.get(USER_AUTH_URL,
-                {Authorization:_accessToken}
-            )
-            console.log('from cooke', res.data,'\n', 'token: ',_accessToken)
-        } catch (error) {
-            console.log('catch', error)
-
-        }
-        console.log('token: ',_accessToken)
-
-    }
-)
-
-export const lookUser = createAsyncThunk(
-    'auth/lookUser',
-    async (form, {rejectedWithValue, dispatch}) => {
-        const _accessToken = getCookie('BurgerAccessToken');
-            console.log('access Token: ', _accessToken)
-            const _refreshToken = localStorage.getItem('BurgerRefreshToken');
-            console.log('refresh Token', _refreshToken)
-    }
-)
 
 export const getUser = createAsyncThunk(
     'auth/getUser',
     async (form, {rejectedWithValue, dispatch}) => {
         const _accessToken = 'Bearer ' + getCookie('BurgerAccessToken');
-        try {
-            const res = await axios.get(USER_AUTH_URL,
-                {Authorization:_accessToken}
-            )
-            console.log('from cooke try', res.data)
-            dispatch(reducer_setUser(res.data))
-        } catch (error) {
-            const _refreshToken = localStorage.getItem('BurgerRefreshToken');
-            const res = await axios.patch(USER_AUTH_URL,
-                {Authorization: 'Bearer '.concat(_refreshToken)}
-            )
-            console.log('catch', res.data)
 
+            const res = await axios.get(USER_AUTH_URL, {
+                    headers: {Authorization: _accessToken}
+                }
+            )
+            console.log('from cooke', res.data)
             dispatch(reducer_setUser(res.data))
-        }
+            return res.data
     }
 )
 

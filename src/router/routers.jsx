@@ -3,7 +3,6 @@ import {Route, Routes} from "react-router-dom";
 import NotFoundPage from "../pages/not-found-page/not-found-page";
 import {
     FORGOT_PASSWORD_LINK,
-    INGREDIENT_LINK,
     LOGIN_LINK,
     NOT_FOUND_LINK,
     PROFILE_LINK, PROFILE_ORDERS_LINK,
@@ -12,7 +11,6 @@ import {
 import LoginPage from "../pages/login-page/login-page";
 import ProfilePage from "../pages/profile-page/profile-page";
 import RegisterPage from "../pages/register-page/register-page";
-import IngredientsPage from "../pages/ingredients/ingredients-page";
 import ResetPasswordPage from "../pages/reset-password-page/reset-password-page";
 import ForgotPasswordPage from "../pages/forgot-password-page/forgot-password-page";
 import ProtectedRoute from "./protected-route/protected-route";
