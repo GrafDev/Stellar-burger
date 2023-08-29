@@ -53,6 +53,7 @@ export const getUser = createAsyncThunk(
                 }
             )
 
+
             dispatch(reducer_setUser(res.data))
             console.log('getUser: ', res.data.user)
             return !!res.data
