@@ -13,9 +13,6 @@ const NavItem = (props) => {
     icons.set(LIST, <ListIcon type=''/>)
     icons.set(PROFILE, <ProfileIcon type=''/>)
 
-    // let active=useMemo((_active)=>{
-    //     active=_active
-    // },[])
     const className = ({isActive}) => {
         let _style = isActive ? activeDefault : inactiveDefault
         const isActiveIcon = isActive ? styles.active : styles.inactive

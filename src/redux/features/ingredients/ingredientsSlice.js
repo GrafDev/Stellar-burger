@@ -33,6 +33,7 @@ const ingredientsSlice = createSlice({
 		.addCase(getIngredients.fulfilled, (state) => {
 			state.hasError=false;
 			state.isLoading=false;
+			console.log('getIngredients: fulfilled')
 		})
 			.addCase(getIngredients.rejected, () => console.log('getIngredients: rejected'))
 			.addDefaultCase(()=>{})

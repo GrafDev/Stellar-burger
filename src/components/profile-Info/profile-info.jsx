@@ -27,7 +27,7 @@ const ProfileInfo = () => {
 
   const isEdit = JSON.stringify(initialForm) !== JSON.stringify(form)
 
-  const submitForm = (e: React.FormEvent) => {
+  const submitForm = (e) => {
     e.preventDefault()
 
     dispatch(reducer_setUser(form))

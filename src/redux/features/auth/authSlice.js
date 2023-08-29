@@ -1,38 +1,75 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 import {
+    AUTH_TOKEN_URL,
     USER_AUTH_URL,
     USER_LOGIN_URL,
     USER_LOGOUT_URL,
     USER_REGISTRATION_URL
 } from "../../../utils/constants/outlink-constants";
 import {deleteCookie, getCookie, setCookie} from "../../../utils/cookie";
+import checkToken from "../../../utils/authorization/check-token";
 
 
 const initialState = {
     user: {
-        name: null,
         email: null,
+        name: null,
+
     },
     isLoading: false,
     hasError: false,
 }
 
 
-export const getUser = createAsyncThunk(
-    'auth/getUser',
-    async (form, {rejectedWithValue, dispatch}) => {
-        const _accessToken = 'Bearer ' + getCookie('BurgerAccessToken');
-
-            const res = await axios.get(USER_AUTH_URL, {
-                    headers: {Authorization: _accessToken}
-                }
-            )
-            console.log('from cooke', res.data)
-            dispatch(reducer_setUser(res.data))
-            return res.data
+export const refreshUser = createAsyncThunk(
+    'auth/refreshUser',
+    async (form, {rejectWithValue, dispatch}) => {
+        const refreshToken = localStorage.getItem('BurgerRefreshToken')
+        const res = await axios.post(AUTH_TOKEN_URL,
+            {
+                token: refreshToken
+            })
+        console.log('res.data-refresh:', res.data)
+        dispatch(reducer_setUser(res.data))
+        return res.data
     }
 )
+
+
+export const getUser = createAsyncThunk(
+    'auth/getUser',
+    async (form, {rejectWithValue, dispatch}) => {
+        let res;
+
+        const _accessToken = 'Bearer ' + getCookie('BurgerAccessToken')
+        console.log('checkAccessToken', checkToken(_accessToken))
+        if (checkToken(_accessToken)) {
+            res = await axios.get(USER_AUTH_URL,
+                {
+                    headers: {
+                        authorization: _accessToken,
+                    },
+                }
+            )
+
+            dispatch(reducer_setUser(res.data))
+            console.log('getUser: ', res.data.user)
+            return !!res.data
+        } else {
+            const refreshToken = localStorage.getItem('BurgerRefreshToken')
+            res = await axios.post(AUTH_TOKEN_URL,
+                {
+                    token: refreshToken
+                })
+            console.log('res.data-refresh:', res.data)
+            dispatch(reducer_setUser(res.data))
+            return res.data
+        }
+        }
+
+)
+
 
 export const registerUser = createAsyncThunk(
     'auth/registerUser',
@@ -45,7 +82,6 @@ export const registerUser = createAsyncThunk(
                 "name": form.name,
             }
         )
-        // console.log('res.data: ', res.data)
         dispatch(reducer_setUser(res.data))
         return res.data
     }
@@ -75,7 +111,7 @@ export const logoutUser = createAsyncThunk(
             {
                 token: refreshToken
             })
-        // console.log('res.data-logout:', res.data)
+        console.log('res.data-logout:', res.data)
         dispatch(reducer_cleanUser(res.data))
         return res.data
     }
@@ -88,19 +124,20 @@ const authSlice = createSlice({
 
     reducers: {
         reducer_setUser: (state, action) => {
-            state.user.name = action.payload.user.name;
-            state.user.email = action.payload.user.email;
+            state.user = action.payload.user;
             const _accessToken = action.payload.accessToken.split('Bearer ')[1];
             const _refreshToken = action.payload.refreshToken;
             console.log('set REFRESH Token to storage: ', _refreshToken)
-            localStorage.setItem('BurgerRefreshToken', _refreshToken);
+            _refreshToken && localStorage.setItem('BurgerRefreshToken', _refreshToken);
             console.log('set ACCESS Token to cookie: ', _accessToken)
-            setCookie('BurgerAccessToken', _accessToken)
+            _accessToken && setCookie('BurgerAccessToken', _accessToken)
         },
+
         reducer_cleanUser: (state, action) => {
             state.user.name = null;
             state.user.email = null;
-            localStorage.removeItem('BurgerRefreshToken')
+            localStorage.removeItem('BurgerRefreshTok' +
+                'en')
             deleteCookie('BurgerAccessToken')
         }
     },
@@ -119,6 +156,7 @@ const authSlice = createSlice({
             .addCase(getUser.rejected, (state) => {
                 state.isLoading = false
                 state.hasError = true
+                refreshUser()
                 console.log('getUser: rejected')
             })
             .addCase(registerUser.pending, (state) => {
