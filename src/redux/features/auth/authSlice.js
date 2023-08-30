@@ -28,7 +28,9 @@ export const refreshUser = createAsyncThunk(
         const refreshToken = localStorage.getItem('BurgerRefreshToken')
         const res = await axios.post(AUTH_TOKEN_URL,
             {
-                token: refreshToken
+                headers: {
+                    token: refreshToken
+                },
             })
         console.log('res.data-refresh:', res.data)
         dispatch(reducer_setUser(res.data))
@@ -36,39 +38,34 @@ export const refreshUser = createAsyncThunk(
     }
 )
 
-
 export const getUser = createAsyncThunk(
     'auth/getUser',
     async (form, {rejectWithValue, dispatch}) => {
-        let res;
 
         const _accessToken = 'Bearer ' + getCookie('BurgerAccessToken')
         console.log('checkAccessToken', checkToken(_accessToken))
         if (checkToken(_accessToken)) {
-            res = await axios.get(USER_AUTH_URL,
+            let res = await axios.get(USER_AUTH_URL,
                 {
                     headers: {
                         authorization: _accessToken,
                     },
                 }
             )
-
-
             dispatch(reducer_setUser(res.data))
-            console.log('getUser: ', res.data.user)
-            return !!res.data
+            console.log('getUser resDATA: ', res.data)
         } else {
             const refreshToken = localStorage.getItem('BurgerRefreshToken')
-            res = await axios.post(AUTH_TOKEN_URL,
+            let res = await axios.post(AUTH_TOKEN_URL,
                 {
-                    token: refreshToken
+                    headers: {
+                        token: refreshToken
+                    }
                 })
             console.log('res.data-refresh:', res.data)
             dispatch(reducer_setUser(res.data))
-            return res.data
         }
-        }
-
+    }
 )
 
 
@@ -157,7 +154,6 @@ const authSlice = createSlice({
             .addCase(getUser.rejected, (state) => {
                 state.isLoading = false
                 state.hasError = true
-                refreshUser()
                 console.log('getUser: rejected')
             })
             .addCase(registerUser.pending, (state) => {
