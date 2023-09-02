@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from 'axios';
-import {DATA_URL} from "../../../utils/constants/outlink-constants";
+import {INGREDIENTS_URL} from "../../../utils/constants/outlink-constants";
 
 
 const initialState = {
@@ -15,7 +15,7 @@ const initialState = {
 export const getIngredients = createAsyncThunk(
 	'ingredients/getIngredients',
 	async (_, {rejectedWithValue, dispatch}) => {
-		const res = await axios.get(DATA_URL)
+		const res = await axios.get(INGREDIENTS_URL)
 		dispatch(setToolIngredients(res.data.data))
 	}
 )

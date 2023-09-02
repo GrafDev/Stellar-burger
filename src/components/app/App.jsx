@@ -15,7 +15,6 @@ import OrderDetails from "../order-details/order-details";
 import {getUser} from "../../redux/features/auth/authSlice";
 
 
-
 function App() {
 
     const dispatch = useDispatch();
@@ -24,15 +23,15 @@ function App() {
     const isModal = isOrder || isIngredient;
 
     useEffect(() => {
-            dispatch(getUser());
-            dispatch(getIngredients())
 
+        dispatch(getIngredients())
+        dispatch(getUser());
     }, [dispatch])
 
 
     return (
         <div className={styles.App}>
-           <AppHeader/>
+            <AppHeader/>
             <Routers/>
             {isModal &&
                 (<Modal>

@@ -3,8 +3,7 @@ import {LOGIN_LINK} from "../../utils/constants/router-link-constants";
 import AuthorizationButton from "../../components/authorization-button/authorization-button";
 import {useDispatch} from "react-redux";
 import {useCallback, useState} from "react";
-import {registerUser, setUser} from "../../redux/features/auth/authSlice";
-import {USER_REGISTRATION_URL} from "../../utils/constants/outlink-constants";
+import {registerUser} from "../../redux/features/auth/authSlice";
 // Styles are in the main index.css file
 
 

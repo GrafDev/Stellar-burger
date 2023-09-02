@@ -2,10 +2,10 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 import {
     AUTH_TOKEN_URL,
-    USER_AUTH_URL,
-    USER_LOGIN_URL,
-    USER_LOGOUT_URL,
-    USER_REGISTRATION_URL
+    AUTH_USER_URL,
+    AUTH_LOGIN_URL,
+    AUTH_LOGOUT_URL,
+    AUTH_REGISTER_URL
 } from "../../../utils/constants/outlink-constants";
 import {deleteCookie, getCookie, setCookie} from "../../../utils/cookie";
 import checkToken from "../../../utils/authorization/check-token";
@@ -22,49 +22,75 @@ const initialState = {
 }
 
 
-export const refreshUser = createAsyncThunk(
-    'auth/refreshUser',
+const saveTokens = (data) => {
+    const _accessToken = data.accessToken.split('Bearer ')[1];
+    const _refreshToken = data.refreshToken;
+    // console.log('set REFRESH Token to storage: ', _refreshToken)
+    _refreshToken && localStorage.setItem('BurgerRefreshToken', _refreshToken);
+    // console.log('set ACCESS Token to cookie: ', _accessToken)
+    _accessToken && setCookie('BurgerAccessToken', _accessToken)
+
+}
+
+const eraseTokens = () => {
+    localStorage.removeItem('BurgerRefreshToken')
+    deleteCookie('BurgerAccessToken')
+}
+
+
+export const setUser = createAsyncThunk(
+    'auth/updateUser',
     async (form, {rejectWithValue, dispatch}) => {
-        const refreshToken = localStorage.getItem('BurgerRefreshToken')
-        const res = await axios.post(AUTH_TOKEN_URL,
+        const _user = form.user
+        console.log('updateUser: start', _user.email, _user.password, _user.name)
+        const _accessToken = 'Bearer ' + getCookie('BurgerAccessToken')
+        let res = await axios.patch(AUTH_USER_URL,
+            {
+                "name": _user.name,
+                "email": _user.email,
+                "password": _user.password,
+            },
             {
                 headers: {
-                    token: refreshToken
-                },
-            })
-        console.log('res.data-refresh:', res.data)
+                    Authorization: _accessToken,
+                }
+            }
+        )
         dispatch(reducer_setUser(res.data))
-        return res.data
+
     }
 )
+
 
 export const getUser = createAsyncThunk(
     'auth/getUser',
     async (form, {rejectWithValue, dispatch}) => {
+        console.log('getUser: start ')
 
         const _accessToken = 'Bearer ' + getCookie('BurgerAccessToken')
-        console.log('checkAccessToken', checkToken(_accessToken))
-        if (checkToken(_accessToken)) {
-            let res = await axios.get(USER_AUTH_URL,
+
+        if (!checkToken(_accessToken)) {
+            console.log('getUser: access token is expired' + _accessToken)
+            const _refreshToken = localStorage.getItem('BurgerRefreshToken')
+            const res = await axios.post(AUTH_TOKEN_URL,
                 {
-                    headers: {
-                        authorization: _accessToken,
-                    },
-                }
-            )
-            dispatch(reducer_setUser(res.data))
-            console.log('getUser resDATA: ', res.data)
-        } else {
-            const refreshToken = localStorage.getItem('BurgerRefreshToken')
-            let res = await axios.post(AUTH_TOKEN_URL,
-                {
-                    headers: {
-                        token: refreshToken
-                    }
+                    token: _refreshToken
                 })
-            console.log('res.data-refresh:', res.data)
-            dispatch(reducer_setUser(res.data))
+            console.log('getUser: refresh token res.data: ', res.data)
+            saveTokens(res.data)
         }
+        console.log('getUser: access token is valid' + _accessToken)
+        let res = await axios.get(AUTH_USER_URL,
+            {
+                authorization: _accessToken,
+            }
+
+        )
+
+        console.log('getUser: response ', res.data)
+        console.log(res.data.success)
+        saveTokens(res.data)
+        dispatch(reducer_setUser(res.data))
     }
 )
 
@@ -73,13 +99,14 @@ export const registerUser = createAsyncThunk(
     'auth/registerUser',
     async (form, {rejectWithValue, dispatch}) => {
 
-        const res = await axios.post(USER_REGISTRATION_URL,
+        const res = await axios.post(AUTH_REGISTER_URL,
             {
                 "email": form.email,
                 "password": form.password,
                 "name": form.name,
             }
         )
+        saveTokens(res.data)
         dispatch(reducer_setUser(res.data))
         return res.data
     }
@@ -89,12 +116,13 @@ export const loginUser = createAsyncThunk(
     'auth/loginUser',
     async (form, {rejectWithValue, dispatch}) => {
 
-        const res = await axios.post(USER_LOGIN_URL,
+        const res = await axios.post(AUTH_LOGIN_URL,
             {
                 "email": form.email,
                 "password": form.password,
             })
-        console.log('login res.data: ', res.data)
+        // console.log('login res.data: ', res.data)
+        saveTokens(res.data)
         dispatch(reducer_setUser(res.data))
         return res.data
     }
@@ -105,38 +133,30 @@ export const logoutUser = createAsyncThunk(
     'auth/logoutUser',
     async (form, {rejectWithValue, dispatch}) => {
         const refreshToken = localStorage.getItem('BurgerRefreshToken')
-        const res = await axios.post(USER_LOGOUT_URL,
+        const res = await axios.post(AUTH_LOGOUT_URL,
             {
                 token: refreshToken
             })
-        console.log('res.data-logout:', res.data)
+        // console.log('res.data-logout:', res.data)
+        eraseTokens()
         dispatch(reducer_cleanUser(res.data))
         return res.data
     }
 )
 
 
-const authSlice = createSlice({
+export const authSlice = createSlice({
     name: 'auth',
     initialState,
 
     reducers: {
         reducer_setUser: (state, action) => {
             state.user = action.payload.user;
-            const _accessToken = action.payload.accessToken.split('Bearer ')[1];
-            const _refreshToken = action.payload.refreshToken;
-            console.log('set REFRESH Token to storage: ', _refreshToken)
-            _refreshToken && localStorage.setItem('BurgerRefreshToken', _refreshToken);
-            console.log('set ACCESS Token to cookie: ', _accessToken)
-            _accessToken && setCookie('BurgerAccessToken', _accessToken)
         },
 
         reducer_cleanUser: (state, action) => {
             state.user.name = null;
             state.user.email = null;
-            localStorage.removeItem('BurgerRefreshTok' +
-                'en')
-            deleteCookie('BurgerAccessToken')
         }
     },
     extraReducers: builder => {

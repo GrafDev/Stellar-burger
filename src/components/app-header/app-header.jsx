@@ -2,11 +2,14 @@ import React from 'react';
 import {Logo} from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./app-header.module.css";
 import NavItem from "./nav-item/nav-item";
-import {Link, Outlet} from "react-router-dom";
 import {BURGER, LIST, PROFILE} from "../../utils/constants/ingredient-constants";
-import {LIST_LINK, LOGIN_LINK, PROFILE_LINK} from "../../utils/constants/router-link-constants";
+import {LIST_LINK,  PROFILE_LINK} from "../../utils/constants/router-link-constants";
+import {useSelector} from "react-redux";
+import {getIngredients} from "../../redux/features/ingredients/ingredients-selectors";
+import {getUserName} from "../../redux/features/auth/auth-selectors";
 
 function AppHeader() {
+    const userName= useSelector(getUserName)
 
     return (
         <div className={styles.header}>
@@ -14,7 +17,7 @@ function AppHeader() {
                 <div className={styles.navigationMenu}>
                     <NavItem links={'/'} name={'Конструктор'} id={BURGER}/>
                     <NavItem links={LIST_LINK} name={'Лента заказа'} id={LIST}/>
-                    <NavItem links={PROFILE_LINK} className={styles.LastNavItem} name={'Личный кабинет'} id={PROFILE}/>
+                    <NavItem links={PROFILE_LINK} className={styles.LastNavItem} name={userName||'Личный кабинет'} id={PROFILE}/>
                 </div>
 
                 <div className={styles.logo}>
