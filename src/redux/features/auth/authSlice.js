@@ -74,7 +74,6 @@ export const getUser = createAsyncThunk(
                 {
 
                     token: _refreshToken
-
                 }
             )
             saveTokens(res.data)
