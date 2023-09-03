@@ -4,7 +4,7 @@ import {
     Input,
     PasswordInput,
 } from '@ya.praktikum/react-developer-burger-ui-components'
-import React from 'react'
+import React, {useState} from 'react'
 
 
 import styles from './profile-info.module.css'
@@ -14,6 +14,7 @@ import useForm from "../../hooks/use-form";
 import {setUser} from "../../redux/features/auth/authSlice";
 const ProfileInfo = () => {
     const dispatch = useDispatch()
+    const [isSaved, setIsSaved] = useState(false)
     const user = useSelector(getUserSelector)
 
     const initialForm = {
@@ -39,6 +40,7 @@ const ProfileInfo = () => {
         }
 
         dispatch(setUser(_form))
+        setIsSaved(true)
 
     }
 
@@ -90,6 +92,9 @@ const ProfileInfo = () => {
                     </Button>
                 </div>
             )}
+            <div className={styles.isSaved}>
+                {(isSaved && !isEdit) ? <p>Данные успешно изменены</p>:''}
+            </div>
         </form>
     )
 }

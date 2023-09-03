@@ -17,3 +17,8 @@
 	justify-content: flex-end;
 	align-items: center;
 }
+.isSaved {
+	display: flex;
+	justify-content: flex-end;
+	color: var(--inactive-color);
+}

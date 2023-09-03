@@ -25,9 +25,9 @@ const initialState = {
 const saveTokens = (data) => {
     const _accessToken = data.accessToken.split('Bearer ')[1];
     const _refreshToken = data.refreshToken;
-    // console.log('set REFRESH Token to storage: ', _refreshToken)
+    console.log('set REFRESH Token to storage: ', _refreshToken)
     _refreshToken && localStorage.setItem('BurgerRefreshToken', _refreshToken);
-    // console.log('set ACCESS Token to cookie: ', _accessToken)
+    console.log('set ACCESS Token to cookie: ', _accessToken)
     _accessToken && setCookie('BurgerAccessToken', _accessToken)
 
 }
@@ -39,10 +39,9 @@ const eraseTokens = () => {
 
 
 export const setUser = createAsyncThunk(
-    'auth/updateUser',
+    'auth/setUser',
     async (form, {rejectWithValue, dispatch}) => {
         const _user = form.user
-        console.log('updateUser: start', _user.email, _user.password, _user.name)
         const _accessToken = 'Bearer ' + getCookie('BurgerAccessToken')
         let res = await axios.patch(AUTH_USER_URL,
             {
@@ -70,26 +69,24 @@ export const getUser = createAsyncThunk(
         const _accessToken = 'Bearer ' + getCookie('BurgerAccessToken')
 
         if (!checkToken(_accessToken)) {
-            console.log('getUser: access token is expired' + _accessToken)
             const _refreshToken = localStorage.getItem('BurgerRefreshToken')
             const res = await axios.post(AUTH_TOKEN_URL,
                 {
+
                     token: _refreshToken
-                })
-            console.log('getUser: refresh token res.data: ', res.data)
+
+                }
+            )
             saveTokens(res.data)
         }
-        console.log('getUser: access token is valid' + _accessToken)
         let res = await axios.get(AUTH_USER_URL,
             {
-                authorization: _accessToken,
+                headers: {
+                    authorization: _accessToken,
+                }
             }
-
         )
 
-        console.log('getUser: response ', res.data)
-        console.log(res.data.success)
-        saveTokens(res.data)
         dispatch(reducer_setUser(res.data))
     }
 )
