@@ -4,19 +4,14 @@ import AuthorizationButton from "../../components/authorization-button/authoriza
 import {useDispatch} from "react-redux";
 import {useCallback, useState} from "react";
 import {loginUser} from "../../redux/features/auth/authSlice";
+import useForm from "../../hooks/use-form";
 const LoginPage=()=>{
 
 
 	const dispatch = useDispatch()
 
 
-	const [form,setForm]=useState({
-		email: '',
-		password: '',
-	})
-	const onChange=e=>{
-		setForm({...form,[e.target.name]: e.target.value})
-	}
+	const { form, handleForm } = useForm({ email: '', password: '' })
 
 	const submitForm = useCallback(
 		(e) => {
@@ -35,12 +30,12 @@ const LoginPage=()=>{
 						name="email"
 						placeholder="E-mail"
 						value={form.email}
-						onChange={onChange}
+						onChange={handleForm}
 						autoFocus
 					/>
 
 					<PasswordInput
-						onChange={onChange}
+						onChange={handleForm}
 						value={form.password}
 						name={'password'}
 					/>

@@ -1,19 +1,23 @@
 import {Button, Input, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components";
 import AuthorizationButton from "../../components/authorization-button/authorization-button";
 import useForm from "../../hooks/use-form";
-import {LOGIN_LINK} from "../../utils/constants/router-link-constants";
-import {useNavigate} from "react-router-dom";
-import {useCallback} from "react";
+import {FORGOT_PASSWORD_LINK, LOGIN_LINK} from "../../utils/constants/router-link-constants";
+import {useLocation, useNavigate} from "react-router-dom";
+import {useCallback, useEffect} from "react";
 import {resetPassword} from "../../utils/authorization/reset-password";
 
 const ResetPasswordPage=()=>{
     const navigate = useNavigate()
-
+    const location = useLocation();
 
     const { form, handleForm } = useForm({
         password: '',
         token: '',
     })
+
+    useEffect(() => {
+        !location?.state?.resetPassword && navigate(FORGOT_PASSWORD_LINK)
+    }, [location.state, navigate])
 
     const submitForm = useCallback(
         (e) => {

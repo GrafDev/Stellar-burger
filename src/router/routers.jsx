@@ -23,17 +23,18 @@ const Routers = () => {
         <>
             <Routes>
                 <Route index element={<HomePage/>}/>
+                {/*Header routers*/}
                 <Route path={NOT_FOUND_LINK} element={<NotFoundPage/>}/>
                 <Route path={PROFILE_LINK} element={<ProtectedRoute element={<ProfilePage/>} />}>
                     <Route path={PROFILE_LINK} element={<ProfileInfo/>}/>
                     <Route path={PROFILE_ORDERS_LINK} element={<OrderHistory/>}/>
                 </Route>
+
+                {/*Authentication routers*/}
                 <Route path={LOGIN_LINK} element={<ProtectedRoute onlyUnAuth element={<LoginPage/>} />}/>
                 <Route path={REGISTER_LINK} element={<ProtectedRoute onlyUnAuth element={<RegisterPage />} />}/>
                 <Route path={RESET_PASSWORD_LINK} element={<ProtectedRoute onlyUnAuth element={<ResetPasswordPage/>} />}/>
                 <Route path={FORGOT_PASSWORD_LINK} element={<ProtectedRoute onlyUnAuth element={<ForgotPasswordPage />} />}/>
-
-                {/*<Route path={INGREDIENT_LINK} element={<ProtectedRoute onlyUnAuth element={<IngredientsPage />} />}/>*/}
 
             </Routes>
 

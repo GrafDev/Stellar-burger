@@ -4,6 +4,7 @@ import AuthorizationButton from "../../components/authorization-button/authoriza
 import {useDispatch} from "react-redux";
 import {useCallback, useState} from "react";
 import {registerUser} from "../../redux/features/auth/authSlice";
+import useForm from "../../hooks/use-form";
 // Styles are in the main index.css file
 
 
@@ -12,15 +13,12 @@ const RegisterPage = () => {
     const dispatch = useDispatch()
 
 
-    const [form,setForm]=useState({
+    const { form, handleForm } = useForm({
         name: '',
         email: '',
-        token:'',
         password: '',
     })
-    const onChange=e=>{
-        setForm({...form,[e.target.name]: e.target.value})
-    }
+
 
     const submitForm = useCallback(
         (e) => {
@@ -40,7 +38,7 @@ const RegisterPage = () => {
                 <Input
                     type="text"
                     placeholder="Имя"
-                    onChange={onChange}
+                    onChange={handleForm}
                     value={form.name}
                     name="name"
                     error={false}
@@ -53,11 +51,11 @@ const RegisterPage = () => {
                     name="email"
                     placeholder="E-mail"
                     value={form.email}
-                    onChange={onChange}
+                    onChange={handleForm}
                 />
 
                 <PasswordInput
-                    onChange={onChange}
+                    onChange={handleForm}
                     value={form.password}
                     name={'password'}
                 />

@@ -12,11 +12,7 @@ import checkToken from "../../../utils/authorization/check-token";
 
 
 const initialState = {
-    user: {
-        email: null,
-        name: null,
-
-    },
+    user: null,
     isLoading: false,
     hasError: false,
 }
@@ -103,6 +99,7 @@ export const registerUser = createAsyncThunk(
             }
         )
         saveTokens(res.data)
+        console.log('register res.data: ', res.data)
         dispatch(reducer_setUser(res.data))
         return res.data
     }
@@ -151,9 +148,8 @@ export const authSlice = createSlice({
         },
 
         reducer_cleanUser: (state, action) => {
-            state.user.name = null;
-            state.user.email = null;
-        }
+            state.user = null;
+        },
     },
     extraReducers: builder => {
         builder

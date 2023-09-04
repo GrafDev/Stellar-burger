@@ -9,13 +9,13 @@ import React, {useState} from 'react'
 
 import styles from './profile-info.module.css'
 import {useDispatch, useSelector} from "react-redux";
-import {getUserSelector} from "../../redux/features/auth/auth-selectors";
+import {getAuthUser} from "../../redux/features/auth/auth-selectors";
 import useForm from "../../hooks/use-form";
 import {setUser} from "../../redux/features/auth/authSlice";
 const ProfileInfo = () => {
     const dispatch = useDispatch()
     const [isSaved, setIsSaved] = useState(false)
-    const user = useSelector(getUserSelector)
+    const user = useSelector(getAuthUser)
 
     const initialForm = {
 

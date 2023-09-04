@@ -6,10 +6,10 @@ import {BURGER, LIST, PROFILE} from "../../utils/constants/ingredient-constants"
 import {LIST_LINK,  PROFILE_LINK} from "../../utils/constants/router-link-constants";
 import {useSelector} from "react-redux";
 import {getIngredients} from "../../redux/features/ingredients/ingredients-selectors";
-import {getUserName} from "../../redux/features/auth/auth-selectors";
+import {getAuth, getAuthUserName} from "../../redux/features/auth/auth-selectors";
 
 function AppHeader() {
-    const userName= useSelector(getUserName)
+    const userName= useSelector(getAuth).name
 
     return (
         <div className={styles.header}>
