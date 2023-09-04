@@ -98,9 +98,9 @@ export const registerUser = createAsyncThunk(
                 "name": form.name,
             }
         )
-        saveTokens(res.data)
-        console.log('register res.data: ', res.data)
+
         dispatch(reducer_setUser(res.data))
+        saveTokens(res.data)
         return res.data
     }
 )

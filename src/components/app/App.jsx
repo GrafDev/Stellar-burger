@@ -33,14 +33,14 @@ function App() {
         <div className={styles.App}>
             <AppHeader/>
             <Routers/>
-            {isModal &&
-                (<Modal>
-                    <>
-                        {isOrder && <OrderDetails/>}
-                        {isIngredient && <IngredientDetails/>}
-                    </>
-                </Modal>)
-            }
+            {/*{isModal &&*/}
+            {/*    (<Modal>*/}
+            {/*        <>*/}
+            {/*            {isOrder && <OrderDetails/>}*/}
+            {/*            {isIngredient && <IngredientDetails/>}*/}
+            {/*        </>*/}
+            {/*    </Modal>)*/}
+            {/*}*/}
         </div>
     );
 }

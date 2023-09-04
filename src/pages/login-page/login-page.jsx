@@ -2,7 +2,7 @@ import {FORGOT_PASSWORD_LINK, REGISTER_LINK} from "../../utils/constants/router-
 import {Button, EmailInput, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components";
 import AuthorizationButton from "../../components/authorization-button/authorization-button";
 import {useDispatch} from "react-redux";
-import {useCallback, useState} from "react";
+import React, {useCallback, useState} from "react";
 import {loginUser} from "../../redux/features/auth/authSlice";
 import useForm from "../../hooks/use-form";
 const LoginPage=()=>{

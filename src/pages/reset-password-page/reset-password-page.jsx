@@ -3,7 +3,7 @@ import AuthorizationButton from "../../components/authorization-button/authoriza
 import useForm from "../../hooks/use-form";
 import {FORGOT_PASSWORD_LINK, LOGIN_LINK} from "../../utils/constants/router-link-constants";
 import {useLocation, useNavigate} from "react-router-dom";
-import {useCallback, useEffect} from "react";
+import React, {useCallback, useEffect} from "react";
 import {resetPassword} from "../../utils/authorization/reset-password";
 
 const ResetPasswordPage=()=>{
