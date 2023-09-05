@@ -3,7 +3,7 @@ const Spinner=()=>{
 	return(
 		<div className={styles.bodyRing}>
 			<div className={styles.ring}>
-				Loading
+				WAIT
 				<div className={styles.spanRing}>
 				</div>
 
