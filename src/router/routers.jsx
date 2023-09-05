@@ -1,5 +1,5 @@
 import HomePage from "../pages/home-page/home-page";
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useLocation} from "react-router-dom";
 import NotFoundPage from "../pages/not-found-page/not-found-page";
 import {
     FORGOT_PASSWORD_LINK,
@@ -16,9 +16,14 @@ import ForgotPasswordPage from "../pages/forgot-password-page/forgot-password-pa
 import ProtectedRoute from "./protected-route/protected-route";
 import ProfileInfo from "../components/profile-Info/profile-info";
 import OrderHistory from "../components/order-history/order-history";
+import {INGREDIENT_PAGE_LINK} from "../utils/constants/outlink-constants";
+import IngredientDetails from "../components/ingredient-details/ingredient-details";
 
 
 const Routers = () => {
+    const location = useLocation()
+    const background = location.state && location.state.background
+
     return (
         <>
             <Routes>
@@ -35,8 +40,13 @@ const Routers = () => {
                 <Route path={REGISTER_LINK} element={<ProtectedRoute onlyUnAuth element={<RegisterPage />} />}/>
                 <Route path={RESET_PASSWORD_LINK} element={<ProtectedRoute onlyUnAuth element={<ResetPasswordPage/>} />}/>
                 <Route path={FORGOT_PASSWORD_LINK} element={<ProtectedRoute onlyUnAuth element={<ForgotPasswordPage />} />}/>
-
             </Routes>
+            {!!background && (
+                <Routes>
+                    <Route path={INGREDIENT_PAGE_LINK} element={<IngredientDetails/>}/>
+
+                </Routes>
+            )}
 
         </>
     )

@@ -17,3 +17,8 @@ export const AUTH_TOKEN_URL = `${MAIN_URL}/auth/token` // эндпоинт об�
 export const AUTH_USER_URL = `${MAIN_URL}/auth/user` // эндпоинт получения и обновления данных пользователя.
 export const AUTH_LOGOUT_URL = `${MAIN_URL}/auth/logout` // эндпоинт для выхода из системы.
 
+export const PROFILE_LINK = '/profile'
+
+export const INGREDIENT_LINK = '/ingredients'
+
+export const INGREDIENT_PAGE_LINK = `${INGREDIENT_LINK}/:id`

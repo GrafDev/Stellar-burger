@@ -107,6 +107,7 @@ export const registerUser = createAsyncThunk(
 
 export const loginUser = createAsyncThunk(
     'auth/loginUser',
+
     async (form, {rejectWithValue, dispatch}) => {
 
         const res = await axios.post(AUTH_LOGIN_URL,
@@ -200,6 +201,7 @@ export const authSlice = createSlice({
                 console.log('loginUser: rejected')
             })
             .addCase(logoutUser.pending, (state) => {
+                state.isLoading = true
                 console.log('logoutUser: pending')
             })
             .addCase(logoutUser.fulfilled, (state) => {
@@ -209,7 +211,7 @@ export const authSlice = createSlice({
             })
             .addCase(logoutUser.rejected, (state) => {
                 state.isLoading = false
-                state.hasError = false
+                state.hasError = true
                 console.log('logoutUser: rejected')
             })
             .addDefaultCase(() => {

@@ -4,6 +4,7 @@ import Spinner from "../../components/spinner/spinner";
 import {HOME_LINK, LOGIN_LINK} from "../../utils/constants/router-link-constants";
 import {getAuth} from "../../redux/features/auth/auth-selectors";
 import {useSelector} from "react-redux";
+import {PROFILE_LINK} from "../../utils/constants/outlink-constants";
 
 
 const ProtectedRoute = ({
@@ -13,15 +14,13 @@ const ProtectedRoute = ({
     const location = useLocation()
     const {user, isLoading} = useSelector(getAuth)
     const isAuth = !!user
-    console.log('ProtectedRoute', !!user, isLoading, onlyUnAuth,  location)
     if (isLoading ) return <Spinner/>
 
     if (onlyUnAuth && isAuth)
-        return <Navigate to={location.state?.target || HOME_LINK} replace/>
+        return <Navigate to={location.state?.target || PROFILE_LINK} replace/>
 
     if (!onlyUnAuth && !isAuth)
         return <Navigate to={LOGIN_LINK} state={{target: location}} replace/>
-    console.log('END PROTECT: ', element)
     return element
 }
 
