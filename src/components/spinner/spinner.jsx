@@ -6,7 +6,6 @@ const Spinner=()=>{
 				WAIT
 				<div className={styles.spanRing}>
 				</div>
-
 			</div>
 		</div>
 
