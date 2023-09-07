@@ -9,18 +9,15 @@ import {getIngredients} from "../../redux/features/ingredients/ingredientsSlice"
 import {getIsModalOrder} from "../../redux/features/order/order-selectors";
 import {getIsModalIngredient} from "../../redux/features/currentIngredient/current-ingredient-selectors";
 import Routers from "../../router/routers";
-import Modal from "../modal/modal";
-import IngredientDetails from "../ingredient-details/ingredient-details";
-import OrderDetails from "../order-details/order-details";
 import {getUser} from "../../redux/features/auth/authSlice";
 
 
 function App() {
 
     const dispatch = useDispatch();
-    const isOrder = useSelector(getIsModalOrder)
-    const isIngredient = useSelector(getIsModalIngredient)
-    const isModal = isOrder || isIngredient;
+    // const isOrder = useSelector(getIsModalOrder)
+    // const isIngredient = useSelector(getIsModalIngredient)
+    // const isModal = isOrder || isIngredient;
 
     useEffect(() => {
 

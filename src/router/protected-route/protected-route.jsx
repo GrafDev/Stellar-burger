@@ -1,10 +1,9 @@
 import React from 'react'
 import {Navigate, useLocation} from 'react-router-dom'
 import Spinner from "../../components/spinner/spinner";
-import {HOME_LINK, LOGIN_LINK} from "../../utils/constants/router-link-constants";
 import {getAuth} from "../../redux/features/auth/auth-selectors";
 import {useSelector} from "react-redux";
-import {PROFILE_LINK} from "../../utils/constants/outlink-constants";
+import {LOGIN_LINK, PROFILE_LINK} from "../../utils/constants/router-link-constants";
 
 
 const ProtectedRoute = ({

@@ -4,19 +4,29 @@ import PropTypes from "prop-types";
 import {useDispatch} from "react-redux";
 import {unsetCurrentIngredient} from "../../../redux/features/currentIngredient/currentIngredientSlice";
 import {unsetToolOrder} from "../../../redux/features/order/orderSlice";
+import {useCallback} from "react";
+import useKeyPress from "../../../hooks/useKeyPress";
+import {useLocation, useNavigate} from "react-router-dom";
 
 
 function ModalOverlay(props) {
 
 	const dispatch = useDispatch();
+	const navigate = useNavigate()
+	const location = useLocation()
 
-	const closeModal = () => {
+	const closeFunc = useCallback(() => {
+		if (location.state?.background) navigate(location.state.background)
 		dispatch(unsetToolOrder())
 		dispatch(unsetCurrentIngredient())
-	}
+	}, [location.state, navigate,dispatch])
+
+	// Handling Escape press
+	useKeyPress('Escape', closeFunc)
+
 	const handlerClick = (event) => {
 		event.target.id === 'targetOverlay' &&
-		closeModal()
+		closeFunc()
 	};
 
 

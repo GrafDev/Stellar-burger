@@ -13,7 +13,7 @@ const initialState = {
 
 
 export const getIngredients = createAsyncThunk(
-	'ingredients/getIngredients',
+	'ingredient-page/getIngredients',
 	async (_, {rejectedWithValue, dispatch}) => {
 		const res = await axios.get(INGREDIENTS_URL)
 		dispatch(setToolIngredients(res.data.data))
