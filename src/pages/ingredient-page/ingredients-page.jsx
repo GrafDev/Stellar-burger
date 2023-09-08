@@ -14,4 +14,5 @@ const IngredientPage= () => {
     )
 }
 
+
 export default React.memo(IngredientPage)

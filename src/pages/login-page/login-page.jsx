@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux";
 import React, {useCallback, useEffect, useState} from "react";
 import {getUser, loginUser} from "../../redux/features/auth/authSlice";
 import useForm from "../../hooks/use-form";
+import PropTypes from "prop-types";
 
 const LoginPage = () => {
 
@@ -66,6 +67,12 @@ const LoginPage = () => {
         </main>
     )
 }
+
+LoginPage.propTypes = {
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+};
+
 export default LoginPage;
 
 

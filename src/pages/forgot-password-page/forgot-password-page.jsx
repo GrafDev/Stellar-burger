@@ -5,6 +5,7 @@ import useForm from "../../hooks/use-form";
 import {forgotPassword} from "../../utils/authorization/forgot-password";
 import {useNavigate} from "react-router-dom";
 import React, {useCallback, useEffect} from "react";
+import PropTypes from "prop-types";
 
 // Styles are in the main index.css file
 
@@ -65,4 +66,11 @@ const ForgotPasswordPage = () => {
         </main>
     )
 }
+
+ForgotPasswordPage.propTypes = {
+    title: PropTypes.string.isRequired,
+    buttonName: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
+};
+
 export default ForgotPasswordPage;

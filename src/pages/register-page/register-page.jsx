@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux";
 import React, {useCallback, useState} from "react";
 import {registerUser} from "../../redux/features/auth/authSlice";
 import useForm from "../../hooks/use-form";
+import PropTypes from "prop-types";
 // Styles are in the main index.css file
 
 
@@ -80,5 +81,11 @@ const RegisterPage = () => {
         </div>
     )
 }
+
+RegisterPage.propTypes = {
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+};
+
 export default RegisterPage;
 

@@ -9,6 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {unsetToolOrder} from "../../redux/features/order/orderSlice";
 import {getOrderId} from "../../redux/features/order/order-selectors";
 import Modal from "../modal/modal";
+import PropTypes from "prop-types";
 
 function OrderDetails() {
 
@@ -38,5 +39,13 @@ function OrderDetails() {
 
 	)
 }
+
+OrderDetails.propTypes = {
+	orderId: PropTypes.string.isRequired,
+};
+
+
+
+
 
 export default OrderDetails;

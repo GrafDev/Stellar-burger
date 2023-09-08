@@ -11,6 +11,7 @@ import styles from './home-page.module.css'
 import {
     getIngredientsIsLoadingSelector, getIngredientsHasErrorSelector
 } from "../../redux/features/ingredients/selectors-ingredients";
+import PropTypes from "prop-types";
 
 const HomePage=()=>{
     const isLoading = useSelector(getIngredientsIsLoadingSelector)
@@ -33,4 +34,9 @@ const HomePage=()=>{
         </>
     )
 }
+
+HomePage.propTypes = {
+	orderId: PropTypes.string.isRequired,
+};
+
 export default HomePage;

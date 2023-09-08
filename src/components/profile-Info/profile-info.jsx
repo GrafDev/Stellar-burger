@@ -12,6 +12,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {getAuthUser} from "../../redux/features/auth/auth-selectors";
 import useForm from "../../hooks/use-form";
 import {setUser} from "../../redux/features/auth/authSlice";
+import PropTypes from "prop-types";
+
 const ProfileInfo = () => {
     const dispatch = useDispatch()
     const [isSaved, setIsSaved] = useState(false)
@@ -19,9 +21,9 @@ const ProfileInfo = () => {
 
     const initialForm = {
 
-            name: user?.name || '',
-            email: user?.email || '',
-            password: '',
+        name: user?.name || '',
+        email: user?.email || '',
+        password: '',
 
     }
 
@@ -33,8 +35,8 @@ const ProfileInfo = () => {
         e.preventDefault()
 
         console.log(form, 'form')
-        let _form={
-            user:{
+        let _form = {
+            user: {
                 ...form,
             },
         }
@@ -43,8 +45,6 @@ const ProfileInfo = () => {
         setIsSaved(true)
 
     }
-
-
 
 
     return (
@@ -93,10 +93,18 @@ const ProfileInfo = () => {
                 </div>
             )}
             <div className={styles.isSaved}>
-                {(isSaved && !isEdit) ? <p>Данные успешно изменены</p>:''}
+                {(isSaved && !isEdit) ? <p>Данные успешно изменены</p> : ''}
             </div>
         </form>
     )
+}
+
+ProfileInfo.propTypes = {
+    user: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired,
+    }),
 }
 
 export default React.memo(ProfileInfo)

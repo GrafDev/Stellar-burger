@@ -1,5 +1,6 @@
 import styles from './empty-constructor-element.module.css'
 import {BOTTOM, TOP} from "../../../utils/constants/ingredient-constants";
+import PropTypes from "prop-types";
 function EmptyConstructorElement (props) {
     const type=props.type;
     let style
@@ -22,5 +23,9 @@ function EmptyConstructorElement (props) {
         </div>
     );
 }
+
+EmptyConstructorElement.propTypes = {
+    type: PropTypes.string.isRequired,
+};
 
 export default EmptyConstructorElement;

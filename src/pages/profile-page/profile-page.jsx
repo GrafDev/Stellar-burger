@@ -4,7 +4,7 @@ import {PROFILE_LINK, PROFILE_ORDERS_LINK} from "../../utils/constants/router-li
 import {inactiveDefault} from "../../utils/constants/text-style-constants";
 import classNames from "classnames";
 import {useDispatch} from "react-redux";
-import {logoutUser, reducer_isLoading} from "../../redux/features/auth/authSlice";
+import {logoutUser} from "../../redux/features/auth/authSlice";
 import {useCallback} from "react";
 
 const ProfilePage = () => {
@@ -41,4 +41,6 @@ const dispatch=useDispatch()
         </main>
     )
 }
+
+
 export default ProfilePage;

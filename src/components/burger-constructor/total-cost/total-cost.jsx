@@ -8,6 +8,8 @@ import {getConstructorIngredients} from "../../../redux/features/constructor/con
 import {getAuthUser} from "../../../redux/features/auth/auth-selectors";
 import {LOGIN_LINK, ORDER_LINK} from "../../../utils/constants/router-link-constants";
 import {useLocation, useNavigate} from "react-router-dom";
+import PropTypes from "prop-types";
+import {typeCart} from "../../../utils/types";
 
 
 function TotalCost() {
@@ -55,6 +57,14 @@ function TotalCost() {
 			</Button>
 		</div>
 	)
+}
+
+TotalCost.propTypes = {
+    order: PropTypes.oneOf([
+        PropTypes.shape(typeCart).isRequired,
+        undefined,
+        null,
+    ]),
 }
 
 export default TotalCost;

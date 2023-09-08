@@ -5,6 +5,7 @@ import {FORGOT_PASSWORD_LINK, LOGIN_LINK} from "../../utils/constants/router-lin
 import {useLocation, useNavigate} from "react-router-dom";
 import React, {useCallback, useEffect} from "react";
 import {resetPassword} from "../../utils/authorization/reset-password";
+import PropTypes from "prop-types";
 
 const ResetPasswordPage=()=>{
     const navigate = useNavigate()
@@ -80,4 +81,10 @@ const ResetPasswordPage=()=>{
         </main>
     )
 }
+
+ResetPasswordPage.propTypes = {
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+};
+
 export default ResetPasswordPage;

@@ -7,6 +7,8 @@ import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 import classNames from "classnames";
 import {BUN, MAIN, SAUCE} from "../../utils/constants/ingredient-constants";
 import {getIngredientsSelector} from "../../redux/features/ingredients/selectors-ingredients";
+import PropTypes from "prop-types";
+import {typeCart} from "../../utils/types";
 
 
 function BurgerIngredients() {
@@ -104,6 +106,16 @@ function BurgerIngredients() {
 
         </div>
     )
+}
+
+
+BurgerIngredients.propTypes = {
+    order: PropTypes.oneOf([
+        PropTypes.shape(typeCart).isRequired,
+        undefined,
+        null,
+
+    ]),
 }
 
 export default BurgerIngredients;
