@@ -6,14 +6,15 @@ import {useDispatch, useSelector} from "react-redux";
 import {setToolOrder} from "../../../redux/features/order/orderSlice";
 import {getConstructorIngredients} from "../../../redux/features/constructor/constructor-selectors";
 import {getAuthUser} from "../../../redux/features/auth/auth-selectors";
+import {LOGIN_LINK, ORDER_LINK} from "../../../utils/constants/router-link-constants";
 import {useLocation, useNavigate} from "react-router-dom";
-import {LOGIN_LINK} from "../../../utils/constants/router-link-constants";
 
 
 function TotalCost() {
 	const order=useSelector(getConstructorIngredients)
 	const IsAuth = useSelector(getAuthUser)
 	const navigate = useNavigate()
+	const location = useLocation()
 
 	const total=useMemo(()=>{
 		const costBun=order.bun!==null ?order.bun.price*2 : 0;
@@ -33,6 +34,7 @@ function TotalCost() {
 		if (!IsAuth) navigate(LOGIN_LINK)
 		else {
 			dispatch(setToolOrder())
+			navigate(ORDER_LINK, { state: { background: location } })
 		}
 
 	}, [IsAuth, navigate, dispatch])

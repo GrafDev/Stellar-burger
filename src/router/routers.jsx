@@ -54,7 +54,6 @@ const Routers = () => {
                     <Route path={INGREDIENT_PAGE_LINK} element={<IngredientDetails/>}/>
                     <Route path={ORDER_LINK} element={<OrderDetails/>}/>
 
-
                 </Routes>
             )}
 

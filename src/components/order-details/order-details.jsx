@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {unsetToolOrder} from "../../redux/features/order/orderSlice";
 import {getOrderId} from "../../redux/features/order/order-selectors";
+import Modal from "../modal/modal";
 
 function OrderDetails() {
 
@@ -20,18 +21,21 @@ function OrderDetails() {
 	}
 
 	return (
-		<div className={style.modal}>
-			<div className={`${style.digit} ${digitsLarge}`}>{orderId}</div>
-			<div className={`${style.text01} ${textMedium}`}>Идентификатор заказа</div>
-			<div className={style.checkMark}>
-				<div className={style.checkMarkIcon} onClick={handlerOverlay}>
-					<CheckMarkIcon type={'primary'}/>
+		<Modal>
+			<div className={style.modal}>
+				<div className={`${style.digit} ${digitsLarge}`}>{orderId}</div>
+				<div className={`${style.text01} ${textMedium}`}>Идентификатор заказа</div>
+				<div className={style.checkMark}>
+					<div className={style.checkMarkIcon} onClick={handlerOverlay}>
+						<CheckMarkIcon type={'primary'}/>
+					</div>
+					<img className={style.vector} src={burger} alt={'vector'}/>
 				</div>
-				<img className={style.vector} src={burger} alt={'vector'}/>
+				<div className={`${style.text02} ${textDefault}`}>Ваш заказ начали готовить</div>
+				<div className={`${style.text03} ${inactiveDefault}`}>Дождитесь готовности на орбитальной станции</div>
 			</div>
-			<div className={`${style.text02} ${textDefault}`}>Ваш заказ начали готовить</div>
-			<div className={`${style.text03} ${inactiveDefault}`}>Дождитесь готовности на орбитальной станции</div>
-		</div>
+		</Modal>
+
 	)
 }
 
