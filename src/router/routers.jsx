@@ -38,7 +38,7 @@ const Routers = () => {
 
                 {/* Ingredient details in a separate page */}
                 <Route path={INGREDIENT_PAGE_LINK} element={<IngredientPage/>}/>
-
+                <Route path={ORDER_LINK} element={<OrderDetails/>}/>
 
                 {/*Authentication routers*/}
                 <Route path={LOGIN_LINK} element={<ProtectedRoute onlyUnAuth element={<LoginPage/>}/>}/>

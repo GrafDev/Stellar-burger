@@ -7,12 +7,14 @@ import BurgerIngredients from "../../components/burger-ingredient/burger-igredie
 import BurgerConstructor from "../../components/burger-constructor/burger-constructor";
 import React from "react";
 import {useSelector} from "react-redux";
-import {getHasError, getIsLoading} from "../../redux/features/ingredients/ingredients-selectors";
 import styles from './home-page.module.css'
+import {
+    getIngredientsIsLoadingSelector, getIngredientsHasErrorSelector
+} from "../../redux/features/ingredients/selectors-ingredients";
 
 const HomePage=()=>{
-    const isLoading = useSelector(getIsLoading)
-    const hasError = useSelector(getHasError)
+    const isLoading = useSelector(getIngredientsIsLoadingSelector)
+    const hasError = useSelector(getIngredientsHasErrorSelector)
     return(
         <>
             {isLoading && <Spinner/>}

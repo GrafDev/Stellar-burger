@@ -5,14 +5,14 @@ import {useDrop} from "react-dnd";
 import classNames from "classnames";
 import {increaseConstructor} from "../../redux/features/constructor/constructorSlice";
 import {getConstructorIngredients} from "../../redux/features/constructor/constructor-selectors";
-import {getIngredients} from "../../redux/features/ingredients/ingredients-selectors";
 import Bun from "./pieces-components/component-bun";
 import Pieces from "./pieces-components/component-pieces";
 import {BOTTOM, TOP} from "../../utils/constants/ingredient-constants";
+import {getIngredientsSelector} from "../../redux/features/ingredients/selectors-ingredients";
 
 function BurgerConstructor() {
 	const dispatch = useDispatch();
-	const store= useSelector(getIngredients)
+	const store= useSelector(getIngredientsSelector)
 	const order = useSelector(getConstructorIngredients)
 	const isEmptyPieces=!order;
 
