@@ -13,19 +13,6 @@
 
 }
 
-/*.constructorList {*/
-/*    justify-self: stretch;*/
-/*    position: relative;*/
-/*    flex-grow: 1;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    border-radius: 60px;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: space-between;*/
-/*    row-gap: 16px;*/
-/*    transition: box-shadow .4s cubic-bezier(.4, .23, 0, 1);*/
-/*}*/
 
 .target{
     position: relative;

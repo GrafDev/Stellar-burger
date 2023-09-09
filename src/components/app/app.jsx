@@ -27,18 +27,9 @@ function App() {
 
 
     return (
-        <div className={styles.App}>
+        <div id={'popup-hint'} className={styles.App}>
             <AppHeader/>
             <Routers/>
-            {/*{isModal &&*/}
-            {/*    (<Modal>*/}
-            {/*        <>*/}
-            {/*            {isOrder && <OrderDetails/>}*/}
-            {/*            {isIngredient && <IngredientDetails/>}*/}
-            {/*        </>*/}
-            {/*    </Modal>)*/}
-            {/*}*/}
-
         </div>
     );
 }

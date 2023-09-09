@@ -18,19 +18,22 @@ const HomePage=()=>{
     const hasError = useSelector(getIngredientsHasErrorSelector)
     return(
         <>
-            {isLoading && <Spinner/>}
-            {hasError && 'Произошла ошибка'}
-            {!isLoading &&
-                !hasError &&
-                <main className={classNames('container', styles.main)}>
-                    <DndProvider backend={HTML5Backend}>
-                        <div className={`${styles.title} ${textLarge}`}>Соберите бургер</div>
-                        <BurgerIngredients/>
-                        <BurgerConstructor/>
-                    </DndProvider>
-                </main>
 
-            }
+                {isLoading && <Spinner/>}
+                {hasError && 'Произошла ошибка'}
+                {!isLoading &&
+                    !hasError &&
+                    <main className={classNames('container', styles.main)}>
+                        <DndProvider backend={HTML5Backend}>
+                            <div className={`${styles.title} ${textLarge}`}>Соберите бургер</div>
+                            <BurgerIngredients/>
+                            <BurgerConstructor/>
+                        </DndProvider>
+                    </main>
+
+                }
+
+
         </>
     )
 }
