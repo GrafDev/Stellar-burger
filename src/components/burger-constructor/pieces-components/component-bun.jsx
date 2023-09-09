@@ -4,13 +4,14 @@ import EmptyConstructorElement from "../empty-constructor-element/empty-construc
 import React from "react";
 import PropTypes from "prop-types";
 import {typeCart} from "../../../utils/types";
+import {TOP} from "../../../utils/constants/ingredient-constants";
 
 const Bun = ({bun,type} ) => {
      return (<div className={styles.bun}>
         {bun !== null ?
             <ConstructorElement
                 key={bun._id + '1'}
-                text={bun.name}
+                text={bun.name + (type===TOP?' (верх)':' (низ)')}
                 type={type}
                 price={bun.price}
                 isLocked={true}
@@ -28,6 +29,7 @@ Bun.propTypes = {
         ]),
     type:  PropTypes.string.isRequired,
 }
+
 
 export default Bun;
 

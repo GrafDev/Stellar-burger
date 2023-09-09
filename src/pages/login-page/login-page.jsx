@@ -68,10 +68,7 @@ const LoginPage = () => {
     )
 }
 
-LoginPage.propTypes = {
-    email: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-};
+
 
 export default LoginPage;
 

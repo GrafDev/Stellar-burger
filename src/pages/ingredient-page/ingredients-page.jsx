@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import styles from './ingredient-page.module.css'
+import styles from './ingredients-page.module.css'
 import
     IngredientInfo from "../../components/ingredient-details/ingredient-info/ingredient-info";
 

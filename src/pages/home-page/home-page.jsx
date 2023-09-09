@@ -35,8 +35,6 @@ const HomePage=()=>{
     )
 }
 
-HomePage.propTypes = {
-	orderId: PropTypes.string.isRequired,
-};
+
 
 export default HomePage;

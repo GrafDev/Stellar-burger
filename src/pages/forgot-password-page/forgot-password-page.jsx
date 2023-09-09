@@ -6,6 +6,7 @@ import {forgotPassword} from "../../utils/authorization/forgot-password";
 import {useNavigate} from "react-router-dom";
 import React, {useCallback, useEffect} from "react";
 import PropTypes from "prop-types";
+import LoginPage from "../login-page/login-page";
 
 // Styles are in the main index.css file
 
@@ -13,10 +14,8 @@ import PropTypes from "prop-types";
 const ForgotPasswordPage = () => {
     const navigate = useNavigate()
     const {form, handleForm} = useForm({
-            email: ''
-        })
-
-
+        email: ''
+    })
 
 
     const submitForm = useCallback((e) => {
@@ -67,10 +66,6 @@ const ForgotPasswordPage = () => {
     )
 }
 
-ForgotPasswordPage.propTypes = {
-    title: PropTypes.string.isRequired,
-    buttonName: PropTypes.string.isRequired,
-    path: PropTypes.string.isRequired,
-};
+
 
 export default ForgotPasswordPage;

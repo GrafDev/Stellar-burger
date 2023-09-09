@@ -109,13 +109,4 @@ function BurgerIngredients() {
 }
 
 
-BurgerIngredients.propTypes = {
-    order: PropTypes.oneOf([
-        PropTypes.shape(typeCart).isRequired,
-        undefined,
-        null,
-
-    ]),
-}
-
 export default BurgerIngredients;

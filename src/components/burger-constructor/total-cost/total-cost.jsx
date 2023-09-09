@@ -26,10 +26,6 @@ function TotalCost() {
 
 
 	const dispatch = useDispatch()
-	const handleClick = () => {
-		console.log('setToolOrder(order)')
-		dispatch(setToolOrder())
-	}
 
 	const handleOrderClick = useCallback(() => {
 

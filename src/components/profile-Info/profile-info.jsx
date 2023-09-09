@@ -99,12 +99,5 @@ const ProfileInfo = () => {
     )
 }
 
-ProfileInfo.propTypes = {
-    user: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        email: PropTypes.string.isRequired,
-        password: PropTypes.string.isRequired,
-    }),
-}
 
 export default React.memo(ProfileInfo)

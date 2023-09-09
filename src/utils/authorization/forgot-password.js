@@ -7,7 +7,7 @@ export const forgotPassword = (form) => {
             method: 'POST',
             body: {..._form}
         }).then(res => checkResponse(res))
-            .catch(error => Promise.reject(error));
+          //  .catch(error => Promise.reject(error));
 
 
     }

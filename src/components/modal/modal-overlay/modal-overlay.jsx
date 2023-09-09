@@ -17,8 +17,6 @@ function ModalOverlay(props) {
 
 	const closeFunc = useCallback(() => {
 		if (location.state?.background) navigate(location.state.background)
-		dispatch(unsetToolOrder())
-		dispatch(unsetCurrentIngredient())
 	}, [location.state, navigate,dispatch])
 
 	// Handling Escape press

@@ -7,6 +7,7 @@ import {useDrag, useDrop} from "react-dnd";
 import classNames from "classnames";
 import sortFunc from "../../../utils/sortFunc";
 import {getConstructorPieces} from "../../../redux/features/constructor/constructor-selectors";
+import PropTypes from "prop-types";
 
 
 const ConstructorCart = ({elem, index}) => {
@@ -78,6 +79,16 @@ const ConstructorCart = ({elem, index}) => {
 			/>
 		</div>
 	)
+}
+
+ConstructorCart.propTypes = {
+	elem: PropTypes.shape({
+		constructorId: PropTypes.string.isRequired,
+		name: PropTypes.string.isRequired,
+		price: PropTypes.number.isRequired,
+		image_mobile: PropTypes.string.isRequired,
+	}).isRequired,
+	index: PropTypes.number.isRequired,
 }
 
 export default ConstructorCart;

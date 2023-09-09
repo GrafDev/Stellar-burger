@@ -26,22 +26,12 @@ function Modal(props) {
 	});
 
 
-	useEffect(() => {
-		const handleEscape = ({key}) => {
-			if (key === 'Escape') closeFunc()
-		}
-		document.addEventListener('keydown', handleEscape)
-		return () => document.removeEventListener('keydown', handleEscape)
-	});
-
 
 	const closeFunc = useCallback(() => {
 		if (location.state?.background) navigate(location.state.background)
-		dispatch(unsetToolOrder())
-		dispatch(unsetCurrentIngredient())
 	}, [location.state, navigate,dispatch])
 
-	// Handling Escape press
+
 	useKeyPress('Escape', closeFunc)
 
 

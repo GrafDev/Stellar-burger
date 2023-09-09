@@ -51,7 +51,7 @@ export const setUser = createAsyncThunk(
                 }
             }
         )
-        dispatch(reducer_setUser(res.data))
+        dispatch(reducerSetUser(res.data))
 
     }
 )
@@ -82,7 +82,7 @@ export const getUser = createAsyncThunk(
             }
         )
 
-        dispatch(reducer_setUser(res.data))
+        dispatch(reducerSetUser(res.data))
     }
 )
 
@@ -99,7 +99,7 @@ export const registerUser = createAsyncThunk(
             }
         )
 
-        dispatch(reducer_setUser(res.data))
+        dispatch(reducerSetUser(res.data))
         saveTokens(res.data)
         return res.data
     }
@@ -117,7 +117,7 @@ export const loginUser = createAsyncThunk(
             })
         // console.log('login res.data: ', res.data)
         saveTokens(res.data)
-        dispatch(reducer_setUser(res.data))
+        dispatch(reducerSetUser(res.data))
         return res.data
     }
 )
@@ -133,7 +133,7 @@ export const logoutUser = createAsyncThunk(
             })
         // console.log('res.data-logout:', res.data)
         eraseTokens()
-        dispatch(reducer_cleanUser(res.data))
+        dispatch(reducerCleanUser(res.data))
         return res.data
     }
 )
@@ -144,11 +144,11 @@ export const authSlice = createSlice({
     initialState,
 
     reducers: {
-        reducer_setUser: (state, action) => {
+        reducerSetUser: (state, action) => {
             state.user = action.payload.user;
         },
 
-        reducer_cleanUser: (state, action) => {
+        reducerCleanUser: (state, action) => {
             state.user = null;
         },
     },
@@ -221,5 +221,5 @@ export const authSlice = createSlice({
 
 })
 
-export const {reducer_setUser, reducer_cleanUser} = authSlice.actions
+export const {reducerSetUser, reducerCleanUser} = authSlice.actions
 export default authSlice.reducer

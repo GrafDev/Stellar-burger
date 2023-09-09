@@ -6,6 +6,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import React, {useCallback, useEffect} from "react";
 import {resetPassword} from "../../utils/authorization/reset-password";
 import PropTypes from "prop-types";
+import LoginPage from "../login-page/login-page";
 
 const ResetPasswordPage=()=>{
     const navigate = useNavigate()
@@ -82,9 +83,6 @@ const ResetPasswordPage=()=>{
     )
 }
 
-ResetPasswordPage.propTypes = {
-    email: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-};
+
 
 export default ResetPasswordPage;

@@ -4,6 +4,7 @@ import {activeDefault, inactiveDefault} from "../../../utils/constants/text-styl
 import {BurgerIcon, CurrencyIcon, ListIcon, ProfileIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import {BURGER, LIST, PROFILE} from "../../../utils/constants/ingredient-constants";
 import {Link, NavLink, useMatch} from "react-router-dom";
+import PropTypes from "prop-types";
 
 
 const NavItem = (props) => {
@@ -29,5 +30,13 @@ const NavItem = (props) => {
         </NavLink>
     )
 }
+
+NavItem.propTypes = {
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    links: PropTypes.string.isRequired,
+}
+
+
 export default NavItem;
 

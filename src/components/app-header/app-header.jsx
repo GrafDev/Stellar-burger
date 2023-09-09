@@ -5,15 +5,14 @@ import NavItem from "./nav-item/nav-item";
 import {BURGER, LIST, PROFILE} from "../../utils/constants/ingredient-constants";
 import {LIST_LINK,  PROFILE_LINK} from "../../utils/constants/router-link-constants";
 import {useSelector} from "react-redux";
-import {getIngredients} from "../../redux/features/ingredients/selectors-ingredients";
-import {getAuth, getAuthUserName} from "../../redux/features/auth/auth-selectors";
+import {getAuth} from "../../redux/features/auth/auth-selectors";
 
 function AppHeader() {
     const userName= useSelector(getAuth).name
 
     return (
         <div className={styles.header}>
-            <div className={'container'}>
+            <header className={'container'}>
                 <div className={styles.navigationMenu}>
                     <NavItem links={'/'} name={'Конструктор'} id={BURGER}/>
                     <NavItem links={LIST_LINK} name={'Лента заказа'} id={LIST}/>
@@ -23,7 +22,7 @@ function AppHeader() {
                 <div className={styles.logo}>
                     <Logo/>
                 </div>
-            </div>
+            </header>
         </div>
     )
 }
