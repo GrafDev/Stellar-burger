@@ -1,5 +1,5 @@
 import styles from "./burger-constructor.module.css"
-import TotalCost from "./total-cost/total-cost";
+import ConstructorFooter from "./constructor-footer/constructor-footer";
 import {useDispatch, useSelector} from "react-redux";
 import {useDrop} from "react-dnd";
 import classNames from "classnames";
@@ -44,7 +44,8 @@ function BurgerConstructor() {
 					<Bun bun={order.bun} type={BOTTOM}/>
 				</div>
 			</div>
-			<TotalCost/>
+			<ConstructorFooter/>
+
 		</div>
 	)
 }
