@@ -7,7 +7,7 @@ export const resetPassword = async (form) => {
             method: 'POST',
             body: {..._form}
         }).then(res => checkResponse(res))
-            .catch(error => Promise.reject(error));
+
 
     }
     return loginRequest(form)

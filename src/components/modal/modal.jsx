@@ -37,7 +37,7 @@ function Modal(props) {
 
 
 	return createPortal(
-		<ModalOverlay>
+		<ModalOverlay closeFunc={closeFunc}>
 			<div className={style.modal}>
 				<div className={style.closeCross} onClick={closeFunc} >
 					<CloseIcon type="primary"/>
