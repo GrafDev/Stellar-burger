@@ -83,6 +83,7 @@ function BurgerIngredients() {
                     )}>Булки
                     </div>
                     <div className={styles.items}>
+
                         <IngredientCarts data={bunIngredient}/>
                     </div>
                     <div ref={sauceRef} className={classNames(

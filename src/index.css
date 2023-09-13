@@ -9,8 +9,9 @@
 :root {
     --inactive-color: #8585AD;
     --active-color: #F2F2F3;
-    --background-color:#2F2F37 ;
-    --second-color:#8585AD;
+    --background-color: #3e3e50;
+    --second-color: #c0c0f5;
+    --shadow-color: rgba(51, 51, 255, 0.25);
 }
 
 

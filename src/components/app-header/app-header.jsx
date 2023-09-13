@@ -8,7 +8,13 @@ import {useSelector} from "react-redux";
 import {getAuth} from "../../redux/features/auth/auth-selectors";
 
 function AppHeader() {
-    const userName= useSelector(getAuth).name
+    const user= useSelector(getAuth).user
+    let userName='';
+    if (!user || !user.hasOwnProperty('name')) {
+        userName = 'Личный кабинет'
+    } else {
+        userName = user.name
+    }
 
     return (
         <div className={styles.header}>
@@ -16,7 +22,7 @@ function AppHeader() {
                 <div className={styles.navigationMenu}>
                     <NavItem links={'/'} name={'Конструктор'} id={BURGER}/>
                     <NavItem links={LIST_LINK} name={'Лента заказа'} id={LIST}/>
-                    <NavItem links={PROFILE_LINK} className={styles.LastNavItem} name={userName||'Личный кабинет'} id={PROFILE}/>
+                    <NavItem links={PROFILE_LINK} className={styles.LastNavItem} name={userName} id={PROFILE}/>
                 </div>
 
                 <div className={styles.logo}>

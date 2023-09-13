@@ -2,4 +2,5 @@
     display: flex;
     row-gap: 24px;
     flex-wrap: wrap;
+    list-style: none; /* или list-style-type: none; */
 }

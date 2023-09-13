@@ -30,7 +30,7 @@
 }
 
 .onDrag{
-    box-shadow: 0px 0px 16px 8px rgba(51, 51, 255, 0.25), 0px 0px 8px 8px rgba(51, 51, 255, 0.25);
+    box-shadow: 0px 0px 16px 8px var(--shadow-color), 0px 0px 8px 8px var(--shadow-color);
 }
 
 .count {
@@ -70,6 +70,6 @@
     text-align: center;
 }
 .onDragText{
-   color: #4C4CFF;
+   color: var(--second-color);
 }
 

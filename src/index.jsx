@@ -5,8 +5,7 @@ import App from './components/app/app';
 import reportWebVitals from './reportWebVitals';
 
 import {Provider} from "react-redux";
-import {DevSupport} from "@react-buddy/ide-toolbox";
-import {ComponentPreviews, useInitial} from "./dev";
+
 import stores from "./redux/store/store";
 import {BrowserRouter} from "react-router-dom";
 

@@ -20,7 +20,7 @@
     position: absolute;
     top: 60px;
     right: 40px;
-    z-index: 1;
+    z-index: 50;
 }
 .closeCross>svg{
     width: 30px;

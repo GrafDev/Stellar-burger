@@ -29,13 +29,17 @@ function ConstructorFooter() {
     )
     const [popupState, setPopupState] = useState(popupStateInit)
 
+
     const handlePopup = useCallback(
         (_text) => {
             setPopupState({
                 isActive: true,
                 text: _text,
             })
+
             setTimeout(() => setPopupState(popupStateInit), 4500)
+
+
         },
         [popupStateInit],
     )
@@ -46,14 +50,14 @@ function ConstructorFooter() {
     const handleOrderClick = useCallback(() => {
 
         if (!bun && !isPieces){
-            handlePopup('Воздух не вкусен, выберите хотя бы один ингредиент и булочку')}
+            handlePopup('Воздух не вкусен, добавь начиночки или соусика, ну и булочку')}
 
         else if (!bun){
             handlePopup('Какой же бургер без булочки?')}
         else if (!isPieces){
 
             console.log('ingredients', isPieces)
-            handlePopup('Без начинки это не бургер,а шерстявый нюхель с шестой Цефея!')}
+            handlePopup('Без начинки это не бургер, а нюхель с Проциона!')}
         else if (!_isAuth){
             navigate(LOGIN_LINK)}
         else {
