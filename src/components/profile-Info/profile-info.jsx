@@ -36,9 +36,8 @@ const ProfileInfo = () => {
 
         console.log(form, 'form')
         let _form = {
-            user: {
+
                 ...form,
-            },
         }
 
         dispatch(setUser(_form))

@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {AsyncThunkAction, createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from 'axios';
 import {INGREDIENTS_URL} from "../../../utils/constants/outlink-constants";
 
@@ -12,9 +12,9 @@ const initialState = {
 
 
 
-export const getIngredients = createAsyncThunk(
+export const getIngredients: any = createAsyncThunk(
 	'ingredient-page/getIngredients',
-	async (_, {rejectedWithValue, dispatch}) => {
+	async (_:void, {dispatch}):Promise<void> => {
 		const res = await axios.get(INGREDIENTS_URL)
 		dispatch(setToolIngredients(res.data.data))
 	}

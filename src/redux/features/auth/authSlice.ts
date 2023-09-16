@@ -11,14 +11,38 @@ import {deleteCookie, getCookie, setCookie} from "../../../utils/cookie";
 import checkToken from "../../../utils/authorization/check-token";
 
 
-const initialState = {
+export type TAuthUser = {
+    name: string
+    email: string
+}
+
+export type TAuthRegister = {
+    name: string
+    email: string
+    password: string
+}
+
+export type TAuthState = {
+    user: TAuthUser | null
+    isLoading: boolean
+    hasError: boolean
+}
+
+const initialState:TAuthState = {
     user: null,
     isLoading: false,
     hasError: false,
 }
 
+type TAuthResponse = {
+    success: boolean
+    accessToken: string
+    refreshToken: string
+    user: TAuthUser
+}
 
-const saveTokens = (data) => {
+
+const saveTokens = (data: { accessToken: string; refreshToken: any; }) => {
     const _accessToken = data.accessToken.split('Bearer ')[1];
     const _refreshToken = data.refreshToken;
     console.log('set REFRESH Token to storage: ', _refreshToken)
@@ -34,16 +58,15 @@ const eraseTokens = () => {
 }
 
 
-export const setUser = createAsyncThunk(
+export const setUser:any = createAsyncThunk(
     'auth/setUser',
-    async (form, {rejectWithValue, dispatch}) => {
-        const _user = form.user
+    async (form:TAuthRegister, {rejectWithValue, dispatch}) => {
         const _accessToken = 'Bearer ' + getCookie('BurgerAccessToken')
         let res = await axios.patch(AUTH_USER_URL,
             {
-                "name": _user.name,
-                "email": _user.email,
-                "password": _user.password,
+                "name": form.name,
+                "email": form.email,
+                "password": form.password,
             },
             {
                 headers: {
@@ -57,7 +80,7 @@ export const setUser = createAsyncThunk(
 )
 
 
-export const getUser = createAsyncThunk(
+export const getUser:any = createAsyncThunk(
     'auth/getUser',
     async (form, {rejectWithValue, dispatch}) => {
         console.log('getUser: start ')
@@ -87,9 +110,9 @@ export const getUser = createAsyncThunk(
 )
 
 
-export const registerUser = createAsyncThunk(
+export const registerUser:any = createAsyncThunk(
     'auth/registerUser',
-    async (form, {rejectWithValue, dispatch}) => {
+    async (form:TAuthRegister, {rejectWithValue, dispatch}) => {
 
         const res = await axios.post(AUTH_REGISTER_URL,
             {
@@ -108,7 +131,7 @@ export const registerUser = createAsyncThunk(
 export const loginUser = createAsyncThunk(
     'auth/loginUser',
 
-    async (form, {rejectWithValue, dispatch}) => {
+    async (form:TAuthRegister, {rejectWithValue, dispatch}) => {
 
         const res = await axios.post(AUTH_LOGIN_URL,
             {
@@ -125,7 +148,7 @@ export const loginUser = createAsyncThunk(
 
 export const logoutUser = createAsyncThunk(
     'auth/logoutUser',
-    async (form, {rejectWithValue, dispatch}) => {
+    async (form:TAuthRegister, {rejectWithValue, dispatch}) => {
         const refreshToken = localStorage.getItem('BurgerRefreshToken')
         const res = await axios.post(AUTH_LOGOUT_URL,
             {

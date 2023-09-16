@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {FC, memo, useEffect} from "react";
 import AppHeader from "../app-header/app-header";
 import styles from "./app.module.css";
 
@@ -10,7 +10,7 @@ import Routers from "../../router/routers";
 import {getUser} from "../../redux/features/auth/authSlice";
 
 
-function App() {
+const App:FC=()=> {
 
 
     const dispatch = useDispatch();
@@ -32,4 +32,4 @@ function App() {
     );
 }
 
-export default App;
+export default memo(App);
