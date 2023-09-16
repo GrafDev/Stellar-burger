@@ -1,4 +1,4 @@
-import React, {FC, memo, useEffect} from "react";
+import React, {Dispatch, FC, memo, useEffect} from "react";
 import AppHeader from "../app-header/app-header";
 import styles from "./app.module.css";
 
@@ -13,11 +13,11 @@ import {getUser} from "../../redux/features/auth/authSlice";
 const App:FC=()=> {
 
 
-    const dispatch = useDispatch();
+    const dispatch:Dispatch<any> = useDispatch();
 
 
 
-    useEffect(() => {
+    useEffect(():void => {
 
         dispatch(getIngredients())
         dispatch(getUser());

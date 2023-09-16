@@ -1,4 +1,4 @@
-import {AsyncThunkAction, createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from 'axios';
 import {INGREDIENTS_URL} from "../../../utils/constants/outlink-constants";
 
@@ -36,7 +36,7 @@ const ingredientsSlice = createSlice({
 			console.log('getIngredients: fulfilled')
 		})
 			.addCase(getIngredients.rejected, () => console.log('getIngredients: rejected'))
-			.addDefaultCase(()=>{})
+			.addDefaultCase(():void=>{})
 	}
 
 })
