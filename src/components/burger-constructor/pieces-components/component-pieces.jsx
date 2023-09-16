@@ -3,7 +3,6 @@ import EmptyConstructorElement from "../empty-constructor-element/empty-construc
 import styles from "./component-pieces.module.css"
 import PropTypes from "prop-types";
 import {typeCart} from "../../../utils/types";
-import Bun from "./component-bun";
 const Pieces =({pieces}) =>{
 
     return (<div className={styles.pieces}>

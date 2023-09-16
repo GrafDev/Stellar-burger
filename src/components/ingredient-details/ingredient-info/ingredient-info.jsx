@@ -6,8 +6,6 @@ import {
     textLarge,
     textMedium
 } from "../../../utils/constants/text-style-constants";
-import {useSelector} from "react-redux";
-import {getCurrentIngredient} from "../../../redux/features/currentIngredient/current-ingredient-selectors";
 import {useParams} from "react-router-dom";
 import useIngredientDetails from "../../../hooks/useIngredient-details";
 

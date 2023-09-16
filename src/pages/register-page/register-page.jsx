@@ -1,13 +1,10 @@
 import {Button, EmailInput, Input, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components";
-import {LOGIN_LINK, PROFILE_LINK} from "../../utils/constants/router-link-constants";
+import { PROFILE_LINK} from "../../utils/constants/router-link-constants";
 import AuthorizationButton from "../../components/authorization-button/authorization-button";
 import {useDispatch} from "react-redux";
-import React, {useCallback, useState} from "react";
+import React, {useCallback} from "react";
 import {registerUser} from "../../redux/features/auth/authSlice";
 import useForm from "../../hooks/use-form";
-import PropTypes from "prop-types";
-import LoginPage from "../login-page/login-page";
-// Styles are in the main index.css file
 
 
 const RegisterPage = () => {

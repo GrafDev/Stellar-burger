@@ -9,8 +9,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {unsetToolOrder} from "../../redux/features/order/orderSlice";
 import {getOrderId} from "../../redux/features/order/order-selectors";
 import Modal from "../modal/modal";
-import PropTypes from "prop-types";
-import useKeyPress from "../../hooks/useKeyPress";
 import {useLocation, useNavigate} from "react-router-dom";
 
 function OrderDetails() {

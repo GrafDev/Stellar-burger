@@ -3,7 +3,7 @@ import {Navigate, useLocation} from 'react-router-dom'
 import Spinner from "../../components/spinner/spinner";
 import {getAuth} from "../../redux/features/auth/auth-selectors";
 import {useSelector} from "react-redux";
-import {HOME_LINK, LOGIN_LINK, PROFILE_LINK} from "../../utils/constants/router-link-constants";
+import {HOME_LINK, LOGIN_LINK} from "../../utils/constants/router-link-constants";
 import PropTypes from "prop-types";
 
 

@@ -1,7 +1,5 @@
 import {useCallback, useEffect, useMemo} from "react";
 import {useDispatch} from "react-redux";
-import {unsetToolOrder} from "../../redux/features/order/orderSlice";
-import {unsetCurrentIngredient} from "../../redux/features/currentIngredient/currentIngredientSlice";
 import ModalOverlay from "./modal-overlay/modal-overlay";
 import {CloseIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";

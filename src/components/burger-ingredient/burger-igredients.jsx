@@ -1,14 +1,12 @@
-import React, {useEffect, useMemo, useRef, useState} from "react";
+import React, { useMemo, useRef, useState} from "react";
 import styles from "./burger-ingredients.module.css"
-import {textLarge, textMedium} from "../../utils/constants/text-style-constants";
+import { textMedium} from "../../utils/constants/text-style-constants";
 import IngredientCarts from "./ingredient-carts/ingredient-carts";
 import {useSelector} from "react-redux";
 import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 import classNames from "classnames";
 import {BUN, MAIN, SAUCE} from "../../utils/constants/ingredient-constants";
 import {getIngredientsSelector} from "../../redux/features/ingredients/selectors-ingredients";
-import PropTypes from "prop-types";
-import {typeCart} from "../../utils/types";
 
 
 function BurgerIngredients() {

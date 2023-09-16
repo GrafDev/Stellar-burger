@@ -2,8 +2,6 @@ import styles from "../constructor-footer.module.css";
 import {digitsMedium} from "../../../../utils/constants/text-style-constants";
 import {CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import React, {useMemo} from "react";
-import {useSelector} from "react-redux";
-import {getConstructorIngredients} from "../../../../redux/features/constructor/constructor-selectors";
 import PropTypes from "prop-types";
 import {typeCart} from "../../../../utils/types";
 

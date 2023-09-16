@@ -4,11 +4,8 @@ import {LOGIN_LINK, RESET_PASSWORD_LINK} from "../../utils/constants/router-link
 import useForm from "../../hooks/use-form";
 import {forgotPassword} from "../../utils/authorization/forgot-password";
 import {useNavigate} from "react-router-dom";
-import React, {useCallback, useEffect} from "react";
-import PropTypes from "prop-types";
-import LoginPage from "../login-page/login-page";
+import React, {useCallback} from "react";
 
-// Styles are in the main index.css file
 
 
 const ForgotPasswordPage = () => {
