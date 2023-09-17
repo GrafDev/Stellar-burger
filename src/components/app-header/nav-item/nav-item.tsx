@@ -1,5 +1,5 @@
 import styles from "./nav-item.module.css";
-import React from "react";
+import React, {FC} from "react";
 import {activeDefault, inactiveDefault} from "../../../utils/constants/text-style-constants";
 import {BurgerIcon, ListIcon, ProfileIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import {BURGER, LIST, PROFILE} from "../../../utils/constants/ingredient-constants";
@@ -11,7 +11,7 @@ type TNavItem = {
     links: string,
 }
 
-const NavItem = (props:TNavItem) => {
+const NavItem:FC<TNavItem> = (props) => {
     const id:string= props.id;
     const name:string = props.name;
     const links:string = props.links;
