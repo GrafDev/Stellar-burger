@@ -1,5 +1,6 @@
 import styles from "./spinner.module.css"
-const Spinner=()=>{
+import {FC} from "react";
+const Spinner:FC=()=>{
 	return(
 		<div className={styles.bodyRing}>
 			<div className={styles.ring}>

@@ -1,9 +1,11 @@
-import {useState} from "react";
+import {ChangeEvent, FC, useState} from "react";
 
-const useForms = (iniForm) => {
+
+
+const useForms = <T>(iniForm:T) => {
     const [form, setForm] = useState(iniForm)
 
-    const handleForm = (event) => {
+    const handleForm = (event:ChangeEvent<HTMLInputElement>):void => {
         const { name, value } = event.target
         setForm(prevForm => ({ ...prevForm, [name]: value }))
     }

@@ -1,4 +1,4 @@
-import React, {useCallback} from "react";
+import React, {FC, useCallback} from "react";
 import {digitsLarge, inactiveDefault, textDefault, textMedium} from "../../utils/constants/text-style-constants";
 import style from "./order-details.module.css"
 // import vector from '../../images/vector.svg'
@@ -11,7 +11,7 @@ import {getOrderId} from "../../redux/features/order/order-selectors";
 import Modal from "../modal/modal";
 import {useLocation, useNavigate} from "react-router-dom";
 
-function OrderDetails() {
+const OrderDetails:FC = () =>{
 
 	const dispatch=useDispatch();
 	const location=useLocation();

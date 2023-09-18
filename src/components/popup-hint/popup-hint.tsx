@@ -1,13 +1,14 @@
 import {createPortal} from 'react-dom'
 import styles from './popup-hint.module.css'
-import {memo} from "react";
+import {FC, memo, ReactPortal} from "react";
 import {motion} from "framer-motion";
 
-
-const PopupHint = (props) => {
+type TProps ={
+    text:string
+}
+const PopupHint:FC<TProps> = (props:TProps):ReactPortal|null => {
     const _text = props.text
     if (!_text) {
-        console.log('render PopupHint null')
         return null
     }
     return createPortal(
@@ -31,7 +32,7 @@ const PopupHint = (props) => {
             }
             className={styles.wrapper}>
             {_text}
-        </motion.div>, document.getElementById('popup-hint'))
+        </motion.div>, document.getElementById('popup-hint')!)
 }
 
 export default memo(PopupHint)

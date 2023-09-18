@@ -4,22 +4,22 @@ import {
     Input,
     PasswordInput,
 } from '@ya.praktikum/react-developer-burger-ui-components'
-import React, {useState} from 'react'
+import React, { FC, useState} from 'react'
 
 
 import styles from './profile-info.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {getAuthUser} from "../../redux/features/auth/auth-selectors";
 import useForm from "../../hooks/use-form";
-import {setUser} from "../../redux/features/auth/authSlice";
-import PropTypes from "prop-types";
+import {setUser, TAuthRegister} from "../../redux/features/auth/authSlice";
+import {FormEvent} from "react";
 
-const ProfileInfo = () => {
-    const dispatch = useDispatch()
-    const [isSaved, setIsSaved] = useState(false)
-    const user = useSelector(getAuthUser)
+const ProfileInfo:FC = () => {
+    const dispatch:any = useDispatch()
+    const [isSaved, setIsSaved] = useState<boolean>(false)
+    const user:TAuthRegister = useSelector(getAuthUser)
 
-    const initialForm = {
+    const initialForm:TAuthRegister = {
 
         name: user?.name || '',
         email: user?.email || '',
@@ -27,16 +27,15 @@ const ProfileInfo = () => {
 
     }
 
-    const {form, handleForm, resetForm} = useForm(initialForm)
+    const {form, handleForm, resetForm} = useForm<TAuthRegister>(initialForm)
 
-    const isEdit = JSON.stringify(initialForm) !== JSON.stringify(form)
+    const isEdit :boolean= JSON.stringify(initialForm) !== JSON.stringify(form)
 
-    const submitForm = (e) => {
+    const submitForm = (e:FormEvent):void => {
         e.preventDefault()
 
         console.log(form, 'form')
-        let _form = {
-
+        let _form:TAuthRegister = {
                 ...form,
         }
 

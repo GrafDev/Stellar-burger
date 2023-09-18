@@ -19,6 +19,8 @@ export const typeCart = {
 export type TTypeIngredient ='bun' | 'sauce' | 'main'
 export type TTypeBun = 'top' | 'bottom'
 
+export type TCallbackVoid = () => void
+
 export interface ICart {
     _id: string
     name: string

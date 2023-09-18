@@ -9,7 +9,22 @@ type TProps = {
     data: Array<ICart>
 }
 
-const container = {
+
+type TTransition = {
+    staggerChildren:number
+}
+
+type TShow = {
+    opacity:number,
+    transition?:TTransition
+}
+
+type TContainer = {
+    hidden: TShow,
+    show: TShow,
+}
+
+const container:TContainer = {
     hidden: {opacity: 0},
     show: {
         opacity: 1,
@@ -20,16 +35,15 @@ const container = {
     }
 };
 
-const listItem = {
+const listItem:TContainer = {
     hidden: {opacity: 0},
     show: {opacity: 1}
 };
 
 const IngredientCarts: FC<TProps> = (props: TProps) => {
-    const carts = props.data
+    const carts:Array<ICart> = props.data
     return (
         <motion.ul variants={container} initial="hidden" animate="show" className={styles.carts}>
-
             {carts.map((cart:ICart) => (
                 <motion.li key={cart._id} variants={listItem}>
             <Cart cart={cart}/>

@@ -6,23 +6,23 @@ import {
 } from "../redux/features/currentIngredient/currentIngredientSlice";
 import {getCurrentIngredient} from "../redux/features/currentIngredient/current-ingredient-selectors";
 import {getIngredientsSelector} from "../redux/features/ingredients/selectors-ingredients";
-import PropTypes from "prop-types";
+import {ICart, IConstructorIngredients} from "../utils/types";
 
-// Redux
 
-const useIngredientDetails = (id) => {
+
+const useIngredientDetails = (id: string | undefined) => {
   const dispatch = useDispatch()
 
-  // Searching ingredient in Ingredient storage
-  const _ingredients = useSelector(getIngredientsSelector)
+  const _ingredients:Array<ICart> = useSelector(getIngredientsSelector)
+
   console.log('-----',_ingredients,  '----useIngredientDetails')
-     const data = _ingredients?.find(el => el._id === id,  )
+     const data:ICart|undefined = _ingredients?.find((el: { _id: any; }) => el._id === id,  )
 
   useEffect(() => {
     data && dispatch(setToolCurrentIngredient(data))
 
     return () => {
-      dispatch(unsetCurrentIngredient())
+      dispatch(unsetCurrentIngredient()) //TODO:Today
     }
   }, [dispatch, data])
 
@@ -31,8 +31,5 @@ const useIngredientDetails = (id) => {
   return IngredientDetails;
 }
 
-useIngredientDetails.propTypes = {
-  id: PropTypes.string.isRequired,
-}
 
 export default useIngredientDetails;
