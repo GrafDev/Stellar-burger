@@ -1,8 +1,7 @@
 import {digitsDefault} from "../../../../utils/constants/text-style-constants";
 import {Counter, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
-import React, {useMemo, useState} from "react";
-import PropTypes from "prop-types";
-import {typeCart} from "../../../../utils/types";
+import React, {FC, useMemo} from "react";
+import {ICart} from "../../../../utils/types";
 import styles from "./cart.module.css"
 import {useDispatch, useSelector} from "react-redux";
 import {useDrag} from "react-dnd";
@@ -13,10 +12,14 @@ import {BUN} from "../../../../utils/constants/ingredient-constants";
 import {Link, useLocation} from "react-router-dom";
 import {INGREDIENT_LINK} from "../../../../utils/constants/router-link-constants";
 
+type TProps = {
+    cart: ICart
+}
 
-function Cart({cart}) {
+const Cart: FC<TProps> = (props: TProps) => {
+    const cart: ICart = props.cart
     const dispatch = useDispatch();
-    const location=useLocation()
+    const location = useLocation()
 
     const handleClick = () => {
         console.log('setToolCurrentIngredient(cart)')
@@ -30,12 +33,12 @@ function Cart({cart}) {
             return bun?._id === cart._id ? 2 : 0
         } else {
             if (!cart) return 0
-            return pieces?.filter(item => item._id === cart._id).length
+            return pieces?.filter((item: ICart) => item._id === cart._id).length
         }
     }, [pieces, bun, cart])
 
 
-    const id = cart._id;
+    const id:string = cart._id;
 
 
     const [{isDragging}, dragRef] = useDrag({
@@ -80,8 +83,5 @@ function Cart({cart}) {
     );
 }
 
-Cart.propTypes = {
-    cart: PropTypes.shape(typeCart).isRequired
-}
 
 export default Cart;

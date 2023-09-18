@@ -7,20 +7,20 @@ import {useDrag, useDrop, XYCoord} from "react-dnd";
 import classNames from "classnames";
 import sortFunc from "../../../utils/sortFunc";
 import {getConstructorPieces} from "../../../redux/features/constructor/constructor-selectors";
-import {ICart, IConstructionCart} from "../../../utils/types";
+import {ICart, IConstructorCart} from "../../../utils/types";
 
 
 type TProps = {
-    elem: IConstructionCart,
+    elem: IConstructorCart,
     index: number,
 }
 
-const ConstructorCart: FC<TProps> = (props: TProps) => {
-    const elem: IConstructionCart = props.elem
+const ConstructorCart: FC<TProps> = (props:TProps) => {
+    const elem: IConstructorCart = props.elem
     const index: number = props.index
     const dispatch = useDispatch();
     const pieces: Array<ICart> = useSelector(getConstructorPieces)
-    const constructorRef:any = useRef(null); // TODO: Разобраться с any
+    const constructorRef= useRef<HTMLInputElement>(null); // TODO: Check any
     const _id: string = elem.constructorId
 
     const [{isDragging}, constructorDrag] = useDrag(({

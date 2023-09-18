@@ -5,13 +5,13 @@ import {BurgerIcon, ListIcon, ProfileIcon} from "@ya.praktikum/react-developer-b
 import {BURGER, LIST, PROFILE} from "../../../utils/constants/ingredient-constants";
 import {NavLink} from "react-router-dom";
 
-type TNavItem = {
+type TProps = {
     id: string,
     name: string,
     links: string,
 }
 
-const NavItem:FC<TNavItem> = (props) => {
+const NavItem:FC<TProps> = (props:TProps) => {
     const id:string= props.id;
     const name:string = props.name;
     const links:string = props.links;

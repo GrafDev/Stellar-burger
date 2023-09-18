@@ -1,11 +1,18 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, Slice} from "@reduxjs/toolkit";
+import {ICart} from "../../../utils/types";
 
-const initialState = {
+
+type TInitialState={
+	ingredient: ICart | null,
+	isModalIngredient: boolean,
+}
+
+const initialState:TInitialState = {
 	ingredient: null,
 	isModalIngredient: false,
 }
 
-const currentIngredientSlice = createSlice({
+const currentIngredientSlice:Slice<TInitialState> = createSlice({
 	name: 'current',
 	initialState,
 	reducers: {

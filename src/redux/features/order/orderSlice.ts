@@ -1,6 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {getRandomInt} from "../../../utils/random-funcs";
+import {IConstructorIngredients} from "../../../utils/types";
 
+type TInitialState={
+	orderIngredients: IConstructorIngredients[],
+	id: number,
+	isModalOrder: boolean,
+}
 
 const initialState = {
 	orderIngredients: [],
@@ -8,7 +14,7 @@ const initialState = {
 	isModalOrder: false,
 }
 
-const orderSlice = createSlice({
+const orderSlice:any = createSlice({ //TODO: Разобраться с ANY
 	name: 'order',
 	initialState,
 	reducers: {

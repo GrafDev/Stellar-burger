@@ -2,19 +2,26 @@ import {useCallback, useEffect, useMemo} from "react";
 import {useDispatch} from "react-redux";
 import ModalOverlay from "./modal-overlay/modal-overlay";
 import {CloseIcon} from "@ya.praktikum/react-developer-burger-ui-components";
-import PropTypes from "prop-types";
 import {createPortal} from "react-dom";
 import style from './modal.module.css'
 import {useLocation, useNavigate} from "react-router-dom";
 import useKeyPress from "../../hooks/useKeyPress";
+import {FC,ReactNode} from "react";
 
-function Modal(props) {
-	const element = useMemo(() => document.createElement('div'), []);
+
+type TProps = {
+	title?:string
+	children:ReactNode
+}
+
+const Modal:FC<TProps> = (props:TProps) => {
+
+	const element:any = useMemo(() => document.createElement('div'), []); // TODO: make sense of ANY
 	const dispatch=useDispatch();
 	const navigate = useNavigate()
 	const location = useLocation()
 
-	const modalRootElement = document.getElementById('react-modals');
+	const modalRootElement:any = document.getElementById('react-modals'); // TODO: make sense of ANY
 
 	useEffect(() => {
 		modalRootElement.appendChild(element);
@@ -47,7 +54,4 @@ function Modal(props) {
 
 }
 
-Modal.propTypes = {
-	children: PropTypes.element.isRequired
-};
 export default Modal;

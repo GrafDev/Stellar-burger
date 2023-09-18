@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState} from "react";
+import React, {FC, useMemo, useRef, useState} from "react";
 import styles from "./burger-ingredients.module.css"
 import { textMedium} from "../../utils/constants/text-style-constants";
 import IngredientCarts from "./ingredient-carts/ingredient-carts";
@@ -7,18 +7,18 @@ import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 import classNames from "classnames";
 import {BUN, MAIN, SAUCE} from "../../utils/constants/ingredient-constants";
 import {getIngredientsSelector} from "../../redux/features/ingredients/selectors-ingredients";
+import {TTypeIngredient,ICart} from "../../utils/types"
 
-
-function BurgerIngredients() {
+const BurgerIngredients:FC =() =>{
     const data = useSelector(getIngredientsSelector)
-    const [currentType, setCurrentType] = useState(BUN)
-    const bunRef = useRef();
-    const mainRef = useRef();
-    const sauceRef = useRef();
-    const tabRef = useRef();
-    const borderRef = useRef();
+    const [currentType, setCurrentType] = useState<TTypeIngredient>(BUN)
+    const bunRef:any = useRef<HTMLInputElement>();   //  TODO: разобраться с  any
+    const mainRef:any = useRef<HTMLInputElement>();
+    const sauceRef:any = useRef<HTMLInputElement>();
+    const tabRef:any = useRef<HTMLInputElement>();
+    const borderRef:any= useRef<HTMLInputElement>();
 
-    const callback = (entries, observer) => {
+    const callback = (entries: any[], observer: { unobserve: (arg0: any) => void; }) => {
         entries.forEach((entry) => {
             if (entry.intersectionRatio > 0.5) {
                 observer.unobserve(entry.target)
@@ -34,7 +34,7 @@ function BurgerIngredients() {
 
 
 
-    const changeTab = (e) => {
+    const changeTab = (e:any) => {
         setCurrentType(e)
         switch (e) {
             case (MAIN):
@@ -49,11 +49,11 @@ function BurgerIngredients() {
         }
     }
     const handlerScroll = () => {
-        let _currentType;
-        let bottomTab = tabRef.current.getBoundingClientRect().bottom
-        let dimBun = Math.abs(bunRef.current.getBoundingClientRect().top - bottomTab)
-        let dimMain = Math.abs(mainRef.current.getBoundingClientRect().top - bottomTab)
-        let dimSauce = Math.abs(sauceRef.current.getBoundingClientRect().top - bottomTab)
+        let _currentType:TTypeIngredient;
+        let bottomTab:number = tabRef.current.getBoundingClientRect().bottom
+        let dimBun:number = Math.abs(bunRef.current.getBoundingClientRect().top - bottomTab)
+        let dimMain:number = Math.abs(mainRef.current.getBoundingClientRect().top - bottomTab)
+        let dimSauce:number = Math.abs(sauceRef.current.getBoundingClientRect().top - bottomTab)
         if (dimBun < dimSauce) _currentType = BUN
         else if (dimSauce < dimMain) _currentType = SAUCE
         else _currentType = MAIN
@@ -61,9 +61,9 @@ function BurgerIngredients() {
         observer.observe(bunRef.current)
     }
 
-    const bunIngredient=useMemo(()=>data.filter(elem => elem.type === BUN),[data])
-    const sauceIngredient=useMemo(()=>data.filter(elem => elem.type === SAUCE),[data])
-    const mainIngredient=useMemo(()=>data.filter(elem => elem.type === MAIN),[data])
+    const bunIngredient=useMemo(()=>data.filter((elem:ICart):boolean => elem.type === BUN),[data])
+    const sauceIngredient=useMemo(()=>data.filter((elem:ICart):boolean => elem.type === SAUCE),[data])
+    const mainIngredient=useMemo(()=>data.filter((elem:ICart):boolean => elem.type === MAIN),[data])
 
 
     return (

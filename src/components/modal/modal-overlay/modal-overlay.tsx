@@ -1,14 +1,18 @@
 import '../modal.module.css'
 import style from './modal-overlay.module.css';
-import PropTypes from "prop-types";
+import {FC, ReactNode} from "react";
 
 
+type TProps={
+	closeFunc:any
+	children:ReactNode
+}
 
-function ModalOverlay(props) {
+const ModalOverlay:FC<TProps> = (props:TProps) => {
 
 	const _closeFunc = props.closeFunc
 
-	const handlerClick = (event) => {
+	const handlerClick = (event:any) => {
 		event.target.id === 'targetOverlay' &&
 		_closeFunc()
 	};
@@ -21,10 +25,6 @@ function ModalOverlay(props) {
 	)
 }
 
-ModalOverlay.propTypes = {
-	children: PropTypes.element.isRequired,
-	closeFunc: PropTypes.func.isRequired
-};
 
 export default ModalOverlay;
 

@@ -1,5 +1,5 @@
 import {Button} from "@ya.praktikum/react-developer-burger-ui-components";
-import React, {useCallback, useMemo, useState} from "react";
+import React, {FC, useCallback, useMemo, useState} from "react";
 import styles from "./constructor-footer.module.css"
 import {useDispatch, useSelector} from "react-redux";
 import {setToolOrder} from "../../../redux/features/order/orderSlice";
@@ -9,30 +9,40 @@ import {LOGIN_LINK, ORDER_LINK} from "../../../utils/constants/router-link-const
 import {useLocation, useNavigate} from "react-router-dom";
 import TotalCost from "./total-cost/total-cost";
 import PopupHint from "../../popup-hint/popup-hint";
+import { IConstructorIngredients, TBun, TPieces} from "../../../utils/types";
 
 
-function ConstructorFooter() {
 
-    const order=useSelector(getConstructorIngredients)
-    const {bun,pieces} = order
-    const isPieces = pieces.length > 0
+const ConstructorFooter:FC =()=> {
+
+    const order:IConstructorIngredients=useSelector(getConstructorIngredients)
+    const bun:TBun = order.bun
+    const pieces:TPieces=order.pieces
+    const isPieces:boolean = pieces.length > 0
     const _isAuth = useSelector(getAuthUser)
     const navigate = useNavigate()
-    const location = useLocation()
+    const location= useLocation()
 
 
-    const popupStateInit = useMemo(
-        () => ({
+    type TPopupStateInit={
+        isActive: boolean,
+        text: string,
+    }
+
+    const popupStateInit:TPopupStateInit = useMemo(
+        ():TPopupStateInit => ({
             isActive: false,
             text: '',
         }),
         [],
     )
+
+
     const [popupState, setPopupState] = useState(popupStateInit)
 
 
     const handlePopup = useCallback(
-        (_text) => {
+        (_text:string) => {
             setPopupState({
                 isActive: true,
                 text: _text,

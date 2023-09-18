@@ -1,9 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import {typeCart} from "../../../utils/types";
+import React, {FC} from "react";
+import {ICart} from "../../../utils/types";
 import Cart from "./cart/cart";
 import styles from "./ingredient-carts.module.css"
 import {motion} from "framer-motion";
+
+
+type TProps = {
+    data: Array<ICart>
+}
 
 const container = {
     hidden: {opacity: 0},
@@ -21,24 +25,20 @@ const listItem = {
     show: {opacity: 1}
 };
 
-function IngredientCarts(props) {
+const IngredientCarts: FC<TProps> = (props: TProps) => {
     const carts = props.data
     return (
         <motion.ul variants={container} initial="hidden" animate="show" className={styles.carts}>
 
-            {carts.map(cart => (
-                    <motion.li key={cart._id} variants={listItem} >
-                        <Cart cart={cart} />
-                    </motion.li>
-                )
-            )
-            }
-        </motion.ul>
+            {carts.map((cart:ICart) => (
+                <motion.li key={cart._id} variants={listItem}>
+            <Cart cart={cart}/>
+        </motion.li>
     )
+)
 }
-
-IngredientCarts.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape(typeCart).isRequired).isRequired,
+</motion.ul>
+)
 }
 
 
