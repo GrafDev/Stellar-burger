@@ -2,14 +2,17 @@ import {Button, Input, PasswordInput} from "@ya.praktikum/react-developer-burger
 import AuthorizationButton from "../../components/authorization-button/authorization-button";
 import useForm from "../../hooks/use-form";
 import {FORGOT_PASSWORD_LINK, LOGIN_LINK} from "../../utils/constants/router-link-constants";
-import {useLocation, useNavigate} from "react-router-dom";
-import React, {useCallback, useEffect} from "react";
+import {NavigateFunction, useLocation, useNavigate} from "react-router-dom";
+import React, {FC, FormEvent, useCallback, useEffect} from "react";
 import {resetPassword} from "../../utils/authorization/reset-password";
+import {IUseLocation} from "../../utils/types";
 
 
-const ResetPasswordPage=()=>{
-    const navigate = useNavigate()
-    const location = useLocation();
+const ResetPasswordPage:FC=()=>{
+    const navigate:NavigateFunction = useNavigate()
+    const location:IUseLocation = useLocation();
+
+
 
     const { form, handleForm } = useForm({
         password: '',
@@ -21,7 +24,7 @@ const ResetPasswordPage=()=>{
     }, [location.state, navigate])
 
     const submitForm = useCallback(
-        (e) => {
+        (e:FormEvent) => {
             e.preventDefault()
 
             resetPassword(form)

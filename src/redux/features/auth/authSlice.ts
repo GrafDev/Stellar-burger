@@ -34,12 +34,7 @@ const initialState: TAuthState = {
     hasError: false,
 }
 
-type TAuthResponse = {
-    success: boolean
-    accessToken: string
-    refreshToken: string
-    user: TAuthUser
-}
+
 
 
 const saveTokens = (data: { accessToken: string; refreshToken: any; }) => {
@@ -159,7 +154,7 @@ export const loginUser: any = createAsyncThunk(
 )
 
 
-export const logoutUser = createAsyncThunk(
+export const logoutUser:any = createAsyncThunk(
     'auth/logoutUser',
     async (form: TAuthRegister, {rejectWithValue, dispatch}) => {
         const refreshToken = localStorage.getItem('BurgerRefreshToken')

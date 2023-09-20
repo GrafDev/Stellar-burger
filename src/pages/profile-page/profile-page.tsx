@@ -5,11 +5,12 @@ import {inactiveDefault} from "../../utils/constants/text-style-constants";
 import classNames from "classnames";
 import {useDispatch} from "react-redux";
 import {logoutUser} from "../../redux/features/auth/authSlice";
-import {useCallback} from "react";
+import {FC, useCallback} from "react";
 
-const ProfilePage = () => {
+
+const ProfilePage:FC = () => {
 const dispatch=useDispatch()
-    const linkClassName = ({isActive}) => isActive ? styles.active : styles.link
+    const linkClassName = (isActive: any) => isActive ? styles.active : styles.link // TODO : make sense of ANY
 
 
     const handleLogoutButton = useCallback(() => {

@@ -2,7 +2,7 @@ import {Button, EmailInput, Input, PasswordInput} from "@ya.praktikum/react-deve
 import { PROFILE_LINK} from "../../utils/constants/router-link-constants";
 import AuthorizationButton from "../../components/authorization-button/authorization-button";
 import {useDispatch} from "react-redux";
-import React, {useCallback} from "react";
+import React, {FormEvent, useCallback} from "react";
 import {registerUser} from "../../redux/features/auth/authSlice";
 import useForm from "../../hooks/use-form";
 
@@ -20,7 +20,7 @@ const RegisterPage = () => {
 
 
     const submitForm = useCallback(
-        (e) => {
+        (e:FormEvent) => {
             e.preventDefault();
            dispatch(registerUser(form))
         },

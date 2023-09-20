@@ -1,6 +1,9 @@
 
 
-export function setCookie(name, value, options) {
+
+
+
+export function setCookie(name: string, value: string, options?: any): void { //TODO: make sense of ANY
   options = { path: '/', ...options }
 
   let exp = options.expires
@@ -30,18 +33,18 @@ export function setCookie(name, value, options) {
   document.cookie = updatedCookie
 }
 
-export function getCookie(name) {
+export function getCookie(name: string): string | undefined {
   const matches = document.cookie.match(
-    new RegExp(
-      '(?:^|; )' +
-        name.replace('/([\.$?*|{}\(\)\[\]\\\/\+^])/g', '\\$1') +
-        '=([^;]*)',
-    ),
+      new RegExp(
+          '(?:^|; )' +
+          name.replace('/([\.$?*|{}\(\)\[\]\\\/\+^])/g', '\\$1') +
+          '=([^;]*)',
+      ),
   )
   return matches ? decodeURIComponent(matches[1]) : undefined
 }
 
-export function deleteCookie(name) {
+export function deleteCookie(name: string): void {
   setCookie(name, '', {
     'max-age': -1,
   })
