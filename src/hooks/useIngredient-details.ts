@@ -6,29 +6,25 @@ import {
 } from "../redux/features/currentIngredient/currentIngredientSlice";
 import {getCurrentIngredient} from "../redux/features/currentIngredient/current-ingredient-selectors";
 import {getIngredientsSelector} from "../redux/features/ingredients/selectors-ingredients";
-import {ICart, IConstructorIngredients} from "../utils/types";
-
+import {ICart} from "../utils/data-Types";
 
 
 const useIngredientDetails = (id: string | undefined) => {
   const dispatch = useDispatch()
 
-  const _ingredients:Array<ICart> = useSelector(getIngredientsSelector)
+  const _ingredients:Array<ICart> = useSelector(getIngredientsSelector)//TODO: make sense of ANY
 
-  console.log('-----',_ingredients,  '----useIngredientDetails')
-     const data:ICart|undefined = _ingredients?.find((el: { _id: any; }) => el._id === id,  )
+     const data:ICart | undefined = _ingredients?.find((el: { _id: string | undefined; }) => el._id === id,  )
 
   useEffect(() => {
     data && dispatch(setToolCurrentIngredient(data))
 
-    return () => {
-      dispatch(unsetCurrentIngredient()) //TODO:Today
+    return ():void => {
+      dispatch(unsetCurrentIngredient()) //TODO: make sense of ANY
     }
   }, [dispatch, data])
 
-  const IngredientDetails = useSelector(getCurrentIngredient)
-
-  return IngredientDetails;
+  return useSelector(getCurrentIngredient);
 }
 
 

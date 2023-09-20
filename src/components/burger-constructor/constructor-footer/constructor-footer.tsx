@@ -9,7 +9,7 @@ import {LOGIN_LINK, ORDER_LINK} from "../../../utils/constants/router-link-const
 import {useLocation, useNavigate} from "react-router-dom";
 import TotalCost from "./total-cost/total-cost";
 import PopupHint from "../../popup-hint/popup-hint";
-import { IConstructorIngredients, TBun, TPieces} from "../../../utils/types";
+import { IConstructorIngredients, TBun, TPieces} from "../../../utils/data-Types";
 
 
 

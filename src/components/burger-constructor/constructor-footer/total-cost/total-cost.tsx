@@ -2,7 +2,7 @@ import styles from "../constructor-footer.module.css";
 import {digitsMedium} from "../../../../utils/constants/text-style-constants";
 import {CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import React, {FC, useMemo} from "react";
-import {IConstructorIngredients} from "../../../../utils/types";
+import {IConstructorIngredients} from "../../../../utils/data-Types";
 
 type TProps={
     order:IConstructorIngredients

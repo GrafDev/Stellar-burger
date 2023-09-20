@@ -1,19 +1,22 @@
-import React from 'react'
+import React, {FC, ReactElement} from 'react'
 import {Navigate, useLocation} from 'react-router-dom'
 import Spinner from "../../components/spinner/spinner";
 import {getAuth} from "../../redux/features/auth/auth-selectors";
 import {useSelector} from "react-redux";
 import {HOME_LINK, LOGIN_LINK} from "../../utils/constants/router-link-constants";
-import PropTypes from "prop-types";
+import {IUseLocation} from "../../utils/types";
 
 
-const ProtectedRoute = ({
-                            element,
-                            onlyUnAuth = false,
-                        }) => {
-    const location = useLocation()
+type TProps ={
+    element: ReactElement,
+    onlyUnAuth?: boolean,
+}
+
+const ProtectedRoute:FC<TProps> = ({ element,onlyUnAuth = false,}) => {
+
+    const location:IUseLocation = useLocation()
     const {user, isLoading} = useSelector(getAuth)
-    const isAuth = !!user
+    const isAuth:boolean = !!user
     if (isLoading) return <Spinner/>
 
     if (onlyUnAuth && isAuth)
@@ -24,9 +27,6 @@ const ProtectedRoute = ({
     return element
 }
 
-ProtectedRoute.propTypes = {
-    element: PropTypes.element.isRequired,
-}
 
 
 export default ProtectedRoute;

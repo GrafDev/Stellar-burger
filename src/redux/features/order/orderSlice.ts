@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {getRandomInt} from "../../../utils/random-funcs";
-import {IConstructorIngredients} from "../../../utils/types";
+import {IConstructorIngredients} from "../../../utils/data-Types";
 
 type TInitialState={
 	orderIngredients: IConstructorIngredients[],
@@ -8,7 +8,7 @@ type TInitialState={
 	isModalOrder: boolean,
 }
 
-const initialState = {
+const initialState:TInitialState = {
 	orderIngredients: [],
 	id: 0,
 	isModalOrder: false,

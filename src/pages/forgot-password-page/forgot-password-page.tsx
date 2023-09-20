@@ -4,18 +4,19 @@ import {LOGIN_LINK, RESET_PASSWORD_LINK} from "../../utils/constants/router-link
 import useForm from "../../hooks/use-form";
 import {forgotPassword} from "../../utils/authorization/forgot-password";
 import {useNavigate} from "react-router-dom";
-import React, {useCallback} from "react";
+import React, {FC, FormEvent, useCallback} from "react";
 
 
 
-const ForgotPasswordPage = () => {
+
+const ForgotPasswordPage:FC = () => {
     const navigate = useNavigate()
-    const {form, handleForm} = useForm({
+    const {form, handleForm} = useForm ({
         email: ''
     })
 
 
-    const submitForm = useCallback((e) => {
+    const submitForm = useCallback((e:FormEvent) => {
         e.preventDefault()
         forgotPassword(form)
             .then(() =>

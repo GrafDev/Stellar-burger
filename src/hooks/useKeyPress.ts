@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 
-const useKeyPress = (key, func) => {
+const useKeyPress = (key:string, func:()=>void) => {
   useEffect(() => {
-    function handleKeyPress(event) {
+    function handleKeyPress(event:KeyboardEvent) {
       if (event.key === key) {
         func()
       }

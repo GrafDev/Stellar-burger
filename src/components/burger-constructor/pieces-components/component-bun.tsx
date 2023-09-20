@@ -2,7 +2,7 @@ import styles from "./component-bun.module.css";
 import {ConstructorElement} from "@ya.praktikum/react-developer-burger-ui-components";
 import EmptyConstructorElement from "../empty-constructor-element/empty-constructor-element";
 import React, {FC} from "react";
-import { TBun, TTypeBun} from "../../../utils/types";
+import { TBun, TTypeBun} from "../../../utils/data-Types";
 import {TOP} from "../../../utils/constants/ingredient-constants";
 
 type TProps = {

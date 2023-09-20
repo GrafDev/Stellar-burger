@@ -7,7 +7,7 @@ import {useDrag, useDrop, XYCoord} from "react-dnd";
 import classNames from "classnames";
 import sortFunc from "../../../utils/sortFunc";
 import {getConstructorPieces} from "../../../redux/features/constructor/constructor-selectors";
-import {ICart, IConstructorCart} from "../../../utils/types";
+import {ICart, IConstructorCart} from "../../../utils/data-Types";
 
 
 type TProps = {

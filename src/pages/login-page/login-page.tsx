@@ -2,11 +2,11 @@ import {FORGOT_PASSWORD_LINK, REGISTER_LINK} from "../../utils/constants/router-
 import {Button, EmailInput, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components";
 import AuthorizationButton from "../../components/authorization-button/authorization-button";
 import {useDispatch} from "react-redux";
-import React, {useCallback} from "react";
+import React, {FC, FormEvent, useCallback} from "react";
 import { loginUser} from "../../redux/features/auth/authSlice";
 import useForm from "../../hooks/use-form";
 
-const LoginPage = () => {
+const LoginPage:FC = () => {
 
 
     const dispatch = useDispatch()
@@ -15,9 +15,9 @@ const LoginPage = () => {
     const {form, handleForm} = useForm({email: '', password: ''})
 
     const submitForm = useCallback(
-        (e) => {
+        (e:FormEvent) => {
             e.preventDefault();
-            dispatch(loginUser(form))
+            dispatch(loginUser(form)) //TODO: Make sense of ANY
         },
         [dispatch, form]
     )

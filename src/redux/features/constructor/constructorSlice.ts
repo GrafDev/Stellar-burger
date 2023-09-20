@@ -1,7 +1,7 @@
 import {createSlice, Slice} from "@reduxjs/toolkit";
 import {v4} from "uuid";
 import {BUN} from "../../../utils/constants/ingredient-constants";
-import {ICart, IConstructorState} from "../../../utils/types";
+import {ICart, IConstructorState} from "../../../utils/data-Types";
 
 
 

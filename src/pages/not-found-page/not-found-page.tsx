@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from 'react'
+import React, {FC, useEffect, useState} from 'react'
 import PageNotFoundPicture from '../../images/404_background-v2.png'
 import styles from './not-found-page.module.css'
 import PageNotFoundPictureLine from '../../images/404_line-v2.png'
 
 
-const NotFoundPage = () => {
-    const [blink, setBlink] = useState(false); // создаем состояние для мигания
+const NotFoundPage:FC = () => {
+    const [blink, setBlink] = useState<boolean>(false); // создаем состояние для мигания
 
     useEffect(() => {
-        const interval = setInterval(() => { // создаем интервал
-            const randomTime = Math.floor(Math.random() * 2000); // генерируем случайное время от 0 до 5000 мс
+        const interval:NodeJS.Timer = setInterval(() => { // создаем интервал
+            const randomTime:number = Math.floor(Math.random() * 2000); // генерируем случайное время от 0 до 5000 мс
             setTimeout(() => { // устанавливаем таймаут
                 setBlink(prev => !prev); // меняем состояние на противоположное
             }, randomTime); // передаем случайное время в таймаут

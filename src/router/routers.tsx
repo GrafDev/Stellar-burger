@@ -19,10 +19,12 @@ import IngredientDetails from "../components/ingredient-details/ingredient-detai
 import IngredientPage from "../pages/ingredient-page/ingredients-page";
 import OrderDetails from "../components/order-details/order-details";
 import OrderHistory from "../components/order-history/order-history";
+import {IUseLocation} from "../utils/types";
+import {FC} from "react";
 
 
-const Routers = () => {
-    const location = useLocation()
+const Routers :FC = () => {
+    const location:IUseLocation = useLocation()
     const background = location.state && location.state.background
     console.log('Routers', background, location)
     return (

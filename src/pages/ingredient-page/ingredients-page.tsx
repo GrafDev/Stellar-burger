@@ -1,12 +1,10 @@
-import React from 'react'
+import React, {FC} from 'react'
 import classNames from 'classnames'
 import styles from './ingredients-page.module.css'
-import
-    IngredientInfo from "../../components/ingredient-details/ingredient-info/ingredient-info";
+import IngredientInfo from "../../components/ingredient-details/ingredient-info/ingredient-info";
 
-const IngredientPage= () => {
+const IngredientPage:FC = () => {
 
-    console.log('IngredientPage')
     return (
         <div className={classNames('container', styles.wrapper)}>
             <IngredientInfo />

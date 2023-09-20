@@ -7,7 +7,7 @@ import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 import classNames from "classnames";
 import {BUN, MAIN, SAUCE} from "../../utils/constants/ingredient-constants";
 import {getIngredientsSelector} from "../../redux/features/ingredients/selectors-ingredients";
-import {TTypeIngredient,ICart} from "../../utils/types"
+import {TTypeIngredient,ICart} from "../../utils/data-Types"
 
 const BurgerIngredients:FC =() =>{
     const data = useSelector(getIngredientsSelector)

@@ -1,7 +1,7 @@
 import ConstructorCart from "../constructor-cart/conctructor-cart";
 import EmptyConstructorElement from "../empty-constructor-element/empty-constructor-element";
 import styles from "./component-pieces.module.css"
-import {IConstructorCart} from "../../../utils/types";
+import {IConstructorCart} from "../../../utils/data-Types";
 import {FC} from "react";
 
 

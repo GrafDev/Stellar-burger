@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import axios from "axios";
+import axios, { AxiosError } from 'axios';
+
 import {
     AUTH_TOKEN_URL,
     AUTH_USER_URL,
@@ -8,7 +9,6 @@ import {
     AUTH_REGISTER_URL
 } from "../../../utils/constants/outlink-constants";
 import {deleteCookie, getCookie, setCookie} from "../../../utils/cookie";
-import checkToken from "../../../utils/authorization/check-token";
 
 
 export type TAuthUser = {
@@ -28,7 +28,7 @@ export type TAuthState = {
     hasError: boolean
 }
 
-const initialState:TAuthState = {
+const initialState: TAuthState = {
     user: null,
     isLoading: false,
     hasError: false,
@@ -58,9 +58,9 @@ const eraseTokens = () => {
 }
 
 
-export const setUser:any = createAsyncThunk(
+export const setUser: any = createAsyncThunk(
     'auth/setUser',
-    async (form:TAuthRegister, {rejectWithValue, dispatch}) => {
+    async (form: TAuthRegister, {rejectWithValue, dispatch}) => {
         const _accessToken = 'Bearer ' + getCookie('BurgerAccessToken')
         let res = await axios.patch(AUTH_USER_URL,
             {
@@ -80,39 +80,52 @@ export const setUser:any = createAsyncThunk(
 )
 
 
-export const getUser:any = createAsyncThunk(
+
+// Функция для выполнения запроса авторизации
+export const getUser: any = createAsyncThunk(
     'auth/getUser',
     async (form, {rejectWithValue, dispatch}) => {
         console.log('getUser: start ')
 
         const _accessToken = 'Bearer ' + getCookie('BurgerAccessToken')
 
-        if (!checkToken(_accessToken)) {
-            const _refreshToken = localStorage.getItem('BurgerRefreshToken')
-            const res = await axios.post(AUTH_TOKEN_URL,
-                {
+        const _refreshToken = localStorage.getItem('BurgerRefreshToken')
 
-                    token: _refreshToken
-                }
-            )
-            saveTokens(res.data)
-        }
-        let res = await axios.get(AUTH_USER_URL,
-            {
+        try {
+            const response = await axios.get(AUTH_USER_URL, {
                 headers: {
-                    authorization: _accessToken,
+                    'Authorization': _accessToken
                 }
+            });
+            console.log(response.data);
+            dispatch(reducerSetUser(response.data));
+        } catch (error) {
+            if ((error as AxiosError).response?.status === 401) {
+                // Обновление токена через refreshToken
+                const refreshedToken = await axios.post( AUTH_TOKEN_URL, {
+                    refreshToken: _refreshToken
+                });
+                // Повторный запрос авторизации с обновленным токеном
+                const response = await axios.get(AUTH_USER_URL, {
+                    headers: {
+                        'Authorization': `Bearer ${refreshedToken.data.accessToken}`
+                    }
+                });
+                console.log(response.data);
+                saveTokens(response.data);
+                dispatch(reducerSetUser(response.data));
+            } else {
+                console.error(error);
+                rejectWithValue(error);
             }
-        )
-
-        dispatch(reducerSetUser(res.data))
+        }
     }
-)
+);
 
 
-export const registerUser:any = createAsyncThunk(
+export const registerUser: any = createAsyncThunk(
     'auth/registerUser',
-    async (form:TAuthRegister, {rejectWithValue, dispatch}) => {
+    async (form: TAuthRegister, {rejectWithValue, dispatch}) => {
 
         const res = await axios.post(AUTH_REGISTER_URL,
             {
@@ -128,10 +141,10 @@ export const registerUser:any = createAsyncThunk(
     }
 )
 
-export const loginUser = createAsyncThunk(
+export const loginUser: any = createAsyncThunk(
     'auth/loginUser',
 
-    async (form:TAuthRegister, {rejectWithValue, dispatch}) => {
+    async (form: TAuthRegister, {rejectWithValue, dispatch}) => {
 
         const res = await axios.post(AUTH_LOGIN_URL,
             {
@@ -148,7 +161,7 @@ export const loginUser = createAsyncThunk(
 
 export const logoutUser = createAsyncThunk(
     'auth/logoutUser',
-    async (form:TAuthRegister, {rejectWithValue, dispatch}) => {
+    async (form: TAuthRegister, {rejectWithValue, dispatch}) => {
         const refreshToken = localStorage.getItem('BurgerRefreshToken')
         const res = await axios.post(AUTH_LOGOUT_URL,
             {

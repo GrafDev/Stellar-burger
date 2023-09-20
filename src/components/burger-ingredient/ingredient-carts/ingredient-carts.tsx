@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {ICart} from "../../../utils/types";
+import {ICart} from "../../../utils/data-Types";
 import Cart from "./cart/cart";
 import styles from "./ingredient-carts.module.css"
 import {motion} from "framer-motion";

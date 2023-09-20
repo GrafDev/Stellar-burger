@@ -1,7 +1,7 @@
 import {digitsDefault} from "../../../../utils/constants/text-style-constants";
 import {Counter, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import React, {FC, useMemo} from "react";
-import {ICart} from "../../../../utils/types";
+import {ICart} from "../../../../utils/data-Types";
 import styles from "./cart.module.css"
 import {useDispatch, useSelector} from "react-redux";
 import {useDrag} from "react-dnd";
