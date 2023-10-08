@@ -5,7 +5,7 @@ import {CloseIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import {createPortal} from "react-dom";
 import style from './modal.module.css'
 import {useLocation, useNavigate} from "react-router-dom";
-import useKeyPress from "../../hooks/useKeyPress";
+import useKeyPress from "../../hooks/use-key-press";
 import {FC, ReactNode} from "react";
 import {TCallbackVoid} from "../../utils/types/types";
 

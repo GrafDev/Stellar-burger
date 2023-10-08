@@ -7,7 +7,7 @@ import {
     textMedium
 } from "../../../utils/constants/text-style-constants";
 import {useParams} from "react-router-dom";
-import useIngredientDetails from "../../../hooks/useIngredient-details";
+import useIngredientDetails from "../../../hooks/use-Ingredient-details";
 
 const IngredientInfo: FC = () => {
 
