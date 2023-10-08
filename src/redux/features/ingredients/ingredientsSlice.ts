@@ -20,7 +20,7 @@ export const getIngredients: any = createAsyncThunk(
 	}
 )
 
-const ingredientsSlice = createSlice({
+export const ingredientsSlice = createSlice({
 	name: 'ingredients',
 	initialState,
 	reducers: {
@@ -43,5 +43,4 @@ const ingredientsSlice = createSlice({
 
 
 export const {setToolIngredients}=ingredientsSlice.actions
-export default ingredientsSlice.reducer
 

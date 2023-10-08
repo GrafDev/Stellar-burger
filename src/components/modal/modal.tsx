@@ -7,7 +7,7 @@ import style from './modal.module.css'
 import {useLocation, useNavigate} from "react-router-dom";
 import useKeyPress from "../../hooks/useKeyPress";
 import {FC, ReactNode} from "react";
-import {TCallbackVoid} from "../../utils/types";
+import {TCallbackVoid} from "../../utils/types/types";
 
 
 type TProps = {

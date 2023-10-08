@@ -253,4 +253,3 @@ export const authSlice = createSlice({
 })
 
 export const {reducerSetUser, reducerCleanUser} = authSlice.actions
-export default authSlice.reducer

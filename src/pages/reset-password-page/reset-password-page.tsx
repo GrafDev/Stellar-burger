@@ -5,7 +5,7 @@ import {FORGOT_PASSWORD_LINK, LOGIN_LINK} from "../../utils/constants/router-lin
 import {NavigateFunction, useLocation, useNavigate} from "react-router-dom";
 import React, {FC, FormEvent, useCallback, useEffect} from "react";
 import {resetPassword} from "../../utils/authorization/reset-password";
-import {IUseLocation} from "../../utils/types";
+import {IUseLocation} from "../../utils/types/types";
 
 
 const ResetPasswordPage:FC=()=>{

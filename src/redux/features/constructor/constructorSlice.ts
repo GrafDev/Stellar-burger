@@ -20,7 +20,7 @@ const initialState: IConstructorState  = {
 
 
 
-const constructorSlice:Slice<IConstructorState> = createSlice({
+export const constructorSlice:Slice<IConstructorState> = createSlice({
     name: 'constructor',
     initialState,
     reducers: {
@@ -54,5 +54,4 @@ const constructorSlice:Slice<IConstructorState> = createSlice({
 
 
 export const {increaseConstructor, decreaseConstructor, moveConstructorCart} = constructorSlice.actions
-export default constructorSlice.reducer
 

@@ -12,7 +12,7 @@ const initialState:TInitialState = {
 	isModalIngredient: false,
 }
 
-const currentIngredientSlice:any= createSlice({
+export const currentIngredientSlice:any= createSlice({
 	name: 'current',
 	initialState,
 	reducers: {
@@ -28,4 +28,3 @@ const currentIngredientSlice:any= createSlice({
 })
 
 export const {setToolCurrentIngredient, unsetCurrentIngredient} = currentIngredientSlice.actions
-export default currentIngredientSlice.reducer

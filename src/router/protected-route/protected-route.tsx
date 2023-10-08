@@ -4,7 +4,7 @@ import Spinner from "../../components/spinner/spinner";
 import {getAuth} from "../../redux/features/auth/auth-selectors";
 import {useSelector} from "react-redux";
 import {HOME_LINK, LOGIN_LINK} from "../../utils/constants/router-link-constants";
-import {IUseLocation} from "../../utils/types";
+import {IUseLocation} from "../../utils/types/types";
 
 
 type TProps ={

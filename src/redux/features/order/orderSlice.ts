@@ -14,7 +14,7 @@ const initialState:TInitialState = {
 	isModalOrder: false,
 }
 
-const orderSlice:any = createSlice({ //TODO: Разобраться с ANY
+export const orderSlice:any = createSlice({ //TODO: Разобраться с ANY
 	name: 'order',
 	initialState,
 	reducers: {
@@ -30,4 +30,3 @@ const orderSlice:any = createSlice({ //TODO: Разобраться с ANY
 })
 
 export const {setToolOrder,unsetToolOrder}=orderSlice.actions
-export default orderSlice.reducer

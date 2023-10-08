@@ -19,7 +19,7 @@ import IngredientDetails from "../components/ingredient-details/ingredient-detai
 import IngredientPage from "../pages/ingredient-page/ingredients-page";
 import OrderDetails from "../components/order-details/order-details";
 import OrderHistory from "../components/order-history/order-history";
-import {IUseLocation} from "../utils/types";
+import {IUseLocation} from "../utils/types/types";
 import {FC} from "react";
 
 

@@ -1,7 +1,7 @@
 import '../modal.module.css'
 import style from './modal-overlay.module.css';
 import {FC, ReactNode} from "react";
-import {TCallbackVoid} from "../../../utils/types";
+import {TCallbackVoid} from "../../../utils/types/types";
 
 
 
