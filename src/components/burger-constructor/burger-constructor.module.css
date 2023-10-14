@@ -2,13 +2,22 @@
   max-width: 600px;
 }
 
+.mainSection{
+  composes: section;
+
+}
+
+
 .sectionList {
   max-height: 47vh;
   overflow: auto;
   list-style: none;
   padding-inline-start: 0;
   gap: 20px;
+
 }
+
+
 
 .sectionList::-webkit-scrollbar {
   width: 8px;
@@ -21,21 +30,22 @@
 
 .clearList {
   height: 40vh;
-  border: 3px blue dashed;
   opacity: 0.5;
   text-align: center;
   padding-top: 55%;
   border-radius: 40px;
   transition: all .3s linear;
+
 }
+
 
 .clearList_ing {
   height: 15vh;
-  border: 3px blue dashed;
   opacity: 0.5;
   text-align: center;
   padding-top: 35%;
   padding-bottom: 15%;
+  margin: 16px;
   font-size: 22px;
   border-radius: 40px;
   transition: all .3s linear;
@@ -44,7 +54,6 @@
 
 .clearList_bun {
   height: 5vh;
-  border: 3px blue dashed;
   opacity: 0.5;
   text-align: center;
   padding-top: 10%;
@@ -56,6 +65,7 @@
 
 .item_isHovering {
   opacity: 0.8;
-  border: 3px dashed green;
   border-radius: 40px;
+
+  box-shadow: 0 0 16px 8px var(--dark-shadow-color), 0 0 8px 8px var(--dark-shadow-color);
 }
