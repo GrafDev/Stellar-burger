@@ -9,6 +9,7 @@ import CardBuns from '../burger-constructor-card/card-buns/card-buns';
 import СardOther from '../burger-constructor-card/card-other/card-other';
 import {useSelector, useDispatch} from '../../hooks/store-hooks';
 import {ITypeIngredient} from "../../types/ingredients-types";
+import {activeDefault, textMedium} from "../../utils/constants/text-style-constants";
 
 const BurgerConstructor: FC = () => {
     const dispatch = useDispatch();
@@ -33,28 +34,38 @@ const BurgerConstructor: FC = () => {
     })
 
     return (
-        (list.length || bun) ?
-            <section className={`${style.section}  mt-25 pr-4 pl-2`} ref={dropTarget}>
-                {bun ? <CardBuns position={'top'} buns={bun}/> :
-                    <p className={`${style.clearList_bun}  text text_type_main-default`}>Выберите
-                        булочку и добавьте её сюда</p>}
-                <ul className={`${style.sectionList}  mt-3 pr-3`}>
-                    {list.length ? list.map((item, i) => {
-                            return <СardOther ingredient={item} key={item.uniqueId} index={i}/>
-                        })
-                        :
-                        <p className={`${style.clearList_ing}  text text_type_main-default`}>Выберите
-                            ингредиенты и добавьте их сюда</p>}
-                </ul>
-                {bun ? <CardBuns position={'bottom'} buns={bun}/> : null}
-                {((list.length > 0 && bun) ? (<PurchaseAmount ingredients={list} buns={bun}/>) : null)}
-            </section>
-            :
-            <section className={`${style.section} mt-25 pr-4 pl-2`} ref={dropTarget}>
-                <div
-                    className={`${style.clearList} ${isHover ? style.item_isHovering : ''} text text_type_main-medium`}>Возьмите соусик и начиночку,<br/> а может и булочку,<br/>затем положите сюда
+
+
+        <section className={`${style.constuctionSection}  mt-25 pr-4 pl-2`} ref={dropTarget}>
+
+                {(list.length || bun) ?
+
+                <section className={`${style.ingredientSection}  mt-25 pr-4 pl-2`} ref={dropTarget}>
+                    {bun ? <CardBuns position={'top'} buns={bun}/> :
+                        <p className={`${style.clearList_bun}  ${activeDefault}`}>Выберите
+                            булочку и добавьте её сюда</p>}
+                    <ul className={`${style.sectionList}  mt-3 pr-3`}>
+                        {list.length ? list.map((item, i) => {
+                                return <СardOther ingredient={item} key={item.uniqueId} index={i}/>
+                            })
+                            :
+                            <p className={`${style.clearList_ing}  ${activeDefault}`}>Выберите
+                                ингредиенты и добавьте их сюда</p>}
+                    </ul>
+                    {bun ? <CardBuns position={'bottom'} buns={bun}/> : null}
+                </section>
+
+                    :
+                    <div className={`${style.dropZone}            ${isHover ? style.dropZone_isHovering : ''} 
+                ${textMedium}`}>
+                    'Возьмите соусик и начиночку или может  булочку, затем положите сюда'
+                    </div>
+                }
+                <div className={style.purshaseAmount}>
+                    {((list.length > 0 && bun) ? (<PurchaseAmount ingredients={list} buns={bun}/>) : null)}
                 </div>
-            </section>
+
+        </section>
     )
 };
 

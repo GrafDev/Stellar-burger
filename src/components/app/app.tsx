@@ -23,6 +23,7 @@ import {
   PATH_NOT_FOUND, PATH_PROFILE, PATH_PROFILE_ORDERS_ID, PATH_REGISTER,
   PATH_RESET_PASSWORD, PATH_TO_PROFILE_INFO, PATH_TO_PROFILE_ORDERS
 } from "../../utils/constants/path-constants";
+import {textLarge} from "../../utils/constants/text-style-constants";
 
 const App: FC = () => {
   const dispatch = useDispatch();
@@ -49,11 +50,11 @@ const App: FC = () => {
 
   return (
     error
-      ? (<h2 className={style.error}>Произошла ошибка 👽 попробуйте перезагрузить страницу</h2>) :
+      ? (<div className={`${style.error} ${textLarge}`}>Ошибочка вышла, попробуйте перегрузить страницу.</div>) :
       (
         <>
           <AppHeader />
-          <main>
+          <main >
             <Routes location={background || location}>
               <Route path={PATH_FEED} element={<FeedPage />} />
               <Route path={PATH_FEED_ID} element={<Order data={orders} profile={false} />} />
