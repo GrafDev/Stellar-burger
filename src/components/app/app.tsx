@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import style from '../app/app.module.css';
 import AppHeader from '../app-header/app-header';
-import { Home, Login, Register, ForgotPassword, ResetPassword, PageNotFound, Profile, Order, ProfileOrders } from '../../pages/index';
+import { Home, Login, Register, ForgotPassword, ResetPassword, NotFoundPage, Profile, Order, ProfileOrders } from '../../pages/index';
 import IngredientDetails from '../ingredient-details/ingredient-details';
 import ProtectedRoute from '../protected-route/protected-route';
 import Modal from '../modal/modal';
@@ -59,7 +59,7 @@ const App: FC = () => {
               <Route path="/reset-password" element={<ProtectedRoute element={<ResetPassword />} />} />
               <Route path="/ingredients/:id" element={<IngredientDetails />} />
               <Route path='/' element={<Home />} />
-              <Route path="*" element={<PageNotFound />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
             {background &&
               <Routes>

@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Link } from "react-router-dom";
-import style from './page-not-found.module.css'
+import style from './not-found-page.module.css'
 
-const PageNotFound: FC = () => {
+const NotFoundPage: FC = () => {
   return (
     <section className={`${style.container}`}>
       <h2 className={`text text_type_main-large ${style.error}`}>404</h2>
@@ -12,4 +12,4 @@ const PageNotFound: FC = () => {
   )
 }
 
-export default PageNotFound
+export default NotFoundPage
