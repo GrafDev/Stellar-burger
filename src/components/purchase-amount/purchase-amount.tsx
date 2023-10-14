@@ -8,6 +8,7 @@ import OrderDetails from '../order-details/order-details';
 import style from './purchase-amount.module.css';
 import { ITypeIngredient } from '../../types/ingredients-types';
 import { useSelector, useDispatch } from '../../hooks/store-hooks';
+import Spinner from "../spinner/spinner";
 
 interface IPurchaseAmount {
   ingredients: Array<ITypeIngredient>
@@ -53,8 +54,8 @@ const PurchaseAmount: FC<IPurchaseAmount> = ({ ingredients, buns }) => {
         (request || orderDetails) && (
           <Modal onClose={handleClose} >
             {request
-              ? <p className={`text text_type_main-small ${style.purchaseAmount__loading}`}>Оформляем заказ, подождите...</p>
-              : <OrderDetails orderDetails={orderDetails} onClose={handleClose} />
+              ? <Spinner>Package</Spinner>
+              :<OrderDetails orderDetails={orderDetails} onClose={handleClose} />
             }
           </Modal>
         )}
@@ -62,4 +63,5 @@ const PurchaseAmount: FC<IPurchaseAmount> = ({ ingredients, buns }) => {
   )
 };
 
-export default PurchaseAmount
+export default PurchaseAmount;
+<p className={`text text_type_main-small ${style.purchaseAmount__loading}`}>Оформляем заказ, подождите...</p>

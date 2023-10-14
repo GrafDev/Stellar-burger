@@ -1,18 +1,18 @@
 .wrapper {
   min-width: 720px;
   min-height: 540px;
-  background: #1c1c21;
-  color: #f2f2f3;
+  background: var(--lightbg-color);
+  color: var(--active-color);
   position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
   cursor: default;
-  border: 1px solid rgba(76, 76, 255, 0.2);
+  border: 1px solid var(--dark-shadow-color);
   box-shadow:
-    0px 0px 16px rgba(51, 51, 255, 0.25),
-    0px 0px 8px rgba(51, 51, 255, 0.25),
-    0px 4px 32px rgba(51, 51, 255, 0.5);
+    0px 0px 16px var(--dark-shadow-color),
+    0px 0px 8px var(--dark-shadow-color),
+    0px 4px 32px var(--dark-shadow-color);
   border-radius: 40px;
   z-index: 3;
 }
