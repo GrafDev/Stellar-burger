@@ -4,7 +4,7 @@ import style from '../app/app.module.css';
 import AppHeader from '../app-header/app-header';
 import { Home, Login, Register, ForgotPasswordPage, ResetPassword, NotFoundPage, Profile, Order, ProfileOrders } from '../../pages/index';
 import IngredientDetails from '../ingredient-details/ingredient-details';
-import ProtectedRoute from '../protected-route/protected-route';
+import ProtectedRoute from '../../route/protected-route/protected-route';
 import Modal from '../modal/modal';
 import { getIngredients } from '../../redux/actions/ingredients-actions';
 import { getUser } from '../../redux/actions/user-actions';
