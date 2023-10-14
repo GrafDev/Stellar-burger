@@ -1,15 +1,29 @@
-import { FC } from 'react';
-import { Link } from "react-router-dom";
-import style from './not-found-page.module.css'
+import React, {FC, useEffect, useState} from 'react'
+import PageNotFoundPicture from '../../images/not-found-page/404_background-v2.png'
+import styles from './not-found-page.module.css'
+import PageNotFoundPictureLine from '../../images/not-found-page/404_line-v2.png'
 
-const NotFoundPage: FC = () => {
-  return (
-    <section className={`${style.container}`}>
-      <h2 className={`text text_type_main-large ${style.error}`}>404</h2>
-      <p className={`text text_type_main-large ${style.text}`}>Такой страницы нет 👽</p>
-      <Link to={"/"} className={`${style.link} text text_color_accent mt-15`}>Вернуться на орбиту</Link>
-    </section>
-  )
+
+const NotFoundPage:FC = () => {
+    const [blink, setBlink] = useState<boolean>(false); // создаем состояние для мигания
+
+    useEffect(() => {
+        const interval = setInterval(() => { // создаем интервал
+            const randomTime:number = Math.floor(Math.random() * 2000); // генерируем случайное время от 0 до 5000 мс
+            setTimeout(() => { // устанавливаем таймаут
+                setBlink(prev => !prev); // меняем состояние на противоположное
+            }, randomTime); // передаем случайное время в таймаут
+        }, 200); // передаем 1000 мс в интервал
+        return () => clearInterval(interval); // очищаем интервал при размонтировании компонента
+    }, []); // передаем пустой массив зависимостей
+
+
+    return (
+        <div>
+            <img className={styles.finishImage} src={PageNotFoundPicture} alt={'NotFoundPage'}/>
+            {blink && <img className={styles.blinkLineImage} src={PageNotFoundPictureLine} alt={'NotFoundPageLine'}/>}
+        </div>
+    )
 }
 
-export default NotFoundPage
+export default React.memo(NotFoundPage);

@@ -1,44 +1,27 @@
-.container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+.finishImage {
+  position: absolute;
+  top: 100px;
+  left: 15px;
+  object-fit: cover;
+  height: calc(100vh - 115px);
+  width: calc(100vw - 30px);
 }
 
-.error {
-  color: white;
-  font-size: 350px;
-  text-shadow: 0 0 16px rgb(51 51 255 / 25%), 0 0 8px rgb(51 51 255 / 25%), 0 4px 32px rgb(51 51 255 / 50%);
+
+
+.blinkLineImage {
+  composes: finishImage;
+  animation: blink 3s infinite;
 }
 
-.text {
-  color: white;
-  font-size: 75px;
-  text-shadow: 0 0 16px rgb(51 51 255 / 25%), 0 0 8px rgb(51 51 255 / 25%), 0 4px 32px rgb(51 51 255 / 50%);
-}
-
-.link {
-  font-size: 18px;
-  color: white;
-  text-decoration: none;
-  width: 160px;
-  height: 20px;
-  text-align: center;
-  padding: 33px;
-  border-radius: 50px;
-  animation: pulse 1.8s ease infinite;
-  box-shadow: 0 0 16px rgb(51 51 255 / 25%), 0 0 8px rgb(51 51 255 / 25%), 0 4px 32px rgb(51 51 255 / 50%);
-}
-
-@keyframes pulse {
+@keyframes blink {
   0% {
-    opacity: 0.9;
+    filter: brightness(100%);
   }
-
   50% {
-    opacity: 0.6;
+    filter: brightness(50%);
   }
-
   100% {
-    opacity: 0.9;
+    filter: brightness(100%);
   }
 }
