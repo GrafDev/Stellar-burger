@@ -1,6 +1,6 @@
 import {FC} from 'react';
 import style from './order-details.module.css';
-import done from "../../images/modal/burger.png";
+import done from "../../images/modal/burger-ok.png";
 
 interface IOrderDetails {
     orderDetails: number | undefined,
