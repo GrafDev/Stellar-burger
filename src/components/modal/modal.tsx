@@ -1,57 +1,43 @@
-import {useCallback, useEffect, useMemo} from "react";
-import {useDispatch} from "react-redux";
-import ModalOverlay from "./modal-overlay/modal-overlay";
-import {CloseIcon} from "@ya.praktikum/react-developer-burger-ui-components";
-import {createPortal} from "react-dom";
-import style from './modal.module.css'
-import {useLocation, useNavigate} from "react-router-dom";
-import useKeyPress from "../../hooks/use-key-press";
-import {FC, ReactNode} from "react";
-import {TCallbackVoid} from "../../utils/types/types";
+import { createPortal } from "react-dom";
+import { FC, ReactNode, useEffect, } from "react";
+import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import style from './modal.module.css';
+import ModalOverlay from '../modal-overlay/modal-overlay'
 
-
-type TProps = {
-    title?: string
-    children: ReactNode
+interface IModal {
+  children: ReactNode
+  onClose: () => void 
 }
 
+const modals = document.getElementById('modals') as HTMLElement;
 
-const Modal: FC<TProps> = (props: TProps) => {
+const Modal: FC<IModal> = ({ children, onClose }) => {
 
-    const element: any = useMemo(() => document.createElement('div'), []); // TODO: make sense of ANY
-    const dispatch = useDispatch();
-    const navigate = useNavigate()
-    const location = useLocation()
-
-    const modalRootElement: any = document.getElementById('react-modals'); // TODO: make sense of ANY
-
-    useEffect(() => {
-        modalRootElement.appendChild(element);
-        return () => {
-            modalRootElement.removeChild(element);
-        };
-    });
-
-
-    const closeFunc:TCallbackVoid = useCallback((): void => {
-        if (location.state?.background) navigate(location.state.background)
-    }, [location.state, navigate, dispatch])
+  useEffect(() => {
+    const closePressingEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose()
+      }
+    }
+    document.addEventListener("keydown", closePressingEsc)
+    return () => {
+      document.removeEventListener("keydown", closePressingEsc
+      )
+    }
+  }, [])
 
 
-    useKeyPress('Escape', closeFunc)
+  const modal = (
+    <ModalOverlay clickModalOverlay={onClose}>
+      <div className={style.wrapper}>
+        <div className={`${style.positionIcon} mt-15 mr-10`}>
+          <CloseIcon type='primary' onClick={onClose} />
+        </div>
+        {children}
+      </div>
+    </ModalOverlay>)
 
+  return createPortal(modal, modals)
+};
 
-    return createPortal(
-        <ModalOverlay closeFunc={closeFunc}>
-            <div className={style.modal}>
-                <div className={style.closeCross} onClick={closeFunc}>
-                    <CloseIcon type="primary"/>
-                </div>
-                {props.children}
-            </div>
-        </ModalOverlay>
-        , element)
-
-}
-
-export default Modal;
+export default Modal

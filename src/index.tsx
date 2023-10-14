@@ -1,25 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import { Provider } from 'react-redux';
+import { createRoot } from "react-dom/client";
 import App from './components/app/app';
-import reportWebVitals from './reportWebVitals';
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import store from './redux/store'
+import { HashRouter as Router } from 'react-router-dom';
 
-import {Provider} from "react-redux";
-
-import stores from "./redux/store/store";
-import {BrowserRouter} from "react-router-dom";
-
-const root = ReactDOM.createRoot(	document.getElementById('root') as HTMLElement);
+const container = document.getElementById("root") as HTMLElement;
+const root = createRoot(container);
 
 root.render(
-	<React.StrictMode>
-		<BrowserRouter>
-			<Provider store={stores}>
-					<App/>
-			</Provider>
-		</BrowserRouter>
-
-	</React.StrictMode>
+  <>
+    <DndProvider backend={HTML5Backend}>
+      <Provider store={store}>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
+    </DndProvider>
+  </>
 );
 
-reportWebVitals();

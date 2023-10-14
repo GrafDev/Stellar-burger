@@ -1,56 +1,53 @@
-import styles from "./burger-constructor.module.css"
-import ConstructorFooter from "./constructor-footer/constructor-footer";
-import {useDispatch, useSelector} from "react-redux";
-import {useDrop} from "react-dnd";
-import classNames from "classnames";
-import {increaseConstructor} from "../../redux/features/constructor/constructorSlice";
-import {getConstructorIngredients} from "../../redux/features/constructor/constructor-selectors";
-import Bun from "./pieces-components/component-bun";
-import Pieces from "./pieces-components/component-pieces";
-import {BOTTOM, TOP} from "../../utils/constants/ingredient-constants";
-import {getIngredientsSelector} from "../../redux/features/ingredients/selectors-ingredients";
-import {FC} from "react";
+import { FC } from "react";
+import { useDrop } from "react-dnd";
+import { v4 as uuidv4 } from 'uuid';
+import style from '../burger-constructor/burger-constructor.module.css';
+import { ADD_INGREDIENT, ADD_BUN } from '../../types/constants/orders-types';
+import { ingredient } from '../../types/ingredients-types';
+import PurchaseAmount from '../purchase-amount/purchase-amount';
+import CardBuns from '../burger-constructor-card/card-buns/card-buns';
+import СardOther from '../burger-constructor-card/card-other/card-other';
+import { useSelector, useDispatch } from '../../redux/hooks/hooks';
+import { ITypeIngredient } from "../../types/ingredients-types";
 
-const BurgerConstructor:FC = () => {
-    const dispatch = useDispatch();
-    const store = useSelector(getIngredientsSelector)
-    const order:any = useSelector(getConstructorIngredients)// TODO: разобраться с any
-    const isEmptyPieces:boolean = !order;
+const BurgerConstructor: FC = () => {
+  const dispatch = useDispatch();
+  const { BUN } = ingredient
+  const { list, bun } = useSelector(store => store.order)
 
-    const [{isHover}, dropTarget] = useDrop({
-        accept: 'cart',
-        drop(itemId:any) {
-            const elem= store.find((item: { _id: any; }) => item._id === itemId.id) // TODO: разобраться с any
-            return (dispatch(increaseConstructor(elem)))
-        },
-        collect: monitor => ({
-            isHover: monitor.isOver(),
-        })
-
+  const moveIngredient = (ingredient: ITypeIngredient) => {
+    dispatch({
+      type: ingredient.type === BUN ? ADD_BUN : ADD_INGREDIENT,
+      item: { ...ingredient, uniqueId: uuidv4() }
     })
+  }
 
-    const borderColor = isHover ? 'rgba(51, 51, 255, 0.25)' : 'transparent'
+  const [{ isHover }, dropTarget] = useDrop({
+    accept: 'ingredients',
+    collect: monitor => ({
+      isHover: monitor.isOver()
+    }),
+    drop(item: any) {
+      moveIngredient(item);
+    }
+  })
 
-    return (
+  return (
+    (list.length || bun) ?
+      <section className={`${style.section} mt-25 pr-4 pl-2`} ref={dropTarget} >
+        {bun ? <CardBuns position={'top'} buns={bun} /> : <p className={`${style.clearList_bun} ${isHover ? style.item_isHovering : ''} text text_type_main-default`}>Выберите булочку и добавьте её сюда</p>}
+        <ul className={`${style.sectionList} mt-3 pr-3`}>
+          {list.length ? list.map((item, i) => { return <СardOther ingredient={item} key={item.uniqueId} index={i} /> })
+            : <p className={`${style.clearList_ing} ${isHover ? style.item_isHovering : ''}  text text_type_main-default`}>Выберите ингредиенты и добавьте их сюда</p>}
+        </ul>
+        {bun ? <CardBuns position={'bottom'} buns={bun} /> : null}
+        {((list.length > 0 && bun) ? (<PurchaseAmount ingredients={list} buns={bun} />) : null)}
+      </section >
+      :
+      <section className={`${style.section} mt-25 pr-4 pl-2`} ref={dropTarget} >
+        <div className={`${style.clearList} ${isHover ? style.item_isHovering : ''} text text_type_main-medium`}>Переместите сюда<br />любимую булку и ингредиенты</div>
+      </section>
+  )
+};
 
-
-        <div className={styles.constr}>
-            <div ref={dropTarget} className={classNames(
-                styles.target,
-                isHover && styles.targetIsHover,)} style={{borderColor}}>
-                <div className={classNames(
-                    styles.list,
-                    isEmptyPieces && styles.emptyList
-                )}>
-                    <Bun bun={order.bun} type={TOP}/>
-                    <Pieces pieces={order.pieces}/>
-                    <Bun bun={order.bun} type={BOTTOM}/>
-                </div>
-            </div>
-            <ConstructorFooter/>
-
-        </div>
-    )
-}
-
-export default BurgerConstructor;
+export default BurgerConstructor

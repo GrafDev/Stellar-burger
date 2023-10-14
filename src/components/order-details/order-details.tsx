@@ -1,54 +1,24 @@
-import React, {FC, useCallback} from "react";
-import {digitsLarge, inactiveDefault, textDefault, textMedium} from "../../utils/constants/text-style-constants";
-import style from "./order-details.module.css"
-// import vector from '../../images/vector.svg'
-import burger from '../../images/burger-3.png'
-import {CheckMarkIcon} from "@ya.praktikum/react-developer-burger-ui-components";
-import {useDispatch, useSelector} from "react-redux";
+import { FC } from 'react';
+import style from './order-details.module.css';
+import done from "../../images/modal/done.svg";
 
-import {unsetToolOrder} from "../../redux/features/order/orderSlice";
-import {getOrderId} from "../../redux/features/order/order-selectors";
-import Modal from "../modal/modal";
-import {useLocation, useNavigate} from "react-router-dom";
-
-const OrderDetails:FC = () =>{
-
-	const dispatch=useDispatch();
-	const location=useLocation();
-	const navigate = useNavigate();
-
-	const orderId=useSelector(getOrderId)
-
-
-
-	const closeFunc = useCallback(() => {
-		dispatch(unsetToolOrder())
-
-		if (location.state?.background) navigate(location.state.background)
-	}, [location.state, navigate,dispatch])
-
-
-	return (
-		<Modal>
-			<div className={style.modal}>
-				<div className={`${style.digit} ${digitsLarge}`}>{orderId}</div>
-				<div className={`${style.text01} ${textMedium}`}>Идентификатор заказа</div>
-				<div className={style.checkMark}>
-					<div className={style.checkMarkIcon} onClick={closeFunc}>
-						<CheckMarkIcon type={'primary'}/>
-					</div>
-					<img className={style.vector} src={burger} alt={'vector'}/>
-				</div>
-				<div className={`${style.text02} ${textDefault}`}>Ваш заказ начали готовить</div>
-				<div className={`${style.text03} ${inactiveDefault}`}>Дождитесь готовности на орбитальной станции</div>
-			</div>
-		</Modal>
-
-	)
+interface IOrderDetails {
+  orderDetails: number | undefined
 }
 
+const OrderDetails: FC<IOrderDetails> = ({ orderDetails }) => {
+  return (
+    <>
+      <div className={`${style.wrapper} mt-30 mb-30`}>
+        <h2 className={`${style.number} text text_type_digits-large mb-8`}>{orderDetails}</h2>
+        <p className={`text text_type_main-medium mb-15`} >идентификатор заказа</p>
+        <img className={`${style.img} mb-15`} src={done} alt="иконка галочки" />
+        <p className='text text_type_main-default mb-2'>Ваш заказ начали готовить</p>
+        <p className='text text_type_main-default text_color_inactive'>Дождитесь готовности на орбитальной станции</p>
+      </div>
+    </>
+  )
+}
 
+export default OrderDetails
 
-
-
-export default OrderDetails;

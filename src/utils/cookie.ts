@@ -1,51 +1,36 @@
-
-
-
-
-
-export function setCookie(name: string, value: string, options?: any): void { //TODO: make sense of ANY
-  options = { path: '/', ...options }
-
-  let exp = options.expires
-
-  if (exp && typeof exp == 'number') {
-    const date = new Date()
-    date.setTime(date.getTime() + exp * 1000)
-    exp = options.expires = date
+export function setCookie(name: string, value: any, props?: any) {
+  props = {
+    path: '/',
+    ...props
+  };
+  let exp = props.expires;
+  if (typeof exp == 'number' && exp) {
+    const d = new Date();
+    d.setTime(d.getTime() + exp * 1200);
+    exp = props.expires = d;
   }
-
-  if (exp instanceof Date) {
-    options.expires = exp.toUTCString()
+  if (exp && exp.toUTCString) {
+    props.expires = exp.toUTCString();
   }
-
-  let updatedCookie = encodeURIComponent(name) + '=' + encodeURIComponent(value)
-
-  for (const optionKey in options) {
-    updatedCookie += '; ' + optionKey
-
-    const optionValue = options[optionKey]
-
-    if (optionValue !== true) {
-      updatedCookie += '=' + optionValue
+  value = encodeURIComponent(value);
+  let updatedCookie = name + '=' + value;
+  for (const propName in props) {
+    updatedCookie += '; ' + propName;
+    const propValue = props[propName];
+    if (propValue !== true) {
+      updatedCookie += '=' + propValue;
     }
   }
-
-  document.cookie = updatedCookie
+  document.cookie = updatedCookie;
 }
 
-export function getCookie(name: string): string | undefined {
+export function getCookie(name: string) {
   const matches = document.cookie.match(
-      new RegExp(
-          '(?:^|; )' +
-          name.replace('/([\.$?*|{}\(\)\[\]\\\/\+^])/g', '\\$1') +
-          '=([^;]*)',
-      ),
-  )
-  return matches ? decodeURIComponent(matches[1]) : undefined
+    new RegExp('(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)')
+  );
+  return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-export function deleteCookie(name: string): void {
-  setCookie(name, '', {
-    'max-age': -1,
-  })
-}
+export function deleteCookie(name: string) {
+  setCookie(name, null, { expires: -1 });
+} 

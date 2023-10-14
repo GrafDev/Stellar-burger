@@ -1,0 +1,35 @@
+.profile__container {
+  display: flex;
+  flex-direction: row;
+  margin: 120px auto auto;
+  max-width: 1240px;
+}
+
+.profile__nav {
+  display: flex;
+  flex-direction: column;
+  height: calc(64px * 3);
+  justify-content: space-around
+}
+
+.profile__link__inactive {
+  text-decoration: none;
+  color: #8585AD;
+  cursor: pointer;
+}
+
+.profile__link__active {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.profile__wrapper {
+  width: 320px;
+}
+
+.profile__text {
+  color: rgba(133, 133, 173, 1);
+  width: 320px;
+}
+
