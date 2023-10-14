@@ -1,4 +1,4 @@
-import { WS_AUTH_CONNECTION_START, WS_AUTH_CONNECTION_SUCCESS, WS_AUTH_CONNECTION_ERROR, WS_AUTH_CONNECTION_CLOSED, WS_GET_AUTH_ORDERS } from '../../types/constants/ws-types';
+import { WS_AUTH_CONNECTION_START, WS_AUTH_CONNECTION_SUCCESS, WS_AUTH_CONNECTION_ERROR, WS_AUTH_CONNECTION_CLOSED, WS_GET_AUTH_ORDERS } from '../../types/constants-types/ws-types';
 import { IOrderType } from '../../types/ingredients-types';
 
 interface IWsGetOrder {

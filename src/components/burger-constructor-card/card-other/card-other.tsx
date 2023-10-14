@@ -2,7 +2,7 @@ import { FC, useRef } from "react";
 import { useDrop, useDrag } from "react-dnd";
 import { DragIcon, ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useDispatch } from '../../../redux/hooks/hooks';
-import { REMOVE_INGREDIENT, MOVE_INGREDIENT } from '../../../types/constants/orders-types'
+import { REMOVE_INGREDIENT, MOVE_INGREDIENT } from '../../../types/constants-types/orders-types'
 import style from './card-other.module.css'
 import { ITypeIngredient } from '../../../types/ingredients-types.js'
 

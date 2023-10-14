@@ -6,7 +6,7 @@ import {
   GET_INGREDIENTS_FAILED,
   SET_SELECTED_INGREDIENT,
   REMOVE_SELECTED_INGREDIENT
-} from '../../types/constants/ingredients'
+} from '../../types/constants-types/ingredients-types'
 
 export type TIngredientsState = {
   ingredients: Array<ITypeIngredient>,

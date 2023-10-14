@@ -18,7 +18,7 @@ import {
   USER_UPDATE_TOKEN_SUCCESS,
   USER_UPDATE_TOKEN_FAILED,
   USER_SET_IS_AUTH
-} from '../../types/constants/user-types';
+} from '../../types/constants-types/user-types';
 import { TUserActions } from '../actions/user-actions';
 
 export type TUserState = {

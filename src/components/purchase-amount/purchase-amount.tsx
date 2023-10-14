@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { CurrencyIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { FC, useMemo } from 'react';
-import { ORDER_ITEMS_RESET } from '../../types/constants/orders-types';
+import { ORDER_ITEMS_RESET } from '../../types/constants-types/orders-types';
 import { postOrder } from '../../redux/actions/order-actions';
 import Modal from "../modal/modal";
 import OrderDetails from '../order-details/order-details';

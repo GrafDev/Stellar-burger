@@ -6,7 +6,7 @@ import {
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAILED
-} from '../../types/constants/reset-password-types';
+} from '../../types/constants-types/reset-password-types';
 import { AppDispatch, AppThunk } from '../../types';
 
 type TForgotPasswordSuccess = {

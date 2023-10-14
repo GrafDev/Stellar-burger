@@ -13,7 +13,7 @@ import OrderInformation from '../order-information/order-information'
 import ProfileInfo from '../profile-info/profile-info';
 import { useSelector, useDispatch } from '../../redux/hooks/hooks';
 import { getCookie } from '../../utils/cookie';
-import { REMOVE_SELECTED_INGREDIENT } from '../../types/constants/ingredients';
+import { REMOVE_SELECTED_INGREDIENT } from '../../types/constants-types/ingredients-types';
 
 const App: FC = () => {
   const dispatch = useDispatch();

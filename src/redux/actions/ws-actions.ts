@@ -1,4 +1,4 @@
-import { WS_CONNECTION_START, WS_CONNECTION_SUCCESS, WS_CONNECTION_ERROR, WS_CONNECTION_CLOSED, WS_GET_ORDERS } from '../../types/constants/ws-types';
+import { WS_CONNECTION_START, WS_CONNECTION_SUCCESS, WS_CONNECTION_ERROR, WS_CONNECTION_CLOSED, WS_GET_ORDERS } from '../../types/constants-types/ws-types';
 import { IOrderType } from '../../types/ingredients-types';
 
 interface IWsGetOrder {

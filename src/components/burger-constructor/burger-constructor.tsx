@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useDrop } from "react-dnd";
 import { v4 as uuidv4 } from 'uuid';
 import style from '../burger-constructor/burger-constructor.module.css';
-import { ADD_INGREDIENT, ADD_BUN } from '../../types/constants/orders-types';
+import { ADD_INGREDIENT, ADD_BUN } from '../../types/constants-types/orders-types';
 import { ingredient } from '../../types/ingredients-types';
 import PurchaseAmount from '../purchase-amount/purchase-amount';
 import CardBuns from '../burger-constructor-card/card-buns/card-buns';

@@ -3,7 +3,7 @@ import {
   WS_CONNECTION_ERROR,
   WS_CONNECTION_CLOSED,
   WS_GET_ORDERS,
-} from '../../types/constants/ws-types';
+} from '../../types/constants-types/ws-types';
 import { TWsActions } from '../actions/ws-actions'
 import { IOrderType } from '../../types/ingredients-types'
 

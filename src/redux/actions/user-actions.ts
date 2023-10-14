@@ -20,7 +20,7 @@ import {
   USER_UPDATE_TOKEN_SUCCESS,
   USER_UPDATE_TOKEN_FAILED,
   USER_SET_IS_AUTH
-} from '../../types/constants/user-types'
+} from '../../types/constants-types/user-types'
 import { AppDispatch, AppThunk } from '../../types';
 
 type TUser = {

@@ -1,7 +1,7 @@
 import { useState, createRef, useMemo, MouseEvent, UIEvent } from 'react';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import style from './tab-burger-ingredients.module.css';
-import { SET_SELECTED_INGREDIENT } from '../../types/constants/ingredients';
+import { SET_SELECTED_INGREDIENT } from '../../types/constants-types/ingredients-types';
 import CardIngredient from '../card-ingredient/card-ingredient';
 import { ingredient } from '../../types/ingredients-types';
 import { useSelector, useDispatch } from '../../redux/hooks/hooks';

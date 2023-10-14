@@ -7,7 +7,7 @@ import {
   ADD_BUN,
   REMOVE_INGREDIENT,
   MOVE_INGREDIENT
-} from '../../types/constants/orders-types'
+} from '../../types/constants-types/orders-types'
 import { TOrderActions } from '../actions/order-actions'
 import { ITypeIngredient } from '../../types/ingredients-types'
 

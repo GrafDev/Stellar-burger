@@ -14,7 +14,7 @@ import {
   WS_AUTH_CONNECTION_ERROR,
   WS_AUTH_CONNECTION_CLOSED,
   WS_GET_AUTH_ORDERS
-} from "../types/constants/ws-types";
+} from "../types/constants-types/ws-types";
 
 const wsActions = {
   wsStart: WS_CONNECTION_START,
