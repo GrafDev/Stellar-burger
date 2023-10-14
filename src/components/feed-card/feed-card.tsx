@@ -26,7 +26,7 @@ const FeedCard: FC<IFeedCard> = ({ data, profileStatus }) => {
     )
   }, [listOrderedIngredients])
 
-  const counterIngradient = useMemo(() => {
+  const counterIngredient = useMemo(() => {
     const listOrderedLength = listOrderedIngredients.length
     return (
       listOrderedLength > 6 ? listOrderedLength - 6 : null
@@ -51,7 +51,7 @@ const FeedCard: FC<IFeedCard> = ({ data, profileStatus }) => {
           {listOrderedIngredients.slice(0, 6).map((item, index) => {
             return (<li key={index} className={`${style.card}`} style={{ zIndex: 6 - index }}><img src={item?.image_mobile} className={style.card__img} alt={item?.name} /></li>)
           })}
-          {(counterIngradient) ? (<div className={`${style.card__count} text text_type_main-default`}>+{counterIngradient}</div>) : null}
+          {(counterIngredient) ? (<div className={`${style.card__count} text text_type_main-default`}>+{counterIngredient}</div>) : null}
         </ul>
         <div className={`${style.block__price} ml-6`}>
           <span className={`${style.price__count} text text_type_digits-medium`}>{totalPrice}</span>

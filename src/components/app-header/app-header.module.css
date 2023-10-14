@@ -28,17 +28,12 @@
 .header__link__inactive {
   composes: header__link__active;
   color: var(--inactive-color);
+
 }
-
-
 
 .header__link__inactive:hover {
   cursor: pointer;
-
-  box-shadow:
-    0px 4px 4px rgba(51, 51, 255, 0.25),
-    0px 4px 2px rgba(51, 51, 255, 0.25),
-    0px 4px 8px rgba(51, 51, 255, 0.5);
+  text-shadow: 0px 4px 6px var(--shadow-color), 0px 1px 3px var(--shadow-color), 0px 0px 1px var(--shadow-color);
 }
 
 .header__navList {
