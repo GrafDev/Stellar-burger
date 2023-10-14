@@ -8,7 +8,7 @@ import ProtectedRoute from '../protected-route/protected-route';
 import Modal from '../modal/modal';
 import { getIngredients } from '../../redux/actions/ingredients-actions';
 import { getUser } from '../../redux/actions/user-actions';
-import Feed from '../../pages/feed/feed';
+import FeedPage from '../../pages/feed-page/feed-page';
 import OrderInformation from '../order-information/order-information'
 import ProfileInfo from '../profile-info/profile-info';
 import { useSelector, useDispatch } from '../../hooks/store-hooks';
@@ -46,7 +46,7 @@ const App: FC = () => {
           <AppHeader />
           <main>
             <Routes location={background || location}>
-              <Route path="/feed" element={<Feed />} />
+              <Route path="/feed" element={<FeedPage />} />
               <Route path="/feed/:id" element={<Order data={orders} profile={false} />} />
               <Route path='/profile' element={<ProtectedRoute isPrivate element={<Profile />} />} >
                 <Route path='' element={<ProfileInfo />}></Route>

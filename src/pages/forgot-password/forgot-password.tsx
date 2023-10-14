@@ -12,7 +12,7 @@ const ForgotPassword: FC = () => {
   const { values, handleChange } = useFormHook({ email: '' })
   const { verification, emailRequest } = useSelector(state => state.password)
 
-  const reqestNewPassword = (event: FormEvent<HTMLFormElement>) => {
+  const requestNewPassword = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(forgotPassword(values));
   }
@@ -27,7 +27,7 @@ const ForgotPassword: FC = () => {
     <section className={`${style.forgotPassword__container}`}>
       <div className={`${style.forgotPassword__wrapper}`}>
         <h2 className={"text text_type_main-medium"}>Восстановление пароля</h2>
-        <form className={`${style.forgotPassword__form}`} onSubmit={reqestNewPassword}>
+        <form className={`${style.forgotPassword__form}`} onSubmit={requestNewPassword}>
           <Input
             placeholder={"Укажите e-mail"}
             type={"email"}

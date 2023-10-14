@@ -1,12 +1,12 @@
 import { FC, useEffect } from 'react';
-import style from './feed.module.css'
+import style from './feed-page.module.css'
 import { useSelector, useDispatch } from '../../hooks/store-hooks';
 import OrdersStatus from '../../components/orders-status/orders-status'
 import OrdersFeed from '../../components/orders-feed/orders-feed'
 import { wsConnectionStart, wsConnectionClosed } from '../../redux/actions/ws-actions'
 import { BASE_WSS } from '../../hooks/request-hook';
 
-const Feed: FC = () => {
+const FeedPage: FC = () => {
   const dispatch = useDispatch();
   const { total, totalToday, orders } = useSelector(state => state.wsOrders);
 
@@ -49,4 +49,4 @@ const Feed: FC = () => {
   );
 }
 
-export default Feed;
+export default FeedPage;

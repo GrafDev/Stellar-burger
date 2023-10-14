@@ -6,7 +6,7 @@ import ResetPassword from "./reset-password/reset-password";
 import PageNotFound from "./page-not-found/page-not-found";
 import Profile from "./profile/profile";
 import Order from "./order/order";
-import Feed from "./feed/feed";
+import FeedPage from "./feed-page/feed-page";
 import ProfileOrders from "./profile-orders/profile-orders";
 
-export { Home, Login, Register, ForgotPassword, ResetPassword, PageNotFound, Profile, Order, Feed, ProfileOrders }
+export { Home, Login, Register, ForgotPassword, ResetPassword, PageNotFound, Profile, Order, FeedPage, ProfileOrders }
