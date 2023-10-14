@@ -5,6 +5,8 @@ import style from './reset-password.module.css'
 import { resetPasswordActions } from '../../redux/actions/reset-password-actions';
 import { useFormHook } from '../../hooks/use-form-hook';
 import { useSelector, useDispatch } from '../../hooks/store-hooks';
+import {PATH_FORGOT_PASSWORD, PATH_LOGIN} from "../../utils/constants/path-constants";
+import {colorAccent, inactiveMedium, textMedium} from "../../utils/constants/text-style-constants";
 
 const ResetPassword:FC = () => {
   const dispatch = useDispatch();
@@ -15,19 +17,19 @@ const ResetPassword:FC = () => {
   const setNewPassword = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(resetPasswordActions(values));
-    navigate('/login')
+    navigate(PATH_LOGIN)
   }
 
   useEffect(() => {
     if (!verification) {
-      navigate('/forgot-Password')
+      navigate(PATH_FORGOT_PASSWORD)
     }
   }, [verification]);
 
   return (
     <section className={`${style.resetPassword__container}`}>
       <div className={`${style.resetPassword__wrapper}`}>
-        <h2 className={"text text_type_main-medium"}>Восстановление пароля</h2>
+        <h2 className={textMedium}>Восстановление пароля</h2>
         <form className={`${style.resetPassword__form}`} onSubmit={setNewPassword}>
           <PasswordInput
             extraClass={"mt-6"}
@@ -54,9 +56,9 @@ const ResetPassword:FC = () => {
           </Button>
         </form>
         <div className={`${style.login__links}`}>
-          <p className={"text text_type_main-default text_color_inactive mb-4"}>
+          <p className={`${inactiveMedium} mb-4`}>
             Вспомнили пароль?&#8194;
-            <Link to={"/login"} className={`${style.resetPassword__link} text text_color_accent`}>Войти</Link>
+            <Link to={"/login"} className={`${style.resetPassword__link} ${colorAccent}`}>Войти</Link>
           </p>
         </div>
       </div>

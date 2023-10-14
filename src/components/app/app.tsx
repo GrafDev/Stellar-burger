@@ -20,9 +20,9 @@ import {
   PATH_FORGOT_PASSWORD,
   PATH_HOME,
   PATH_INGREDIENTS_DETAILS, PATH_LOGIN,
-  PATH_NOT_FOUND, PATH_PROFILE, PATH_PROFILE_ORDER_ID, PATH_REGISTER,
+  PATH_NOT_FOUND, PATH_PROFILE, PATH_PROFILE_ORDERS_ID, PATH_REGISTER,
   PATH_RESET_PASSWORD, PATH_TO_PROFILE_INFO, PATH_TO_PROFILE_ORDERS
-} from "../../types/path-constants";
+} from "../../utils/constants/path-constants";
 
 const App: FC = () => {
   const dispatch = useDispatch();
@@ -61,7 +61,7 @@ const App: FC = () => {
                 <Route path={PATH_TO_PROFILE_INFO} element={<ProfileInfo />}></Route>
                 <Route path={PATH_TO_PROFILE_ORDERS} element={<ProfileOrders />}></Route>
               </Route >
-              <Route path={PATH_PROFILE_ORDER_ID} element={<ProtectedRoute isPrivate element={<Order profile={true} data={authOrders} />} />} />
+              <Route path={PATH_PROFILE_ORDERS_ID} element={<ProtectedRoute isPrivate element={<Order profile={true} data={authOrders} />} />} />
               <Route path={PATH_LOGIN} element={<ProtectedRoute element={<Login />} />} />
               <Route path={PATH_REGISTER} element={<ProtectedRoute element={<Register />} />} />
               <Route path={PATH_FORGOT_PASSWORD} element={<ProtectedRoute element={<ForgotPasswordPage />} />} />
@@ -74,7 +74,7 @@ const App: FC = () => {
               <Routes>
                 <Route path={PATH_INGREDIENTS_DETAILS} element={<Modal onClose={closeModal}> <IngredientDetails /></Modal>} />
                 <Route path={PATH_FEED_ID} element={<Modal onClose={closeModal}><OrderInformation data={orders} modal={true} /></Modal>} />
-                <Route path={PATH_PROFILE_ORDER_ID} element={<Modal onClose={closeModal}><OrderInformation data={authOrders} modal={true} /></Modal>} />
+                <Route path={PATH_PROFILE_ORDERS_ID} element={<Modal onClose={closeModal}><OrderInformation data={authOrders} modal={true} /></Modal>} />
               </Routes>}
           </main >
         </>

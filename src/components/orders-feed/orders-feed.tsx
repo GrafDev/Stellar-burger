@@ -4,6 +4,7 @@ import { FC } from 'react'
 import style from './orders-feed.module.css';
 import FeedCard from '../feed-card/feed-card';
 import { IOrderType } from '../../types/ingredients-types';
+import {PATH_FEED} from "../../utils/constants/path-constants";
 
 interface IOrdersFeed {
   orders: Array<IOrderType>
@@ -19,7 +20,7 @@ const OrdersFeed: FC<IOrdersFeed> = ({ orders }) => {
   return (
     <ul className={`${style.section}`}>
       {orders.map((item) =>
-        <Link to={`/feed/${item._id}`} state={{ background: location }} key={item._id} className={`${style.link}`}>
+        <Link to={`${PATH_FEED}/${item._id}`} state={{ background: location }} key={item._id} className={`${style.link}`}>
           <FeedCard data={item} profileStatus={false} />
         </Link>)}
     </ul>

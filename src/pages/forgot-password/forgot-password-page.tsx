@@ -5,6 +5,8 @@ import style from './forgot-password-page.module.css';
 import { useSelector, useDispatch } from '../../hooks/store-hooks';
 import { forgotPassword } from '../../redux/actions/reset-password-actions';
 import { useFormHook } from '../../hooks/use-form-hook';
+import {PATH_RESET_PASSWORD} from "../../utils/constants/path-constants";
+import {colorAccent, inactiveMedium, textMedium, textSmall} from "../../utils/constants/text-style-constants";
 
 const ForgotPasswordPage: FC = () => {
   const dispatch = useDispatch();
@@ -19,14 +21,14 @@ const ForgotPasswordPage: FC = () => {
 
   useEffect(() => {
     if (verification) {
-      navigate('/reset-password')
+      navigate(PATH_RESET_PASSWORD)
     }
   }, [verification]);
 
   return (
     <section className={`${style.forgotPassword__container}`}>
       <div className={`${style.forgotPassword__wrapper}`}>
-        <h2 className={"text text_type_main-medium"}>Восстановление пароля</h2>
+        <h2 className={textMedium}>Восстановление пароля</h2>
         <form className={`${style.forgotPassword__form}`} onSubmit={requestNewPassword}>
           <Input
             placeholder={"Укажите e-mail"}
@@ -41,14 +43,14 @@ const ForgotPasswordPage: FC = () => {
             extraClass={"mt-6 mb-20"}
             type={"primary"}
             htmlType={'submit'}>
-            {emailRequest ? <p className={`text text_type_main-small ${style.forgotPassword__loading}`}>Отправляем...</p> : 'Восстановить'}
+            {emailRequest ? <p className={`${textSmall} ${style.forgotPassword__loading}`}>Отправляем...</p> : 'Восстановить'}
           </Button>
         </form>
 
         <div className={`${style.login__links}`}>
-          <p className={"text text_type_main-default text_color_inactive mb-4"}>
+          <p className={`${inactiveMedium} mb-4`}>
             Вспомнили пароль?&#8194;
-            <Link to={"/login"} className={`${style.forgotPassword__link} text text_color_accent`}>Войти</Link>
+            <Link to={"/login"} className={`${style.forgotPassword__link} ${colorAccent}`}>Войти</Link>
           </p>
         </div>
       </div>
