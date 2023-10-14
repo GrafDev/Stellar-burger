@@ -43,8 +43,9 @@ const CardIngredient: FC<ICardIngredient> = ({ card, onOpen }) => {
           <p className={`${digitsDefault} mb-2`}>{price}</p>
           <CurrencyIcon type='primary' />
         </div>
-        <p className={`${style.cardIngredient__name} ${activeDefault} mb-7`}>{name}</p>
-        {counters ? <Counter count={counters} size="default" /> : null}
+        <p className={`${style.cardIngredient__name} ${activeDefault} mb-7 `}>{name}</p>
+
+        {counters ? <Counter  count={counters} size="default" /> : null}
       </li >
     </>
   )

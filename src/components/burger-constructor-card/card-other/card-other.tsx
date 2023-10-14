@@ -12,7 +12,7 @@ interface ICardOther {
   ingredient: ITypeIngredient
 }
 
-const СardOther: FC<ICardOther> = ({ ingredient, index }) => {
+const CardOther: FC<ICardOther> = ({ ingredient, index }) => {
   const dispatch = useDispatch();
   const ref = useRef<HTMLLIElement>(null);
 
@@ -81,4 +81,4 @@ const СardOther: FC<ICardOther> = ({ ingredient, index }) => {
   )
 };
 
-export default СardOther
+export default CardOther

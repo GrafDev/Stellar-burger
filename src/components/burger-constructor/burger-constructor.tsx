@@ -6,10 +6,10 @@ import {ADD_INGREDIENT, ADD_BUN} from '../../types/constants-types/orders-types'
 import {ingredient} from '../../types/ingredients-types';
 import PurchaseAmount from '../purchase-amount/purchase-amount';
 import CardBuns from '../burger-constructor-card/card-buns/card-buns';
-import СardOther from '../burger-constructor-card/card-other/card-other';
+import CardOther from '../burger-constructor-card/card-other/card-other';
 import {useSelector, useDispatch} from '../../hooks/store-hooks';
 import {ITypeIngredient} from "../../types/ingredients-types";
-import {activeDefault, textMedium} from "../../utils/constants/text-style-constants";
+import {activeDefault, colorInactive, textLarge, textMedium} from "../../utils/constants/text-style-constants";
 
 const BurgerConstructor: FC = () => {
     const dispatch = useDispatch();
@@ -36,32 +36,38 @@ const BurgerConstructor: FC = () => {
     return (
 
 
-        <section className={`${style.constuctionSection}  mt-25 pr-4 pl-2`} ref={dropTarget}>
+        <section className={`${style.constuctionSection}  mt-25 `} ref={dropTarget}>
 
                 {(list.length || bun) ?
 
-                <section className={`${style.ingredientSection}  mt-25 pr-4 pl-2`} ref={dropTarget}>
+                <section className={`${style.ingredientSection}  ${isHover ? style.dropZone_isHovering : ''} `} ref={dropTarget}>
                     {bun ? <CardBuns position={'top'} buns={bun}/> :
-                        <p className={`${style.clearList_bun}  ${activeDefault}`}>Выберите
-                            булочку и добавьте её сюда</p>}
+                        <p className={` ${textMedium} ${colorInactive} pb-15`}>
+                            Нехватает</p>}
+
                     <ul className={`${style.sectionList}  mt-3 pr-3`}>
                         {list.length ? list.map((item, i) => {
-                                return <СardOther ingredient={item} key={item.uniqueId} index={i}/>
+                                return <CardOther ingredient={item} key={item.uniqueId} index={i}/>
                             })
                             :
-                            <p className={`${style.clearList_ing}  ${activeDefault}`}>Выберите
-                                ингредиенты и добавьте их сюда</p>}
+                            <p className={`${style.cartOther} ${textMedium} ${colorInactive}  pl-30 pr-15`}> Выберите
+                                ничинку или соус и добавьте их сюда</p>}
                     </ul>
-                    {bun ? <CardBuns position={'bottom'} buns={bun}/> : null}
+                    {bun ? <CardBuns position={'bottom'} buns={bun}/> :
+                        <p className={`${textMedium} ${colorInactive}`}>
+                            булочек</p>}
+
+
                 </section>
 
                     :
-                    <div className={`${style.dropZone}            ${isHover ? style.dropZone_isHovering : ''} 
-                ${textMedium}`}>
-                    'Возьмите соусик и начиночку или может  булочку, затем положите сюда'
+                    <div className={`${style.dropZone}  ${isHover ? style.dropZone_isHovering : ''} 
+                ${textMedium} ${colorInactive}`}>
+
+                    Возьмите соусик и начиночку или может  булочку, затем положите сюда
                     </div>
                 }
-                <div className={style.purshaseAmount}>
+                <div className={style.purchaseAmount}>
                     {((list.length > 0 && bun) ? (<PurchaseAmount ingredients={list} buns={bun}/>) : null)}
                 </div>
 
