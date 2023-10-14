@@ -1,12 +1,13 @@
 import { useState, createRef, useMemo, MouseEvent, UIEvent } from 'react';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
-import style from './tab-burger-ingredients.module.css';
-import { SET_SELECTED_INGREDIENT } from '../../types/constants-types/ingredients-types';
-import CardIngredient from '../card-ingredient/card-ingredient';
-import { ingredient } from '../../types/ingredients-types';
-import { useSelector, useDispatch } from '../../hooks/store-hooks';
+import style from './ingredients-tabs.module.css';
+import { SET_SELECTED_INGREDIENT } from '../../../types/constants-types/ingredients-types';
+import IngredientsCard from '../ingredients-card/ingredients-card';
+import { ingredient } from '../../../types/ingredients-types';
+import { useSelector, useDispatch } from '../../../hooks/store-hooks';
+import {textLarge, textMedium} from "../../../utils/constants/text-style-constants";
 
-const TabBurgerIngredients = () => {
+const IngredientsTabs = () => {
   const dispatch = useDispatch();
   const { BUN, MAIN, SAUCE } = ingredient
   const { ingredients } = useSelector(state => state.ingredients)
@@ -22,10 +23,10 @@ const TabBurgerIngredients = () => {
   }
 
   const handleOpen = (event: MouseEvent<HTMLImageElement>) => {
-    const clickСardId = event.currentTarget.getAttribute('id');
+    const clickCardId = event.currentTarget.getAttribute('id');
     dispatch({
       type: SET_SELECTED_INGREDIENT,
-      ingadient: (ingredients.find((card) => card._id === clickСardId))
+      ingredient: (ingredients.find((card) => card._id === clickCardId))
     })
   }
 
@@ -60,24 +61,24 @@ const TabBurgerIngredients = () => {
   return (
     <>
       <section className={`${style.tabBurgerIngredients__wrapper} pl-5`}>
-        <h2 className='text text_type_main-large mt-10 mb-5'>Соберите бургер</h2>
+        <h2 className={`${textLarge} mt-10 mb-5`}>Соберите бургер</h2>
         <nav className={`${style.navMenuIngredients__wrapper} mb-10`}>
           <Tab value={BUN} active={current === BUN} onClick={() => handleTabClick(BUN)}>Булки</Tab>
           <Tab value={SAUCE} active={current === SAUCE} onClick={() => handleTabClick(SAUCE)}>Соусы</Tab>
           <Tab value={MAIN} active={current === MAIN} onClick={() => handleTabClick(MAIN)}>Начинки</Tab>
         </nav>
         <div className={style.tabBurgerIngredients__section} onScroll={handleScroll}>
-          <h3 className='text text_type_main-medium' id={BUN} ref={bunRef}>Булки</h3>
+          <h3 className={textMedium} id={BUN} ref={bunRef}>Булки</h3>
           <ul className={`${style.listIngredients} mt-6 ml-4 mr-4 mb-9`}>
-            {tabBuns.map((item) => <CardIngredient card={item} key={item._id} onOpen={handleOpen} />)}
+            {tabBuns.map((item) => <IngredientsCard card={item} key={item._id} onOpen={handleOpen} />)}
           </ul>
-          <h3 className='text text_type_main-medium' id={SAUCE} ref={sauceRef}>Соусы</h3>
+          <h3 className={textMedium} id={SAUCE} ref={sauceRef}>Соусы</h3>
           <ul className={`${style.listIngredients} mt-6 ml-4 mr-4 mb-9`}>
-            {tabSouse.map((item) => <CardIngredient card={item} key={item._id} onOpen={handleOpen} />)}
+            {tabSouse.map((item) => <IngredientsCard card={item} key={item._id} onOpen={handleOpen} />)}
           </ul>
-          <h3 className='text text_type_main-medium' id={MAIN} ref={mainRef}>Начинки</h3>
+          <h3 className={textMedium} id={MAIN} ref={mainRef}>Начинки</h3>
           <ul className={`${style.listIngredients} mt-6 ml-4 mr-4 mb-9`}>
-            {tabMain.map((item) => <CardIngredient card={item} key={item._id} onOpen={handleOpen} />)}
+            {tabMain.map((item) => <IngredientsCard card={item} key={item._id} onOpen={handleOpen} />)}
           </ul>
         </div>
       </section>
@@ -87,4 +88,4 @@ const TabBurgerIngredients = () => {
 
 
 
-export default TabBurgerIngredients
+export default IngredientsTabs;

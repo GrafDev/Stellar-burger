@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
 import style from './card-buns.module.css';
-import { ITypeIngredient } from '../../../types/ingredients-types'
+import { ITypeIngredient } from '../../../../../types/ingredients-types'
 
 interface ICardBuns {
   position: 'top' | 'bottom',

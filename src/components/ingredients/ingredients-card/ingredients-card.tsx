@@ -2,18 +2,18 @@ import {FC, MouseEventHandler, useMemo} from 'react';
 import {Counter, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 import {useDrag} from "react-dnd";
 import {Link, useLocation} from 'react-router-dom';
-import style from './card-ingredient.module.css';
-import {ingredient, ITypeIngredient} from '../../types/ingredients-types';
-import {useSelector} from '../../hooks/store-hooks';
-import {PATH_INGREDIENTS} from "../../utils/constants/path-constants";
-import {activeDefault, digitsDefault} from "../../utils/constants/text-style-constants";
+import style from './ingredients-card.module.css';
+import {ingredient, ITypeIngredient} from '../../../types/ingredients-types';
+import {useSelector} from '../../../hooks/store-hooks';
+import {PATH_INGREDIENTS} from "../../../utils/constants/path-constants";
+import {activeDefault, digitsDefault} from "../../../utils/constants/text-style-constants";
 
 interface ICardIngredient {
   card: ITypeIngredient,
   onOpen: MouseEventHandler
 }
 
-const CardIngredient: FC<ICardIngredient> = ({ card, onOpen }) => {
+const IngredientsCard: FC<ICardIngredient> = ({ card, onOpen }) => {
   const location = useLocation();
   const { BUN } = ingredient
   const { _id, type, image, name, price } = card;
@@ -52,4 +52,4 @@ const CardIngredient: FC<ICardIngredient> = ({ card, onOpen }) => {
 };
 
 
-export default CardIngredient;
+export default IngredientsCard;

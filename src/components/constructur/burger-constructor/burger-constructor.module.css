@@ -20,18 +20,18 @@
     display: flex;
     align-content: center;
     justify-content: center;
-
     height: 66vh;
     opacity: 0.5;
     text-align: center;
     border-radius: 40px;
-    padding-top: 25vh;
     transition: all .3s linear;
 
 }
 
 .dropText{
-    font-size: 22px;
+ padding-top: 30vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
 }
 
 

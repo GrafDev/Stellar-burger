@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { useParams, useLocation } from "react-router-dom";
-import style from './ingredient-details.module.css'
-import { useSelector } from '../../hooks/store-hooks';
+import style from './ingredients-details.module.css'
+import { useSelector } from '../../../hooks/store-hooks';
 
-const IngredientDetails: FC = () => {
+const IngredientsDetails: FC = () => {
   const location = useLocation();
   const { id } = useParams();
   const { ingredients } = useSelector(state => state.ingredients)
@@ -48,4 +48,4 @@ const IngredientDetails: FC = () => {
 }
 
 
-export default IngredientDetails
+export default IngredientsDetails

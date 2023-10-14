@@ -1,15 +1,15 @@
 import {FC} from "react";
 import {useDrop} from "react-dnd";
 import {v4 as uuidv4} from 'uuid';
-import style from '../burger-constructor/burger-constructor.module.css';
-import {ADD_INGREDIENT, ADD_BUN} from '../../types/constants-types/orders-types';
-import {ingredient} from '../../types/ingredients-types';
-import PurchaseAmount from '../purchase-amount/purchase-amount';
-import CardBuns from '../burger-constructor-card/card-buns/card-buns';
-import CardOther from '../burger-constructor-card/card-other/card-other';
-import {useSelector, useDispatch} from '../../hooks/store-hooks';
-import {ITypeIngredient} from "../../types/ingredients-types";
-import {activeDefault, colorInactive, textLarge, textMedium} from "../../utils/constants/text-style-constants";
+import style from './burger-constructor.module.css';
+import {ADD_INGREDIENT, ADD_BUN} from '../../../types/constants-types/orders-types';
+import {ingredient} from '../../../types/ingredients-types';
+import PurchaseAmount from '../../purchase-amount/purchase-amount';
+import CardBuns from './burger-constructor-card/card-buns/card-buns';
+import CardOther from './burger-constructor-card/card-other/card-other';
+import {useSelector, useDispatch} from '../../../hooks/store-hooks';
+import {ITypeIngredient} from "../../../types/ingredients-types";
+import {activeDefault, colorInactive, textLarge, textMedium} from "../../../utils/constants/text-style-constants";
 
 const BurgerConstructor: FC = () => {
     const dispatch = useDispatch();
@@ -64,7 +64,7 @@ const BurgerConstructor: FC = () => {
                     <div className={`${style.dropZone}  ${isHover ? style.dropZone_isHovering : ''} 
                 ${textMedium} ${colorInactive}`}>
 
-                    Возьмите соусик и начиночку или может  булочку, затем положите сюда
+                    <p className={style.dropText}> Возьмите соусик и начиночку или может  булочку, затем положите сюда</p>
                     </div>
                 }
                 <div className={style.purchaseAmount}>

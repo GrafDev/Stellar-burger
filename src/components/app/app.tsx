@@ -3,7 +3,7 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import style from '../app/app.module.css';
 import AppHeader from '../app-header/app-header';
 import { Home, Login, Register, ForgotPasswordPage, ResetPassword, NotFoundPage, Profile, Order, ProfileOrders } from '../../pages/index';
-import IngredientDetails from '../ingredient-details/ingredient-details';
+import IngredientsDetails from '../ingredients/ingredients-details/ingredients-details';
 import ProtectedRoute from '../../route/protected-route/protected-route';
 import Modal from '../modal/modal';
 import { getIngredients } from '../../redux/actions/ingredients-actions';
@@ -67,13 +67,13 @@ const App: FC = () => {
               <Route path={PATH_REGISTER} element={<ProtectedRoute element={<Register />} />} />
               <Route path={PATH_FORGOT_PASSWORD} element={<ProtectedRoute element={<ForgotPasswordPage />} />} />
               <Route path={PATH_RESET_PASSWORD} element={<ProtectedRoute element={<ResetPassword />} />} />
-              <Route path={PATH_INGREDIENTS_DETAILS} element={<IngredientDetails />} />
+              <Route path={PATH_INGREDIENTS_DETAILS} element={<IngredientsDetails />} />
               <Route path={PATH_HOME} element={<Home />} />
               <Route path={PATH_NOT_FOUND} element={<NotFoundPage />} />
             </Routes>
             {background &&
               <Routes>
-                <Route path={PATH_INGREDIENTS_DETAILS} element={<Modal onClose={closeModal}> <IngredientDetails /></Modal>} />
+                <Route path={PATH_INGREDIENTS_DETAILS} element={<Modal onClose={closeModal}> <IngredientsDetails /></Modal>} />
                 <Route path={PATH_FEED_ID} element={<Modal onClose={closeModal}><OrderInformation data={orders} modal={true} /></Modal>} />
                 <Route path={PATH_PROFILE_ORDERS_ID} element={<Modal onClose={closeModal}><OrderInformation data={authOrders} modal={true} /></Modal>} />
               </Routes>}
