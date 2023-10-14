@@ -13,25 +13,26 @@
   flex: 0 1 33%;
 }
 
-.header__link__inactive {
+.header__link {
   display: flex;
   align-items: center;
   text-decoration: none;
   border-radius: 40px;
   transition: box-shadow .3s linear;
   gap: 9px;
-  color: #8585AD;
 }
 
 .header__link__active {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  border-radius: 40px;
-  transition: box-shadow .3s linear;
-  gap: 9px;
+  composes: header__link;
   color: #f2f2f3;
 }
+
+.header__link__inactive {
+  composes: header__link;
+  color: #8585AD;
+}
+
+
 
 .header__link__inactive:hover {
   cursor: pointer;
