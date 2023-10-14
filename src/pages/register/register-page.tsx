@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import { FC, FormEvent } from 'react';
 import { Button, Input, PasswordInput, EmailInput } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector, useDispatch } from '../../hooks/store-hooks';
-import style from './register.module.css'
+import style from './register-page.module.css'
 import { register } from '../../redux/actions/user-actions'
 import { useFormHook } from '../../hooks/use-form-hook';
 
-const Register: FC = () => {
+const RegisterPage: FC = () => {
   const dispatch = useDispatch();
   const { registerRequest } = useSelector(state => state.user);
   const { values, handleChange } = useFormHook({ name: '', email: '', password: '' })
@@ -64,4 +64,4 @@ const Register: FC = () => {
   )
 }
 
-export default Register
+export default RegisterPage

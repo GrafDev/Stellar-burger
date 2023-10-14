@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import style from './order.module.css';
+import style from './order-page.module.css';
 import OrderInformation from '../../components/order-information/order-information';
 import { useDispatch } from '../../hooks/store-hooks';
 import { wsConnectionStart, wsConnectionClosed } from '../../redux/actions/ws-actions';
@@ -12,7 +12,7 @@ interface IOrder {
   profile: boolean
 }
 
-const Order: FC<IOrder> = ({ data, profile }) => {
+const OrderPage: FC<IOrder> = ({ data, profile }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,4 +41,4 @@ const Order: FC<IOrder> = ({ data, profile }) => {
   );
 }
 
-export default Order;
+export default OrderPage;

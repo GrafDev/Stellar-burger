@@ -1,15 +1,9 @@
 import { getCookie } from "../../utils/cookies";
 import { Middleware } from "redux";
 
-interface IWebSocket {
-  wsStart: string;
-  onOpen: string;
-  onError: string;
-  onClose: string;
-  getOrders: string
-}
 
-export const wsMiddleware = (wsActions: IWebSocket, auth: boolean): Middleware => {
+
+export const wsMiddleware = (wsActions: any, auth: boolean): Middleware => {
 
   return store => {
     let socket: WebSocket | null = null;

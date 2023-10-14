@@ -1,11 +1,11 @@
 import { FC, useEffect } from 'react';
 import { useSelector, useDispatch } from '../../hooks/store-hooks';
 import ProfileHistoryOrders from '../../components/profile-history-orders/profile-history-orders';
-import style from './profile-orders.module.css'
+import style from './profile-orders-page.module.css'
 import { wsAuthConnectionStart, wsAuthConnectionClosed } from '../../redux/actions/ws-auth-actions';
 import { BASE_WSS } from '../../hooks/request-hook';
 
-const ProfileOrders: FC = () => {
+const ProfileOrdersPage: FC = () => {
   const dispatch = useDispatch();
   const { authOrders } = useSelector(state => state.wsAuthOrders);
 
@@ -25,4 +25,4 @@ const ProfileOrders: FC = () => {
   )
 }
 
-export default ProfileOrders
+export default ProfileOrdersPage

@@ -1,12 +1,13 @@
 import { FC, FormEvent } from 'react';
 import { Button, EmailInput, PasswordInput } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from 'react-router-dom';
-import style from './login.module.css';
+import style from './login-page.module.css';
 import { login } from '../../redux/actions/user-actions';
 import { useFormHook } from '../../hooks/use-form-hook';
 import { useSelector, useDispatch } from '../../hooks/store-hooks';
+import {PATH_FORGOT_PASSWORD} from "../../utils/constants/path-constants";
 
-const Login: FC = () => {
+const LoginPage: FC = () => {
   const dispatch = useDispatch();
   const { loginRequest } = useSelector((state) => state.user)
   const { values, handleChange } = useFormHook({ email: '', password: '' })
@@ -41,16 +42,16 @@ const Login: FC = () => {
             size={"medium"}
             htmlType={'submit'}
           >
-            {loginRequest ? <p className={`text text_type_main-small ${style.login__loading}`}>Заходим...</p> : 'Войти'}
+            {loginRequest ? <p className={`text text_type_main-small ${style.login__loading}`}>Входим...</p> : 'Войти'}
           </Button>
         </form>
         <div className={`${style.login__links}`}>
           <p className={"text text_type_main-default text_color_inactive mb-4"}>
-            Вы - новый  пользователь?&#8194;
+            Вы - новый пользователь?&#8194;
             <Link to={"/register"} className={`${style.login__link} text text_color_accent`}>Зарегистрироваться</Link>
           </p>
           <p className={"text text_type_main-default text_color_inactive"}>Забыли пароль?&#8194;
-            <Link to={"/forgot-password"} className={`${style.login__link} text text_color_accent`}>Восстановить пароль</Link>
+            <Link to={PATH_FORGOT_PASSWORD} className={`${style.login__link} text text_color_accent`}>Восстановить пароль</Link>
           </p>
         </div>
       </div>
@@ -58,4 +59,4 @@ const Login: FC = () => {
   )
 };
 
-export default Login
+export default LoginPage

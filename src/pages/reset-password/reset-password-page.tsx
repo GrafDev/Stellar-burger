@@ -1,14 +1,14 @@
 import { FC, FormEvent, useEffect } from 'react';
 import { Button, Input, PasswordInput } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link, useNavigate } from 'react-router-dom';
-import style from './reset-password.module.css'
+import style from './reset-password-page.module.css'
 import { resetPasswordActions } from '../../redux/actions/reset-password-actions';
 import { useFormHook } from '../../hooks/use-form-hook';
 import { useSelector, useDispatch } from '../../hooks/store-hooks';
 import {PATH_FORGOT_PASSWORD, PATH_LOGIN} from "../../utils/constants/path-constants";
 import {colorAccent, inactiveMedium, textMedium} from "../../utils/constants/text-style-constants";
 
-const ResetPassword:FC = () => {
+const ResetPasswordPage:FC = () => {
   const dispatch = useDispatch();
   const { verification } = useSelector(state => state.password);
   const navigate = useNavigate();
@@ -66,4 +66,4 @@ const ResetPassword:FC = () => {
   )
 }
 
-export default ResetPassword
+export default ResetPasswordPage

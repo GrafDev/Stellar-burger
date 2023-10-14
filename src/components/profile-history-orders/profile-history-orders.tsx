@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { FC } from 'react';
 import { IOrderType } from '../../types/ingredients-types'
+import {PATH_PROFILE_ORDERS} from "../../utils/constants/path-constants";
 
 interface IProfileHistoryOrders {
   orders: Array<IOrderType> | null
@@ -24,7 +25,7 @@ const ProfileHistoryOrders: FC<IProfileHistoryOrders> = ({ orders }) => {
     <ul className={`${style.section}`}>
       {orders.map((item) => {
         return (
-          <Link to={`/profile/orders/${item._id}`} key={item._id} state={{ background: location }} className={`${style.link}`}>
+          <Link to={`;=${PATH_PROFILE_ORDERS}${item._id}`} key={item._id} state={{ background: location }} className={`${style.link}`}>
             <FeedCard data={item} key={item._id} profileStatus={true} />
           </Link>
         )

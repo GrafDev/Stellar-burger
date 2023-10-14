@@ -1,12 +1,12 @@
-import Home from "./home/home";
-import Login from './login/login';
-import Register from "./register/register";
+import HomePage from "./home-page/home-page";
+import LoginPage from './login-page/login-page';
+import RegisterPage from "./register/register-page";
 import ForgotPasswordPage from './forgot-password/forgot-password-page';
-import ResetPassword from "./reset-password/reset-password";
+import ResetPasswordPage from "./reset-password/reset-password-page";
 import NotFoundPage from "./not-found-page/not-found-page";
-import Profile from "./profile/profile";
-import Order from "./order/order";
+import ProfilePage from "./profile/profile-page";
+import OrderPage from "./order/order-page";
 import FeedPage from "./feed-page/feed-page";
-import ProfileOrders from "./profile-orders/profile-orders";
+import ProfileOrdersPage from "./profile-orders/profile-orders-page";
 
-export { Home, Login, Register, ForgotPasswordPage, ResetPassword, NotFoundPage, Profile, Order, FeedPage, ProfileOrders }
+export { HomePage, LoginPage, RegisterPage, ForgotPasswordPage, ResetPasswordPage, NotFoundPage, ProfilePage, OrderPage, FeedPage, ProfileOrdersPage }

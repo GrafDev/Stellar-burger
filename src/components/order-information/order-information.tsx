@@ -21,27 +21,27 @@ const OrderInformation: FC<IOrderInformation> = ({ data, modal }) => {
     return <p className={`${style.loader}`}>Загрузка данных ...</p>;
   }
 
-  const selectedOrder = data?.find(item => item._id === id)
+  const selectOrder = data?.find(item => item._id === id)
 
-  if (!selectedOrder) {
+  if (!selectOrder) {
     return <p className={`${style.loader}`}>Загрузка данных ...</p>
   };
 
-  const listOrderedIngredients = selectedOrder.ingredients.filter(ingredient => ingredient != null).map(item => {
+  const listOrderedIngredients = selectOrder.ingredients.filter(ingredient => ingredient != null).map(item => {
     return ingredients.find(el => el._id === item)
   });
 
   const totalPrice = listOrderedIngredients.reduce((sum, item) => item === undefined ? 0 : sum + item.price, 0)
 
-  const uniqueIngradients = [...new Set(listOrderedIngredients)]
+  const uniqueIngredients = [...new Set(listOrderedIngredients)]
 
   const statusOrder =
-    (selectedOrder.status === 'done') ? (<p className={`text text_type_main-default text_color_success mt-2`}>Выполнен</p>) :
-      (selectedOrder.status === 'pending') ? (<p className={`text text_type_main-default mt-2`}>Готовится</p>) :
-        (selectedOrder.status === 'created') ? (<p className={`text text_type_main-default mt-2`}>Создан</p>) : null
+    (selectOrder.status === 'done') ? (<p className={`text text_type_main-default text_color_success mt-2`}>Выполнен</p>) :
+      (selectOrder.status === 'pending') ? (<p className={`text text_type_main-default mt-2`}>Готовится</p>) :
+        (selectOrder.status === 'created') ? (<p className={`text text_type_main-default mt-2`}>Создан</p>) : null
 
 
-  const listUniqueIngradients = uniqueIngradients.map((item, index) => item === undefined ? null :
+  const listUniqueIngredients = uniqueIngredients.map((item, index) => item === undefined ? null :
     (
       < li key={index} className={`${style.block__ingredient} mb4`} >
         <div className={`${style.block__ingredient__wrapper__img}`}>
@@ -59,15 +59,15 @@ const OrderInformation: FC<IOrderInformation> = ({ data, modal }) => {
 
   return (
     <section className={`${style.container} ${modalStyle} mt-15`}>
-      <h2 className={`${styles} text text_type_digits-default`}>#{selectedOrder.number}</h2>
-      <h2 className={`text text_type_main-medium  mt-10`}>{selectedOrder.name}</h2>
+      <h2 className={`${styles} text text_type_digits-default`}>#{selectOrder.number}</h2>
+      <h2 className={`text text_type_main-medium  mt-10`}>{selectOrder.name}</h2>
       {statusOrder}
       <h3 className={`text text_type_main-medium mt-15 mb-6`}>Состав:</h3>
       <ul className={`${style.block__ingredients}`}>
-        {listUniqueIngradients}
+        {listUniqueIngredients}
       </ul>
       <div className={`${style.block__info} mt-10`}>
-        <p className="text text_type_main-default text_color_inactive"><FormattedDate date={new Date(selectedOrder.createdAt)} /> i-GMT+3</p>
+        <p className="text text_type_main-default text_color_inactive"><FormattedDate date={new Date(selectOrder.createdAt)} /> i-GMT+3</p>
         <div className={`${style.block__info_price}`}>
           <p className="text text_type_digits-default mr-2">{totalPrice}</p>
           <CurrencyIcon type="primary" />

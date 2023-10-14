@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import style from '../app/app.module.css';
 import AppHeader from '../app-header/app-header';
-import { Home, Login, Register, ForgotPasswordPage, ResetPassword, NotFoundPage, Profile, Order, ProfileOrders } from '../../pages/index';
+import { HomePage, LoginPage, RegisterPage, ForgotPasswordPage, ResetPasswordPage, NotFoundPage, ProfilePage, OrderPage, ProfileOrdersPage } from '../../pages/index';
 import IngredientsDetails from '../ingredients/ingredients-details/ingredients-details';
 import ProtectedRoute from '../../route/protected-route/protected-route';
 import Modal from '../modal/modal';
@@ -57,18 +57,18 @@ const App: FC = () => {
           <main >
             <Routes location={background || location}>
               <Route path={PATH_FEED} element={<FeedPage />} />
-              <Route path={PATH_FEED_ID} element={<Order data={orders} profile={false} />} />
-              <Route path={PATH_PROFILE} element={<ProtectedRoute isPrivate element={<Profile />} />} >
+              <Route path={PATH_FEED_ID} element={<OrderPage data={orders} profile={false} />} />
+              <Route path={PATH_PROFILE} element={<ProtectedRoute isPrivate element={<ProfilePage />} />} >
                 <Route path={PATH_TO_PROFILE_INFO} element={<ProfileInfo />}></Route>
-                <Route path={PATH_TO_PROFILE_ORDERS} element={<ProfileOrders />}></Route>
+                <Route path={PATH_TO_PROFILE_ORDERS} element={<ProfileOrdersPage />}></Route>
               </Route >
-              <Route path={PATH_PROFILE_ORDERS_ID} element={<ProtectedRoute isPrivate element={<Order profile={true} data={authOrders} />} />} />
-              <Route path={PATH_LOGIN} element={<ProtectedRoute element={<Login />} />} />
-              <Route path={PATH_REGISTER} element={<ProtectedRoute element={<Register />} />} />
+              <Route path={PATH_PROFILE_ORDERS_ID} element={<ProtectedRoute isPrivate element={<OrderPage profile={true} data={authOrders} />} />} />
+              <Route path={PATH_LOGIN} element={<ProtectedRoute element={<LoginPage />} />} />
+              <Route path={PATH_REGISTER} element={<ProtectedRoute element={<RegisterPage />} />} />
               <Route path={PATH_FORGOT_PASSWORD} element={<ProtectedRoute element={<ForgotPasswordPage />} />} />
-              <Route path={PATH_RESET_PASSWORD} element={<ProtectedRoute element={<ResetPassword />} />} />
+              <Route path={PATH_RESET_PASSWORD} element={<ProtectedRoute element={<ResetPasswordPage />} />} />
               <Route path={PATH_INGREDIENTS_DETAILS} element={<IngredientsDetails />} />
-              <Route path={PATH_HOME} element={<Home />} />
+              <Route path={PATH_HOME} element={<HomePage />} />
               <Route path={PATH_NOT_FOUND} element={<NotFoundPage />} />
             </Routes>
             {background &&

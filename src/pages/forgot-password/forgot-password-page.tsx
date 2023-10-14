@@ -5,7 +5,7 @@ import style from './forgot-password-page.module.css';
 import { useSelector, useDispatch } from '../../hooks/store-hooks';
 import { forgotPassword } from '../../redux/actions/reset-password-actions';
 import { useFormHook } from '../../hooks/use-form-hook';
-import {PATH_RESET_PASSWORD} from "../../utils/constants/path-constants";
+import {PATH_LOGIN, PATH_RESET_PASSWORD} from "../../utils/constants/path-constants";
 import {colorAccent, inactiveMedium, textMedium, textSmall} from "../../utils/constants/text-style-constants";
 
 const ForgotPasswordPage: FC = () => {
@@ -50,7 +50,7 @@ const ForgotPasswordPage: FC = () => {
         <div className={`${style.login__links}`}>
           <p className={`${inactiveMedium} mb-4`}>
             Вспомнили пароль?&#8194;
-            <Link to={"/login"} className={`${style.forgotPassword__link} ${colorAccent}`}>Войти</Link>
+            <Link to={PATH_LOGIN} className={`${style.forgotPassword__link} ${colorAccent}`}>Войти</Link>
           </p>
         </div>
       </div>
