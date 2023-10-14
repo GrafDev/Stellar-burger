@@ -54,7 +54,7 @@ const PurchaseAmount: FC<IPurchaseAmount> = ({ ingredients, buns }) => {
           <Modal onClose={handleClose} >
             {request
               ? <p className={`text text_type_main-small ${style.purchaseAmount__loading}`}>Оформляем заказ, подождите...</p>
-              : <OrderDetails orderDetails={orderDetails} />
+              : <OrderDetails orderDetails={orderDetails} onClose={handleClose} />
             }
           </Modal>
         )}
