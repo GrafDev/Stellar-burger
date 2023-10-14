@@ -1,5 +1,5 @@
 import { Middleware } from "redux";
-import {TWsActions} from "../../../utils/types";
+import {TWsActions} from "../../../types";
 
 export const webSocketMiddleware =
 	({

@@ -7,7 +7,7 @@ import {
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAILED
 } from '../../types/constants-types/reset-password-types';
-import { AppDispatch, AppThunk } from '../../types';
+import { AppDispatch, AppThunk } from '../../types/actions-types';
 
 type TForgotPasswordSuccess = {
   success: boolean,

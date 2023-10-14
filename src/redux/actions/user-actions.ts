@@ -21,7 +21,7 @@ import {
   USER_UPDATE_TOKEN_FAILED,
   USER_SET_IS_AUTH
 } from '../../types/constants-types/user-types'
-import { AppDispatch, AppThunk } from '../../types';
+import { AppDispatch, AppThunk } from '../../types/actions-types';
 
 type TUser = {
   email: string,

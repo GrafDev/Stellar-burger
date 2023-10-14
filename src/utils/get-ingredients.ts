@@ -1,4 +1,4 @@
-import { IIngridient } from "./types";
+import { IIngridient } from "../types";
 
 export interface IIngridientWithCount {
     ingridient: IIngridient;

@@ -7,7 +7,7 @@ import {
   SET_SELECTED_INGREDIENT,
   REMOVE_SELECTED_INGREDIENT
 } from '../../types/constants-types/ingredients-types';
-import { AppDispatch, AppThunk } from '../../types';
+import { AppDispatch, AppThunk } from '../../types/actions-types';
 
 export interface IGetIngredientsSuccess {
   readonly type: typeof GET_INGREDIENTS_SUCCESS

@@ -11,7 +11,7 @@ import {
   MOVE_INGREDIENT
 } from '../../types/constants-types/orders-types';
 import { IOrderType, ITypeIngredient } from '../../types/ingredients-types';
-import { AppDispatch, AppThunk } from '../../types';
+import { AppDispatch, AppThunk } from '../../types/actions-types';
 
 export interface IGetOrderItemsRequest {
   readonly type: typeof GET_ORDER_ITEMS_REQUEST

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { IIngridient } from ".";
+import { IIngridient } from "./index";
 
 export interface IIngridientsCategoriaProps {
 	type: string;
