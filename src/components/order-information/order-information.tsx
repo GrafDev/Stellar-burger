@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import style from './order-information.module.css';
 import { IOrderType } from '../../types/ingredients-types'
-import { useSelector } from '../../redux/hooks/hooks';
+import { useSelector } from '../../hooks/store-hooks';
 
 interface IOrderInformation {
   data: Array<IOrderType> | null,

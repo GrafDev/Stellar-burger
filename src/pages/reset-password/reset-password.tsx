@@ -3,14 +3,14 @@ import { Button, Input, PasswordInput } from "@ya.praktikum/react-developer-burg
 import { Link, useNavigate } from 'react-router-dom';
 import style from './reset-password.module.css'
 import { resetPasswordActions } from '../../redux/actions/reset-password-actions';
-import { useForm } from '../../redux/hooks/use-form';
-import { useSelector, useDispatch } from '../../redux/hooks/hooks';
+import { useFormHook } from '../../hooks/use-form-hook';
+import { useSelector, useDispatch } from '../../hooks/store-hooks';
 
 const ResetPassword:FC = () => {
   const dispatch = useDispatch();
   const { verification } = useSelector(state => state.password);
   const navigate = useNavigate();
-  const { values, handleChange } = useForm({ token: "", password: "" })
+  const { values, handleChange } = useFormHook({ token: "", password: "" })
 
   const setNewPassword = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

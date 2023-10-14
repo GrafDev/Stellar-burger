@@ -3,13 +3,13 @@ import { Button, EmailInput, PasswordInput } from "@ya.praktikum/react-developer
 import { Link } from 'react-router-dom';
 import style from './login.module.css';
 import { login } from '../../redux/actions/user-actions';
-import { useForm } from '../../redux/hooks/use-form';
-import { useSelector, useDispatch } from '../../redux/hooks/hooks';
+import { useFormHook } from '../../hooks/use-form-hook';
+import { useSelector, useDispatch } from '../../hooks/store-hooks';
 
 const Login: FC = () => {
   const dispatch = useDispatch();
   const { loginRequest } = useSelector((state) => state.user)
-  const { values, handleChange } = useForm({ email: '', password: '' })
+  const { values, handleChange } = useFormHook({ email: '', password: '' })
 
   const onSubmitForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

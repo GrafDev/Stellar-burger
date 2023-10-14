@@ -7,7 +7,7 @@ import Modal from "../modal/modal";
 import OrderDetails from '../order-details/order-details';
 import style from './purchase-amount.module.css';
 import { ITypeIngredient } from '../../types/ingredients-types';
-import { useSelector, useDispatch } from '../../redux/hooks/hooks';
+import { useSelector, useDispatch } from '../../hooks/store-hooks';
 
 interface IPurchaseAmount {
   ingredients: Array<ITypeIngredient>

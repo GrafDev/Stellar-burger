@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import style from './card-ingredient.module.css';
 import { ingredient } from '../../types/ingredients-types';
 import { ITypeIngredient } from '../../types/ingredients-types'
-import { useSelector } from '../../redux/hooks/hooks';
+import { useSelector } from '../../hooks/store-hooks';
 
 interface ICardIngredient {
   card: ITypeIngredient,

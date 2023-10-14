@@ -2,14 +2,14 @@ import { useState, useEffect, ChangeEvent, FormEvent, FC } from "react";
 import { Input, Button, PasswordInput } from "@ya.praktikum/react-developer-burger-ui-components";
 import style from './profile-info.module.css';
 import { updateUser } from '../../redux/actions/user-actions';
-import { useForm } from '../../redux/hooks/use-form';
-import { useSelector, useDispatch } from '../../redux/hooks/hooks';
+import { useFormHook } from '../../hooks/use-form-hook';
+import { useSelector, useDispatch } from '../../hooks/store-hooks';
 
 const ProfileInfo: FC = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user.form);
   const [actionButtons, setActionButtons] = useState(false);
-  const { values, handleChange, setValues } = useForm({ name: '', email: '', password: '' })
+  const { values, handleChange, setValues } = useFormHook({ name: '', email: '', password: '' })
 
   useEffect(() => {
     setValues({

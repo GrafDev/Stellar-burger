@@ -2,7 +2,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { FC } from "react";
 import { Logo, BurgerIcon, ListIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import style from '../app-header/app-header.module.css';
-import { useSelector } from '../../redux/hooks/hooks';
+import { useSelector } from '../../hooks/store-hooks';
 
 
 const AppHeader: FC = () => {

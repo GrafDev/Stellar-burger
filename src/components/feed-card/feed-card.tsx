@@ -3,7 +3,7 @@ import { FC, useMemo } from 'react';
 import { useLocation } from "react-router-dom";
 import style from './feed-card.module.css';
 import { IOrderType } from '../../types/ingredients-types';
-import { useSelector } from '../../redux/hooks/hooks';
+import { useSelector } from '../../hooks/store-hooks';
 
 interface IFeedCard {
   data: IOrderType,

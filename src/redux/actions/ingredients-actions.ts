@@ -1,4 +1,4 @@
-import { request } from '../../utils/apiConfig';
+import { request } from '../../hooks/request-hook';
 import { ITypeIngredient } from '../../types/ingredients-types';
 import {
   GET_INGREDIENTS_SUCCESS,

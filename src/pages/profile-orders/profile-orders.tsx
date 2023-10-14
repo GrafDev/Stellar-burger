@@ -1,9 +1,9 @@
 import { FC, useEffect } from 'react';
-import { useSelector, useDispatch } from '../../redux/hooks/hooks';
+import { useSelector, useDispatch } from '../../hooks/store-hooks';
 import ProfileHistoryOrders from '../../components/profile-history-orders/profile-history-orders';
 import style from './profile-orders.module.css'
 import { wsAuthConnectionStart, wsAuthConnectionClosed } from '../../redux/actions/ws-auth-actions';
-import { BASE_WSS } from '../../utils/apiConfig';
+import { BASE_WSS } from '../../hooks/request-hook';
 
 const ProfileOrders: FC = () => {
   const dispatch = useDispatch();

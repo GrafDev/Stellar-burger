@@ -1,4 +1,4 @@
-import { getCookie } from "../../utils/cookie";
+import { getCookie } from "../../utils/cookies";
 import { Middleware } from "redux";
 
 interface IWebSocket {

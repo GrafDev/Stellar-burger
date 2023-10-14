@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useParams, useLocation } from "react-router-dom";
 import style from './ingredient-details.module.css'
-import { useSelector } from '../../redux/hooks/hooks';
+import { useSelector } from '../../hooks/store-hooks';
 
 const IngredientDetails: FC = () => {
   const location = useLocation();

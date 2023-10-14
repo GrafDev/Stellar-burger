@@ -1,5 +1,5 @@
-import { request } from '../../utils/apiConfig';
-import { getCookie } from '../../utils/cookie';
+import { request } from '../../hooks/request-hook';
+import { getCookie } from '../../utils/cookies';
 import {
   GET_ORDER_ITEMS_REQUEST,
   GET_ORDER_ITEMS_SUCCESS,

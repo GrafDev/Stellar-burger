@@ -1,4 +1,4 @@
-import { request } from "../../utils/apiConfig";
+import { request } from "../../hooks/request-hook";
 import {
   FORGOT_PASSWORD_REQUEST,
   FORGOT_PASSWORD_SUCCESS,

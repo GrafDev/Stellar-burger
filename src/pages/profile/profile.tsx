@@ -2,7 +2,7 @@ import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { FC } from 'react';
 import style from './profile.module.css';
 import { logout } from '../../redux/actions/user-actions';
-import { useDispatch } from '../../redux/hooks/hooks';
+import { useDispatch } from '../../hooks/store-hooks';
 
 const Profile: FC = () => {
   const dispatch = useDispatch();

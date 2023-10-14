@@ -1,5 +1,5 @@
-import { request } from "../../utils/apiConfig";
-import { setCookie, getCookie, deleteCookie } from "../../utils/cookie";
+import { request } from "../../hooks/request-hook";
+import { setCookie, getCookie, deleteCookie } from "../../utils/cookies";
 import {
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,

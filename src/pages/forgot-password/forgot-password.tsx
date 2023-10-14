@@ -2,14 +2,14 @@ import { FC, FormEvent, useEffect } from "react";
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link, useNavigate } from 'react-router-dom';
 import style from './forgot-password.module.css';
-import { useSelector, useDispatch } from '../../redux/hooks/hooks';
+import { useSelector, useDispatch } from '../../hooks/store-hooks';
 import { forgotPassword } from '../../redux/actions/reset-password-actions';
-import { useForm } from '../../redux/hooks/use-form';
+import { useFormHook } from '../../hooks/use-form-hook';
 
 const ForgotPassword: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { values, handleChange } = useForm({ email: '' })
+  const { values, handleChange } = useFormHook({ email: '' })
   const { verification, emailRequest } = useSelector(state => state.password)
 
   const reqestNewPassword = (event: FormEvent<HTMLFormElement>) => {

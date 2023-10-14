@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Navigate, useLocation } from 'react-router-dom';
-import { getCookie } from "../../utils/cookie";
-import { useSelector } from '../../redux/hooks/hooks';
+import { getCookie } from "../../utils/cookies";
+import { useSelector } from '../../hooks/store-hooks';
 
 interface IProtectedRoute {
   isPrivate?: boolean,

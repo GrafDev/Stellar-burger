@@ -11,8 +11,8 @@ import { getUser } from '../../redux/actions/user-actions';
 import Feed from '../../pages/feed/feed';
 import OrderInformation from '../order-information/order-information'
 import ProfileInfo from '../profile-info/profile-info';
-import { useSelector, useDispatch } from '../../redux/hooks/hooks';
-import { getCookie } from '../../utils/cookie';
+import { useSelector, useDispatch } from '../../hooks/store-hooks';
+import { getCookie } from '../../utils/cookies';
 import { REMOVE_SELECTED_INGREDIENT } from '../../types/constants-types/ingredients-types';
 
 const App: FC = () => {

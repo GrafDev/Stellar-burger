@@ -4,7 +4,7 @@ import style from './tab-burger-ingredients.module.css';
 import { SET_SELECTED_INGREDIENT } from '../../types/constants-types/ingredients-types';
 import CardIngredient from '../card-ingredient/card-ingredient';
 import { ingredient } from '../../types/ingredients-types';
-import { useSelector, useDispatch } from '../../redux/hooks/hooks';
+import { useSelector, useDispatch } from '../../hooks/store-hooks';
 
 const TabBurgerIngredients = () => {
   const dispatch = useDispatch();

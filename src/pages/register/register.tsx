@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 import { FC, FormEvent } from 'react';
 import { Button, Input, PasswordInput, EmailInput } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useSelector, useDispatch } from '../../redux/hooks/hooks';
+import { useSelector, useDispatch } from '../../hooks/store-hooks';
 import style from './register.module.css'
 import { register } from '../../redux/actions/user-actions'
-import { useForm } from '../../redux/hooks/use-form';
+import { useFormHook } from '../../hooks/use-form-hook';
 
 const Register: FC = () => {
   const dispatch = useDispatch();
   const { registerRequest } = useSelector(state => state.user);
-  const { values, handleChange } = useForm({ name: '', email: '', password: '' })
+  const { values, handleChange } = useFormHook({ name: '', email: '', password: '' })
 
   const onSubmitForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

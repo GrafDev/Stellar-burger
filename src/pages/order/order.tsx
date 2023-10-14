@@ -1,10 +1,10 @@
 import { FC, useEffect } from 'react';
 import style from './order.module.css';
 import OrderInformation from '../../components/order-information/order-information';
-import { useDispatch } from '../../redux/hooks/hooks';
+import { useDispatch } from '../../hooks/store-hooks';
 import { wsConnectionStart, wsConnectionClosed } from '../../redux/actions/ws-actions';
 import { wsAuthConnectionStart, wsAuthConnectionClosed } from '../../redux/actions/ws-auth-actions';
-import { BASE_WSS } from '../../utils/apiConfig';
+import { BASE_WSS } from '../../hooks/request-hook';
 import { IOrderType } from '../../types/ingredients-types';
 
 interface IOrder {

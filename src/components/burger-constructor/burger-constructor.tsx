@@ -7,7 +7,7 @@ import { ingredient } from '../../types/ingredients-types';
 import PurchaseAmount from '../purchase-amount/purchase-amount';
 import CardBuns from '../burger-constructor-card/card-buns/card-buns';
 import СardOther from '../burger-constructor-card/card-other/card-other';
-import { useSelector, useDispatch } from '../../redux/hooks/hooks';
+import { useSelector, useDispatch } from '../../hooks/store-hooks';
 import { ITypeIngredient } from "../../types/ingredients-types";
 
 const BurgerConstructor: FC = () => {
