@@ -5,6 +5,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import store from './redux/store'
 import { HashRouter as Router } from 'react-router-dom';
+import './index.css';
 
 const container = document.getElementById("root") as HTMLElement;
 const root = createRoot(container);

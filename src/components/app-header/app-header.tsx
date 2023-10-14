@@ -27,7 +27,7 @@ const AppHeader: FC = () => {
             </li>
             <li>
               <NavLink to="/feed"
-                className={location.pathname === '/feed-page'
+                className={location.pathname === '/feed'
                   ? `${style.header__link__active} text text_type_main-default p-5`
                   : `${style.header__link__inactive} text text_type_main-default p-5`}>
                 <ListIcon type={location.pathname === '/feed-page' ? 'primary' : 'secondary'} />

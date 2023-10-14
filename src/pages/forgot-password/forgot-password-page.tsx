@@ -1,12 +1,12 @@
 import { FC, FormEvent, useEffect } from "react";
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link, useNavigate } from 'react-router-dom';
-import style from './forgot-password.module.css';
+import style from './forgot-password-page.module.css';
 import { useSelector, useDispatch } from '../../hooks/store-hooks';
 import { forgotPassword } from '../../redux/actions/reset-password-actions';
 import { useFormHook } from '../../hooks/use-form-hook';
 
-const ForgotPassword: FC = () => {
+const ForgotPasswordPage: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { values, handleChange } = useFormHook({ email: '' })
@@ -56,4 +56,4 @@ const ForgotPassword: FC = () => {
   )
 }
 
-export default ForgotPassword
+export default ForgotPasswordPage
