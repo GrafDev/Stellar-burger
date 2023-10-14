@@ -1,6 +1,5 @@
 import {FC} from 'react';
 import style from './order-details.module.css';
-import {CheckMarkIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import done from "../../images/modal/burger.png";
 
 interface IOrderDetails {
