@@ -33,6 +33,7 @@ export const wsMiddleware = (wsActions: IWebSocket,  auth: boolean): Middleware 
                 }
             }
 
+
             if (socket) {
                 socket.onopen = event => {
                     dispatch({type: onOpen, payload: event});
