@@ -20,7 +20,7 @@ export interface IWSData {
 
 export interface IOrder {
 	_id: string;
-	createdAt: string; //"2022-10-05T20:02:19.934Z"
+	createdAt: string;
 	ingredients: IIngridient[];
 	name: string;
 	number: number;

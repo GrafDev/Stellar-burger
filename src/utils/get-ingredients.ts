@@ -2,7 +2,7 @@ import { IIngridient } from "../types";
 
 export interface IIngridientWithCount {
     ingridient: IIngridient;
-    count: number;//TODO непонятная фигня
+    count: number;
 }
 
 type TPrev = {

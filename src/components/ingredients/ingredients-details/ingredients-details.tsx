@@ -15,9 +15,9 @@ const IngredientsDetails: FC = () => {
       {ingredient && (
         <>
           {pageIngredients ?
-            <h2 className={`${style.title} text text_type_main-large mt-30 ml-10 mr-10`}>Детали ингрeдиента</h2>
+            <h2 className={`${style.title} text text_type_main-large mt-30 ml-10 mr-10`}>Детали ингредиента</h2>
             :
-            <h2 className={`${style.title} text text_type_main-large mt-10 ml-10 mr-10`}>Детали ингрeдиента</h2>
+            <h2 className={`${style.title} text text_type_main-large mt-10 ml-10 mr-10`}>Детали ингредиента</h2>
           }
           <div className={style.wrapper}>
             <img src={ingredient.image_large} alt={ingredient.name} />
