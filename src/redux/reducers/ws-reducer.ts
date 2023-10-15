@@ -3,6 +3,7 @@ import {
   WS_CONNECTION_ERROR,
   WS_CONNECTION_CLOSED,
   WS_GET_ORDERS,
+  WS_CONNECTION_OFFLINE,
 } from '../../types/constants-types/ws-types';
 import { TWsActions } from '../actions/ws-actions'
 import { IOrderType } from '../../types/ingredients-types'
@@ -44,6 +45,11 @@ export const wsReducer = (state = initialState, action: TWsActions): TWsState =>
         wsConnected: false,
         orders: [],
       };
+    case WS_CONNECTION_OFFLINE:
+      return {
+        ...state,
+        wsConnected: false,
+      };
     case WS_GET_ORDERS:
       return {
         ...state,
@@ -52,6 +58,7 @@ export const wsReducer = (state = initialState, action: TWsActions): TWsState =>
         total: action.payload.total,
         totalToday: action.payload.totalToday
       };
+
     default:
       return state;
   }

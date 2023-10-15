@@ -3,13 +3,14 @@ import {Middleware} from "redux";
 
 interface IWebSocket {
     wsStart: string;
+    wsClose:string;
     onOpen: string;
     onError: string;
     onClose: string;
     getOrders: string
 }
 
-export const wsMiddleware = (wsActions: IWebSocket, auth: boolean): Middleware => {
+export const wsMiddleware = (wsActions: IWebSocket,  auth: boolean): Middleware => {
 
     return store => {
         let socket: WebSocket | null = null;
@@ -17,15 +18,19 @@ export const wsMiddleware = (wsActions: IWebSocket, auth: boolean): Middleware =
         return next => action => {
             const {dispatch} = store;
             const {type, payload} = action;
-            const {wsStart, onOpen, onClose, onError, getOrders} = wsActions;
+            const {wsStart,wsClose, onOpen, onClose, onError, getOrders} = wsActions;
 
             if (type === wsStart) {
                 socket = (!auth)
                     ? new WebSocket(payload)
                     : new WebSocket(`${payload}?token=${getCookie("accessToken")}`)
             }
-            if (type === onClose) {
-                socket?.close(1000, "Соединение закрыто клиентом");
+
+            if (type === wsClose) {
+                if (socket) {
+                    socket.close(1000, `Соединение закрыто пользователем`)
+                    socket = null;
+                }
             }
 
             if (socket) {
@@ -53,37 +58,3 @@ export const wsMiddleware = (wsActions: IWebSocket, auth: boolean): Middleware =
     };
 };
 
-
-// export const wsMiddleware= (url: () => string, actions: IWebSocket): Middleware => {
-//   return (store) => {
-//     let socket: WebSocket | null = null;
-//     return (next) => {
-//       return (action) => {
-//         const { dispatch } = store;
-//         const { type } = action;
-//         const { wsStart, onOpen, onClose, onError, getOrders } = actions;
-//         if (type === wsStart) {
-//           socket = new WebSocket(url());
-//           if (socket) {
-//             socket.onopen = () => {
-//               dispatch({ type: onOpen });
-//             };
-//             socket.onerror = () => {
-//               dispatch({ type: onError });
-//             };
-//             socket.onmessage = (evt) => {
-//               const { data } = evt;
-//               const parsedData = JSON.parse(data);
-//               const { success } = parsedData;
-//               success && dispatch({ type: getOrders, payload: parsedData });
-//             };
-//             socket.onclose = () => {
-//               dispatch({ type: onClose });
-//             }
-//           }
-//         }
-//         return next(action)
-//       }
-//     }
-//   }
-// }
