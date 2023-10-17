@@ -1,33 +1,30 @@
-
-.modal{
-
-    position: relative;
-    width: 720px;
-    max-width: 100%;
-    opacity: 100;
-    background: #1C1C21;
-    /* Заготовка для анимаций */
-    transition: transform 0.15s ease 0s, opacity 0.15s ease 0s;
-    transform: scale(1);
-
-    border: 1px solid rgba(76, 76, 255, 0.2);
-
-    box-shadow: 0 24px 32px rgba(0, 0, 0, 0.04), 0 16px 24px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.04);
-    border-radius: 40px;
+.wrapper {
+  min-width: 720px;
+  min-height: 540px;
+  background: var(--background-color);
+  color: var(--active-color);
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  cursor: default;
+  border: 1px solid var(--dark-shadow-color);
+  box-shadow:
+    0px 0px 16px var(--dark-shadow-color),
+    0px 0px 8px var(--dark-shadow-color),
+    0px 4px 32px var(--dark-shadow-color);
+  border-radius: 40px;
+  z-index: 3;
 }
 
-.closeCross{
-    position: absolute;
-    top: 60px;
-    right: 40px;
-    z-index: 1;
-}
-.closeCross>svg{
-    width: 30px;
-    height: 30px;
+.positionIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: opacity .2s linear;
 }
 
-.closeCross>svg:hover{
-    cursor: pointer ;
-
+.positionIcon:hover{
+  opacity: .7;
+  cursor: pointer;
 }

@@ -1,0 +1,35 @@
+.navMenuIngredients__wrapper {
+  display: flex;
+}
+
+.navMenuIngredients__link {
+  text-decoration: none;
+}
+
+.listIngredients {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 20px;
+}
+
+.tabBurgerIngredients__wrapper {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.tabBurgerIngredients__section {
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.tabBurgerIngredients__section::-webkit-scrollbar {
+  width: 8px;
+  background-color: #2f2f37;
+}
+
+.tabBurgerIngredients__section::-webkit-scrollbar-thumb {
+  background-color: #8585AD;
+}

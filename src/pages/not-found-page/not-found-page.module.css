@@ -1,0 +1,27 @@
+.finishImage {
+  position: absolute;
+  top: 100px;
+  left: 15px;
+  object-fit: cover;
+  height: calc(100vh - 115px);
+  width: calc(100vw - 30px);
+}
+
+
+
+.blinkLineImage {
+  composes: finishImage;
+  animation: blink 3s infinite;
+}
+
+@keyframes blink {
+  0% {
+    filter: brightness(100%);
+  }
+  50% {
+    filter: brightness(50%);
+  }
+  100% {
+    filter: brightness(100%);
+  }
+}
