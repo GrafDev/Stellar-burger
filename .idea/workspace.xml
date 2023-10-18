@@ -4,46 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9723677-07c3-4d4d-8eda-3a62661f2fcd" name="Changes" comment="Поломал надо чинить">
-      <change afterPath="$PROJECT_DIR$/src/app-header/app-header.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app-header/app-header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/app.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/app.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/constructur/burger-constructor/burger-constructor-card/card-buns/card-buns.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/constructur/burger-constructor/burger-constructor-card/card-buns/card-buns.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/constructur/burger-constructor/burger-constructor-card/card-other/card-other.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/constructur/burger-constructor/burger-constructor-card/card-other/card-other.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/constructur/burger-constructor/burger-constructor.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/constructur/burger-constructor/burger-constructor.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/feed-card/feed-card.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/feed-card/feed-card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ingredients/ingredients-card/ingredients-card.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ingredients/ingredients-card/ingredients-card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ingredients/ingredients-details/ingredients-details.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ingredients/ingredients-details/ingredients-details.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ingredients/ingredients-tabs/Ingredients-tabs.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ingredients/ingredients-tabs/ingredients-tabs.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modal/modal-overlay/modal-overlay.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modal/modal-overlay/modal-overlay.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modal/modal.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modal/modal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/order-details/order-details.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/order-details/order-details.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/order-information/order-information.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/order-information/order-information.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/orders-feed/orders-feed.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/orders-feed/orders-feed.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/orders-status/orders-status.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/orders-status/orders-status.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/profile-history-orders/profile-history-orders.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/profile-history-orders/profile-history-orders.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/profile-info/profile-info.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/profile-info/profile-info.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/purchase-amount/purchase-amount.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/purchase-amount/purchase-amount.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spinner/spinner.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spinner/spinner.tsx" afterDir="false" />
+    <list default="true" id="e9723677-07c3-4d4d-8eda-3a62661f2fcd" name="Changes" comment="Вроде починил ..">
+      <change afterPath="$PROJECT_DIR$/cypress/.eslintrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/fixtures/ingredients.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/fixtures/order.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/constants/tests-constants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/fixtures/example.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/request-hook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/request-hook.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +27,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="tsconfig.json" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -62,7 +36,7 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="sprint-6/step-1" />
+        <entry key="$PROJECT_DIR$" value="sprint-5/step-1" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -100,33 +74,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "sprint-5/step-1",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/gregy/WebstormProjects/react-burger/src",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "C:\\Users\\gregy\\WebstormProjects\\react-burger\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sprint-6/step-1&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/gregy/WebstormProjects/react-burger&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\gregy\\WebstormProjects\\react-burger\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\gregy\WebstormProjects\react-burger" />
+      <recent name="C:\Users\gregy\WebstormProjects\react-burger\src" />
+      <recent name="C:\Users\gregy\WebstormProjects\react-burger\src\components\profile-Info" />
       <recent name="C:\Users\gregy\WebstormProjects\react-burger\src\utils\constants" />
       <recent name="C:\Users\gregy\WebstormProjects\react-burger\src\components" />
-      <recent name="C:\Users\gregy\WebstormProjects\react-burger\src\images" />
-      <recent name="C:\Users\gregy\WebstormProjects\react-burger\src" />
-      <recent name="C:\Users\gregy\WebstormProjects\react-burger" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\gregy\WebstormProjects\react-burger\src\components\ingredients" />
@@ -136,7 +110,7 @@
       <recent name="C:\Users\gregy\WebstormProjects\react-burger\src\utils" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.cypress:open">
     <configuration name="cypress:open" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -207,7 +181,8 @@
       <workItem from="1697637735555" duration="377000" />
       <workItem from="1697638239942" duration="388000" />
       <workItem from="1697638646927" duration="322000" />
-      <workItem from="1697638985725" duration="324000" />
+      <workItem from="1697638985725" duration="5579000" />
+      <workItem from="1697654236956" duration="1470000" />
     </task>
     <task id="LOCAL-00001" summary="norm">
       <option name="closed" value="true" />
@@ -457,24 +432,38 @@
       <option name="project" value="LOCAL" />
       <updated>1697639118124</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Вроде починил ..">
+      <option name="closed" value="true" />
+      <created>1697639412301</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1697639412302</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/src/components/app/App.jsx" />
-        <option value="$PROJECT_DIR$/src/index.jsx" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="sprint-6/step-1" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -494,6 +483,7 @@
     <MESSAGE value="Add проверку на onClose" />
     <MESSAGE value="Add проверку на wsClose" />
     <MESSAGE value="Поломал надо чинить" />
-    <option name="LAST_COMMIT_MESSAGE" value="Поломал надо чинить" />
+    <MESSAGE value="Вроде починил .." />
+    <option name="LAST_COMMIT_MESSAGE" value="Вроде починил .." />
   </component>
 </project>

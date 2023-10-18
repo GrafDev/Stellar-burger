@@ -1,5 +1,4 @@
-import {legacy_createStore as createStore, applyMiddleware, compose} from 'redux';
-import {rootReducer} from './reducers';
+import {legacy_createStore as createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import thunk from "redux-thunk";
 import {wsMiddleware} from './middleware/ws-middleware';
 
@@ -17,6 +16,12 @@ import {
     WS_AUTH_CONNECTION_OFFLINE,
     WS_CONNECTION_OFFLINE
 } from "../types/constants-types/ws-types";
+import {ingredientsReducer} from "./reducers/ingredients-reducer";
+import {orderReducer} from "./reducers/order-reducer";
+import {usersReducer} from "./reducers/user-reducer";
+import {passwordReducer} from "./reducers/reset-password-reducer";
+import {wsReducer} from "./reducers/ws-reducer";
+import {wsAuthReducer} from "./reducers/ws-auth-reducer";
 
 const wsActions = {
     wsStart: WS_CONNECTION_START,
@@ -36,6 +41,16 @@ const wsAuthActions = {
     getOrders: WS_GET_AUTH_ORDERS
 };
 
+
+ const Reducer = combineReducers({
+    ingredients: ingredientsReducer,
+    order: orderReducer,
+    user: usersReducer,
+    password: passwordReducer,
+    wsOrders: wsReducer,
+    wsAuthOrders: wsAuthReducer
+})
+
 declare global {
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
@@ -44,6 +59,6 @@ declare global {
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const enhancer = composeEnhancers(applyMiddleware(thunk, wsMiddleware(wsActions, false), wsMiddleware(wsAuthActions, true)));
-const store = createStore(rootReducer, enhancer);
+const store = createStore(Reducer, enhancer);
 
 export default store;
