@@ -1,9 +1,0 @@
-.profile__form {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.profile__buttons {
-  display: flex;
-}
