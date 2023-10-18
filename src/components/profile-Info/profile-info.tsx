@@ -1,85 +1,89 @@
-import {
-  Button,
-  EmailInput,
-  Input,
-  PasswordInput,
-} from '@ya.praktikum/react-developer-burger-ui-components'
-import React from 'react'
+import { useState, useEffect, ChangeEvent, FormEvent, FC } from "react";
+import { Input, Button, PasswordInput } from "@ya.praktikum/react-developer-burger-ui-components";
+import style from './profile-info.module.css';
+import { updateUser } from '../../redux/actions/user-actions';
+import { useFormHook } from '../../hooks/use-form-hook';
+import { useSelector, useDispatch } from '../../hooks/store-hooks';
 
+const ProfileInfo: FC = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user.form);
+  const [actionButtons, setActionButtons] = useState(false);
+  const { values, handleChange, setValues } = useFormHook({ name: '', email: '', password: '' })
 
-import styles from './profile-info.module.css'
-import {useDispatch, useSelector} from "react-redux";
-import {getUserSelector} from "../../redux/features/auth/auth-selectors";
-import useForm from "../../hooks/use-form";
-import {reducer_setUser} from "../../redux/features/auth/authSlice";
+  useEffect(() => {
+    setValues({
+      ...values,
+      email: user?.email,
+      name: user?.name,
+    })
+  }, [user])
 
-const ProfileInfo = () => {
-  const dispatch = useDispatch()
-  const user = useSelector(getUserSelector)
-
-  const initialForm = {
-    name: user?.name || '',
-    email: user?.email || '',
-    password: '',
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    handleChange(event)
+    setActionButtons(true);
   }
 
-  const { form, handleForm, resetForm } = useForm(initialForm)
+  const onSubmitForm = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    dispatch(updateUser(values));
+    setActionButtons(false);
+  }
 
-  const isEdit = JSON.stringify(initialForm) !== JSON.stringify(form)
+  const handleCancel = () => {
+    setValues({
+      email: user?.email,
+      name: user?.name,
+      password: ""
+    })
+    setActionButtons(false);
+  }
 
-  const submitForm = (e: React.FormEvent) => {
-    e.preventDefault()
-
-    dispatch(reducer_setUser(form))
+  const valueProfile = (values: string) => {
+    if (!values) {
+      return ''
+    } else {
+      return values
+    }
   }
 
   return (
-    <form className={styles.wrapper} onSubmit={submitForm}>
-      <Input
-        type="text"
-        placeholder="Имя"
-        onChange={handleForm}
-        value={form.name}
-        name="name"
-        error={false}
-        errorText="Ошибка"
-        size="default"
-        icon="EditIcon"
-      />
-
-      <EmailInput
-        name="email"
-        value={form.email}
-        onChange={handleForm}
-        placeholder="E-mail"
-        isIcon
-      />
-
-      <PasswordInput
-        name={'password'}
-        value={form.password}
-        onChange={handleForm}
-        icon="EditIcon"
-      />
-
-      {isEdit && (
-        <div className={styles.buttons}>
-          <Button
-            htmlType="button"
-            type="secondary"
-            size="medium"
-            onClick={resetForm}
-          >
-            Отмена
-          </Button>
-
-          <Button htmlType="submit" type="primary" size="medium">
-            Сохранить
-          </Button>
-        </div>
-      )}
-    </form>
+    <>
+      <form onSubmit={onSubmitForm} className={`text text_type_main-default ${style.profile__form}`}>
+        <Input
+          type={'text'}
+          placeholder={'Имя'}
+          onChange={onChange}
+          value={valueProfile(values.name)}
+          name={"name"}
+          icon={'EditIcon'}
+          required
+        />
+        <Input
+          type={'email'}
+          placeholder={'Логин'}
+          onChange={onChange}
+          value={valueProfile(values.email)}
+          name={'email'}
+          icon={"EditIcon"}
+          required
+        />
+        <PasswordInput
+          placeholder={"Пароль"}
+          name={"password"}
+          value={values.password}
+          icon="EditIcon"
+          onChange={onChange}
+        />
+        {actionButtons && (
+          <div className={style.profile__buttons}>
+            <Button htmlType={'button'} onClick={handleCancel} type={"secondary"} size={"medium"}>Отменить</Button>
+            <Button htmlType={'submit'} type={"primary"} size={"medium"}>Сохранить</Button>
+          </div>
+        )}
+      </form>
+    </>
   )
 }
 
-export default React.memo(ProfileInfo)
+export default ProfileInfo
