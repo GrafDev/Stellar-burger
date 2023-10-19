@@ -6,15 +6,9 @@ import {
   WS_CONNECTION_OFFLINE,
 } from '../../types/constants-types/ws-types';
 import { TWsActions } from '../actions/ws-actions'
-import { IOrderType } from '../../types/ingredients-types'
+import {TWsState} from "../../utils/reducers-type";
 
-type TWsState = {
-  wsConnected: boolean,
-  wsError: string,
-  orders: Array<IOrderType>,
-  total: number,
-  totalToday: number
-}
+
 
 const initialState: TWsState = {
   wsConnected: false,

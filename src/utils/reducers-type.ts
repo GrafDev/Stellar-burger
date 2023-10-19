@@ -1,4 +1,4 @@
-import {ITypeIngredient} from "../types/ingredients-types";
+import {IOrderType, ITypeIngredient} from "../types/ingredients-types";
 
 export type TIngredientsState = {
     ingredients: Array<ITypeIngredient>,
@@ -23,4 +23,35 @@ export type tResetPass = {
     resetPasswordRequestFailed: boolean,
     verification: boolean,
     err: string
+}
+export type TUserState = {
+    form: { name?: string , email?: string, password?: string } | null,
+    error: string,
+    isAuth: boolean,
+    registerRequest: boolean,
+    registerFailed: boolean
+    loginRequest: boolean
+    loginFailed: boolean
+    logoutRequest: boolean
+    logoutFailed: boolean
+    userRequest: boolean
+    userFailed: boolean
+    updateTokenRequest: boolean
+    updateTokenFailed: boolean
+    userGetRequest: boolean
+    userGetFailed: boolean
+}
+
+export type TWsAuthState = {
+    wsAuthConnected: boolean,
+    wsAuthError: string,
+    authOrders: Array<IOrderType> | null,
+}
+
+export type TWsState = {
+    wsConnected: boolean,
+    wsError: string,
+    orders: Array<IOrderType>,
+    total: number,
+    totalToday: number
 }

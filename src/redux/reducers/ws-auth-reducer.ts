@@ -4,14 +4,10 @@ import {
   WS_AUTH_CONNECTION_CLOSED,
   WS_GET_AUTH_ORDERS, WS_AUTH_CONNECTION_OFFLINE
 } from '../../types/constants-types/ws-types';
-import { IOrderType } from '../../types/ingredients-types';
 import { TWsAuthActions } from '../actions/ws-auth-actions'
+import {TWsAuthState} from "../../utils/reducers-type";
 
-type TWsAuthState = {
-  wsAuthConnected: boolean,
-  wsAuthError: string,
-  authOrders: Array<IOrderType> | null,
-}
+
 
 const initialState: TWsAuthState = {
   wsAuthConnected: false,
