@@ -31,7 +31,7 @@ const Modal: FC<IModal> = ({ children, onClose }) => {
   const modal = (
     <ModalOverlay clickModalOverlay={onClose}>
       <div className={style.wrapper}>
-        <div className={`${style.positionIcon} mt-15 mr-10`}>
+        <div className={`CloseModal ${style.positionIcon} mt-15 mr-10`}>
           <CloseIcon type='primary' onClick={onClose} />
         </div>
         {children}
