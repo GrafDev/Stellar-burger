@@ -18,9 +18,9 @@ const AppHeader: FC = () => {
           <ul className={`${style.header__navList} mt-4 mb-4`}>
             <li className='mr-2'>
               <NavLink to={PATH_HOME}
-                className={location.pathname === String(PATH_HOME)
+                className={`ConstructorLink ${location.pathname === String(PATH_HOME)
                   ? `${style.header__link__active} ${activeDefault} p-5`
-                  : `${style.header__link__inactive} ${activeDefault} p-5`}>
+                  : `${style.header__link__inactive} ${activeDefault} p-5`}`}>
                 <BurgerIcon type={location.pathname === String(PATH_HOME)
                   ? 'primary'
                   : 'secondary'} />
@@ -29,9 +29,9 @@ const AppHeader: FC = () => {
             </li>
             <li>
               <NavLink to={PATH_FEED}
-                className={location.pathname === String(PATH_FEED)
+                className={`OrdersLink ${location.pathname === String(PATH_FEED)
                   ? `${style.header__link__active} ${activeDefault} p-5`
-                  : `${style.header__link__inactive} ${activeDefault} p-5`}>
+                  : `${style.header__link__inactive} ${activeDefault} p-5`}`}>
                 <ListIcon type={location.pathname === String(PATH_FEED) ? 'primary' : 'secondary'} />
                 Лента заказов
               </NavLink>

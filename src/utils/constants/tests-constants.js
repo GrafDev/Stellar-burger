@@ -1,36 +1,25 @@
-//jest
-export const element = {
-    "_id": "60d3b41abdacab0026a733cc",
-    "name": "Соус Spicy-X",
-    "type": "sauce",
-    "proteins": 30,
-    "fat": 20,
-    "carbohydrates": 40,
-    "calories": 30,
-    "price": 90,
-    "image": "https://code.s3.yandex.net/react/code/sauce-02.png",
-    "image_mobile": "https://code.s3.yandex.net/react/code/sauce-02-mobile.png",
-    "image_large": "https://code.s3.yandex.net/react/code/sauce-02-large.png",
-    "__v": 0,
-    "id": "oTDx7WEykfIsfTU-ieMH0"
-}
-export const anotherElement = {
-    "_id": "60d3b41abdacab0026a733cd",
-    "name": "Соус фирменный Space Sauce",
-    "type": "sauce",
-    "proteins": 50,
-    "fat": 22,
-    "carbohydrates": 11,
-    "calories": 14,
-    "price": 80,
-    "image": "https://code.s3.yandex.net/react/code/sauce-04.png",
-    "image_mobile": "https://code.s3.yandex.net/react/code/sauce-04-mobile.png",
-    "image_large": "https://code.s3.yandex.net/react/code/sauce-04-large.png",
-    "__v": 0,
-    "id": "nBqri7WF7nNN28RQry5fC"
+export const baseUrl = 'http://localhost:3000'
+
+
+export const user = {
+    name: 'User',
+    email: 'grafuser@gmail.com'
+};
+
+export const payload = {
+    success: true,
+    user: {
+        name: 'Payload',
+        email: 'grafpayload@gmail.com'
+    },
 }
 
-export const bun = {
+export const start = 1
+export const end = 2
+
+export const number = `25648`
+
+export const fluorescentBun = {
     "_id": "60d3b41abdacab0026a733c7",
     "name": "Флюоресцентная булка R2-D3",
     "type": "bun",
@@ -43,10 +32,10 @@ export const bun = {
     "image_mobile": "https://code.s3.yandex.net/react/code/bun-01-mobile.png",
     "image_large": "https://code.s3.yandex.net/react/code/bun-01-large.png",
     "__v": 0,
-    "id": "DIdhEjVnleEa4X9M2Prz4"
+    id: '1'
 }
 
-export const anotherBun = {
+export const craterBun = {
     "_id": "60d3b41abdacab0026a733c6",
     "name": "Краторная булка N-200i",
     "type": "bun",
@@ -59,27 +48,71 @@ export const anotherBun = {
     "image_mobile": "https://code.s3.yandex.net/react/code/bun-02-mobile.png",
     "image_large": "https://code.s3.yandex.net/react/code/bun-02-large.png",
     "__v": 0,
-    "id": "YS1UuhYSdeJtYDrFptt2j"
+    id: '2'
 }
 
-export const dragIndex = 1;
-export const hoverIndex = 3;
+export const ingredientSauce = {
+    "calories": 99,
+    "carbohydrates": 42,
+    "fat": 24,
+    "image": "https://code.s3.yandex.net/react/code/sauce-03.png",
+    "image_large": "https://code.s3.yandex.net/react/code/sauce-03-large.png",
+    "image_mobile": "https://code.s3.yandex.net/react/code/sauce-03-mobile.png",
+    "name": "Соус традиционный галактический",
+    "price": 15,
+    "proteins": 42,
+    "type": "sauce",
+    "__v": 0,
+    "_id": "60d3b41abdacab0026a733ce",
+    "id": "3"
+}
 
-export const data = [
+export const ingredientMain = {
+    "calories": 6,
+    "carbohydrates": 3,
+    "fat": 2,
+    "image": "https://code.s3.yandex.net/react/code/salad.png",
+    "image_large": "https://code.s3.yandex.net/react/code/salad-large.png",
+    "image_mobile": "https://code.s3.yandex.net/react/code/salad-mobile.png",
+    "name": "Мини-салат Экзо-Плантаго",
+    "price": 4400,
+    "proteins": 1,
+    "type": "main",
+    "__v": 0,
+    "_id": "60d3b41abdacab0026a733d3",
+    "id": "4"
+}
+
+export const ingredients = [
     {
-        "_id": "60d3b41abdacab0026a733c7",
-        "name": "Флюоресцентная булка R2-D3",
+        "_id": "60d3b41abdacab0026a733c6",
+        "name": "Краторная булка N-200i",
         "type": "bun",
-        "proteins": 44,
-        "fat": 26,
-        "carbohydrates": 85,
-        "calories": 643,
-        "price": 988,
-        "image": "https://code.s3.yandex.net/react/code/bun-01.png",
-        "image_mobile": "https://code.s3.yandex.net/react/code/bun-01-mobile.png",
-        "image_large": "https://code.s3.yandex.net/react/code/bun-01-large.png",
+        "proteins": 80,
+        "fat": 24,
+        "carbohydrates": 53,
+        "calories": 420,
+        "price": 1255,
+        "image": "https://code.s3.yandex.net/react/code/bun-02.png",
+        "image_mobile": "https://code.s3.yandex.net/react/code/bun-02-mobile.png",
+        "image_large": "https://code.s3.yandex.net/react/code/bun-02-large.png",
         "__v": 0,
-        'key': "60d3b41abdacab0026a733c7"
+        id: '1'
+    },
+    {
+        "_id": "60d3b41abdacab0026a733cc",
+        "name": "Соус Spicy-X",
+        "type": "sauce",
+        "proteins": 30,
+        "fat": 20,
+        "carbohydrates": 40,
+        "calories": 30,
+        "price": 90,
+        "image": "https://code.s3.yandex.net/react/code/sauce-02.png",
+        "image_mobile": "https://code.s3.yandex.net/react/code/sauce-02-mobile.png",
+        "image_large": "https://code.s3.yandex.net/react/code/sauce-02-large.png",
+        "__v": 0,
+        id: '2'
     },
     {
         "_id": "60d3b41abdacab0026a733c8",
@@ -94,108 +127,78 @@ export const data = [
         "image_mobile": "https://code.s3.yandex.net/react/code/meat-03-mobile.png",
         "image_large": "https://code.s3.yandex.net/react/code/meat-03-large.png",
         "__v": 0,
-        'key': "60d3b41abdacab0026a733c8"
+        id: '2'
     },
- {
-    "_id": "60d3b41abdacab0026a733cc",
-    "name": "Соус мечты фиксирующегося пространства",
-    "type": "sauce",
-    "proteins": 90,
-    "fat": 44,
-    "carbohydrates": 42,
-    "calories": 33,
-    "price": 156,
-    "image": "https://code.s3.yandex.net/react/code/sauce-02.png",
-    "image_mobile": "https://code.s3.yandex.net/react/code/sauce-02-mobile.png",
-    "image_large": "https://code.s3.yandex.net/react/code/sauce-02-large.png",
-    "__v": 0,
-    "id": "oTDx7WEykfIsfTU-llMHa"
-}
+];
 
-]
-
-export const id = `21256`
-
-export const user = {
-    email: 'lev@gmail.com',
-    name: 'Levon',
-    password: 'pass12345'
-};
-
-export const orders = {
+export const allOrders = {
     "success": true,
     "orders": [
         {
-            "_id": "63862d6c9b518a001bb8944a",
-            "ingredients": [
-                "60d3b41abdacab0026a733cd",
-                "60d3b41abdacab0026a733cd",
-                "60d3b41abdacab0026a733cd",
+            'createdAt': "2022-12-12T08:28:10.901Z",
+            'ingredients': [
+                "60d3b41abdacab0026a733c7",
+                "60d3b41abdacab0026a733cb",
+                "60d3b41abdacab0026a733c7"
+            ],
+            'name': "Био-марсианский флюоресцентный бургер",
+            'number': 10001,
+            'status': "done",
+            'updatedAt': "2022-12-12T08:28:10.901Z",
+            '_id': "6396e61a99a25c001cd6893c"
+        },
+        {
+            'createdAt': "2022-12-12T07:38:02.547Z",
+            'ingredients': [
+                "60d3b41abdacab0026a733c6",
+                "60d3b41abdacab0026a733ce",
                 "60d3b41abdacab0026a733c6"
             ],
-            "status": "done",
-            "name": "Space краторный бургер",
-            "createdAt": "2022-11-29T16:03:56.747Z",
-            "updatedAt": "2022-11-29T16:03:57.186Z",
-            "number": 21258
-        },
-        {
-            "_id": "63862edc9b518a001bb8944e",
-            "ingredients": [
-                "60d3b41abdacab0026a733c7",
-                "60d3b41abdacab0026a733c7",
-                "60d3b41abdacab0026a733cd",
-                "60d3b41abdacab0026a733c9",
-                "60d3b41abdacab0026a733ca"
-            ],
-            "status": "done",
-            "name": "Бессмертный флюоресцентный space метеоритный бургер",
-            "createdAt": "2022-11-29T16:10:04.491Z",
-            "updatedAt": "2022-11-29T16:10:04.919Z",
-            "number": 21256
-        },
-        {
-            "_id": "63862dd29b518a001bb8944b",
-            "ingredients": [
-                "60d3b41abdacab0026a733c6",
-                "60d3b41abdacab0026a733c6",
-                "60d3b41abdacab0026a733d4",
-                "60d3b41abdacab0026a733d3",
-                "60d3b41abdacab0026a733ce",
-                "60d3b41abdacab0026a733c8"
-            ],
-            "status": "done",
-            "name": "Люминесцентный экзо-плантаго краторный астероидный традиционный-галактический бургер",
-            "createdAt": "2022-11-29T16:05:38.243Z",
-            "updatedAt": "2022-11-29T16:05:38.655Z",
-            "number": 21257
-        },
-
+            'name': "Традиционный-галактический краторный бургер",
+            'number': 10002,
+            'status': "done",
+            'updatedAt': "2022-12-12T07:38:03.348Z",
+            '_id': "6396da5a99a25c001cd6890d"
+        }
     ],
-    "total": 68742,
-    "totalToday": 142
+    "total": 99999,
+    "totalToday": 666
 }
 
-export const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmZiNTFlN" +
-    "TJiNGNmMDAxZDg2YjI1MSIsImlhdCI6MTY5NzYzODQ3MiwiZXhwIjox" +
-    "Njk3NjM5NjcyfQ.MIDdgqUcom25M8OPnaWHU2hC1Euya3T52m_uSfGAs9g"
-
-export const payload = {
-    success: true,
-    user: {
-        email: 'pol@gmail.com',
-        name: 'Polard'
-    }
+export const userOrders = {
+    "success": true,
+    "orders": [
+        {
+            'createdAt': "2022-12-12T08:28:10.901Z",
+            'ingredients': [
+                "60d3b41abdacab0026a733c7",
+                "60d3b41abdacab0026a733cb",
+                "60d3b41abdacab0026a733c7"
+            ],
+            'name': "Био-марсианский флюоресцентный бургер",
+            'number': 10003,
+            'status': "done",
+            'updatedAt': "2022-12-12T08:28:10.901Z",
+            '_id': "6396e61a99a25c001cd6893c"
+        },
+        {
+            'createdAt': "2022-12-12T07:38:02.547Z",
+            'ingredients': [
+                "60d3b41abdacab0026a733c6",
+                "60d3b41abdacab0026a733ce",
+                "60d3b41abdacab0026a733c6"
+            ],
+            'name': "Традиционный-галактический краторный бургер",
+            'number': 10004,
+            'status': "done",
+            'updatedAt': "2022-12-12T07:38:03.348Z",
+            '_id': "6396da5a99a25c001cd6890d"
+        }
+    ]
 }
-//cypress
-export const testIdList = [
-    "60d3b41abdacab0026a733cc",
-    "60d3b41abdacab0026a733cd",
-    "60d3b41abdacab0026a733cd",
-    "60d3b41abdacab0026a733cf",
-    "60d3b41abdacab0026a733c7",
-]
 
-
-export const email = 'graf11@gmail.ru';
-export const password = 'pass325';
+export const ingredientClass = '[class^=burger-ingredients-item_item]';
+export const closeButtonClass = '[class^=modal_closeButton]';
+export const tabClass = '[class^=tab]';
+export const burgerConstructorClass = '[class^=burger-constructor_burger_constructor]';
+export const burgerConstructorIngredientClass = '[class^=burger-constructor-element_constructor_element]';

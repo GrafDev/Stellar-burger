@@ -11,7 +11,7 @@ interface ICardBuns {
 const CardBuns: FC<ICardBuns> = ({ position, buns }) => {
   const positionBun = position === 'top' ? `(верх)` : `(низ)`;
   return (
-    <div className={`${style.cardBuns} mr-2 ml-8 pr-3`}>
+    <div className={`ConstructorElement ${style.cardBuns} mr-2 ml-8 pr-3`}>
       <ConstructorElement
         type={position}
         isLocked={true}

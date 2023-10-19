@@ -10,8 +10,9 @@ import {
 import { AppDispatch, AppThunk } from '../../types/actions-types';
 
 export interface IGetIngredientsSuccess {
-  readonly type: typeof GET_INGREDIENTS_SUCCESS
   ingredients: Array<ITypeIngredient>
+  readonly type: typeof GET_INGREDIENTS_SUCCESS
+
 };
 export interface IGetIngredientsRequest {
   readonly type: typeof GET_INGREDIENTS_REQUEST

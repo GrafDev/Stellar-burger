@@ -9,16 +9,7 @@ import {
   MOVE_INGREDIENT
 } from '../../types/constants-types/orders-types'
 import { TOrderActions } from '../actions/order-actions'
-import { ITypeIngredient } from '../../types/ingredients-types'
-
-type TOrderState = {
-  list: Array<ITypeIngredient>,
-  bun: ITypeIngredient | undefined,
-  orderDetails: number | undefined,
-  request: boolean,
-  failed: boolean,
-  isLoaded: boolean
-}
+import {TOrderState} from "../../utils/reducers-type";
 
 const initialState: TOrderState = {
   list: [],

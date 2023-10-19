@@ -7,15 +7,9 @@ import {
   RESET_PASSWORD_REQUEST
 } from '../../types/constants-types/reset-password-types';
 import { TresetPasswordActions } from '../actions/reset-password-actions';
+import {tResetPass} from "../../utils/reducers-type";
 
-type tResetPass = {
-  emailRequest: boolean,
-  emailRequestFailed: boolean,
-  resetPasswordRequest: boolean,
-  resetPasswordRequestFailed: boolean,
-  verification: boolean,
-  err: string
-}
+
 
 const initialState: tResetPass = {
   emailRequest: false,

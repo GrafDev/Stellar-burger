@@ -7,13 +7,8 @@ import {
   SET_SELECTED_INGREDIENT,
   REMOVE_SELECTED_INGREDIENT
 } from '../../types/constants-types/ingredients-types'
+import {TIngredientsState} from "../../utils/reducers-type";
 
-export type TIngredientsState = {
-  ingredients: Array<ITypeIngredient>,
-  loaded: boolean,
-  error: boolean,
-  selectedIngredient: ITypeIngredient | null
-}
 
 const initialState: TIngredientsState = {
   ingredients: [],
