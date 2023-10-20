@@ -10,32 +10,27 @@ Stella-Burger - это веб-приложение, которое позвол�
 ## GitHub Pages:
 [Stelalr-Burger](https://grafdev.github.io/Stellar-burger/)
 
-
 ## Stacks:
 * TypeScript
 * React
 * Redux
 * Web-Socket
-
-
+* 
 ## Быстрый старт
 
 <br />
-
 1. Склонировать проект на свой компьютер
 
 ```bash
 git https://github.com/GrafDev/Stellar-burger.git
 
 ```
-
 2. Перейти в папку с проектом и установить зависимости в проекте
 
 ```bash
 
 npm install
 ```
-
 3. Запустить проект
 
 ```bash
