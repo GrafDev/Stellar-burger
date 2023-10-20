@@ -25,7 +25,7 @@ const ProfileHistoryOrders: FC<IProfileHistoryOrders> = ({ orders }) => {
     <ul className={`${style.section}`}>
       {orders.map((item) => {
         return (
-          <Link to={`${PATH_PROFILE_ORDERS}${item._id}`} key={item._id} state={{ background: location }} className={`${style.link}`}>
+          <Link to={`${PATH_PROFILE_ORDERS}/${item._id}`} key={item._id} state={{ background: location }} className={`${style.link}`}>
             <FeedCard data={item} key={item._id} profileStatus={true} />
           </Link>
         )
