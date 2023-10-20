@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9723677-07c3-4d4d-8eda-3a62661f2fcd" name="Changes" comment="Ready!! to Request">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/e2e/constructor.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/constructor.cy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/ingredients-reducer.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/ingredients-reducer.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/ingredients-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/ingredients-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/order-reducer.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/order-reducer.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/order-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/order-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/reset-password-reducer.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/reset-password-reducer.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/reset-password-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/reset-password-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/user-reducer.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/user-reducer.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/user-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/user-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/ws-auth-reducer.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/ws-auth-reducer.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/ws-auth-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/ws-auth-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/ws-reducer.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/ws-reducer.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/ws-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/ws-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/constants/tests-constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants/tests-constants.js" afterDir="false" />
-    </list>
+    <list default="true" id="e9723677-07c3-4d4d-8eda-3a62661f2fcd" name="Changes" comment="Ready!! readMy is ready." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -225,7 +207,7 @@
       <workItem from="1697695569437" duration="6913000" />
       <workItem from="1697717237829" duration="3826000" />
       <workItem from="1697736259011" duration="12155000" />
-      <workItem from="1697789458544" duration="3784000" />
+      <workItem from="1697789458544" duration="4035000" />
     </task>
     <task id="LOCAL-00001" summary="norm">
       <option name="closed" value="true" />
@@ -515,7 +497,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697749158480</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Ready!! readMy is ready.">
+      <option name="closed" value="true" />
+      <created>1697797646078</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1697797646078</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -566,6 +556,7 @@
     <MESSAGE value="Вроде починил .." />
     <MESSAGE value="half tests ready" />
     <MESSAGE value="Ready!! to Request" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ready!! to Request" />
+    <MESSAGE value="Ready!! readMy is ready." />
+    <option name="LAST_COMMIT_MESSAGE" value="Ready!! readMy is ready." />
   </component>
 </project>

@@ -1,4 +1,4 @@
-# Проект: Stella-Burger
+# Учебный проект в рамках курса React-Продвинутый: Stellar-Burger
 
 <img src="./src/images/stellar-burger.gif" alt="Stellar-Burger">
 
