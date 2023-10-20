@@ -10,14 +10,14 @@ import {
 import {TIngredientsState} from "../../utils/reducers-type";
 
 
-const initialState: TIngredientsState = {
+export const initialIngredientsState: TIngredientsState = {
   ingredients: [],
   loaded: false,
   error: false,
   selectedIngredient: null,
 };
 
-export const ingredientsReducer = (state = initialState, action: TIngredientsActions): TIngredientsState => {
+export const ingredientsReducer = (state = initialIngredientsState, action: TIngredientsActions): TIngredientsState => {
   switch (action.type) {
     case GET_INGREDIENTS_REQUEST:
       return {

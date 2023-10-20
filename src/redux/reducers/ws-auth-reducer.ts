@@ -9,13 +9,13 @@ import {TWsAuthState} from "../../utils/reducers-type";
 
 
 
-const initialState: TWsAuthState = {
+export const initialWSAuthState: TWsAuthState = {
   wsAuthConnected: false,
   wsAuthError: '',
   authOrders: null,
 }
 
-export const wsAuthReducer = (state = initialState, action: TWsAuthActions): TWsAuthState => {
+export const wsAuthReducer = (state = initialWSAuthState, action: TWsAuthActions): TWsAuthState => {
   switch (action.type) {
     case WS_AUTH_CONNECTION_SUCCESS:
       return {

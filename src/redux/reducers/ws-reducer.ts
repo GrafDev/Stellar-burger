@@ -10,7 +10,7 @@ import {TWsState} from "../../utils/reducers-type";
 
 
 
-const initialState: TWsState = {
+export const initialWSState: TWsState = {
   wsConnected: false,
   wsError: '',
   orders: [],
@@ -18,7 +18,7 @@ const initialState: TWsState = {
   totalToday: 0
 }
 
-export const wsReducer = (state = initialState, action: TWsActions): TWsState => {
+export const wsReducer = (state = initialWSState, action: TWsActions): TWsState => {
   switch (action.type) {
     case WS_CONNECTION_SUCCESS:
       return {

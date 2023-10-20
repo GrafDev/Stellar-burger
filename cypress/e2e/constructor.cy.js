@@ -3,7 +3,7 @@ import '@4tw/cypress-drag-drop'
 describe('constructor', () => {
 
     beforeEach(() => {
-        cy.visit('http://localhost:3000')
+        cy.visit('')
         cy.intercept("GET", "api/ingredients", {fixture: "ingredients.json"})
 
         cy.get('li[class^="IngredientsCards"]').as('ingredients')
@@ -38,19 +38,19 @@ describe('constructor', () => {
 
         cy.get('div[class^=constructor-element]').as('orderIngridients')
         cy.get('@orderIngridients').should('have.length', 4)
-        cy.get('div[class^=constructor-element]')
+        cy.get('@orderIngridients')
             .first()
             .contains('Ингредиент 1 (верх)')
 
-        cy.get('div[class^=constructor-element]')
+        cy.get('@orderIngridients')
             .last()
             .contains('Ингредиент 1 (низ)')
 
-        cy.get('div[class^=constructor-element]')
+        cy.get('@orderIngridients')
             .eq(1)
             .contains('Ингредиент 9')
 
-        cy.get('div[class^=constructor-element]')
+        cy.get('@orderIngridients')
             .eq(2)
             .contains('Ингредиент 15')
 

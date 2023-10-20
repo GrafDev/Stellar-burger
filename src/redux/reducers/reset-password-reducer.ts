@@ -11,7 +11,7 @@ import {tResetPass} from "../../utils/reducers-type";
 
 
 
-const initialState: tResetPass = {
+export const initialResetState: tResetPass = {
   emailRequest: false,
   emailRequestFailed: false,
   resetPasswordRequest: false,
@@ -20,7 +20,7 @@ const initialState: tResetPass = {
   err: ''
 };
 
-export const passwordReducer = (state = initialState, action: TresetPasswordActions): tResetPass => {
+export const passwordReducer = (state = initialResetState, action: TresetPasswordActions): tResetPass => {
   switch (action.type) {
     case FORGOT_PASSWORD_REQUEST: {
       return {

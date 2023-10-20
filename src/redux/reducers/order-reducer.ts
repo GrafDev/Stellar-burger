@@ -11,7 +11,7 @@ import {
 import { TOrderActions } from '../actions/order-actions'
 import {TOrderState} from "../../utils/reducers-type";
 
-const initialState: TOrderState = {
+export const initialOrderState: TOrderState = {
   list: [],
   bun: undefined,
   orderDetails: undefined,
@@ -20,7 +20,7 @@ const initialState: TOrderState = {
   isLoaded: false
 };
 
-export const orderReducer = (state = initialState, action: TOrderActions): TOrderState => {
+export const orderReducer = (state = initialOrderState, action: TOrderActions): TOrderState => {
   switch (action.type) {
     case GET_ORDER_ITEMS_REQUEST:
       return {
