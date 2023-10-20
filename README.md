@@ -1,4 +1,3 @@
-# Учебный проект в рамках курса React-Продвинутый: [Stellar-Burger](https://grafdev.github.io/Stellar-burger/)
 
 <img src="./src/images/stellar-burger.gif" alt="Stellar-Burger">
 
