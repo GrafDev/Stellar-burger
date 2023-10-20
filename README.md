@@ -10,6 +10,7 @@ Stella-Burger - это веб-приложение, которое позвол�
 ## GitHub Pages:
 [Stelalr-Burger](https://grafdev.github.io/Stellar-burger/)
 
+
 ## Stacks:
 * TypeScript
 * React
