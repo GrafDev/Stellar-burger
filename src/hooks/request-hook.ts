@@ -1,4 +1,4 @@
-const BASE_URL: string = 'https://norma.nomoreparties.space/api/'
+export const BASE_URL: string = 'https://norma.nomoreparties.space/api/'
 export const BASE_WSS: string = 'wss://norma.nomoreparties.space'
 
 const checkResponse = (res: Response) => {

@@ -36,16 +36,16 @@ const BurgerConstructor: FC = () => {
     return (
 
 
-        <section className={`${style.constuctionSection}  mt-25 `} ref={dropTarget}>
+        <section className={`dropZone ${style.constuctionSection}  mt-25`}  ref={dropTarget}>
 
                 {(list.length || bun) ?
 
                 <section className={`${style.ingredientSection}  ${isHover ? style.dropZone_isHovering : ''} `} ref={dropTarget}>
-                    {bun ? <CardBuns position={'top'} buns={bun}/> :
+                    {bun ? <CardBuns  position={'top'} buns={bun}/> :
                         <p className={` ${textMedium} ${colorInactive} pb-15`}>
                             Нехватает</p>}
 
-                    <ul className={`${style.sectionList}  mt-3 pr-3`}>
+                    <ul className={style.sectionList} >
                         {list.length ? list.map((item, i) => {
                                 return <CardOther ingredient={item} key={item.uniqueId} index={i}/>
                             })

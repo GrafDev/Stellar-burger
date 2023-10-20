@@ -7,17 +7,11 @@ import {
   RESET_PASSWORD_REQUEST
 } from '../../types/constants-types/reset-password-types';
 import { TresetPasswordActions } from '../actions/reset-password-actions';
+import {tResetPass} from "../../utils/reducers-type";
 
-type tResetPass = {
-  emailRequest: boolean,
-  emailRequestFailed: boolean,
-  resetPasswordRequest: boolean,
-  resetPasswordRequestFailed: boolean,
-  verification: boolean,
-  err: string
-}
 
-const initialState: tResetPass = {
+
+export const initialResetState: tResetPass = {
   emailRequest: false,
   emailRequestFailed: false,
   resetPasswordRequest: false,
@@ -26,7 +20,7 @@ const initialState: tResetPass = {
   err: ''
 };
 
-export const passwordReducer = (state = initialState, action: TresetPasswordActions): tResetPass => {
+export const passwordReducer = (state = initialResetState, action: TresetPasswordActions): tResetPass => {
   switch (action.type) {
     case FORGOT_PASSWORD_REQUEST: {
       return {

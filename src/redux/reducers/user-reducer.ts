@@ -20,26 +20,10 @@ import {
   USER_SET_IS_AUTH
 } from '../../types/constants-types/user-types';
 import { TUserActions } from '../actions/user-actions';
+import {TUserState} from "../../utils/reducers-type";
 
-export type TUserState = {
-  form: { name?: string , email?: string, password?: string } | null,
-  error: string,
-  isAuth: boolean,
-  registerRequest: boolean,
-  registerFailed: boolean
-  loginRequest: boolean
-  loginFailed: boolean
-  logoutRequest: boolean
-  logoutFailed: boolean
-  userRequest: boolean
-  userFailed: boolean
-  updateTokenRequest: boolean
-  updateTokenFailed: boolean
-  userGetRequest: boolean
-  userGetFailed: boolean
-}
 
-const initialState: TUserState = {
+export const initialUserState: TUserState = {
   form: null,
   error: '',
   isAuth: false,
@@ -57,7 +41,7 @@ const initialState: TUserState = {
   userGetFailed: false
 };
 
-export const usersReducer = (state = initialState, action: TUserActions): TUserState => {
+export const usersReducer = (state = initialUserState, action: TUserActions): TUserState => {
 
   switch (action.type) {
     case USER_SET_IS_AUTH: {

@@ -11,7 +11,7 @@ const OrderDetails: FC<IOrderDetails> = ({orderDetails, onClose}) => {
     return (
         <>
             <div className={`${style.wrapper} mt-30 mb-30`}>
-                <h2 className={`${style.number} text text_type_digits-large mb-8`}>{orderDetails}</h2>
+                <h2 className={`OrderDetailsTitle  ${style.number} text text_type_digits-large mb-8`}>{orderDetails}</h2>
                 <p className={`text text_type_main-medium mb-2`}>идентификатор заказа</p>
                 <div className={style.checkMarkIcon} onClick={onClose}>
                     <img className={`${style.img} mb-2`} src={done} alt="tiks"/>

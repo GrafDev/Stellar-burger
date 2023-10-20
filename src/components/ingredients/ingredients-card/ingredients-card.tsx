@@ -35,7 +35,7 @@ const IngredientsCard: FC<ICardIngredient> = ({ card, onOpen }) => {
 
   return (
     <>
-      <li className={`${style.cardIngredient__wrapperCard} ${isDrag ? style.isDrag : null}`} ref={dragRef} draggable >
+      <li className={`IngredientsCards ${style.cardIngredient__wrapperCard} ${isDrag ? style.isDrag : null}`} ref={dragRef} draggable >
         <Link to={`${PATH_INGREDIENTS}/${_id}`} state={{ background: location }} >
           <img className={`${style.cardIngredient__img} ml-4 mr-4 mb-2`} src={image} alt={name} id={_id} onClick={onOpen} />
         </Link>

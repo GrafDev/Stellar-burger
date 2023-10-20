@@ -9,18 +9,9 @@ import {
   MOVE_INGREDIENT
 } from '../../types/constants-types/orders-types'
 import { TOrderActions } from '../actions/order-actions'
-import { ITypeIngredient } from '../../types/ingredients-types'
+import {TOrderState} from "../../utils/reducers-type";
 
-type TOrderState = {
-  list: Array<ITypeIngredient>,
-  bun: ITypeIngredient | undefined,
-  orderDetails: number | undefined,
-  request: boolean,
-  failed: boolean,
-  isLoaded: boolean
-}
-
-const initialState: TOrderState = {
+export const initialOrderState: TOrderState = {
   list: [],
   bun: undefined,
   orderDetails: undefined,
@@ -29,7 +20,7 @@ const initialState: TOrderState = {
   isLoaded: false
 };
 
-export const orderReducer = (state = initialState, action: TOrderActions): TOrderState => {
+export const orderReducer = (state = initialOrderState, action: TOrderActions): TOrderState => {
   switch (action.type) {
     case GET_ORDER_ITEMS_REQUEST:
       return {

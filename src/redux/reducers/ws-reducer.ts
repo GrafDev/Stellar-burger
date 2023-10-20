@@ -6,17 +6,11 @@ import {
   WS_CONNECTION_OFFLINE,
 } from '../../types/constants-types/ws-types';
 import { TWsActions } from '../actions/ws-actions'
-import { IOrderType } from '../../types/ingredients-types'
+import {TWsState} from "../../utils/reducers-type";
 
-type TWsState = {
-  wsConnected: boolean,
-  wsError: string,
-  orders: Array<IOrderType>,
-  total: number,
-  totalToday: number
-}
 
-const initialState: TWsState = {
+
+export const initialWSState: TWsState = {
   wsConnected: false,
   wsError: '',
   orders: [],
@@ -24,7 +18,7 @@ const initialState: TWsState = {
   totalToday: 0
 }
 
-export const wsReducer = (state = initialState, action: TWsActions): TWsState => {
+export const wsReducer = (state = initialWSState, action: TWsActions): TWsState => {
   switch (action.type) {
     case WS_CONNECTION_SUCCESS:
       return {
